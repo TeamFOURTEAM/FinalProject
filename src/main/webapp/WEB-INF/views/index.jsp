@@ -172,7 +172,7 @@
 
 
     <!-- JavaScript Libraries -->
-    <script src="js/main/jquery.min_1.12.4.js"></script>
+    <script src="js/jquery.js"></script>
     <script src="js/main/slick.min.js"></script>
     <script src="js/main/fullpage.js"></script>
 
