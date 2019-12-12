@@ -25,8 +25,8 @@
             <div class="row">
                 <div class="header">
                     <div class="header_menu">
-                        <a href="./html.html">Login</a>
-                        <a href="./Member.html">Join</a>
+                        <a href="login">Login</a>
+                        <a href="join">Join</a>
                     </div>
                     <!--//header_menu -->
 
@@ -53,28 +53,28 @@
                                 <div class="section">
                                     <div class="main_menu_img">
                                         <div class="main_menu_btn">
-                                            <a href="#" class="a1">고양이 분양</a>
+                                            <a href="cat/total_cat" class="a1">고양이 분양</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="section">
                                     <div class="main_menu_img">
                                         <div class="main_menu_btn">
-                                            <a href="#" class="a1">강아지 분양</a>
+                                            <a href="dog/total_dog" class="a1">강아지 분양</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="section">
                                     <div class="main_menu_img">
                                         <div class="main_menu_btn">
-                                            <a href="#" class="a1">쇼핑</a>
+                                            <a href="shop/total_shop" class="a1">쇼핑</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="section">
                                     <div class="main_menu_img">
                                         <div class="main_menu_btn">
-                                            <a href="#" class="a1">커뮤니티</a>
+                                            <a href="community/total_commu" class="a1">커뮤니티</a>
                                         </div>
                                     </div>
                                 </div>
