@@ -10,7 +10,7 @@
     <title>Final Project Main</title>
 
     <!-- Style -->
-    <link rel="stylesheet" href="css/main/reset.css">
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/main/index.css">
     <link rel="stylesheet" href="css/main/slick.css">
     <link rel="stylesheet" href="css/main/font-awesome.css">
