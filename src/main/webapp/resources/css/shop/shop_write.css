@@ -12,7 +12,14 @@
 	text-align: center; align: center;
 }
 .write_text span {
-	font-size: 50px;
+	font-size: 40px;
+}
+.write_text table {
+	width: 100%;
+}
+.write_text table td {
+	/* padding-left: 140px; */
+	text-align: left;
 }
 
 .write_text .btn {

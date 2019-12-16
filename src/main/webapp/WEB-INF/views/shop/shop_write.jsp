@@ -19,22 +19,35 @@
 
 <div class="write_main">
 	<div class="write_text">
-		<span>관리자 게시판 글쓰기</span>
+		<span>Shop 컨텐츠 수정</span>
 		
 		<form method="post" action="write_insert" id="frm">
-			<table width="100%">
+			<table>
+				<tr>
+					<th>상품명</th>
+					<td><input type="text" /></td>
+				</tr>
+				<tr>
+					<th>가격</th>
+					<td><input type="text" /></td>
+				</tr>
 				<tr>
 					<th>내용</th>
 					<td>
-						<textarea name="write_cont" id="write_cont" cols="140" rows="20"></textarea>
+						<textarea name="write_cont" id="write_cont" cols="100" rows="20"></textarea>
 					</td>
 				</tr>
 				<tr>
-					<th colspan="2">
+					<th>첨부파일</th>
+					<td><input type="text" readonly/></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="2">
 						<input type="submit" id="save" value="save" class="btn"/>
 						<input type="reset" value="cancel" class="btn"
 						onclick="history.back();" />
-					</th>
+					</td>
 				</tr>
 			</table>
 		</form>
