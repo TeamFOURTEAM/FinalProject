@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
     <meta name="viewport"
@@ -10,9 +10,9 @@
     <title>반려동물용품목록</title>
 
     <!-- Style -->
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/shop/shop_list.css">
-    <link rel="stylesheet" href="css/main/font-awesome.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/shop/shop_list.css">
+    <link rel="stylesheet" href="/css/main/font-awesome.css">
 </head>
 <body>
 	<div class="container">
@@ -39,6 +39,9 @@
         <!-- 검색 결과 수 -->
         <div class="searchResultRow">
             ""에 대한 ""개의 검색 결과가 있습니다.
+            <div class="admin_write">
+                <button onclick="location.href='shop_write'">관리자 글쓰기</button>
+            </div>
         </div>
         <!--//검색 결과 -->
 
@@ -52,7 +55,7 @@
                 <div class="itemImgBox">
                     <div class="itemImg">
                         <a href="#">
-                            <img src="./img/shop/ListGoods01.jpg" alt="imgTest" width="200" height="200">
+                            <img src="/img/shop/ListGoods01.jpg" alt="imgTest" width="200" height="200">
                         </a>
                     </div>
                     <span class="bestCount">Best 1</span>
@@ -73,7 +76,7 @@
                 <div class="itemImgBox">
                     <div class="itemImg">
                         <a href="#">
-                            <img src="./img/shop/ListGoods01.jpg" alt="imgTest" width="200" height="200">
+                            <img src="/img/shop/ListGoods01.jpg" alt="imgTest" width="200" height="200">
                         </a>
                     </div>
                     <span class="bestCount">Best 2</span>
@@ -94,7 +97,7 @@
                 <div class="itemImgBox">
                     <div class="itemImg">
                         <a href="#">
-                            <img src="./img/shop/ListGoods01.jpg" alt="imgTest" width="200" height="200">
+                            <img src="/img/shop/ListGoods01.jpg" alt="imgTest" width="200" height="200">
                         </a>
                     </div>
                     <span class="bestCount">Best 3</span>
@@ -121,7 +124,7 @@
                     <div class="itemImgBox">
                         <div class="itemImg">
                             <a href="#">
-                                <img src="./img/shop/ListGoods02.jpg" alt="imgTest" width="200" height="200">
+                                <img src="/img/shop/ListGoods02.jpg" alt="imgTest" width="200" height="200">
                             </a>
                         </div>
                     </div>
@@ -141,7 +144,7 @@
                     <div class="itemImgBox">
                         <div class="itemImg">
                             <a href="#">
-                                <img src="./img/shop/ListGoods02.jpg" alt="imgTest" width="200" height="200">
+                                <img src="/img/shop/ListGoods02.jpg" alt="imgTest" width="200" height="200">
                             </a>
                         </div>
                     </div>
@@ -161,7 +164,7 @@
                     <div class="itemImgBox">
                         <div class="itemImg">
                             <a href="#">
-                                <img src="./img/shop/ListGoods02.jpg" alt="imgTest" width="200" height="200">
+                                <img src="/img/shop/ListGoods02.jpg" alt="imgTest" width="200" height="200">
                             </a>
                         </div>
                     </div>
@@ -181,7 +184,7 @@
                     <div class="itemImgBox">
                         <div class="itemImg">
                             <a href="#">
-                                <img src="./img/shop/ListGoods02.jpg" alt="imgTest" width="200" height="200">
+                                <img src="/img/shop/ListGoods02.jpg" alt="imgTest" width="200" height="200">
                             </a>
                         </div>
                     </div>

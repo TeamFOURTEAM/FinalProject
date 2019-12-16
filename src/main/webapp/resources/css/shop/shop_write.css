@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+
+
+.write_main {
+	width: 1000px; position: relative;
+	margin: 0 auto;
+}
+
+.write_text {
+	width: 100%;
+	text-align: center; align: center;
+}
+.write_text span {
+	font-size: 50px;
+}
+
+.write_text .btn {
+	width: 50px; height: 20px;
+}
+
