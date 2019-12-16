@@ -19,7 +19,7 @@
 
 <div class="write_main">
 	<div class="write_text">
-		<span></span>
+		<span>관리자 게시판 글쓰기</span>
 		
 		<form method="post" action="write_insert" id="frm">
 			<table width="100%">
