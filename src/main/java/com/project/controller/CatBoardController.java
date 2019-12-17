@@ -103,7 +103,7 @@ public class CatBoardController {
 		
 		this.catService.insertCat(c);//글쓰기 저장
  
-		return "redirect:/cat/total_cat?page=1";
+		return "redirect:/cat/total_cat?class=cat&page=1";
 	}//cat_write_ok
 
 	/** 고양이 목록 **/
