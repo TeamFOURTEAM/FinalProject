@@ -67,14 +67,14 @@
                                 <div class="section">
                                     <div class="main_menu_img">
                                         <div class="main_menu_btn">
-                                            <a href="shop/total_shop?class=shop" class="a1">쇼핑</a>
+                                            <a href="shop/total_shop?class=shop" class="a3">SHOP</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="section">
                                     <div class="main_menu_img">
                                         <div class="main_menu_btn">
-                                            <a href="community/total_commu?class=commu" class="a1">커뮤니티</a>
+                                            <a href="community/total_commu?class=commu" class="a4">커뮤니티</a>
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@
                                             <!-- main 이미지(슬라이드로 처리. 제일 뒤에 위치) -->
                                             <div>
                                                 <a href="#">
-                                                    <img src="./img/main/slider001.jpg" alt="이미지1">
+                                                    <img src="/img/main/slider001.jpg" alt="이미지1">
                                                     <figcaption><em>Responsive Site1</em><span>슬라이드
                                                             플러그인을 이용한 반응형 이미지 슬라이드 입니다.</span>
                                                     </figcaption>
@@ -97,7 +97,7 @@
 
                                             <div>
                                                 <a href="#">
-                                                    <img src="./img/main/slider002.jpg" alt="이미지2">
+                                                    <img src="/img/main/slider002.jpg" alt="이미지2">
                                                     <figcaption><em>Responsive Site2</em><span>슬라이드
                                                             플러그인을 이용한 반응형 이미지 슬라이드 입니다.</span>
                                                     </figcaption>
@@ -106,7 +106,7 @@
 
                                             <div>
                                                 <a href="#">
-                                                    <img src="./img/main/slider003.jpg" alt="이미지3">
+                                                    <img src="/img/main/slider003.jpg" alt="이미지3">
                                                     <figcaption><em>Responsive Site3</em><span>슬라이드
                                                             플러그인을 이용한 반응형 이미지 슬라이드 입니다.</span>
                                                     </figcaption>
@@ -115,7 +115,7 @@
 
                                             <div>
                                                 <a href="#">
-                                                    <img src="./img/main/slider004.jpg" alt="이미지4">
+                                                    <img src="/img/main/slider004.jpg" alt="이미지4">
                                                     <figcaption><em>Responsive Site4</em><span>슬라이드
                                                             플러그인을 이용한 반응형 이미지 슬라이드 입니다.</span>
                                                     </figcaption>
@@ -124,7 +124,7 @@
 
                                             <div>
                                                 <a href="#">
-                                                    <img src="./img/main/slider005.jpg" alt="이미지5">
+                                                    <img src="/img/main/slider005.jpg" alt="이미지5">
                                                     <figcaption><em>Responsive Site5</em><span>슬라이드
                                                             플러그인을 이용한 반응형 이미지 슬라이드 입니다.</span>
                                                     </figcaption>
