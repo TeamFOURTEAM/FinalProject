@@ -60,7 +60,7 @@
 							<li><a href="#">강아지 분양 4</a></li>
 						</ul></li>
 					<li><div>
-							<a href="shop">SHOP</a>
+							<a href="shop/total_shop?class=shop">SHOP</a>
 						</div>
 						<ul class="sub_category">
 							<li><a href="#">SHOP 1</a></li>

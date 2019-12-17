@@ -1,0 +1,51 @@
+@charset "UTF-8";
+#contents { width: 1320px; margin: 50px auto;}
+
+/* main */
+.main {
+    margin-top: 3px;
+    width: 100%;
+}
+
+.name {
+	text-align: center;
+	margin-top: 10px;
+	font-size: 15px;
+	font-weight: bolder;
+}
+
+.board_list .item {
+	display: inline-block;
+	width: 316px;
+	height: 400px;
+	background: #fff;
+	margin: 10px 5px;
+}
+
+.board_list .img {
+	height: 90%;
+	background: yellow;
+}
+
+/* 페이징 */
+#cList_paging {
+	text-align: center;
+	font-size: 18px;
+	margin: 10px 0;
+}
+
+/* 검색 */
+#cFind_wrap {
+	text-align: center;
+	padding: 20px;
+	position: relative; 
+}
+
+#cFind_wrap .cWrite {
+	 position: absolute; left: 1210px;
+}
+
+input, select {
+	font-size: 15px;
+}
+
