@@ -19,12 +19,17 @@
 
 <div class="write_main">
 	<div class="write_text">
-		<span>Shop 컨텐츠 수정</span>
+		<span>관리자 Shop 컨텐츠 수정</span>
 		
-		<form method="post" action="write_insert" id="frm">
+		<form method="post" action="write_insert" id="frm" 
+		onsubmit="return shop_check();" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<th>상품명</th>
+					<td><input type="text" /></td>
+				</tr>
+				<tr>
+					<th>세부설명</th>
 					<td><input type="text" /></td>
 				</tr>
 				<tr>
@@ -32,7 +37,7 @@
 					<td><input type="text" /></td>
 				</tr>
 				<tr>
-					<th>내용</th>
+					<th>상품 설명</th>
 					<td>
 						<textarea name="write_cont" id="write_cont" cols="100" rows="20"></textarea>
 					</td>
@@ -44,8 +49,8 @@
 				<tr>
 					<th></th>
 					<td colspan="2">
-						<input type="submit" id="save" value="save" class="btn"/>
-						<input type="reset" value="cancel" class="btn"
+						<input type="submit" id="save" value="저장" class="btn"/>
+						<input type="reset" value="취소" class="btn"
 						onclick="history.back();" />
 					</td>
 				</tr>

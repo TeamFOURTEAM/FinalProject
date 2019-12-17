@@ -55,7 +55,7 @@
                 <div class="itemImgBox">
                     <div class="itemImg">
                         <a href="#">
-                            <img src="/img/shop/ListGoods01.jpg" alt="imgTest" width="200" height="200">
+                            <img src="/img/shop/goods01.jpg" alt="imgTest">
                         </a>
                     </div>
                     <span class="bestCount">Best 1</span>
@@ -76,7 +76,7 @@
                 <div class="itemImgBox">
                     <div class="itemImg">
                         <a href="#">
-                            <img src="/img/shop/ListGoods01.jpg" alt="imgTest" width="200" height="200">
+                            <img src="/img/shop/goods02.jpg" alt="imgTest">
                         </a>
                     </div>
                     <span class="bestCount">Best 2</span>
@@ -97,7 +97,7 @@
                 <div class="itemImgBox">
                     <div class="itemImg">
                         <a href="#">
-                            <img src="/img/shop/ListGoods01.jpg" alt="imgTest" width="200" height="200">
+                            <img src="/img/shop/goods03.jpg" alt="imgTest">
                         </a>
                     </div>
                     <span class="bestCount">Best 3</span>
@@ -124,7 +124,7 @@
                     <div class="itemImgBox">
                         <div class="itemImg">
                             <a href="#">
-                                <img src="/img/shop/ListGoods02.jpg" alt="imgTest" width="200" height="200">
+                                <img src="/img/shop/goods01.jpg" alt="imgTest">
                             </a>
                         </div>
                     </div>
@@ -144,7 +144,7 @@
                     <div class="itemImgBox">
                         <div class="itemImg">
                             <a href="#">
-                                <img src="/img/shop/ListGoods02.jpg" alt="imgTest" width="200" height="200">
+                                <img src="/img/shop/goods02.jpg" alt="imgTest">
                             </a>
                         </div>
                     </div>
@@ -164,7 +164,7 @@
                     <div class="itemImgBox">
                         <div class="itemImg">
                             <a href="#">
-                                <img src="/img/shop/ListGoods02.jpg" alt="imgTest" width="200" height="200">
+                                <img src="/img/shop/goods03.jpg" alt="imgTest">
                             </a>
                         </div>
                     </div>
@@ -184,7 +184,7 @@
                     <div class="itemImgBox">
                         <div class="itemImg">
                             <a href="#">
-                                <img src="/img/shop/ListGoods02.jpg" alt="imgTest" width="200" height="200">
+                                <img src="/img/shop/goods01.jpg" alt="imgTest">
                             </a>
                         </div>
                     </div>
