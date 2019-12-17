@@ -3,7 +3,7 @@
 
 /** 컨테이너 **/
 .container {
-    position: relative; width: 1280px; margin: 0 auto;
+    position: relative; width: 1280px; margin: 50px auto;
 }
 
 /** 검색 바 **/
@@ -50,7 +50,7 @@
 .searchList .itemContainer {
     border-top: 3px solid #dcdcdc;
     border-bottom: 3px solid #dcdcdc;
-    width: 25%; height: 350px; margin: 50px 0 50px 50px;
+    width: 25%; height: 350px; margin: 35px 0 35px 50px;
     float: left; padding: 10px 20px;
 }
 

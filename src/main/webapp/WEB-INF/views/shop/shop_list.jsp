@@ -16,25 +16,6 @@
 </head>
 <body>
 	<div class="container">
-        <!-- 검색 바 -->
-        <div class="searchBar">
-            <!-- 검색폼 -->
-            <form method="GET" action="#">
-                <div class="searchRow">
-                    <select name="board_search" class="search_box">
-                        <option value="all"">전체</option>
-                        <option value="title">상품명</option>
-                        <option value="Price"">가격</option>
-                    </select>
-                    <input type="text" style="width: 250px;" placeholder="검색어를 입력해주세요."
-                         class="search_word">
-                    <button type="submit" class="search_btn" title="검색">
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
-        <!--//검색 바 -->
         
         <!-- 검색 결과 수 -->
         <div class="searchResultRow">
@@ -228,6 +209,26 @@
             </a>
         </div>
         <!--//페이징 wrapper -->
+        
+        <!-- 검색 바 -->
+        <div class="searchBar">
+            <!-- 검색폼 -->
+            <form method="GET" action="#">
+                <div class="searchRow">
+                    <select name="board_search" class="search_box">
+                        <option value="all"">전체</option>
+                        <option value="title">상품명</option>
+                        <option value="Price"">가격</option>
+                    </select>
+                    <input type="text" style="width: 250px;" placeholder="검색어를 입력해주세요."
+                         class="search_word">
+                    <button type="submit" class="search_btn" title="검색">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <!--//검색 바 -->
     </div>
 </body>
 </html>
