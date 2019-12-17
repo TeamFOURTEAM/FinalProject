@@ -13,6 +13,7 @@
 <!-- js -->
 <script src="/js/jquery.js"></script>
 <script src="/resources/smartEditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script src="/js/shop/shop.js"></script>
 
 </head>
 <body>
@@ -21,30 +22,30 @@
 	<div class="write_text">
 		<span>관리자 Shop 컨텐츠 수정</span>
 		
-		<form method="post" action="write_insert" id="frm" 
+		<form method="post" action="shop_write_ok" id="frm" 
 		onsubmit="return shop_check();" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<th>상품명</th>
-					<td><input type="text" /></td>
+					<td><input name="item_name" id="item_name" /></td>
 				</tr>
 				<tr>
 					<th>세부설명</th>
-					<td><input type="text" /></td>
+					<td><input name="item_sub" id="item_sub" /></td>
 				</tr>
 				<tr>
 					<th>가격</th>
-					<td><input type="text" /></td>
+					<td><input name="item_price" id="item_price"  /></td>
 				</tr>
 				<tr>
 					<th>상품 설명</th>
 					<td>
-						<textarea name="write_cont" id="write_cont" cols="100" rows="20"></textarea>
+						<textarea name="item_cont" id="item_cont" cols="100" rows="20"></textarea>
 					</td>
 				</tr>
 				<tr>
-					<th>첨부파일</th>
-					<td><input type="text" readonly/></td>
+					<th>상품 이미지</th>
+					<td><input name="item_img" id="item_img" readonly /></td>
 				</tr>
 				<tr>
 					<th></th>
@@ -60,7 +61,6 @@
 </div>
 
 
-
 <!-- java script -->
 <script type="text/javascript">
 
@@ -68,7 +68,7 @@
 		var oEditors = [];
 		nhn.husky.EZCreator.createInIFrame({
 			oAppRef: oEditors,
-			elPlaceHolder: "write_cont",
+			elPlaceHolder: "item_cont",
 			sSkinURI: "/resources/smartEditor/SmartEditor2Skin.html",
 			fCreator: "createSEditor2",
 			htParams: {
@@ -79,8 +79,8 @@
 		});
 		
 		$('#save').click(function () {
-			oEditors.getById['write_cont'].exec('UPDATE_CONTENTS_FIELD',[]);
-			$('#frm').submit();
+			oEditors.getById['item_cont'].exec('UPDATE_CONTENTS_FIELD',[]);
+			/* $('#frm').submit(); */
 		});
 	});
 </script>
