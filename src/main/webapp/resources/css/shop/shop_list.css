@@ -35,6 +35,12 @@
     position: absolute; right: 0;
     display: inline-block;
 }
+.searchResultRow .admin_write button {
+	width: 90px; height: 25px;
+	font-weight: bold;
+    border: 1px solid black;
+    background: #fff;
+}
 
 
 /** 검색 결과 목록 **/
