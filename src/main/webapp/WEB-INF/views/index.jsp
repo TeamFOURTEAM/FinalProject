@@ -53,28 +53,28 @@
                                 <div class="section">
                                     <div class="main_menu_img">
                                         <div class="main_menu_btn">
-                                            <a href="cat/total_cat" class="a1">고양이 분양</a>
+                                            <a href="cat/total_cat?class=cat" class="a1">고양이 분양</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="section">
                                     <div class="main_menu_img">
                                         <div class="main_menu_btn">
-                                            <a href="dog/total_dog" class="a1">강아지 분양</a>
+                                            <a href="dog/total_dog?class=dog" class="a1">강아지 분양</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="section">
                                     <div class="main_menu_img">
                                         <div class="main_menu_btn">
-                                            <a href="shop/total_shop" class="a3">SHOP</a>
+                                            <a href="shop/total_shop?class=shop" class="a3">SHOP</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="section">
                                     <div class="main_menu_img">
                                         <div class="main_menu_btn">
-                                            <a href="community/total_commu" class="a4">커뮤니티</a>
+                                            <a href="community/total_commu?class=commu" class="a4">커뮤니티</a>
                                         </div>
                                     </div>
                                 </div>
