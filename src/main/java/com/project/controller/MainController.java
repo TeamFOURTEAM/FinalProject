@@ -10,4 +10,11 @@ public class MainController {
 	public String home() {
 		return "index";
 	}
+	
+	/** favicon **/
+	@RequestMapping("/favicon.ico")
+	public String favicon() {
+		return "forward:/resources/img/main/favicon.ico";
+	}//favicon()
+	
 }
