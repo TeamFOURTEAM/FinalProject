@@ -115,9 +115,10 @@ public class ShopController {
 	public ModelAndView shop_write_ok(
 			ShopVO s) {
 		
-		this.shopService.insert(s);
-		system.out.println("에디터 컨텐츠값: "+s.getItem_()());
+		this.shopService.insertShop(s);
+		System.out.println("에디터 컨텐츠값: "+s.getItem_cont());
 		
+		return new ModelAndView("redirect:/shop/total_shop?class=shop");
 	}//shop_write_ok()
 	
 }

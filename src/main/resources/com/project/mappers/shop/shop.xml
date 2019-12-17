@@ -4,9 +4,11 @@
 
 <mapper namespace="Shop"> <!-- mapper네임스페이스명 설정 -->
 	<!-- 상점 게시글 저장 -->
-	<insert id="" parameterType="b">
+	<insert id="shop_insert" parameterType="s">
 	<!-- parameterType은 전달인자 타입이고 생략가능함. -->
-		insert into test_shop values(item_no_seq.nextval,#{})
+		insert into test_shop (item_no,item_name,item_sub,item_price,item_cont) 
+		values(item_no_seq.nextval,#{item_name},#{item_sub},
+		#{item_price},#{item_cont})
 	</insert>
 
 </mapper>

@@ -22,7 +22,7 @@
 	<div class="write_text">
 		<span>관리자 Shop 컨텐츠 수정</span>
 		
-		<form method="post" action="shop_write_ok" id="frm" 
+		<form method="post" action="/shop_write_ok" id="frm" 
 		onsubmit="return shop_check();" enctype="multipart/form-data">
 			<table>
 				<tr>
@@ -80,7 +80,7 @@
 		
 		$('#save').click(function () {
 			oEditors.getById['item_cont'].exec('UPDATE_CONTENTS_FIELD',[]);
-			/* $('#frm').submit(); */
+			$('#frm').submit();
 		});
 	});
 </script>
