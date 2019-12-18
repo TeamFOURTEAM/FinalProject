@@ -48,4 +48,15 @@ public class CatServiceImpl implements CatService {
 	public void delCat(int cat_no) {
 		this.catDao.delCat(cat_no);
 	}//삭제
+
+	//고양이(먼치킨)
+	@Override
+	public int getListCount_mun(CatVO c_mun) {
+		return this.catDao.getListCount_mun(c_mun);
+	}
+
+	@Override
+	public List<CatVO> getCatList_mun(CatVO c_mun) {
+		return this.catDao.getCatList_mun(c_mun);
+	}
 }

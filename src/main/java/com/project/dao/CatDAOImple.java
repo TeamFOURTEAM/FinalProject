@@ -43,4 +43,15 @@ public class CatDAOImple implements CatDAO {
 	public void delCat(int cat_no) {
 		this.sqlSession.delete("Cat.cat_del",cat_no);
 	}//삭제
+
+	//고양이(먼치킨)
+	@Override
+	public int getListCount_mun(CatVO c_mun) {
+		return this.sqlSession.selectOne("Cat.cat_mun_count", c_mun);
+	}//검색 전후 레코드 개수
+
+	@Override
+	public List<CatVO> getCatList_mun(CatVO c_mun) {
+		return this.sqlSession.selectList("Cat.cat_mun_list",c_mun);
+	}
 }

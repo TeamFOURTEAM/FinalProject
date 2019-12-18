@@ -6,13 +6,6 @@
 <link rel="stylesheet" href="/css/reset.css">
 <link rel="stylesheet" href="/css/cat_board/cat.css">
 
-<script>
-$(function (){
-    // .attr()은 속성값(property)을 설정할 수 있다.
-      $('#header').attr('style', 'background: url(/resources/img/cat/cat01.jpg);');
-  });
-</script>
-
 <!-- 본문 내용 -->
 <main>
     <form method="get" action="total_cat">
@@ -55,7 +48,7 @@ $(function (){
                                             &lt;&nbsp;
                                         </c:if>
                                         <c:if test="${page >1}">
-                                            <a href="total_cat?class=cat&page=${page-1}">&lt;</a>&nbsp;
+                                            <a href="cat_mun_list?class=cat&page=${page-1}">&lt;</a>&nbsp;
                                         </c:if>
 
                                         <%--쪽번호 출력부분 --%>
@@ -64,13 +57,13 @@ $(function (){
                                             </c:if>
 
                                             <c:if test="${a != page}">
-                                                <a href="total_cat?class=cat&page=${a}">${a}</a>&nbsp;
+                                                <a href="cat_mun_list?class=cat&page=${a}">${a}</a>&nbsp;
                                             </c:if>
                                         </c:forEach>
 
                                         <c:if test="${page>=maxpage}">&gt;</c:if>
                                         <c:if test="${page<maxpage}">
-                                            <a href="total_cat?class=cat&page=${page+1}">&gt;</a>
+                                            <a href="cat_mun_list?class=cat&page=${page+1}">&gt;</a>
                                         </c:if>
                                     </c:if>
 
@@ -81,7 +74,7 @@ $(function (){
                                         </c:if>
                                         <c:if test="${page >1}">
                                             <a
-                                                href="total_cat?class=cat&page=${page-1}&find_field=${find_field}&find_name=${find_name}">
+                                                href="cat_mun_list?class=cat&page=${page-1}&find_field=${find_field}&find_name=${find_name}">
                                                 &lt;</a>&nbsp;
                                         </c:if>
 
@@ -93,7 +86,7 @@ $(function (){
 
                                             <c:if test="${a != page}">
                                                 <a
-                                                    href="total_cat?class=cat&page=${a}&find_field=${find_field}&find_name=${find_name}">
+                                                    href="cat_mun_list?class=cat&page=${a}&find_field=${find_field}&find_name=${find_name}">
                                                     ${a}</a>&nbsp;
                                             </c:if>
                                         </c:forEach>
@@ -102,7 +95,7 @@ $(function (){
                                         </c:if>
                                         <c:if test="${page<maxpage}">
                                             <a
-                                                href="total_cat?class=cat&page=${page+1}&find_field=${find_field}&find_name=${find_name}">
+                                                href="cat_mun_list?class=cat&page=${page+1}&find_field=${find_field}&find_name=${find_name}">
                                                 &gt;</a>
                                         </c:if>
                                     </c:if>

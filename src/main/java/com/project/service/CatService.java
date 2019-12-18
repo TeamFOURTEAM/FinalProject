@@ -19,5 +19,10 @@ public interface CatService {
 	void editCat(CatVO c);
 
 	void delCat(int cat_no);
+	
+	//고양이(먼치킨)
+	int getListCount_mun(CatVO c_mun);
+
+	List<CatVO> getCatList_mun(CatVO c_mun);
 
 }

@@ -17,6 +17,8 @@ select cat_no_seq.nextval from dual;
 
 select * from cat_board 
 
+select * from CAT_BOARD where cat_title='먼치킨'
+
 delete from cat_board where cat_no=4
 
 insert into cat_board (cat_no,cat_title,cat_cont,cat_file) 

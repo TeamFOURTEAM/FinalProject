@@ -11,7 +11,7 @@
 	src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="/resources/smartEditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 
-<script>
+<script type="text/javascript">
 $(function(){
     //전역변수
     var obj = [];              
@@ -39,6 +39,23 @@ $(function(){
 })
 </script>
 
+<script>
+	function write_check() {		
+		
+		if($.trim($("#cat_title").val())==""){
+			alert("고양이 종류를 입력하세요");
+			$("#cat_title").val("").focus();
+			return false;
+		}
+		if($.trim($("#cat_file").val())==""){
+			alert("파일을 첨부해 주세요");
+			$("#cat_file").val("").focus();
+			return false;
+		}		
+		alert("저장되었습니다.");		
+	}		
+</script>
+
 <!-- 본문 내용 -->
 <main>
 <section id="contents">
@@ -60,7 +77,7 @@ $(function(){
 						</tr>
 						<tr>
 							<th>파일첨부</th>
-    						<td><input type="file" name="cat_file" /></td>
+    						<td><input type="file" name="cat_file" id="cat_file" /></td>
 						</tr>
 						<tr>
 							<th></th>
@@ -79,6 +96,7 @@ $(function(){
 </section>
 <!-- contents --> 
 </main>
+
 
 
 <jsp:include page="../include/footer.jsp" />

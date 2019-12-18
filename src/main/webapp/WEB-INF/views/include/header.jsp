@@ -25,7 +25,7 @@
 				</div>
 				<!-- //header_menu -->
 				<div class="header_title">
-					<a href="index">사이트 제목</a>
+					<a href="http://localhost:8187/">사이트 제목</a>
 				</div>
 				<!-- //header_title -->
 			</div>
@@ -41,7 +41,7 @@
 							<a href="/cat/total_cat?class=cat&page=1" >고양이 분양</a>
 						</div>
 						<ul class="sub_category">
-							<li><a href="#">고양이 분양 1</a></li>
+							<li><a href="/cat/cat_mun_list?class=cat&page=1">먼치킨</a></li>
 							<li><a href="#">고양이 분양 2</a></li>
 							<li><a href="#">고양이 분양 3</a></li>
 							<li><a href="#">고양이 분양 4</a></li>
