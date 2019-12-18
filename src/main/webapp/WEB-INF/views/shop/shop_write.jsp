@@ -23,7 +23,7 @@
 		<span>관리자 Shop 컨텐츠 수정</span>
 		
 		<form method="post" action="/shop_write_ok" id="frm" 
-		onsubmit="return shop_check();" enctype="multipart/form-data">
+		onsubmit="return shop_check();">
 			<table>
 				<tr>
 					<th>상품명</th>
