@@ -53,6 +53,10 @@
     width: 25%; height: 350px; margin: 35px 0 35px 50px;
     float: left; padding: 10px 20px;
 }
+.searchList .NoneItemContainer {
+	text-align: center;
+	font-size: 50px; margin: 30px;
+}
 
 /** 베스트 상품 목록 **/
 .searchList .bestGoodsList { 

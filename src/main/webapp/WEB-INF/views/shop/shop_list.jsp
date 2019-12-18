@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -17,16 +19,18 @@
 <body>
 	<div class="container">
         
-        <!-- 검색 결과 수 -->
+        <%-- 검색 결과 수 --%>
         <div class="searchResultRow">
             ""에 대한 ""개의 검색 결과가 있습니다.
+            
             <div class="admin_write">
                 <button onclick="location.href='shop_write'">관리자 글쓰기</button>
             </div>
+            
         </div>
-        <!--//검색 결과 -->
-
-        <!-- 검색 결과 목록 -->
+        <%--//검색 결과 수 --%>
+		
+		<%-- 검색 결과 목록 --%>
         <div class="searchList">
             <!-- 인기순 상품 목록 -->
             <div class="bestGoodsList">
@@ -102,7 +106,9 @@
             <div class="goodsList">
                 <div class="shopListTitle">일반 상품 목록</div>
 
-                <div class="itemContainer">
+				<!-- db에 상품 정보가 있을 때 -->
+				<c:if test="${!empty shopList}">
+				<div class="itemContainer">
                     <div class="itemImgBox">
                         <div class="itemImg">
                             <a href="#">
@@ -118,81 +124,31 @@
                         <span class="itemPrice">\20,000</span>
                     </div>
                     <div class="itemRecoRow">
-                        <span class="bestNum">추천수: 1</span>
+                        <span class="bestNum">이 상품이 마음에 들어요!: 1</span>
                     </div>
                 </div>
-
-                <div class="itemContainer">
-                    <div class="itemImgBox">
-                        <div class="itemImg">
-                            <a href="#">
-                                <img src="/img/shop/goods02.jpg" alt="imgTest">
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="itemNameRow">
-                        <span><a href="#" class="itemName">강아지 마약방석</a></span>
-                    </div>
-                    <div class="itemPriceRow">
-                        <span class="itemPrice">\20,000</span>
-                    </div>
-                    <div class="itemRecoRow">
-                        <span class="bestNum">추천수: 1</span>
-                    </div>
+				</c:if>
+				<!--//db에 상품 정보가 있을 때 -->
+				
+				<!-- db에 상품 정보가 없을 때 -->
+				<c:if test="${empty shopList}">
+				<div class="NoneItemContainer">
+					<span>상품목록이 없습니다! 관리자에게 문의해주세요.</span>
                 </div>
-
-                <div class="itemContainer">
-                    <div class="itemImgBox">
-                        <div class="itemImg">
-                            <a href="#">
-                                <img src="/img/shop/goods03.jpg" alt="imgTest">
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="itemNameRow">
-                        <span><a href="#" class="itemName">강아지 마약방석</a></span>
-                    </div>
-                    <div class="itemPriceRow">
-                        <span class="itemPrice">\20,000</span>
-                    </div>
-                    <div class="itemRecoRow">
-                        <span class="bestNum">추천수: 1</span>
-                    </div>
-                </div>
-
-                <div class="itemContainer">
-                    <div class="itemImgBox">
-                        <div class="itemImg">
-                            <a href="#">
-                                <img src="/img/shop/goods01.jpg" alt="imgTest">
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="itemNameRow">
-                        <span><a href="#" class="itemName">강아지 마약방석</a></span>
-                    </div>
-                    <div class="itemPriceRow">
-                        <span class="itemPrice">\20,000</span>
-                    </div>
-                    <div class="itemRecoRow">
-                        <span class="bestNum">추천수: 1</span>
-                    </div>
-                </div>
-
+				</c:if>
+				<!--//db에 상품 정보가 없을 때 -->
             </div>
             <!--//일반 상품 목록 -->
         </div>
-        <!--//검색 결과 목록 -->
+        <%--//검색 결과 목록 --%>
 
         <!-- 페이징 wrapper -->
         <div class="paging_wrapper">
-            <a href="#">
-                <i class="fa fa-angle-double-left" aria-hidden="true"></i>
-                <span class="ir_su">prev_page</span>
-            </a>
+        <!-- 검색전 페이징 -->
+        	
+        	<!-- 쪽번호 출력부분 -->
+        	
+        
             <a href="#">
                 <i class="fa fa-angle-left" aria-hidden="true"></i>
                 <span class="ir_su">prev</span>
@@ -204,11 +160,25 @@
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                 <span class="ir_su">next</span>
             </a>
-            <a href="#">
-                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                <span class="ir_su">next_page</span>
+        <!--//검색전 페이징 -->
+        
+        <!-- 검색후 페이징 -->
+        	<a href="#">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+                <span class="ir_su">prev</span>
             </a>
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                <span class="ir_su">next</span>
+            </a>
+        	
         </div>
+        
+        <!--//검색후 페이징 -->
+        
         <!--//페이징 wrapper -->
         
         <!-- 검색 바 -->
@@ -217,12 +187,14 @@
             <form method="GET" action="#">
                 <div class="searchRow">
                     <select name="board_search" class="search_box">
-                        <option value="all"">전체</option>
-                        <option value="title">상품명</option>
-                        <option value="Price"">가격</option>
+                        <option value="title" <c:if test="${find_field == 'item_name' }"></c:if>
+                        >상품명</option>
+                        <option value="Price" <c:if test="${find_field == 'item_price' }"></c:if>
+                        >가격</option>
                     </select>
-                    <input type="text" style="width: 250px;" placeholder="검색어를 입력해주세요."
-                         class="search_word">
+                    
+                    <input style="width: 250px;" placeholder="검색어를 입력해주세요."
+                         class="search_word" value="${find_name}">
                     <button type="submit" class="search_btn" title="검색">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </button>

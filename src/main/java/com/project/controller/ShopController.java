@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,14 +29,6 @@ public class ShopController {
 	
 	@Autowired
 	private ShopService shopService;
-	
-	/** shop 리스트로 이동 **/
-	@RequestMapping("shop/total_shop")
-	public ModelAndView shop_list() {
-		
-		return new ModelAndView("shop/shop_list");
-	}//shop_list()
-	
 	
 	/** shop 관리자 글쓰기 페이지 이동 **/
 	@RequestMapping("shop/shop_write")
@@ -153,6 +147,7 @@ public class ShopController {
 		String item_name=multi.getParameter("item_name");
 		String item_sub=multi.getParameter("item_sub");
 		String item_price=multi.getParameter("item_price");
+		String item_stockCount=multi.getParameter("item_stockCount");
 		String item_cont=multi.getParameter("item_cont");
 		
 		
@@ -203,7 +198,8 @@ public class ShopController {
  		}//if else
 		
 		s.setItem_name(item_name); s.setItem_sub(item_sub);
-		s.setItem_price(item_price); s.setItem_cont(item_cont);
+		s.setItem_price(item_price); s.setItem_stockCount(item_stockCount);
+		s.setItem_cont(item_cont);
 		
 		this.shopService.insertShop(s);
 		
@@ -213,6 +209,57 @@ public class ShopController {
 		return new ModelAndView("redirect:/shop/total_shop?class=shop");
 	}//shop_write_ok()
 	
+	/** shop 상품 리스트 **/
+	@RequestMapping("shop/total_shop")
+	public String shop_list(
+			Model shopList,ShopVO s,
+			HttpServletRequest request) {
+		
+		int page=1;
+		int limit=6;//한페이지에 보여지는 상품 개수
+		
+		if(request.getParameter("page") != null) {
+			page=Integer.parseInt(request.getParameter("page"));
+		}
+		String find_name = request.getParameter("find_name");
+		String find_field = request.getParameter("find_field");
+		//검색어, 검색필드 를 저장
+		
+		s.setFind_field(find_field);
+		s.setFind_name("%"+find_name+"%");
+			
+		int totalCount=this.shopService.getListCount(s);
+		//검색전후 레코드 개수
+		
+		s.setStartrow((page-1)*limit+1);//시작행번호
+		s.setEndrow(s.getStartrow()+limit-1);//끝행 번호
+		
+		List<ShopVO> slist=this.shopService.getShopList(s);
+		//검색 전후 목록
+		
+		//총 페이지 수
+		int maxpage=(int)((double)totalCount/limit+0.95);
+		
+		//시작페이지
+		int startpage=(((int)((double)page/10+0.9))-1)*6+1;
+		
+		//마지막 페이지
+		int endpage=maxpage;
+		
+		if(endpage>startpage+6-1)
+			endpage=startpage+6-1;
+		
+		shopList.addAttribute("slist",slist);
+		shopList.addAttribute("page",page);
+		shopList.addAttribute("startpage",startpage);
+		shopList.addAttribute("endpage",endpage);
+		shopList.addAttribute("maxpage",maxpage);
+		shopList.addAttribute("totalcount",totalCount);
+		shopList.addAttribute("find_field",find_field);
+		shopList.addAttribute("find_name",find_name);
+		
+		return "shop/shop_list";
+	}//shop_list()
 }
 
 

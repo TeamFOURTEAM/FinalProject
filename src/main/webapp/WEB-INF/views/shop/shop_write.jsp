@@ -62,6 +62,10 @@
 					<td><input name="item_price" id="item_price"  /></td>
 				</tr>
 				<tr>
+					<th>상품 재고</th>
+					<td><input name="item_stockCount" id="item_stockCount"  /></td>
+				</tr>
+				<tr>
 					<th>상품 설명</th>
 					<td>
 						<textarea name="item_cont" id="item_cont" cols="100" rows="20"></textarea>
