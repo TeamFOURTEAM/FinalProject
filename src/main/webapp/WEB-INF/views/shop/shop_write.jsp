@@ -74,7 +74,7 @@
 			htParams: {
 				bUseToolbar : true, //툴바 사용 여부
 				bUseVerticalResizer : true, //입력창 크기 조절바 사용 여부
-				bUseModeChanger : false //모드 탭 사용 여부	
+				bUseModeChanger : true //모드 탭 사용 여부	
 			}
 		});
 		
