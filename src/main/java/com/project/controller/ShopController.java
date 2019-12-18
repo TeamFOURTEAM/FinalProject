@@ -56,9 +56,10 @@ public class ShopController {
 			//1월이 0으로 반환되기 때문이다.
 			int date=c.get(Calendar.DATE);//일 값
 			
-			String homedir=saveFolder+"/"+year+"-"+month+"-"+date;
-			String folderDate=year+"-"+month+"-"+date;
-			//오늘 날짜 폴더 경로를 저장
+			String homedir=saveFolder+"/"+year+"-"+month+"-"+date+"/"+"editor";
+			//오늘날짜 폴더 하위에 에디터용임으로 /editor 폴더를 하나더 생성
+			String folderDate=year+"-"+month+"-"+date+"/"+"editor";
+			//날짜부분만 따로 분리해서 객체에 저장
 			
 			File folder=new File(homedir);
 			if(!(folder.exists())) {
