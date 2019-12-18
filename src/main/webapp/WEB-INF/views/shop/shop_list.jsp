@@ -21,7 +21,7 @@
         
         <%-- 검색 결과 수 --%>
         <div class="searchResultRow">
-            ""에 대한 ""개의 검색 결과가 있습니다.
+            ""에 대한 "${totalcount}"개의 검색 결과가 있습니다.
             
             <div class="admin_write">
                 <button onclick="location.href='shop_write'">관리자 글쓰기</button>
@@ -107,31 +107,34 @@
                 <div class="shopListTitle">일반 상품 목록</div>
 
 				<%-- db에 상품 정보가 있을 때 --%>
-				<c:if test="${!empty shopList}">
-				<div class="itemContainer">
+				<c:if test="${!empty slist}">
+				<c:forEach var="n" items="${slist}">
+					<div class="itemContainer">
                     <div class="itemImgBox">
                         <div class="itemImg">
                             <a href="#">
-                                <img src="/img/shop/goods01.jpg" alt="imgTest">
+                                <img src="/resources/photo_upload/${n.item_img}" alt="imgTest">
                             </a>
                         </div>
                     </div>
                     
                     <div class="itemNameRow">
-                        <span><a href="#" class="itemName">강아지 마약방석</a></span>
+                        <span><a href="#" class="itemName">${n.item_name}</a></span>
                     </div>
                     <div class="itemPriceRow">
-                        <span class="itemPrice">\20,000</span>
+                        <span class="itemPrice">${n.item_price}</span>
                     </div>
                     <div class="itemRecoRow">
-                        <span class="bestNum">이 상품이 마음에 들어요!: 1</span>
+                        <span class="bestNum">${n.item_likeCount}</span>
                     </div>
                 </div>
+				
+				</c:forEach>
 				</c:if>
 				<%--//db에 상품 정보가 있을 때 --%>
 				
 				<%-- db에 상품 정보가 없을 때 --%>
-				<c:if test="${empty shopList}">
+				<c:if test="${empty slist}">
 				<div class="NoneItemContainer">
 					<span>상품목록이 없습니다! 관리자에게 문의해주세요.</span>
                 </div>
@@ -145,37 +148,85 @@
         <!-- 페이징 wrapper -->
         <div class="paging_wrapper">
         <%-- 검색전 페이징 --%>
+        	<c:if test="${(empty find_field)&&(empty find_name)}">
+        		<%-- page가 1페이지 이하일때 --%>
+        		<c:if test="${page <=1}">
+				   <i class="fa fa-angle-left" aria-hidden="true">
+				   		<span class="ir_su">prev</span>
+				   </i>
+				</c:if>
+        		<%--//page가 1페이지 이하일때 --%>
+				<c:if test="${page >1}">
+					<a href="shop/total_shop?class=shop&page=${page-1}">
+		                <i class="fa fa-angle-left" aria-hidden="true">
+		                	<span class="ir_su">prev</span>
+		                </i>
+		            </a>
+				</c:if>
+        	</c:if>
         	
         	<%-- 쪽번호 출력부분 --%>
+        	<c:forEach var="n" begin="${startpage}" end="${endpage}" step="1">
+        		<c:if test="${n == page}"><span class="recentPage">${n}</span></c:if>
+        		
+        		<c:if test="${n != page}">
+        			<a href="shop/total_shop?class=shop&page=${n}">${n}</a>
+        		</c:if>
+        	</c:forEach>
+        	
+        	<c:if test="${page>=maxpage}">
+        		<i class="fa fa-angle-right" aria-hidden="true"></i>
+        		<span class="ir_su">next</span>
+        	</c:if>
+			<c:if test="${page<maxpage}">
+				<a href="shop/total_shop?class=shop&page=${page+1}">
+					<i class="fa fa-angle-right" aria-hidden="true"></i>
+                	<span class="ir_su">next</span>
+				</a>
+			</c:if>
         	<%--//쪽번호 출력부분 --%>
-            <a href="#">
-                <i class="fa fa-angle-left" aria-hidden="true"></i>
-                <span class="ir_su">prev</span>
-            </a>
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                <span class="ir_su">next</span>
-            </a>
         <%--//검색전 페이징 --%>
         
-        
         <%-- 검색후 페이징 --%>
-        	<a href="#">
-                <i class="fa fa-angle-left" aria-hidden="true"></i>
-                <span class="ir_su">prev</span>
-            </a>
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                <span class="ir_su">next</span>
-            </a>
+        	<c:if test="${(!empty find_field) || (!empty find_name)}">
+        		<%-- page가 1페이지 이하일때 --%>
+        		<c:if test="${page <=1}">
+				   <i class="fa fa-angle-left" aria-hidden="true">
+				   		<span class="ir_su">prev</span>
+				   </i>&nbsp;
+				</c:if>
+				<c:if test="${page >1}">
+					<a href="shop/total_shop?class=shop&page=${page-1}">
+		                <i class="fa fa-angle-left" aria-hidden="true">
+		                	<span class="ir_su">prev</span>
+		                </i>
+		            </a>
+				</c:if>
+        	</c:if>
+        	<%--//page가 1페이지 이하일때 --%>
         	
-        </div>
+        	<%-- 쪽번호 출력부분 --%>
+        	<c:forEach var="n" begin="${startpage}" end="${endpage}" step="1">
+        		<c:if test="${n == page}"><span class="recentPage">${n}</span></c:if>
+        		
+        		<c:if test="${n != page}">
+        			<a href="shop/total_shop?class=shop&page=${n}">${n}</a>
+        		</c:if>
+        	</c:forEach>
+        	
+        	<c:if test="${page>=maxpage}">
+        		<i class="fa fa-angle-right" aria-hidden="true">
+        			<span class="ir_su">next</span>
+        		</i>
+        	</c:if>
+			<c:if test="${page<maxpage}">
+				<a href="shop/total_shop?class=shop&page=${page+1}">
+					<i class="fa fa-angle-right" aria-hidden="true"></i>
+                	<span class="ir_su">next</span>
+				</a>
+			</c:if>
+        	<%--//쪽번호 출력부분 --%>
+            
         <%--//검색후 페이징 --%>
         
         <!--//페이징 wrapper -->
@@ -183,7 +234,7 @@
         <!-- 검색 바 -->
         <div class="searchBar">
             <!-- 검색폼 -->
-            <form method="GET" action="#">
+            <form method="GET" action="total_shop">
                 <div class="searchRow">
                     <select name="board_search" class="search_box">
                         <option value="title" <c:if test="${find_field == 'item_name' }"></c:if>

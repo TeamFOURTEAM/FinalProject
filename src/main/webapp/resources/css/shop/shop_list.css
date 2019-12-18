@@ -125,7 +125,10 @@
 .container .paging_wrapper a {
     padding: 10px;
 }
-
+.container .paging_wrapper .recentPage {
+	border: 1px solid #51b0dc;
+	border-radius: 50%;
+}
 
 
 
