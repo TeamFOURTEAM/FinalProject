@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+        <script>
+ 
+            $("#start_ajax").click(function(){
+                $.ajax({
+                    type:"POST",
+                    url:"./Member.html",
+                    data : {name : "홍길동"},
+                    dataType : "xml",
+                    success: function(xml){
+                        console.log(xml);
+                    },
+                    error: function(xhr, status, error) {
+                        alert(error);
+                    }  
+                });
+            });
+
+        </script>
+
+                
+                <button id='start_ajax'></button>
+
+            
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TeamProject</title>
+    <link rel="stylesheet" href="../../../resources/css/reset.css">
+    <link rel="stylesheet" href="../../../resources/css/Member/Member.css">
+
+    <script src="../../../resources/js/jquery.js"></script>
+</head>
+<body>
+    <header>
+        <h1>로고</h1>
+    </header>
+
+    <section>
+        <form action="#" id="formdata" autocomplete="off">
+            <div id="container"> <!-- max size -->
+                <div class="content"><!--min size -->
+                    <div class="divSize">
+                        <h2>아이디</h2>
+                        <span class="s-span-Size">
+                            <input class="input-size" id="id" type="text" maxlength="12" />
+                            <!-- <span class="s-span-Size1">@naver.com</span> -->
+                        </span>
+                    </div>
+                    <div class="divLabel">
+                        <label id="labelID">아이디를 입력하세요</label>
+                    </div>
+
+                    <div class="divSize">
+                        <h2>비밀번호</h2>
+                        <span class="s-span-Size">
+                            <input class="input-size" id="pw" type="password" maxlength="15">
+                        </span>
+                    </div>
+                    <div class="divLabel">
+                        <label id="labelPW">비밀번호를 입력하세요</label>
+                    </div>
+
+                    <div class="divSize">
+                        <h2>비밀번호 재확인</h2>
+                        <span class="s-span-Size">
+                            <input class="input-size" id="checkpw" type="password" maxlength="15">
+                        </span>
+                    </div>
+                    <div class="divLabel">
+                        <label id="labelCheckPW">비밀번호가 다릅니다.</label>
+                    </div>
+
+                    <div class="divSize">
+                        <h2>이름</h2>
+                        <span class="s-span-Size">
+                            <input class="input-size" type="text" id="name">
+                        </span>
+                    </div>
+                    <div class="divLabel">
+                        <label id="labelName">이름을 입력하세요</label>
+                    </div>
+
+                    <div class="divSize">
+                        <h2>생년월일</h2>
+                        <div class="birth-day">
+                            <div class="birth-yy">
+                                <span>
+                                    <input id='birthdayYY' class="birth-day-Size" type="text" maxlength="4" placeholder="년(4자)">
+                                </span>
+                            </div>
+                        
+                            <div class="birth-mm">
+                                <span>
+                                    <select id='birthdayMM' class="birth-day-Size">
+                                        <option value="0">월</option>
+                                        <option value="1">1월</option>
+                                        <option value="2">2월</option>
+                                        <option value="3">3월</option>
+                                        <option value="4">4월</option>
+                                        <option value="5">5월</option>
+                                        <option value="6">6월</option>
+                                        <option value="7">7월</option>
+                                        <option value="8">8월</option>
+                                        <option value="9">9월</option>
+                                        <option value="10">10월</option>
+                                        <option value="11">11월</option>
+                                        <option value="12">12월</option>
+                                    </select>
+                                </span>
+                            </div>
+
+                            <div class="birth-dd">
+                                <span>
+                                    <input id='birthdayDD' class="birth-day-Size" type="text" maxlength="2" placeholder="일">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divLabel">
+                        <label id='label_birthday'>생년월일을 입력하세요</label>
+                    </div>
+
+                    <div class="divSize">
+                        <h2>성별</h2>
+                        <span class="s-span-Size">
+                            <!-- <input class="input-size" type="text"> -->
+                            <select class="input-size" id="gender">
+                                <option value="G">성별</option>
+                                <option value="M">남자</option>
+                                <option value="F">여자</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="divLabel">
+                        <label id='label_gender'>성별을 입력하세요</label>
+                    </div>
+
+                    <div class="divSize">
+                        <h2>본인 확인 이메일</h2>
+                        <span class="s-span-Size">
+                            <input id="email" class="input-size" type="text" placeholder="E-mail을 입력하세요">
+                        </span>
+                    </div>
+                    <div class="divLabel">
+                        <label id="labelEmail">E-mail을 입력하세요</label>
+                    </div>
+
+                    <div class="PhonedivSize">
+                        <h2>휴대전화</h2>
+                        <span class="PSpanSize">
+                            <input id='phoneNumber' class="PInputSize" type="text" placeholder="전화번호 입력" maxlength="11">
+                        </span>
+                        <span>
+                            <input class="buttonSize" type="button" value="인증번호 받기">
+                        </span>
+                    </div>
+                    <div class="divLabel">
+                        <label id='label_Phone_number'>전화번호를 입력하세요</label>
+                    </div>
+
+                    <div class="CodedivSize">
+                        <span class="PSpanSizeCB">
+                            <input id='SMSCode' type="text" class="input-size" placeholder="인증번호를 입력하세요" disabled>
+                        </span>
+                    </div>
+                    <div class="divLabel">
+                        <label id='label_SMSCode'>인증번호를 입력하세요</label>
+                    </div>
+
+                    <div class="MemberJoin">
+                        <input class="MemberButton" type="submit" value="가입하기">
+                    </div>
+                </div> <!-- content -->
+            </div><!-- container-->
+        </form>
+    </section>
+
+    <footer>
+        푸터
+    </footer>
+
+    <script src="../../../resources/js/Member/Member.js"></script>
+</body>
+</html>
