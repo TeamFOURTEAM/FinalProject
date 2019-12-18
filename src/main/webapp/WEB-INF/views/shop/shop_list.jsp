@@ -106,7 +106,7 @@
             <div class="goodsList">
                 <div class="shopListTitle">일반 상품 목록</div>
 
-				<!-- db에 상품 정보가 있을 때 -->
+				<%-- db에 상품 정보가 있을 때 --%>
 				<c:if test="${!empty shopList}">
 				<div class="itemContainer">
                     <div class="itemImgBox">
@@ -128,15 +128,15 @@
                     </div>
                 </div>
 				</c:if>
-				<!--//db에 상품 정보가 있을 때 -->
+				<%--//db에 상품 정보가 있을 때 --%>
 				
-				<!-- db에 상품 정보가 없을 때 -->
+				<%-- db에 상품 정보가 없을 때 --%>
 				<c:if test="${empty shopList}">
 				<div class="NoneItemContainer">
 					<span>상품목록이 없습니다! 관리자에게 문의해주세요.</span>
                 </div>
 				</c:if>
-				<!--//db에 상품 정보가 없을 때 -->
+				<%-- db에 상품 정보가 없을 때 --%>
             </div>
             <!--//일반 상품 목록 -->
         </div>
@@ -144,7 +144,7 @@
 
         <!-- 페이징 wrapper -->
         <div class="paging_wrapper">
-        <!-- 검색전 페이징 -->
+        <%-- 검색전 페이징 --%>
         	
         	<!-- 쪽번호 출력부분 -->
         	
@@ -160,9 +160,10 @@
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                 <span class="ir_su">next</span>
             </a>
-        <!--//검색전 페이징 -->
+        <%--//검색전 페이징 --%>
         
-        <!-- 검색후 페이징 -->
+        
+        <%-- 검색후 페이징 --%>
         	<a href="#">
                 <i class="fa fa-angle-left" aria-hidden="true"></i>
                 <span class="ir_su">prev</span>
@@ -176,8 +177,7 @@
             </a>
         	
         </div>
-        
-        <!--//검색후 페이징 -->
+        <%--//검색후 페이징 --%>
         
         <!--//페이징 wrapper -->
         
