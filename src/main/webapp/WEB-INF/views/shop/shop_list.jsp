@@ -146,9 +146,8 @@
         <div class="paging_wrapper">
         <%-- 검색전 페이징 --%>
         	
-        	<!-- 쪽번호 출력부분 -->
-        	
-        
+        	<%-- 쪽번호 출력부분 --%>
+        	<%--//쪽번호 출력부분 --%>
             <a href="#">
                 <i class="fa fa-angle-left" aria-hidden="true"></i>
                 <span class="ir_su">prev</span>
