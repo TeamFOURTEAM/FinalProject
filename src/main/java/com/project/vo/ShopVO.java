@@ -8,6 +8,7 @@ public class ShopVO {
 	private String item_sub;
 	private String item_price;
 	private String item_cont;
+	private String item_img;
 	
 	
 	public int getItem_no() {
@@ -39,6 +40,13 @@ public class ShopVO {
 	}
 	public void setItem_cont(String item_cont) {
 		this.item_cont = item_cont;
+	}
+	public String getItem_img() {
+		return item_img;
+	}
+	public void setItem_img(String item_img) {
+		this.item_img = item_img;
 	} 
+	
 	
 }

@@ -34,7 +34,7 @@ public class ShopController {
 	}//shop_list()
 	
 	
-	/** shop 관리자 글쓰기 **/
+	/** shop 관리자 글쓰기 페이지 이동 **/
 	@RequestMapping("shop/shop_write")
 	public ModelAndView shop_write() {
 		
@@ -131,7 +131,7 @@ public class ShopController {
 	}//multiplePhotoUpload()
 	
 	
-	/** shop 상품 게시글 저장 **/
+	/** shop 상품 게시글 저장(본문 첨부 이미지 추가) **/
 	@RequestMapping("shop_write_ok")
 	public ModelAndView shop_write_ok(
 			ShopVO s) {

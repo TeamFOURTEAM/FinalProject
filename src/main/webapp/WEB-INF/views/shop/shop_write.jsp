@@ -15,6 +15,30 @@
 <script src="/resources/smartEditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script src="/js/shop/shop.js"></script>
 
+<!-- java script -->
+<script type="text/javascript">
+
+	$(function(){
+		var oEditors = [];
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef: oEditors,
+			elPlaceHolder: "item_cont",
+			sSkinURI: "/resources/smartEditor/SmartEditor2Skin.html",
+			fCreator: "createSEditor2",
+			htParams: {
+				bUseToolbar : true, //툴바 사용 여부
+				bUseVerticalResizer : true, //입력창 크기 조절바 사용 여부
+				bUseModeChanger : true //모드 탭 사용 여부	
+			}
+		});
+		
+		$('#save').click(function () {
+			oEditors.getById['item_cont'].exec('UPDATE_CONTENTS_FIELD',[]);
+			$('#frm').submit();
+		});
+	});
+</script>
+
 </head>
 <body>
 
@@ -59,31 +83,6 @@
 		</form>
 	</div>
 </div>
-
-
-<!-- java script -->
-<script type="text/javascript">
-
-	$(function(){
-		var oEditors = [];
-		nhn.husky.EZCreator.createInIFrame({
-			oAppRef: oEditors,
-			elPlaceHolder: "item_cont",
-			sSkinURI: "/resources/smartEditor/SmartEditor2Skin.html",
-			fCreator: "createSEditor2",
-			htParams: {
-				bUseToolbar : true, //툴바 사용 여부
-				bUseVerticalResizer : true, //입력창 크기 조절바 사용 여부
-				bUseModeChanger : true //모드 탭 사용 여부	
-			}
-		});
-		
-		$('#save').click(function () {
-			oEditors.getById['item_cont'].exec('UPDATE_CONTENTS_FIELD',[]);
-			$('#frm').submit();
-		});
-	});
-</script>
 
 </body>
 </html>

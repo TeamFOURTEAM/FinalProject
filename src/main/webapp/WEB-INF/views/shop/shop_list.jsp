@@ -97,6 +97,7 @@
             </div>
             <!--//인기순 상품 목록 -->
 
+
             <!-- 일반 상품 목록 -->
             <div class="goodsList">
                 <div class="shopListTitle">일반 상품 목록</div>
