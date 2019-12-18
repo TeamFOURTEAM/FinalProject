@@ -6,12 +6,11 @@ create table shopList(
 	,item_sub varchar2(300) not null --상품 세부 설명
 	,item_price varchar2(200) not null --가격
 	,item_cont varchar2(4000) not null--상품 설명(에디터)
-	,item_img varchar2(200)  --상품리스트 출력 이미지(자료실)
+	,item_img varchar2(200) not null --상품리스트 출력 이미지(자료실)
 );
 
 
 select * from shopList order by item_no desc;
-
 
 
 --item_no_seq 시퀀스 생성

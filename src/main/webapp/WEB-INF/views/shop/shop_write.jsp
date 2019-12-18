@@ -47,7 +47,7 @@
 		<span>관리자 Shop 컨텐츠 수정</span>
 		
 		<form method="post" action="/shop_write_ok" id="frm" 
-		onsubmit="return shop_check();">
+		onsubmit="return shop_check();" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<th>상품명</th>
@@ -69,12 +69,15 @@
 				</tr>
 				<tr>
 					<th>상품 이미지</th>
-					<td><input name="item_img" id="item_img" readonly /></td>
+					<td>
+						<input type="file" name="item_img" id="item_img" readonly />
+					</td>
 				</tr>
 				<tr>
 					<th></th>
 					<td colspan="2">
 						<input type="button" id="save" class="btn" value="저장" />
+						<!-- submit 두번돌지 않게 유의 -->
 						<input type="reset" value="취소" class="btn"
 						onclick="history.back();" />
 					</td>

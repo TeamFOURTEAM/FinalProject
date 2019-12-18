@@ -23,6 +23,11 @@ function shop_check(){
 		$("#item_cont").val("").focus();
 		return false;
 	}
+	if($.trim($("#item_img").val())==""){
+		alert("상품이미지를 추가해주세요.");
+		$("#item_img").val("").focus();
+		return false;
+	}
 }
 
 

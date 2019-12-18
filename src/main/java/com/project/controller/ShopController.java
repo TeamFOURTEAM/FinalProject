@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Random;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.oreilly.servlet.MultipartRequest;
 import com.project.service.ShopService;
 import com.project.vo.ShopVO;
 
@@ -134,10 +136,79 @@ public class ShopController {
 	/** shop 상품 게시글 저장(본문 첨부 이미지 추가) **/
 	@RequestMapping("shop_write_ok")
 	public ModelAndView shop_write_ok(
-			ShopVO s) {
+			ShopVO s,
+			HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		String saveFolder=request.getSession().getServletContext().getRealPath("resources/photo_upload");
+		/* 첨부파일 업로드 경로, 실제 톰캣 프로젝트 경로를 반환 =>
+		 * c:\spring_work\.metadata\.plugins\org.eclipse.wst.
+		 * server.core\tmp1\wtbwebapps\project\photo_upload
+		 */
+		
+		int fileSize=5*1024*1024;//첨부파일 최대크기(5MB)
+		MultipartRequest multi=null;//첨부파일을 가져오는 api
+		multi=new MultipartRequest(request,saveFolder,fileSize,"UTF-8");
+		
+		String item_name=multi.getParameter("item_name");
+		String item_sub=multi.getParameter("item_sub");
+		String item_price=multi.getParameter("item_price");
+		String item_cont=multi.getParameter("item_cont");
+		
+		
+		File UpFile=multi.getFile("item_img");
+		//첨부한 파일을 가져옴
+		
+		if(UpFile != null) {//첨부한 파일이 있는 경우
+			String fileName=UpFile.getName();//첨부한 파일명
+			Calendar c=Calendar.getInstance();
+			int year=c.get(Calendar.YEAR);
+			int month=c.get(Calendar.MONTH)+1;//+1을 한 이유는
+			//1월이 0으로 반환되기 때문이다.
+			int date=c.get(Calendar.DATE);//일 값
+			
+			String homedir=saveFolder+"/"+year+"-"+month+"-"+date+"/"+"lib";
+			//오늘 날짜 폴더 경로 + 하위의 lib폴더를 저장
+			File path1=new File(homedir);
+			
+			if(!(path1.exists())) {
+				path1.mkdir();//오늘 날짜 폴더 경로 + 하위의 lib폴더 생성
+			}//if
+			
+			Random r=new Random();
+			int random=r.nextInt(100000000);//0이상 1억미만 사이의
+			//정수 숫자 난수 발생
+			
+			/** 첨부한 파일 확장자를 구함 **/
+			int index=fileName.lastIndexOf(".");
+			/* 첨부한 파일에서 .를 맨 오른쪽부터 찾아서 가장 먼저 나오는 .의 위치번호를
+			 * 왼쪽부터 세어서 번호값을 반환. 첫문자는 0부터 센다.
+			 */
+			String fileExtendsion=fileName.substring(index+1);
+			//마침표 이후부터 마지막 문자까지 구함. 즉 확장자를 구함.
+			String refilename="shop"+year+month+date+random+"."+
+					fileExtendsion;//새로운 첨부파일명을 저장
+			String fileDBName="/"+year+"-"+month+"-"+date+"/"+
+					"lib"+"/"+refilename;//DB에 저장될 레코드 값
+			UpFile.renameTo(new File(homedir+"/"+refilename));
+			//바뀌어진 첨부파일명으로 업로드
+			s.setItem_img(fileDBName);
+			
+		}else {
+			/* mybatis는 컬럼에 null을 저장하지 못함. 그러므로 파일을
+			 * null저장을 막기 위해서 else 로 처리해야 한다.
+			 */
+			s.setItem_img("");//빈 공백을 넣어서, null이 들어가
+			//에러가 나는 것을 막아준다.
+ 		}//if else
+		
+		s.setItem_name(item_name); s.setItem_sub(item_sub);
+		s.setItem_price(item_price); s.setItem_cont(item_cont);
 		
 		this.shopService.insertShop(s);
+		
 		System.out.println("에디터 컨텐츠값: "+s.getItem_cont());
+		//테스트용 출력 -> 지울것
 		
 		return new ModelAndView("redirect:/shop/total_shop?class=shop");
 	}//shop_write_ok()
