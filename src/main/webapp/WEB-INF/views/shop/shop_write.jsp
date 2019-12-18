@@ -74,7 +74,7 @@
 				<tr>
 					<th></th>
 					<td colspan="2">
-						<input type="submit" id="save" value="저장" class="btn"/>
+						<input type="button" id="save" class="btn" value="저장" />
 						<input type="reset" value="취소" class="btn"
 						onclick="history.back();" />
 					</td>

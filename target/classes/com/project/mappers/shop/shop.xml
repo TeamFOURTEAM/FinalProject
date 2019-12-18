@@ -6,7 +6,7 @@
 	<!-- 상점 게시글 저장 -->
 	<insert id="shop_insert" parameterType="s">
 	<!-- parameterType은 전달인자 타입이고 생략가능함. -->
-		insert into shopList (item_no,item_name,item_sub,item_price,item_cont) 
+		insert into shopList (item_no,item_name,item_sub,item_price,item_cont,item_img) 
 		values(item_no_seq.nextval,#{item_name},#{item_sub},
 		#{item_price},#{item_cont},#{item_img})
 	</insert>

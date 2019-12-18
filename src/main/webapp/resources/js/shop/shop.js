@@ -18,11 +18,11 @@ function shop_check(){
 		$("#item_price").val("").focus();
 		return false;
 	}
-	/*if($.trim($("#item_cont").val())==""){
+	if($.trim($("#item_cont").val())==""){
 		alert("상품설명을 입력해주세요.");
 		$("#item_cont").val("").focus();
 		return false;
-	}*/
+	}
 }
 
 
