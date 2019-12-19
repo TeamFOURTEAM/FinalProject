@@ -44,7 +44,7 @@ public class ShopController {
 			HttpServletResponse response) {
 		
 		try {
-			String saveFolder=request.getSession().getServletContext().getRealPath("resources/photo_upload");
+//			String saveFolder=request.getSession().getServletContext().getRealPath("resources/photo_upload");
 			
 			Calendar c=Calendar.getInstance();
 			int year=c.get(Calendar.YEAR);
@@ -162,16 +162,21 @@ public class ShopController {
 			//1월이 0으로 반환되기 때문이다.
 			int date=c.get(Calendar.DATE);//일 값
 			
-			
+			String datedir=saveFolder+"/"+year+"-"+month+"-"+date;
+			//오늘 날짜 폴더 경로
 			String libdir=saveFolder+"/"+year+"-"+month+"-"+date+"/"+"lib";
 			//오늘 날짜 폴더 경로 + 하위의 lib폴더를 저장
-			File path1=new File(libdir);
+			File path1=new File(datedir);
+			File path2=new File(libdir);
 			
 			if(!(path1.exists())) {
-				path1.mkdir();//오늘 날짜 폴더 경로 + 하위의 lib폴더를 저장
+				path1.mkdir();//오늘 날짜 폴더 경로를 확인하고 저장
+			}
+			if(!(path2.exists())) {
+				path2.mkdir();//오늘 날짜 폴더 경로 + 하위의 lib폴더를 확인하고 저장
 			}
 			
-			 
+			
 			Random r=new Random();
 			int random=r.nextInt(100000000);//0이상 1억미만 사이의
 			//정수 숫자 난수 발생
