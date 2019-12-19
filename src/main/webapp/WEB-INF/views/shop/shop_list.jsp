@@ -23,10 +23,9 @@
         <div class="searchResultRow">
             ""에 대한 "${totalcount}"개의 검색 결과가 있습니다.
             
-            <div class="admin_write">
-                <button onclick="location.href='shop_write'">관리자 글쓰기</button>
-            </div>
-            
+	        <div class="admin_write">
+	            <button type="button" onclick="location.href='shop_write?page=${page}';">관리자 글쓰기</button>
+	        </div>
         </div>
         <%--//검색 결과 수 --%>
 		
@@ -148,85 +147,73 @@
         <!-- 페이징 wrapper -->
         <div class="paging_wrapper">
         <%-- 검색전 페이징 --%>
-        	<c:if test="${(empty find_field)&&(empty find_name)}">
+        	<c:if test="${(empty find_field) && (empty find_name)}">
         		<%-- page가 1페이지 이하일때 --%>
-        		<c:if test="${page <=1}">
-				   <i class="fa fa-angle-left" aria-hidden="true">
-				   		<span class="ir_su">prev</span>
-				   </i>
-				</c:if>
+        		<c:if test="${page <=1}"></c:if>
         		<%--//page가 1페이지 이하일때 --%>
 				<c:if test="${page >1}">
 					<a href="total_shop?class=shop&page=${page-1}">
-		                <i class="fa fa-angle-left" aria-hidden="true">
-		                	<span class="ir_su">prev</span>
-		                </i>
+		                <i class="fa fa-angle-left" aria-hidden="true"></i>
+	                	<span class="ir_su">prev</span>
 		            </a>
 				</c:if>
-        	</c:if>
+
+					<%-- 쪽번호 출력부분 --%>
+					<c:forEach var="n" begin="${startpage}" end="${endpage}" step="1">
+						<c:if test="${n == page}">
+							<span class="recentPage">${n}</span>
+						</c:if>
+
+						<c:if test="${n != page}">
+							<a href="total_shop?class=shop&page=${n}">${n}</a>
+						</c:if>
+					</c:forEach>
+
+					<c:if test="${page>=maxpage}"></c:if>
+					<c:if test="${page<maxpage}">
+						<a href="total_shop?class=shop&page=${page+1}"> <i
+							class="fa fa-angle-right" aria-hidden="true"></i> 
+						</a>
+							<span class="ir_su">next</span>
+					</c:if>
+					<%--//쪽번호 출력부분 --%>
+				</c:if>
         	
-        	<%-- 쪽번호 출력부분 --%>
-        	<c:forEach var="n" begin="${startpage}" end="${endpage}" step="1">
-        		<c:if test="${n == page}"><span class="recentPage">${n}</span></c:if>
-        		
-        		<c:if test="${n != page}">
-        			<a href="total_shop?class=shop&page=${n}">${n}</a>
-        		</c:if>
-        	</c:forEach>
-        	
-        	<c:if test="${page>=maxpage}">
-        		<i class="fa fa-angle-right" aria-hidden="true"></i>
-        		<span class="ir_su">next</span>
-        	</c:if>
-			<c:if test="${page<maxpage}">
-				<a href="total_shop?class=shop&page=${page+1}">
-					<i class="fa fa-angle-right" aria-hidden="true"></i>
-                	<span class="ir_su">next</span>
-				</a>
-			</c:if>
-        	<%--//쪽번호 출력부분 --%>
         <%--//검색전 페이징 --%>
         
         <%-- 검색후 페이징 --%>
         	<c:if test="${(!empty find_field) || (!empty find_name)}">
         		<%-- page가 1페이지 이하일때 --%>
-        		<c:if test="${page <=1}">
-				   <i class="fa fa-angle-left" aria-hidden="true">
-				   		<span class="ir_su">prev</span>
-				   </i>&nbsp;
-				</c:if>
+        		<c:if test="${page <=1}"></c:if>
 				<c:if test="${page >1}">
 					<a href="total_shop?class=shop&page=${page-1}">
-		                <i class="fa fa-angle-left" aria-hidden="true">
-		                	<span class="ir_su">prev</span>
-		                </i>
+		                <i class="fa fa-angle-left" aria-hidden="true"></i>
+	                	<span class="ir_su">prev</span>
 		            </a>
 				</c:if>
-        	</c:if>
+
+					<%-- 쪽번호 출력부분 --%>
+					<c:forEach var="n" begin="${startpage}" end="${endpage}" step="1">
+						<c:if test="${n == page}">
+							<span class="recentPage">${n}</span>
+						</c:if>
+
+						<c:if test="${n != page}">
+							<a href="total_shop?class=shop&page=${n}">${n}</a>
+						</c:if>
+					</c:forEach>
+
+					<c:if test="${page>=maxpage}"></c:if>
+					<c:if test="${page<maxpage}">
+						<a href="total_shop?class=shop&page=${page+1}"> 
+						<i class="fa fa-angle-right" aria-hidden="true"></i> 
+						</a>
+						<span class="ir_su">next</span>
+					</c:if>
+					<%--//쪽번호 출력부분 --%>
+				</c:if>
         	<%--//page가 1페이지 이하일때 --%>
-        	
-        	<%-- 쪽번호 출력부분 --%>
-        	<c:forEach var="n" begin="${startpage}" end="${endpage}" step="1">
-        		<c:if test="${n == page}"><span class="recentPage">${n}</span></c:if>
-        		
-        		<c:if test="${n != page}">
-        			<a href="total_shop?class=shop&page=${n}">${n}</a>
-        		</c:if>
-        	</c:forEach>
-        	
-        	<c:if test="${page>=maxpage}">
-        		<i class="fa fa-angle-right" aria-hidden="true">
-        			<span class="ir_su">next</span>
-        		</i>
-        	</c:if>
-			<c:if test="${page<maxpage}">
-				<a href="total_shop?class=shop&page=${page+1}">
-					<i class="fa fa-angle-right" aria-hidden="true"></i>
-                	<span class="ir_su">next</span>
-				</a>
-			</c:if>
-        	<%--//쪽번호 출력부분 --%>
-            
+        
         <%--//검색후 페이징 --%>
         
         <!--//페이징 wrapper -->

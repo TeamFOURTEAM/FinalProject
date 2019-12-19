@@ -126,7 +126,8 @@
     padding: 10px;
 }
 .container .paging_wrapper .recentPage {
-	border: 1px solid #51b0dc;
+	padding: 5px 12px;
+	border: 2px solid #51b0dc;
 	border-radius: 50%;
 }
 

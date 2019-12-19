@@ -32,9 +32,16 @@ public class ShopController {
 	
 	/** shop 관리자 글쓰기 페이지 이동 **/
 	@RequestMapping("shop/shop_write")
-	public ModelAndView shop_write() {
+	public String shop_write(
+			HttpServletRequest request,Model m) {
 		
-		return new ModelAndView("shop/shop_write");
+		int page=1;
+		if(request.getParameter("page") != null) {
+			page=Integer.parseInt(request.getParameter("page"));
+		}
+		m.addAttribute("page",page);
+		
+		return "shop/shop_write";
 	}//shop_write()
 	
 	/** 다중 파일 업로드 **/
