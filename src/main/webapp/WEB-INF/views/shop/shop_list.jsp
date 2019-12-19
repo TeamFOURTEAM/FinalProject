@@ -18,7 +18,7 @@
 </head>
 <body>
 	<div class="container">
-        
+        <form method="GET" action="total_shop">
         <%-- 검색 결과 수 --%>
         <div class="searchResultRow">
             ""에 대한 "${totalcount}"개의 검색 결과가 있습니다.
@@ -157,7 +157,7 @@
 				</c:if>
         		<%--//page가 1페이지 이하일때 --%>
 				<c:if test="${page >1}">
-					<a href="shop/total_shop?class=shop&page=${page-1}">
+					<a href="total_shop?class=shop&page=${page-1}">
 		                <i class="fa fa-angle-left" aria-hidden="true">
 		                	<span class="ir_su">prev</span>
 		                </i>
@@ -170,7 +170,7 @@
         		<c:if test="${n == page}"><span class="recentPage">${n}</span></c:if>
         		
         		<c:if test="${n != page}">
-        			<a href="shop/total_shop?class=shop&page=${n}">${n}</a>
+        			<a href="total_shop?class=shop&page=${n}">${n}</a>
         		</c:if>
         	</c:forEach>
         	
@@ -179,7 +179,7 @@
         		<span class="ir_su">next</span>
         	</c:if>
 			<c:if test="${page<maxpage}">
-				<a href="shop/total_shop?class=shop&page=${page+1}">
+				<a href="total_shop?class=shop&page=${page+1}">
 					<i class="fa fa-angle-right" aria-hidden="true"></i>
                 	<span class="ir_su">next</span>
 				</a>
@@ -196,7 +196,7 @@
 				   </i>&nbsp;
 				</c:if>
 				<c:if test="${page >1}">
-					<a href="shop/total_shop?class=shop&page=${page-1}">
+					<a href="total_shop?class=shop&page=${page-1}">
 		                <i class="fa fa-angle-left" aria-hidden="true">
 		                	<span class="ir_su">prev</span>
 		                </i>
@@ -210,7 +210,7 @@
         		<c:if test="${n == page}"><span class="recentPage">${n}</span></c:if>
         		
         		<c:if test="${n != page}">
-        			<a href="shop/total_shop?class=shop&page=${n}">${n}</a>
+        			<a href="total_shop?class=shop&page=${n}">${n}</a>
         		</c:if>
         	</c:forEach>
         	
@@ -220,7 +220,7 @@
         		</i>
         	</c:if>
 			<c:if test="${page<maxpage}">
-				<a href="shop/total_shop?class=shop&page=${page+1}">
+				<a href="total_shop?class=shop&page=${page+1}">
 					<i class="fa fa-angle-right" aria-hidden="true"></i>
                 	<span class="ir_su">next</span>
 				</a>
@@ -234,7 +234,6 @@
         <!-- 검색 바 -->
         <div class="searchBar">
             <!-- 검색폼 -->
-            <form method="GET" action="total_shop">
                 <div class="searchRow">
                     <select name="board_search" class="search_box">
                         <option value="title" <c:if test="${find_field == 'item_name' }"></c:if>
