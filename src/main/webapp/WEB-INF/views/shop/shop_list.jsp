@@ -223,20 +223,22 @@
             <!-- 검색폼 -->
                 <div class="searchRow">
                     <select name="board_search" class="search_box">
-                        <option value="title" <c:if test="${find_field == 'item_name' }"></c:if>
-                        >상품명</option>
-                        <option value="Price" <c:if test="${find_field == 'item_price' }"></c:if>
-                        >가격</option>
+                        <option value="title" 
+                        <c:if test="${find_field == 'item_name' }">
+                        ${'selected'}</c:if>>상품명</option>
+                        <option value="Price" 
+                        <c:if test="${find_field == 'item_price' }">
+                        ${'selected'}</c:if>>가격</option>
                     </select>
                     
                     <input style="width: 250px;" placeholder="검색어를 입력해주세요."
                          class="search_word" value="${find_name}">
-                    <button type="submit" class="search_btn" title="검색">
+                    <button class="search_btn" title="검색">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </button>
                 </div>
+                </div>
             </form>
-        </div>
         <!--//검색 바 -->
     </div>
 </body>
