@@ -113,7 +113,7 @@
                     <div class="itemImgBox">
                         <div class="itemImg">
                             <a href="#">
-                                <img src="/resources/photo_upload/${n.item_img}" alt="imgTest">
+                                <img src="/resources/photo_upload${n.item_img}" alt="imgTest">
                             </a>
                         </div>
                     </div>
@@ -125,7 +125,7 @@
                         <span class="itemPrice">${n.item_price}</span>
                     </div>
                     <div class="itemRecoRow">
-                        <span class="bestNum">${n.item_likeCount}</span>
+                        <span class="bestNum">이 제품이 좋아요 ! : ${n.item_likeCount}</span>
                     </div>
                 </div>
 				

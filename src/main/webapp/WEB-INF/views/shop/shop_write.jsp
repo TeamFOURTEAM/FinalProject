@@ -34,6 +34,14 @@
 		
 		$('#save').click(function () {
 			oEditors.getById['item_cont'].exec('UPDATE_CONTENTS_FIELD',[]);
+			var cont1= $("#item_cont").val();
+			
+			/** 스마트 에디터 입력부분 유효성 검증 **/
+			if( cont1 == ""  || cont1 == null || cont1 == '&nbsp;' || cont1 == '<p>&nbsp;</p>')  {
+	             alert("상품설명을 입력해주세요.");
+	             oEditors.getById["item_cont"].exec("FOCUS"); //포커싱
+	             return;
+	        }
 			$('#frm').submit();
 		});
 	});
@@ -63,7 +71,11 @@
 				</tr>
 				<tr>
 					<th>상품 재고</th>
-					<td><input name="item_stockCount" id="item_stockCount"  /></td>
+					<td>
+						<input type="text" name="item_stockCount" id="item_stockCount"
+					 onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' 
+					 style='ime-mode:disabled;'/>
+					 </td>
 				</tr>
 				<tr>
 					<th>상품 설명</th>

@@ -52,15 +52,15 @@ public class ShopController {
 			//1월이 0으로 반환되기 때문이다.
 			int date=c.get(Calendar.DATE);//일 값
 			
-			String homedir=saveFolder+"/"+year+"-"+month+"-"+date+"/"+"editor";
+//			String homedir=saveFolder+"/"+year+"-"+month+"-"+date+"/"+"editor";
 			//오늘날짜 폴더 하위에 에디터용임으로 /editor 폴더를 하나더 생성
 			String folderDate=year+"-"+month+"-"+date+"/"+"editor";
 			//날짜부분만 따로 분리해서 객체에 저장
 			
-			File folder=new File(homedir);
-			if(!(folder.exists())) {
-				folder.mkdir();//오늘 날짜 폴더 생성
-			}//if
+//			File folder=new File(homedir);
+//			if(!(folder.exists())) {
+//				folder.mkdir();//오늘 날짜 폴더 생성
+//			}//if
 			
 		 //파일정보
 		 String sFileInfo = "";
@@ -162,14 +162,16 @@ public class ShopController {
 			//1월이 0으로 반환되기 때문이다.
 			int date=c.get(Calendar.DATE);//일 값
 			
-			String homedir=saveFolder+"/"+year+"-"+month+"-"+date+"/"+"lib";
+			
+			String libdir=saveFolder+"/"+year+"-"+month+"-"+date+"/"+"lib";
 			//오늘 날짜 폴더 경로 + 하위의 lib폴더를 저장
-			File path1=new File(homedir);
+			File path1=new File(libdir);
 			
 			if(!(path1.exists())) {
-				path1.mkdir();//오늘 날짜 폴더 경로 + 하위의 lib폴더 생성
-			}//if
+				path1.mkdir();//오늘 날짜 폴더 경로 + 하위의 lib폴더를 저장
+			}
 			
+			 
 			Random r=new Random();
 			int random=r.nextInt(100000000);//0이상 1억미만 사이의
 			//정수 숫자 난수 발생
@@ -185,7 +187,7 @@ public class ShopController {
 					fileExtendsion;//새로운 첨부파일명을 저장
 			String fileDBName="/"+year+"-"+month+"-"+date+"/"+
 					"lib"+"/"+refilename;//DB에 저장될 레코드 값
-			UpFile.renameTo(new File(homedir+"/"+refilename));
+			UpFile.renameTo(new File(libdir+"/"+refilename));
 			//바뀌어진 첨부파일명으로 업로드
 			s.setItem_img(fileDBName);
 			
