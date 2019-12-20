@@ -223,7 +223,7 @@
         <div class="searchBar">
             <!-- 검색폼 -->
                 <div class="searchRow">
-                    <select name="board_search" class="search_box">
+                    <select name="find_field" class="search_box">
                         <option value="item_name" 
                         <c:if test="${find_field == 'item_name' }">
                         ${'selected'}</c:if>>상품명</option>
