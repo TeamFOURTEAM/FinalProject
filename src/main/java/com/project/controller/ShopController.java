@@ -275,32 +275,6 @@ public class ShopController {
 		
 		return "shop/shop_list";
 	}//shop_list()
-	
-	/** 상품 내용 보기 + 수정 + 삭제 **/
-	@RequestMapping("shop/shop_cont")
-	public ModelAndView shop_cont(
-			int item_no,int page,
-			String state,ShopVO s) {
-		
-		s=this.shopService.getShopCont(item_no);
-		
-		ModelAndView model=new ModelAndView();
-		model.addObject("s",s);
-		model.addObject("page",page);
-		
-		if(state.equals("cont")) {//내용보기
-			model.setViewName("shop/shop_cont");
-	
-		}else if(state.equals("edit")) {//수정
-			model.setViewName("shop/shop_edit");
-			
-		}else if(state.equals("del")) {//삭제
-			model.setViewName("shop/shop_del");
-			
-		}//if else if
-		
-		return model;
-	}//shop_cont()
 }
 
 
