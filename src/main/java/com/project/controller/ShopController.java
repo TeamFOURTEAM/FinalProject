@@ -44,7 +44,7 @@ public class ShopController {
 		return "shop/shop_write";
 	}//shop_write()
 	
-	/** 다중 파일 업로드 **/
+/*	//** 다중 파일 업로드 **//*
 	@RequestMapping("/multiplePhotoUpload")
 	public void multiplePhotoUpload(
 			HttpServletRequest request,
@@ -132,7 +132,7 @@ public class ShopController {
 	}
 
 	}//multiplePhotoUpload()
-	
+*/	
 	
 	/** shop 상품 게시글 저장(본문 첨부 이미지 추가) **/
 	@RequestMapping("shop_write_ok")

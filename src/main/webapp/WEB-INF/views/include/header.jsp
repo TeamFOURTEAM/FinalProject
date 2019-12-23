@@ -18,23 +18,22 @@
 <body>
 
 	<header id="header" class=<%=request.getParameter("class") %> >
-		<div class="container">
+		
 			<div class="header">
 				<div class="header_menu">
 					<a href="#">MyPage</a> <a href="#">Login</a> <a href="#">Register</a>
 				</div>
 				<!-- //header_menu -->
 				<div class="header_title">
-					<a href="http://localhost:8187/">사이트 제목</a>
+					<a href="/">사이트 제목</a>
 				</div>
 				<!-- //header_title -->
 			</div>
-		</div>
+		
 	</header>
 	<!-- //header -->
 
 	<article id="title">
-		<div class="container">
 			<div class="title" id="menu">
 				<ul class="category">
 					<li><div>
@@ -60,7 +59,7 @@
 							<li><a href="#">강아지 분양 4</a></li>
 						</ul></li>
 					<li><div>
-							<a href="shop/total_shop?class=shop">SHOP</a>
+							<a href="/shop/total_shop?class=shop">SHOP</a>
 						</div>
 						<ul class="sub_category">
 							<li><a href="#">SHOP 1</a></li>
@@ -79,5 +78,4 @@
 						</ul></li>
 				</ul>
 			</div>
-		</div>
 	</article>

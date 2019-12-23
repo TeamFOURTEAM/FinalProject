@@ -65,7 +65,7 @@ input, select {
 
 /* 이미지형 게시판 내용보기(cat_cont) */
 #cont {
-	width: 1000px; margin: 0 auto;
+	margin: 0 auto;
 }
 
 /* cat_cont input */
@@ -77,6 +77,10 @@ input, select {
 }
 
 /* cat_write */
+#main {
+	margin: 0 auto;
+}
+
 #cat_write {
 	width: 100%;
 	border-spacing: 10px;

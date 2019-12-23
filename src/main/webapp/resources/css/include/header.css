@@ -56,6 +56,7 @@ margin-top: 80px;}
     position: fixed;
     top: 0px;
     width: 100%;
+    z-index: 100;
 }
 
 /* sub_category */
@@ -68,14 +69,17 @@ margin-top: 80px;}
     border-bottom: 1px solid #dbdbdb;
     border-right: 1px solid #dbdbdb;
     border-left: 1px solid #dbdbdb;
-    border-top: 2px solid #2698cb;     
+    border-top: 2px solid #2698cb;  
+    z-index: 100;   
 }
 .title .category .sub_category > a {
     border-right: 1px solid #dbdbdb;
+    z-index: 100;
 }
 .title .category .sub_category > li{
     background: #e0e0e0;
     width: 100%;
+    z-index: 100;
 }
 
 #header.dog {
