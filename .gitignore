@@ -1,2 +1,7 @@
-
-src/main/resources/mybatis-config.xml
+*/.git/*
+.classpath
+.deployables
+.git
+.project
+.settings/
+target/

@@ -67,7 +67,7 @@
                                 <div class="section">
                                     <div class="main_menu_img">
                                         <div class="main_menu_btn">
-                                            <a href="shop/total_shop?class=shop" class="a3">SHOP</a>
+                                            <a href="shop/total_shop?class=shop&page=1&find_field=item_name&find_name=" class="a3">SHOP</a>
                                         </div>
                                     </div>
                                 </div>

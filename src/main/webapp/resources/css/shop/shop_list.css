@@ -3,7 +3,7 @@
 
 /** 컨테이너 **/
 .container {
-    position: relative; width: 1280px; margin: 50px auto;
+	width: 1280px; margin: 50px auto;
 }
 
 /** 검색 바 **/
@@ -13,16 +13,17 @@
 }
 .searchRow .search_box {
     width: 5%;
-    height: 40px;
+    height: 40px; border: 1px solid #000;
 }
 .searchRow .search_word {
     box-sizing: border-box;
-    height: 40px;
+    height: 40px; border: 1px solid #000;
 }
 .searchRow .search_btn {
-    width: 2%;
+    width: 3%; border: 1px solid #000;
     height: 40px;
 }
+
 
 
 /** 검색 결과 수 **/

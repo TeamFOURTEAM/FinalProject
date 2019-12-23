@@ -28,4 +28,12 @@ public class ShopServiceImpl implements ShopService {
 	public List<ShopVO> getShopList(ShopVO s) {
 		return this.shopDAO.getShopList(s);
 	}
+<<<<<<< HEAD
+=======
+
+	@Override
+	public ShopVO getShopCont(int item_no) {
+		return this.shopDAO.getShopCont(item_no);
+	}
+>>>>>>> origin/JaeHyung
 }
