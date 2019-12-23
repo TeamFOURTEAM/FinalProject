@@ -31,11 +31,7 @@
 	<!-- 검색 전후 shop 상품 목록 -->
 	<select id="shop_list" parameterType="s" resultType="s">
 		select * from(
-<<<<<<< HEAD
 		select rowNum rNum,item_name,item_price,item_likeCount,item_img from(
-=======
-		select rowNum rNum,item_no,item_name,item_price,item_likeCount,item_img from(
->>>>>>> origin/JaeHyung
 			select * from shopList
 			<where>
 				<if test="find_field == ''"></if>
@@ -50,14 +46,6 @@
 		where rNum &gt;= #{startrow} and rNum &lt;=#{endrow}
 	</select>
 	
-<<<<<<< HEAD
-=======
-	<!-- 내용 보기 -->
-	<select id="shop_cont" parameterType="int" resultType="s">
-		select * from shopList where item_no=#{item_no}
-	</select>
-	
->>>>>>> origin/JaeHyung
 </mapper>
 
 

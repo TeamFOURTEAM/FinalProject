@@ -12,9 +12,4 @@ public interface ShopDAO {
 
 	List<ShopVO> getShopList(ShopVO s);
 
-<<<<<<< HEAD
-=======
-	ShopVO getShopCont(int item_no);
-
->>>>>>> origin/JaeHyung
 }
