@@ -360,7 +360,7 @@ public class CatBoardController {
 	}
 
 
-	//다중파일업로드
+/*	//다중파일업로드
 	@RequestMapping("/multiplePhotoUpload")
 	public void multiplePhotoUpload(HttpServletRequest request, HttpServletResponse response){
 		try {				
@@ -436,5 +436,5 @@ public class CatBoardController {
 		}
 
 	}
-
+*/
 }
