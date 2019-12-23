@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/shop/shop_list.css">
     <link rel="stylesheet" href="/css/main/font-awesome.css">
+    
+ 
 </head>
 <body>
 	<div class="container">
@@ -189,7 +191,7 @@
         		<%-- page가 1페이지 이하일때 --%>
         		<c:if test="${page <=1}"></c:if>
 				<c:if test="${page >1}">
-					<a href="total_shop?class=shop&page=${page-1}">
+					<a href="total_shop?class=shop&page=${page-1}&find_field=${find_field}&find_name=${find_name}">
 		                <i class="fa fa-angle-left" aria-hidden="true"></i>
 	                	<span class="ir_su">prev</span>
 		            </a>
@@ -202,13 +204,13 @@
 						</c:if>
 
 						<c:if test="${n != page}">
-							<a href="total_shop?class=shop&page=${n}">${n}</a>
+							<a href="total_shop?class=shop&page=${n}&find_field=${find_field}&find_name=${find_name}">${n}</a>
 						</c:if>
 					</c:forEach>
 
 					<c:if test="${page>=maxpage}"></c:if>
 					<c:if test="${page<maxpage}">
-						<a href="total_shop?class=shop&page=${page+1}"> 
+						<a href="total_shop?class=shop&page=${page+1}&find_field=${find_field}&find_name=${find_name}"> 
 						<i class="fa fa-angle-right" aria-hidden="true"></i> 
 						</a>
 						<span class="ir_su">next</span>
@@ -237,7 +239,7 @@
                     <input name="find_name" id="find_name" 
                     style="width: 250px;" placeholder="검색어를 입력해주세요."
                     class="search_word" value="${find_name}">
-                    <button class="search_btn" title="검색">
+                    <button class="search_btn" id="search_btn" title="검색">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </button>
                 </div>

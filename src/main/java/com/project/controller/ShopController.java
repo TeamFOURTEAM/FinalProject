@@ -217,8 +217,8 @@ public class ShopController {
 		
 		this.shopService.insertShop(s);
 		
-		System.out.println("에디터 컨텐츠값: "+s.getItem_cont());
-		//테스트용 출력 -> 지울것
+//		System.out.println("에디터 컨텐츠값: "+s.getItem_cont());
+//		//테스트용 출력 -> 지울것
 		
 		return new ModelAndView("redirect:/shop/total_shop?class=shop");
 	}//shop_write_ok()
