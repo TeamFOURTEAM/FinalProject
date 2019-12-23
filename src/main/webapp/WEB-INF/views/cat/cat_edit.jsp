@@ -4,7 +4,7 @@
 
 <!-- style -->
 <link rel="stylesheet" href="/resources/css/reset.css">
-<link rel="stylesheet" href="/resources/css/cat_board/cat_write.css">
+<link rel="stylesheet" href="/resources/css/cat_board/cat.css">
 
 <!-- js -->
 <script type="text/javascript"
@@ -47,6 +47,23 @@ $(function(){
 })
 </script>
 
+<script>
+	function edit_check() {		
+		
+		if($.trim($("#cat_title").val())==""){
+			alert("고양이 종류를 입력하세요");
+			$("#cat_title").val("").focus();
+			return false;
+		}
+		if($.trim($("#cat_file").val())==""){
+			alert("파일을 첨부해 주세요");
+			$("#cat_file").val("").focus();
+			return false;
+		}		
+		alert("수정 되었습니다.");		
+	}		
+</script>
+
 <!-- 본문 내용 -->
 <main>
 <section id="contents">
@@ -54,7 +71,8 @@ $(function(){
 		<section id="cont">
 			<article class="column col1">
 				<div class="main">
-					<form method="post" action="/cat_edit_ok" enctype="multipart/form-data">
+					<form method="post" action="/cat_edit_ok" onsubmit="return edit_check();" 
+					enctype="multipart/form-data">
 					
 					<%-- 히든값 --%>
 					<input type="hidden" name="cat_no" value="${c.cat_no }" />
@@ -67,13 +85,13 @@ $(function(){
 						</tr>
 						<tr>
 							<th>내용</th>
-							<td><textarea name="cat_cont" id="cat_cont" cols="100" rows="20">
+							<td><textarea name="cat_cont" id="cat_cont" cols="110" rows="30">
 								${c.cat_cont }</textarea>
 							</td>
 						</tr>
 						<tr>
 							<th>파일첨부</th>
-    						<td><input type="file" name="cat_file" />
+    						<td><input type="file" name="cat_file" id="cat_file" />
     						<br/>${c.cat_file }
     						</td>
 						</tr>

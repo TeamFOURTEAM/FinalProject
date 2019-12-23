@@ -4,7 +4,7 @@
 
 <!-- style -->
 <link rel="stylesheet" href="/resources/css/reset.css">
-<link rel="stylesheet" href="/resources/css/cat_board/cat_write.css">
+<link rel="stylesheet" href="/resources/css/cat_board/cat.css">
 
 <!-- js -->
 <script type="text/javascript"
@@ -73,7 +73,7 @@ $(function(){
 						</tr>
 						<tr>
 							<th>내용</th>
-							<td><textarea name="cat_cont" id="cat_cont" cols="100" rows="20"></textarea></td>
+							<td><textarea name="cat_cont" id="cat_cont" cols="110" rows="30"></textarea></td>
 						</tr>
 						<tr>
 							<th>파일첨부</th>
