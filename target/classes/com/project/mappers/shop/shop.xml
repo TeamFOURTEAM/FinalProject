@@ -46,6 +46,11 @@
 		where rNum &gt;= #{startrow} and rNum &lt;=#{endrow}
 	</select>
 	
+	<!-- 내용 보기 -->
+	<select id="shop_cont" parameterType="int" resultType="s">
+		select * from shopList where item_no=#{item_no}
+	</select>
+	
 </mapper>
 
 

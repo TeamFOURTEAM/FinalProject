@@ -28,6 +28,11 @@ public class ShopDAOImpl implements ShopDAO {
 	public List<ShopVO> getShopList(ShopVO s) {
 		return this.sqlSession.selectList("shop_list",s);
 	}//shop 페이지 상품 전체 목록
+
+	@Override
+	public ShopVO getShopCont(int item_no) {
+		return this.sqlSession.selectOne("shop_cont",item_no);
+	}
 	
 	
 }

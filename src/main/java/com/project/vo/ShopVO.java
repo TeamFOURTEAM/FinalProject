@@ -3,14 +3,14 @@ package com.project.vo;
 /** shop 상품 목록 VO **/
 public class ShopVO {
 	
-	private int item_no;
-	private String item_name;
-	private String item_sub;
-	private String item_price;
-	private String item_stockCount;
-	private String item_cont;
-	private String item_img;
-	private String item_likeCount;
+	private int item_no;//상품번호
+	private String item_name;//상품명
+	private String item_sub;//상품 세부 설명(상품명바로아래문장)
+	private String item_price;//상품 가격
+	private String item_stockCount;//상품 재고
+	private String item_cont;//상품 상세 내용
+	private String item_img;//상품 이미지(자료실)
+	private String item_likeCount;//상품 추천수
 	
 	
 	/** 페이징 변수 **/

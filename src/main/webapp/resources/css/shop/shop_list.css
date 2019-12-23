@@ -3,7 +3,7 @@
 
 /** 컨테이너 **/
 .container {
-    position: relative; width: 1280px; margin: 50px auto;
+	width: 1280px; margin: 50px auto;
 }
 
 /** 검색 바 **/

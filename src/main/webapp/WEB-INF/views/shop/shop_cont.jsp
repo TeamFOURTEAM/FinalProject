@@ -16,35 +16,34 @@
     <link rel="stylesheet" href="/css/main/font-awesome.css">
     
     <!-- JavaScript Libraries -->
-    <script src="js/zoom.js"></script>
-    <script src="js/jquery.js"></script>
+    <script src="/js/shop/zoom.js"></script>
+    <script src="/js/jquery.js"></script>
 </head>
 <body>
 	<div class="container">
         <!-- 상품 상세 영역 -->
         <div class="item_main">
             <div class="itemImg">
-                <img src="./img/goods03.jpg" class="target" data-zoom="3" />
+                <img src="/resources/photo_upload${s.item_img}" class="target" data-zoom="3" />
             </div>
 
             <div class="itemContBox">
                 <div class="itemContName">
-                    <span class="contName">고양이 소형 집</span>
+                    <span class="contName">${s.item_name}</span>
                 </div>
 
                 <div class="itemContInfo">
-                    <span class="contInfo">고양이 집입니다.</span>
+                    <span class="contInfo">${s.item_sub}</span>
                 </div>
 
-                <div class="itemContReco">
-                    <span class="contReco">추천수 : 1</span>
-                </div>
-
-                
                 <div class="itemContPrice">
-                    <span class="contPrice">상품 가격 : \20,000</span>
+                    <span class="contPrice">${s.item_price}</span>
                 </div>
                 
+                <div class="itemContReco">
+                    <span class="contReco">${s.item_likeCount}</span>
+                </div>
+
                 <form method="get" name="itemBuy">
                 <div class="itemCount">
                     <select name="selectItemCount">
