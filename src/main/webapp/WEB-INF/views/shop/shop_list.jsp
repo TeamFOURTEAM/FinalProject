@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="/css/shop/shop_list.css">
     <link rel="stylesheet" href="/css/main/font-awesome.css">
     
- 
 </head>
 <body>
 	<div class="container">
@@ -116,14 +115,14 @@
 					<div class="itemContainer">
                     <div class="itemImgBox">
                         <div class="itemImg">
-                            <a href="#">
+                            <a href="shop_cont?item_no=${n.item_no}&state=cont&page=${page}">
                                 <img src="/resources/photo_upload${n.item_img}" alt="imgTest">
                             </a>
                         </div>
                     </div>
                     
                     <div class="itemNameRow">
-                        <span><a href="#" class="itemName">${n.item_name}</a></span>
+                        <span><a href="shop_cont?item_no=${n.item_no}&state=cont&page=${page}" class="itemName">${n.item_name}</a></span>
                     </div>
                     <div class="itemPriceRow">
                         <span class="itemPrice">${n.item_price}</span>
@@ -143,7 +142,7 @@
 					<span>상품목록이 없습니다! 관리자에게 문의해주세요.</span>
                 </div>
 				</c:if>
-				<%-- db에 상품 정보가 없을 때 --%>
+				<%--//db에 상품 정보가 없을 때 --%>
             </div>
             <!--//일반 상품 목록 -->
         </div>
