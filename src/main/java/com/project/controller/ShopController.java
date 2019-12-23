@@ -223,6 +223,7 @@ public class ShopController {
 		return new ModelAndView("redirect:/shop/total_shop?class=shop");
 	}//shop_write_ok()
 	
+	
 	/** shop 상품 리스트 **/
 	@RequestMapping("shop/total_shop")
 	public String shop_list(

@@ -21,7 +21,9 @@
         <form method="GET" action="total_shop">
         <%-- 검색 결과 수 --%>
         <div class="searchResultRow">
-            ""에 대한 "${totalcount}"개의 검색 결과가 있습니다.
+            "<c:if test="${find_name == ''}">전체</c:if>${find_name}"
+            에 대한 "${totalcount}"
+            개의 검색 결과가 있습니다.
             
 	        <div class="admin_write">
 	            <button type="button" onclick="location.href='shop_write?page=${page}';">관리자 글쓰기</button>
