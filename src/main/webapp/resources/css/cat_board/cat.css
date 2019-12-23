@@ -1,12 +1,19 @@
 @charset "UTF-8";
-#contents { width: 1000px; margin: 50px auto;}
+#contents { width: 1320px; margin: 50px auto;}
 
-/* main */
+/* input 관련  */
+input, select {
+	font-size: 15px;
+	cursor: pointer;	
+}
+
+/* 이미지형 게시판 전체 */
 .main {
     margin-top: 3px;
     width: 100%;
 }
 
+/* 이미지형 게시판 이름 */
 .name {
 	text-align: center;
 	margin-top: 10px;
@@ -14,6 +21,7 @@
 	font-weight: bolder;
 }
 
+/* 이미지형 게시판 이미지 관련 */
 .board_list .item {
 	display: inline-block;
 	width: 316px;
@@ -48,12 +56,6 @@
     height: 30px;
 }
 
-input, select {
-	font-size: 15px;
-	cursor: pointer;
-	
-}
-
 /* 내용보기 css */
 #cat_menu {
 	padding: 20px;
@@ -61,6 +63,12 @@ input, select {
     justify-content: center;
 }
 
+/* 이미지형 게시판 내용보기(cat_cont) */
+#cont {
+	width: 1000px; margin: 0 auto;
+}
+
+/* cat_cont input */
 #cat_menu input {
 	margin-right: 10px;
 	width: 50px;

@@ -18,7 +18,6 @@ $(function (){
     <form method="get" action="total_cat">
         <section id="contents">
             <div class="container">
-                <section id="cont">
                     <article class="column col1">
                         <div class="main">
 
@@ -132,7 +131,6 @@ $(function (){
                     </article>
                 </section>
             </div>
-        </section>
         <!-- contents -->
     </form>
 </main>
