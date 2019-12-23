@@ -357,6 +357,8 @@ public class CatBoardController {
 		
 
 		return "cat/cat_mun_list";
+		
+		System.out.println("fkff");
 	}
 
 
