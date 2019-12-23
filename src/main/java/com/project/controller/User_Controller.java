@@ -28,10 +28,10 @@ public class User_Controller {
     //	임시시로 만들어둔 매핑주소
 
     //게시판
-    @RequestMapping("board_list")
-    public String board_list(){
-        return "board/board_list";
-    }
+//    @RequestMapping("board_list")
+//    public String board_list(){
+//        return "board/board_list";
+//    }
 
     //로그인
     @RequestMapping("login")
@@ -59,7 +59,7 @@ public class User_Controller {
     }
 
     //게시판 목록
-    @RequestMapping("back_end_list")
+    @RequestMapping("user_board_list")
     public String back_end_list(Model listM, BoardVO b, HttpServletResponse response, HttpServletRequest request) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -112,10 +112,10 @@ public class User_Controller {
             listM.addAttribute("endpage", endpage);
             listM.addAttribute("maxpage", maxpage);
             listM.addAttribute("listcount", listcount);
-            listM.addAttribute("search_name", back_end_field);
-            listM.addAttribute("search_Field", back_end_title);
+            listM.addAttribute("back_end_field", back_end_field);
+            listM.addAttribute("back_end_title", back_end_title);
 
-            return "html/back_end_list";
+            return "board/board_list";
         }
         return null;
     }
@@ -136,7 +136,7 @@ public class User_Controller {
         }else{
             String user_id=mem.getUser_id();
             session.setAttribute("user_id",user_id);
-            return "redirect:/back_end_list";
+            return "redirect:/user_board_list";
         }
         return null;
     }
