@@ -287,7 +287,7 @@ public class ShopController {
 		ModelAndView model=new ModelAndView();
 		model.addObject("s",s);
 		model.addObject("page",page);
-		
+		System.out.println(s.getItem_name());
 		
 		if(state.equals("cont")) {//내용보기
 			model.setViewName("shop/shop_cont");
