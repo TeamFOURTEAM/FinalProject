@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: BlackJack21
 Build-Jdk: 1.8.0_231
-=======
-Built-By: chatblanc
-Build-Jdk: 1.8.0_211
->>>>>>> 5df99131cdd452f6862ea892a2d1f6a33eb7a253
 Created-By: Maven Integration for Eclipse
 
