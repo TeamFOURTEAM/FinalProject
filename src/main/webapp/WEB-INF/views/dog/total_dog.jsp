@@ -21,16 +21,16 @@
                                 <div class="dog_list">
 
                                     <c:if test="${!empty dlist }">
-                                        <c:forEach var="c" items="${dlist }">
+                                        <c:forEach var="d" items="${dlist }">
                                             <div class="item">
                                                 <div class="img">
-                                                    <a href="dog_cont?dog_no=${c.dog_no}&state=cont&page=${page}">
-                                                        <img src="/resources/photo_upload${c.dog_file }" width="316"
+                                                    <a href="dog_cont?dog_no=${d.dog_no}&state=cont&page=${page}">
+                                                        <img src="/resources/photo_upload${d.dog_file }" width="316"
                                                             height="360" />
                                                     </a>
                                                 </div>
                                                 <div class="name">
-                                                    <a href="dog_cont?dog_no=${c.dog_no}&state=cont&page=${page}">${c.dog_title}</a>
+                                                    <a href="dog_cont?dog_no=${d.dog_no}&state=cont&page=${page}">${d.dog_title}</a>
                                                 </div>
                                             </div>
                                         </c:forEach>
