@@ -303,6 +303,17 @@ public class ShopController {
 		return model;
 	}//shop_cont()
 	
+	/** shop 관리자 게시글 수정 **/
+	@RequestMapping("/shop_edit_ok")
+	public ModelAndView shop_edit_ok() {
+		
+		
+		ModelAndView model=new ModelAndView(
+				"redirect:/shop_cont");
+		
+		return model;
+	}//shop_edit_ok()
+	
 }
 
 

@@ -58,8 +58,16 @@
                 <div class="itemBuyBox">
                     <button onclick="">장바구니에 담기</button>
                     <button onclick="">구매하기</button>
-                </form>
+                    <div class="adminEditDel">
+	                    <button type="button" 
+	                    onclick="location='shop_cont?state=edit&item_no=${s.item_no}';">
+	                    	수정하기</button>
+	                    <button type="button" 
+	                    onclick="location='shop_cont?state=del&item_no=${s.item_no}';">
+	                    	삭제하기</button>
+                    </div>
                 </div>
+                </form>
             </div>
             
             <div class="item_Cont">

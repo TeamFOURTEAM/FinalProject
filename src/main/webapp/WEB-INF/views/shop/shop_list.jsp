@@ -115,14 +115,14 @@
 					<div class="itemContainer">
                     <div class="itemImgBox">
                         <div class="itemImg">
-                            <a href="shop_cont?item_no=${n.item_no}&state=cont&page=${page}">
+                            <a href="shop_cont?state=cont&item_no=${n.item_no}&page=${page}">
                                 <img src="/resources/photo_upload${n.item_img}" alt="imgTest">
                             </a>
                         </div>
                     </div>
                     
                     <div class="itemNameRow">
-                        <span><a href="shop_cont?item_no=${n.item_no}&state=cont&page=${page}" class="itemName">${n.item_name}</a></span>
+                        <span><a href="shop_cont?state=cont&item_no=${n.item_no}&page=${page}" class="itemName">${n.item_name}</a></span>
                     </div>
                     <div class="itemPriceRow">
                         <span class="itemPrice">${n.item_price}</span>
