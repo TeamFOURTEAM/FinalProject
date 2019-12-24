@@ -220,7 +220,7 @@ public class ShopController {
 //		System.out.println("에디터 컨텐츠값: "+s.getItem_cont());
 //		//테스트용 출력 -> 지울것
 		
-		return new ModelAndView("redirect:shop/total_shop?class=shop&page=1&find_field=item_name&find_name=");
+		return new ModelAndView("redirect:shop/total_shop?page=1&find_field=item_name&find_name=");
 	}//shop_write_ok()
 	
 	

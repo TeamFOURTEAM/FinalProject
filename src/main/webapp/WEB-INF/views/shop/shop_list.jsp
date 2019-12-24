@@ -157,7 +157,7 @@
         		<c:if test="${page <=1}"></c:if>
         		<%--//page가 1페이지 이하일때 --%>
 				<c:if test="${page >1}">
-					<a href="total_shop?class=shop&page=${page-1}">
+					<a href="total_shop?page=${page-1}">
 		                <i class="fa fa-angle-left" aria-hidden="true"></i>
 	                	<span class="ir_su">prev</span>
 		            </a>
@@ -170,13 +170,13 @@
 						</c:if>
 
 						<c:if test="${n != page}">
-							<a href="total_shop?class=shop&page=${n}">${n}</a>
+							<a href="total_shop?page=${n}">${n}</a>
 						</c:if>
 					</c:forEach>
 
 					<c:if test="${page>=maxpage}"></c:if>
 					<c:if test="${page<maxpage}">
-						<a href="total_shop?class=shop&page=${page+1}"> <i
+						<a href="total_shop?page=${page+1}"> <i
 							class="fa fa-angle-right" aria-hidden="true"></i> 
 						</a>
 							<span class="ir_su">next</span>
@@ -191,7 +191,7 @@
         		<%-- page가 1페이지 이하일때 --%>
         		<c:if test="${page <=1}"></c:if>
 				<c:if test="${page >1}">
-					<a href="total_shop?class=shop&page=${page-1}&find_field=${find_field}&find_name=${find_name}">
+					<a href="total_shop?page=${page-1}&find_field=${find_field}&find_name=${find_name}">
 		                <i class="fa fa-angle-left" aria-hidden="true"></i>
 	                	<span class="ir_su">prev</span>
 		            </a>
@@ -204,13 +204,13 @@
 						</c:if>
 
 						<c:if test="${n != page}">
-							<a href="total_shop?class=shop&page=${n}&find_field=${find_field}&find_name=${find_name}">${n}</a>
+							<a href="total_shop?page=${n}&find_field=${find_field}&find_name=${find_name}">${n}</a>
 						</c:if>
 					</c:forEach>
 
 					<c:if test="${page>=maxpage}"></c:if>
 					<c:if test="${page<maxpage}">
-						<a href="total_shop?class=shop&page=${page+1}&find_field=${find_field}&find_name=${find_name}"> 
+						<a href="total_shop?page=${page+1}&find_field=${find_field}&find_name=${find_name}"> 
 						<i class="fa fa-angle-right" aria-hidden="true"></i> 
 						</a>
 						<span class="ir_su">next</span>
