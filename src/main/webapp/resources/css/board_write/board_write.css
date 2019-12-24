@@ -1,0 +1,14 @@
+#container{
+    margin: 0 auto;
+    width: 803px;
+    height: 600px;
+}
+
+.cont_div{
+    margin-top: 50px;
+}
+
+.cont_div input {
+    width: 250px;
+    height: 30px;
+}

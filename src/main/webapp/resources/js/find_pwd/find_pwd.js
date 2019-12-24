@@ -6,16 +6,16 @@ function patterkorean() {
 
     if (checkpattern.test(name)==false){
         $('#user_name').css("border","2px solid red");
-        $('#idlabel').text('한글 2~3 글자로 입력해주세요!');
-        $('#idlabel').show();
+        $('#namelabel').text('한글 2~3 글자로 입력해주세요!');
+        $('#namelabel').show();
     }else{
         $('#user_name').css("border","1px solid grey");
-        $('#idlabel').hide();
+        $('#namelabel').hide();
     }
 
     if(name==''){
         $('#user_name').css("border","1px solid grey");
-        $('#idlabel').hide();
+        $('#namelabel').hide();
     }
 }
 

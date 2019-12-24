@@ -1,0 +1,47 @@
+#bigcontainer{
+    background-color: rgba(35, 38, 59, 0.1);
+}
+
+#container{
+    background-color: white;
+    padding: 0 12px;
+    margin: 0 auto;
+    width: 700px;
+    height: 800px;
+}
+
+.wrap{
+    border: 1px solid ;
+}
+
+.wrap .title{
+    font-size: 32px;
+}
+
+.wrap .id{
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.wrap .id .left{
+    margin-left: 6px;
+}
+
+.wrap .id .right{
+    margin-left: 422px;
+}
+
+.wrap .cont{
+    padding: 0 20px;
+    width: 100px;
+    margin-top: 16px;
+    font-size: 15px;
+}
+
+.head h1{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+

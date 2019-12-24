@@ -25,7 +25,7 @@
             <c:forEach var="b" items="${blist}">
                 <div class="wrap">
                     <div class="back_end_cont">
-                        <a href="html.jsp">
+                        <a href="cont?id=${b.back_end_list_id}&title=${b.back_end_list_title}&cont=${b.back_end_list_cont}&date=${b.back_end_list_date}">
                             <h3>${b.back_end_list_title}</h3>${b.back_end_list_cont}</a>
                         <br>
                         <span>${b.back_end_list_id}</span>&nbsp;&nbsp;<span>댓글</span>&nbsp;&nbsp;<span>날짜:${b.back_end_list_date}</span>
@@ -114,6 +114,7 @@
         </div>
             <%-- 검색후 페이징 --%>
             <div class="search_div">
+                <input type="button" value="글쓰기" onclick="location='board_list_write'">
                 <select name="back_end_title">
                     <option value="board_title"
                             <c:if test="${back_end_title=='board_title'}">

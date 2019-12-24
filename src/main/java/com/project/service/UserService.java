@@ -22,4 +22,6 @@ public interface UserService {
     MemberVO select_id_name_phone(MemberVO m);
 
     int pwdUPdate(MemberVO uv);
+
+    int board_insert(BoardVO b);
 }

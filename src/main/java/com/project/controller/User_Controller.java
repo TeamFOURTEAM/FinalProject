@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -67,7 +68,7 @@ public class User_Controller {
         String user_id = (String) session.getAttribute("user_id");//관리자 세션 아이디를 구함.
         if (user_id == null) {
             out.println("<script>");
-            out.println("alert('다시로그인하세요!');");
+            out.println("alert('세션만료 다시로그인하세요!');");
             out.println("location='login';");
             out.println("</script>");
         } else {
@@ -241,6 +242,34 @@ public class User_Controller {
         mav.addAttribute("cont",cont);
         mav.addAttribute("date",date);
 
-        return "html/board_cont";
+        return "board/board_cont";
+    }
+
+    //글쓰기
+    @RequestMapping("board_list_write")
+    public String board_list_write(String id,BoardVO b,Model m,HttpServletResponse response,HttpServletRequest request,HttpSession session) throws IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out=response.getWriter();
+        String user_id=(String)session.getAttribute("user_id");
+
+        String d=request.getParameter("back_end_list_cont");
+
+        int re=-1;
+
+        if(user_id==null){
+            out.println("<script>");
+            out.println("alert('세션만료 다시로그인하세요!');");
+            out.println("location='login';");
+            out.println("</script>");
+        }else {
+            re=this.userService.board_insert(b);
+            if(re==1) {
+                out.println("<script>");
+                out.println("alert('저장 성공! 게시판으로 돌아갑니다!');");
+                out.println("location='user_board_list';");
+                out.println("</script>");
+            }
+        }
+        return "board/board_list";
     }
 }

@@ -8,11 +8,11 @@
     <typeAliases>
         <typeAlias type="com.project.vo.CatVO" alias="cat"/>
 
-        <!--게시판-->
+        <!--분양 게시판-->
         <typeAlias type="com.project.vo.MemberVO" alias="member"/>
 
         <typeAlias type="com.project.vo.BoardVO" alias="board"/>
-        <!--게시판-->
+        <!--분양 게시판-->
         
     </typeAliases>
 </configuration>

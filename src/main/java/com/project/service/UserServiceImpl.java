@@ -61,5 +61,11 @@ public class UserServiceImpl implements UserService {
         return this.userDao.pwdUPdate(uv);
     }
 
+    //분양게시판 글쓰기
+    @Override
+    public int board_insert(BoardVO b) {
+        return this.userDao.board_insert(b);
+    }
+
 
 }

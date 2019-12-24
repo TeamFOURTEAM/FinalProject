@@ -62,5 +62,10 @@ public class UserDAOImpl implements UserDAO {
         return this.sqlSession.update("random_pwd",uv);
     }
 
+    @Override
+    public int board_insert(BoardVO b) {
+        return this.sqlSession.insert("board_insert",b);
+    }
+
 
 }
