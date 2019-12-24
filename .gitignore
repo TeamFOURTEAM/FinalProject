@@ -4,6 +4,7 @@
 /classes/
 /test-classes/
 .classpath
+bin/
 .project
 .settings/
 target/
