@@ -18,11 +18,6 @@
 	<!-- 스프링 AOP 자동 프록시 설정 -->
 	<aop:aspectj-autoproxy />
 	
-	
-	<!-- 파일처리를 위한 multipartResolver 설정 -->
-	<bean id="multipartResolver" 
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
-	
 	<!-- 스프링 jdbc => DataSource -->
 	<bean id="dataSource" 
 	class="org.springframework.jdbc.datasource.DriverManagerDataSource">
