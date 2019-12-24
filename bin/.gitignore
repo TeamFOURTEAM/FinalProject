@@ -1,0 +1,15 @@
+*/.git/*
+<<<<<<< HEAD
+.classpath
+.deployables
+.git
+=======
+.deployables
+.git
+/classes/
+/test-classes/
+.classpath
+>>>>>>> chatblanc_copy
+.project
+.settings/
+target/
