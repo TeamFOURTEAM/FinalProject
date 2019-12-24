@@ -6,6 +6,9 @@
 <link rel="stylesheet" href="/css/reset.css">
 <link rel="stylesheet" href="/css/cat_board/cat.css">
 
+<!-- js -->
+<script src="/js/cat_board/cat.js"></script>
+
 <!-- 본문 내용 -->
 <main>
     <form method="get" action="total_cat">

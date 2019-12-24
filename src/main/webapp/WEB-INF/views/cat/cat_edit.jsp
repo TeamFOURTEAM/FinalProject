@@ -11,13 +11,7 @@
 	src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript"
 	src="/resources/smartEditor/js/HuskyEZCreator.js" charset="utf-8"></script>
-	
-<script>
-$(function (){
-    // .attr()은 속성값(property)을 설정할 수 있다.
-      $('#header').attr('style', 'background: url(/resources/img/cat/cat01.jpg);');
-  });
-</script>
+<script src="/js/cat_board/cat.js"></script>
 
 <script>
 $(function(){
@@ -45,23 +39,6 @@ $(function(){
         $("#frm").submit();
     })
 })
-</script>
-
-<script>
-	function edit_check() {		
-		
-		if($.trim($("#cat_title").val())==""){
-			alert("고양이 종류를 입력하세요");
-			$("#cat_title").val("").focus();
-			return false;
-		}
-		if($.trim($("#cat_file").val())==""){
-			alert("파일을 첨부해 주세요");
-			$("#cat_file").val("").focus();
-			return false;
-		}		
-		alert("수정 되었습니다.");		
-	}		
 </script>
 
 <!-- 본문 내용 -->

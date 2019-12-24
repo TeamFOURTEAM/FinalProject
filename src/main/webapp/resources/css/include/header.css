@@ -82,16 +82,6 @@ margin-top: 80px;}
     z-index: 100;
 }
 
-#header.dog {
-	background: url(/resources/img/dog/light09.jpg);
-}
-
-#header.cat {
-	background: url(/resources/img/cat/cat01.jpg);
-}
-
-
-
 /* footer */
 .footer {text-align: center; padding: 30px 50px;}
 .footer li {position: relative; display: inline; padding: 0 7px 0 10px; white-space: nowrap;}
