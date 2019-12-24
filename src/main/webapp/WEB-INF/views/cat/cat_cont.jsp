@@ -6,20 +6,8 @@
 <link rel="stylesheet" href="/resources/css/reset.css">
 <link rel="stylesheet" href="/resources/css/cat_board/cat.css">
 
-<script>
-	$(document).ready(function() {
-		$('#del').click(function() {
-			var result = confirm('삭제 하시겠습니까?');
-			
-			if(result) {
-				alert("삭제 되었습니다");
-			}else {
-				history.back();
-				return false;
-			}
-		});
-	});
-</script>
+<!-- jquery -->
+<script src="/js/cat_board/cat.js"></script>
 
 <!-- 본문 내용 -->
 <main>
@@ -38,7 +26,7 @@
 					<input type="button" value="목록" 
 					onclick="location='/cat/total_cat?page=${page}';" />
 					
-					<form method="post" action="/cat_del_ok">
+					<form method="post" action="/cat_del_ok" onsubmit="return del_check();">
 						<input type="hidden" name="cat_no" value="${c.cat_no}" />
    						<input type="hidden" name="page" value="${page}" />
 						<input type="submit" value="삭제" id="del"

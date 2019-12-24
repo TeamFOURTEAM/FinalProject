@@ -10,6 +10,7 @@
 <script type="text/javascript"
 	src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="/resources/smartEditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script src="/js/cat_board/cat.js"></script>
 
 <script type="text/javascript">
 $(function(){
@@ -37,23 +38,6 @@ $(function(){
         $("#frm").submit();
     })
 })
-</script>
-
-<script>
-	function write_check() {		
-		
-		if($.trim($("#cat_title").val())==""){
-			alert("고양이 종류를 입력하세요");
-			$("#cat_title").val("").focus();
-			return false;
-		}
-		if($.trim($("#cat_file").val())==""){
-			alert("파일을 첨부해 주세요");
-			$("#cat_file").val("").focus();
-			return false;
-		}		
-		alert("저장되었습니다.");		
-	}		
 </script>
 
 <!-- 본문 내용 -->
