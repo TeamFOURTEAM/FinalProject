@@ -75,7 +75,7 @@
 				<tr>
 					<th>상품 설명</th>
 					<td>
-						<textarea name="item_cont" id="item_cont" cols="95" rows="20"></textarea>
+						<textarea name="item_cont" id="item_cont" cols="100" rows="20"></textarea>
 					</td>
 				</tr>
 				<tr>
