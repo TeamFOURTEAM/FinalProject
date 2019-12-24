@@ -6,11 +6,11 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 <configuration>
  <typeAliases>
- 	<typeAlias type="com.project.vo.CatVO" alias="cat"/>
- 	
  	<typeAlias type="com.project.vo.ShopVO" alias="s"/>
+ 	<!-- ShopVO 빈클래스의 객체 별칭명 s를 관리 -->
+ 	
+ 	<typeAlias type="com.project.vo.CatVO" alias="cat"/>
  </typeAliases>
 </configuration>
-
 
 

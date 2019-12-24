@@ -12,4 +12,6 @@ public interface ShopDAO {
 
 	List<ShopVO> getShopList(ShopVO s);
 
+	ShopVO getShopCont(int item_no);
+
 }
