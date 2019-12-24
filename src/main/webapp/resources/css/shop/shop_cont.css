@@ -21,7 +21,7 @@
 .item_main .itemImg {
     position: relative;
     float: left;
-    width: 30%; 
+    width: 30%; height: 450px;
     margin: 0 auto;
 }
 
@@ -34,7 +34,7 @@
 /* 확대될 타겟이미지*/
 .target {
     display: block;
-    width: 100%;
+    width: 100%; height: 450px;
 }
 
 /* 돋보기 */

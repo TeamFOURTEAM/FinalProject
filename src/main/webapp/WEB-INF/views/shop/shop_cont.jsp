@@ -60,11 +60,14 @@
                     <button onclick="">구매하기</button>
                     <div class="adminEditDel">
 	                    <button type="button" 
-	                    onclick="location='shop_cont?state=edit&item_no=${s.item_no}';">
+	                    onclick="location='shop_cont?state=edit&item_no=${s.item_no}&page=${page}';">
 	                    	수정하기</button>
 	                    <button type="button" 
-	                    onclick="location='shop_cont?state=del&item_no=${s.item_no}';">
+	                    onclick="location='shop_cont?state=del&item_no=${s.item_no}&page=${page}';">
 	                    	삭제하기</button>
+	                    <button type="button" 
+	                    onclick="location='total_shop?class=shop&page=${page}&find_field=item_name&find_name=';">임시 뒤로 버튼</button>
+	                    <!-- 삭제해줘야함 -->
                     </div>
                 </div>
                 </form>

@@ -33,6 +33,11 @@ public class ShopDAOImpl implements ShopDAO {
 	public ShopVO getShopCont(int item_no) {
 		return this.sqlSession.selectOne("shop_cont",item_no);
 	}
+
+	@Override
+	public void editShop(ShopVO s) {
+		this.sqlSession.update("shop_edit",s);
+	}
 	
 	
 }

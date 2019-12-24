@@ -33,4 +33,9 @@ public class ShopServiceImpl implements ShopService {
 	public ShopVO getShopCont(int item_no) {
 		return this.shopDAO.getShopCont(item_no);
 	}
+
+	@Override
+	public void editShop(ShopVO s) {
+		this.shopDAO.editShop(s);
+	}
 }

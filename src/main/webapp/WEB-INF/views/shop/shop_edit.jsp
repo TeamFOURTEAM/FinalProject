@@ -56,37 +56,49 @@
 		
 		<form method="post" action="/shop_edit_ok" id="frm" 
 		onsubmit="return shop_check();" enctype="multipart/form-data">
+			<%-- 히든 값 --%>
+		  <input type="hidden" name="item_no" value="${s.item_no}" />
+		  <input type="hidden" name="page" value="${page}" />
+		
 			<table>
 				<tr>
 					<th>상품명</th>
-					<td><input name="item_name" id="item_name" /></td>
+					<td>
+					<input name="item_name" id="item_name" value="${s.item_name}"/>
+					</td>
 				</tr>
 				<tr>
 					<th>세부설명</th>
-					<td><input name="item_sub" id="item_sub" /></td>
+					<td>
+					<input name="item_sub" id="item_sub" value="${s.item_sub}"/>
+					</td>
 				</tr>
 				<tr>
 					<th>가격</th>
-					<td><input name="item_price" id="item_price"  /></td>
+					<td>
+					<input name="item_price" id="item_price" value="${s.item_price}" />
+					</td>
 				</tr>
 				<tr>
 					<th>상품 재고</th>
 					<td>
 						<input type="text" name="item_stockCount" id="item_stockCount"
 					 onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' 
-					 style='ime-mode:disabled;'/>
+					 style='ime-mode:disabled;' value="${s.item_stockCount}"/>
 					 </td>
 				</tr>
 				<tr>
 					<th>상품 설명</th>
 					<td>
-						<textarea name="item_cont" id="item_cont" cols="100" rows="20"></textarea>
+						<textarea name="item_cont" id="item_cont" cols="100" rows="20">
+						${s.item_cont}
+						</textarea>
 					</td>
 				</tr>
 				<tr>
 					<th>상품 이미지</th>
 					<td>
-						<input type="file" name="item_img" id="item_img" readonly />
+						<input type="file" name="item_img" id="item_img" readonly/>
 					</td>
 				</tr>
 				<tr>

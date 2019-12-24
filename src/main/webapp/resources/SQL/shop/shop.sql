@@ -7,7 +7,7 @@ create table shopList(
 	,item_price varchar2(200) not null --가격
 	,item_stockCount varchar2(200) not null --상품 재고
 	,item_cont varchar2(4000) not null--상품 설명(에디터)
-	,item_img varchar2(200) not null --상품리스트 출력 이미지(자료실)
+	,item_img varchar2(200) not null --상품리스트 출력 이미지명(자료실)
 	,item_likeCount number(38) default 0 --추천수
 );
 

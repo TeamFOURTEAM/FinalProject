@@ -29,6 +29,7 @@
 	        <div class="admin_write">
 	            <button type="button" onclick="location.href='shop_write?page=${page}';">관리자 글쓰기</button>
 	            <button type="button" onclick="location.href='/';">임시 메인 버튼</button>
+	            <!-- 삭제해줘야함 -->
 	        </div>
         </div>
         <%--//검색 결과 수 --%>
