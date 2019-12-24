@@ -1,5 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ include file="../include/header.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Shop 관리자 글쓰기</title>
+
 
 <!-- style -->
 <link rel="stylesheet" href="/css/shop/shop_write.css" />
@@ -12,7 +17,6 @@
 
 <!-- java script -->
 <script type="text/javascript">
-
 	$(function(){
 		var oEditors = [];
 		nhn.husky.EZCreator.createInIFrame({
@@ -101,7 +105,6 @@
 </body>
 </html>
 
-<jsp:include page="../include/footer.jsp" />
 
 
 

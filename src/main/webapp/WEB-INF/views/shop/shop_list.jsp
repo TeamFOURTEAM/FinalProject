@@ -1,24 +1,24 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="../include/header.jsp"%>
 
-
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport"
+        content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <meta name="author" content="이재형">
+    <meta name="description" content="반려동물용품목록">
+    <title>반려동물용품목록</title>
 
     <!-- Style -->
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/shop/shop_list.css">
     <link rel="stylesheet" href="/css/main/font-awesome.css">
-
-
-<!-- 본문 내용 -->
-<main>
-    <form method="get" action="total_cat">
-        <section id="contents">
-            <div class="container">
-                    <article class="column col1">
-                        <div class="main">
-
-                            <div class="container">
+    
+</head>
+<body>
+	<div class="container">
         <form method="GET" action="total_shop">
         <%-- 검색 결과 수 --%>
         <div class="searchResultRow">
@@ -115,14 +115,14 @@
 					<div class="itemContainer">
                     <div class="itemImgBox">
                         <div class="itemImg">
-                            <a href="#">
+                            <a href="shop_cont?item_no=${n.item_no}&state=cont&page=${page}">
                                 <img src="/resources/photo_upload${n.item_img}" alt="imgTest">
                             </a>
                         </div>
                     </div>
                     
                     <div class="itemNameRow">
-                        <span><a href="#" class="itemName">${n.item_name}</a></span>
+                        <span><a href="shop_cont?item_no=${n.item_no}&state=cont&page=${page}" class="itemName">${n.item_name}</a></span>
                     </div>
                     <div class="itemPriceRow">
                         <span class="itemPrice">${n.item_price}</span>
@@ -142,7 +142,7 @@
 					<span>상품목록이 없습니다! 관리자에게 문의해주세요.</span>
                 </div>
 				</c:if>
-				<%-- db에 상품 정보가 없을 때 --%>
+				<%--//db에 상품 정보가 없을 때 --%>
             </div>
             <!--//일반 상품 목록 -->
         </div>
@@ -190,7 +190,7 @@
         		<%-- page가 1페이지 이하일때 --%>
         		<c:if test="${page <=1}"></c:if>
 				<c:if test="${page >1}">
-					<a href="total_shop?class=shop&page=${page-1}">
+					<a href="total_shop?class=shop&page=${page-1}&find_field=${find_field}&find_name=${find_name}">
 		                <i class="fa fa-angle-left" aria-hidden="true"></i>
 	                	<span class="ir_su">prev</span>
 		            </a>
@@ -203,13 +203,13 @@
 						</c:if>
 
 						<c:if test="${n != page}">
-							<a href="total_shop?class=shop&page=${n}">${n}</a>
+							<a href="total_shop?class=shop&page=${n}&find_field=${find_field}&find_name=${find_name}">${n}</a>
 						</c:if>
 					</c:forEach>
 
 					<c:if test="${page>=maxpage}"></c:if>
 					<c:if test="${page<maxpage}">
-						<a href="total_shop?class=shop&page=${page+1}"> 
+						<a href="total_shop?class=shop&page=${page+1}&find_field=${find_field}&find_name=${find_name}"> 
 						<i class="fa fa-angle-right" aria-hidden="true"></i> 
 						</a>
 						<span class="ir_su">next</span>
@@ -238,24 +238,13 @@
                     <input name="find_name" id="find_name" 
                     style="width: 250px;" placeholder="검색어를 입력해주세요."
                     class="search_word" value="${find_name}">
-                    <button class="search_btn" title="검색">
+                    <button class="search_btn" id="search_btn" title="검색">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </button>
                 </div>
                 </div>
+            </form>
         <!--//검색 바 -->
     </div>
-
-                             
-
-                            </div>
-                       
-                    </article>
-                </section>
-            
-        <!-- contents -->
-    </form>
-</main>
-
-
-<jsp:include page="../include/footer.jsp" />
+</body>
+</html>
