@@ -61,6 +61,12 @@
                 </form>
                 </div>
             </div>
+            
+            <div class="item_Cont">
+            	<c:if test="${empty s.item_cont}">
+            		<span>상품 설명이 없습니다. 관리자에게 문의해주세요.</span>
+            	</c:if>
+            </div>
         </div>
         <!--//상품 상세 영역 -->
     </div>
