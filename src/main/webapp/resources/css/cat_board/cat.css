@@ -68,6 +68,10 @@ input, select {
 	margin: 0 auto;
 }
 
+table,th,td,tr {
+	margin: 0 auto;
+}
+
 /* cat_cont input */
 #cat_menu input {
 	margin-right: 10px;

@@ -50,7 +50,7 @@
 							<li><a href="#">고양이 분양 4</a></li>
 						</ul></li>
 					<li><div>
-							<a href="/dog/total_dog?class=dog" >강아지 분양</a>
+							<a href="/dog/total_dog?page=1" >강아지 분양</a>
 						</div>
 						<ul class="sub_category">
 							<li><a href="#">강아지 분양 1</a></li>

@@ -109,7 +109,7 @@
                                     <select name="find_field" class="select">
                                         <option value="cat_title" <c:if test="${find_field == 'cat_title'}">
                                             ${'selected'}</c:if>>제목</option>
-                                        <option value="cat_cont" <c:if test="${find_field == 'bbs_cont'}">
+                                        <option value="cat_cont" <c:if test="${find_field == 'cat_cont'}">
                                             ${'selected'}</c:if>>내용</option>
                                     </select>
                                     <input name="find_name" id="find_name" size="30" value="${find_name}" />
