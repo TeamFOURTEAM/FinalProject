@@ -1,10 +1,8 @@
 @charset "UTF-8";
 
 /* 여백 초기화 */
-body,div,ul,li,dl,dd,dt,ol,h1,h2,h3,h4,h5,h6,input,fieldset,legend,p,select,
+body,div,ul,li,dl,dd,dt,ol,h1,h2,h3,h4,h5,h6,input,fieldset,legend,p,select,table,th,td,tr,
     textarea,button,form,figure,figcaption {margin:0;padding:0}
-
-table,th,td,tr {margin: 0 auto;}    
 
 /* a 링크 초기화 */
 a {color: #222; text-decoration: none; }

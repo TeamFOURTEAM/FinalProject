@@ -10,7 +10,7 @@
     <title>Final Project Main</title>
 
     <!-- Style -->
-    <link rel="stylesheet" href="css/main/reset.css">
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/main/index.css">
     <link rel="stylesheet" href="css/main/slick.css">
     <link rel="stylesheet" href="css/main/font-awesome.css">
@@ -25,8 +25,8 @@
             <div class="row">
                 <div class="header">
                     <div class="header_menu">
-                        <a href="./html.html">Login</a>
-                        <a href="./Member.html">Join</a>
+                        <a href="login">Login</a>
+                        <a href="join">Join</a>
                     </div>
                     <!--//header_menu -->
 
@@ -53,28 +53,28 @@
                                 <div class="section">
                                     <div class="main_menu_img">
                                         <div class="main_menu_btn">
-                                            <a href="#" class="a1">고양이 분양</a>
+                                            <a href="cat/total_cat?class=cat" class="a1">고양이 분양</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="section">
                                     <div class="main_menu_img">
                                         <div class="main_menu_btn">
-                                            <a href="#" class="a1">강아지 분양</a>
+                                            <a href="dog/total_dog?class=dog" class="a1">강아지 분양</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="section">
                                     <div class="main_menu_img">
                                         <div class="main_menu_btn">
-                                            <a href="#" class="a1">쇼핑</a>
+                                            <a href="shop/total_shop?class=shop&page=1&find_field=item_name&find_name=" class="a3">SHOP</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="section">
                                     <div class="main_menu_img">
                                         <div class="main_menu_btn">
-                                            <a href="#" class="a1">커뮤니티</a>
+                                            <a href="community/total_commu?class=commu" class="a4">커뮤니티</a>
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@
                                             <!-- main 이미지(슬라이드로 처리. 제일 뒤에 위치) -->
                                             <div>
                                                 <a href="#">
-                                                    <img src="./img/main/slider001.jpg" alt="이미지1">
+                                                    <img src="/img/main/slider001.jpg" alt="이미지1">
                                                     <figcaption><em>Responsive Site1</em><span>슬라이드
                                                             플러그인을 이용한 반응형 이미지 슬라이드 입니다.</span>
                                                     </figcaption>
@@ -97,7 +97,7 @@
 
                                             <div>
                                                 <a href="#">
-                                                    <img src="./img/main/slider002.jpg" alt="이미지2">
+                                                    <img src="/img/main/slider002.jpg" alt="이미지2">
                                                     <figcaption><em>Responsive Site2</em><span>슬라이드
                                                             플러그인을 이용한 반응형 이미지 슬라이드 입니다.</span>
                                                     </figcaption>
@@ -106,7 +106,7 @@
 
                                             <div>
                                                 <a href="#">
-                                                    <img src="./img/main/slider003.jpg" alt="이미지3">
+                                                    <img src="/img/main/slider003.jpg" alt="이미지3">
                                                     <figcaption><em>Responsive Site3</em><span>슬라이드
                                                             플러그인을 이용한 반응형 이미지 슬라이드 입니다.</span>
                                                     </figcaption>
@@ -115,7 +115,7 @@
 
                                             <div>
                                                 <a href="#">
-                                                    <img src="./img/main/slider004.jpg" alt="이미지4">
+                                                    <img src="/img/main/slider004.jpg" alt="이미지4">
                                                     <figcaption><em>Responsive Site4</em><span>슬라이드
                                                             플러그인을 이용한 반응형 이미지 슬라이드 입니다.</span>
                                                     </figcaption>
@@ -124,7 +124,7 @@
 
                                             <div>
                                                 <a href="#">
-                                                    <img src="./img/main/slider005.jpg" alt="이미지5">
+                                                    <img src="/img/main/slider005.jpg" alt="이미지5">
                                                     <figcaption><em>Responsive Site5</em><span>슬라이드
                                                             플러그인을 이용한 반응형 이미지 슬라이드 입니다.</span>
                                                     </figcaption>
@@ -172,7 +172,7 @@
 
 
     <!-- JavaScript Libraries -->
-    <script src="js/main/jquery.min_1.12.4.js"></script>
+    <script src="js/jquery.js"></script>
     <script src="js/main/slick.min.js"></script>
     <script src="js/main/fullpage.js"></script>
 
