@@ -38,7 +38,7 @@
 			
 			/** 스마트 에디터 입력부분 유효성 검증 **/
 			if( cont1 == ""  || cont1 == null || cont1 == '&nbsp;' || cont1 == '<p>&nbsp;</p>')  {
-	             alert("상품설명을 입력해주세요.");
+	             alert("상품설명을 반드시 입력해주세요.");
 	             oEditors.getById["item_cont"].exec("FOCUS"); //포커싱
 	             return;
 	        }
@@ -55,7 +55,7 @@
 		<span>관리자 Shop 컨텐츠 수정</span>
 		
 		<form method="post" action="/shop_edit_ok" id="frm" 
-		onsubmit="return shop_check();" enctype="multipart/form-data">
+		onsubmit="return shop_edit_check();" enctype="multipart/form-data">
 			<%-- 히든 값 --%>
 		  <input type="hidden" name="item_no" value="${s.item_no}" />
 		  <input type="hidden" name="page" value="${page}" />

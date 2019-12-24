@@ -75,6 +75,10 @@
     border-bottom: 1px solid #dcdcdc;
     padding: 20px 20px 20px 0;
 }
+.item_main .itemContBox .itemCount .contCount{
+    font-size: 20px;
+}
+
 .item_main .itemContBox .itemCount select {
     font-size: 20px; 
     width: 55px; height: 35px;
@@ -97,9 +101,6 @@
 .item_Cont { 
 	margin: 30px auto; border: 1px solid #000;
 }
-.item_Cont span {
-	font-size: 45px;
-} 
 
 
 

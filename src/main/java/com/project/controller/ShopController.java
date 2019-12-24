@@ -411,6 +411,8 @@ public class ShopController {
 		return model;
 	}//shop_edit_ok()
 	
+	/** shop 상품 삭제 **/
+	
 }
 
 

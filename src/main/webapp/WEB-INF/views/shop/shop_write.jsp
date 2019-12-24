@@ -38,7 +38,7 @@
 			
 			/** 스마트 에디터 입력부분 유효성 검증 **/
 			if( cont1 == ""  || cont1 == null || cont1 == '&nbsp;' || cont1 == '<p>&nbsp;</p>')  {
-	             alert("상품설명을 입력해주세요.");
+	             alert("상품설명을 반드시 입력해주세요.");
 	             oEditors.getById["item_cont"].exec("FOCUS"); //포커싱
 	             return;
 	        }

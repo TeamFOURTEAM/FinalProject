@@ -37,15 +37,16 @@
                 </div>
 
                 <div class="itemContPrice">
-                    <span class="contPrice">${s.item_price}</span>
+                    <span class="contPrice">가격 : ${s.item_price}</span>
                 </div>
                 
                 <div class="itemContReco">
-                    <span class="contReco">${s.item_likeCount}</span>
+                    <span class="contReco">이 상품이 좋아요! : ${s.item_likeCount}</span>
                 </div>
 
                 <form method="get" name="itemBuy">
                 <div class="itemCount">
+                	<span class="contCount" >수량 :  </span>
                     <select name="selectItemCount">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -58,6 +59,7 @@
                 <div class="itemBuyBox">
                     <button onclick="">장바구니에 담기</button>
                     <button onclick="">구매하기</button>
+	               	</form>
                     <div class="adminEditDel">
 	                    <button type="button" 
 	                    onclick="location='shop_cont?state=edit&item_no=${s.item_no}&page=${page}';">
@@ -67,10 +69,9 @@
 	                    	삭제하기</button>
 	                    <button type="button" 
 	                    onclick="location='total_shop?page=${page}&find_field=item_name&find_name=';">임시 뒤로 버튼</button>
-	                    <!-- 삭제해줘야함 -->
+	                    <!-- 삭제해줘야함(임시버튼)-->
                     </div>
                 </div>
-                </form>
             </div>
             
             <div class="item_Cont">
