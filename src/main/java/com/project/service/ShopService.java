@@ -16,4 +16,6 @@ public interface ShopService {
 
 	void editShop(ShopVO s);
 
+	void delShop(int item_no);
+
 }

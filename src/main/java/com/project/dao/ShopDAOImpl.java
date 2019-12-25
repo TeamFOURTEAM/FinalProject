@@ -38,6 +38,11 @@ public class ShopDAOImpl implements ShopDAO {
 	public void editShop(ShopVO s) {
 		this.sqlSession.update("shop_edit",s);
 	}
+
+	@Override
+	public void delShop(int item_no) {
+		this.sqlSession.delete("shop_del",item_no);
+	}
 	
 	
 }

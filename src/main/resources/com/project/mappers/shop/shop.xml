@@ -59,6 +59,9 @@
 	</update>
 	
 	<!-- shop 상품 내용 삭제 -->
+	<delete id="shop_del">
+		delete from shopList where item_no=#{item_no}
+	</delete>
 </mapper>
 
 

@@ -16,4 +16,6 @@ public interface ShopDAO {
 
 	void editShop(ShopVO s);
 
+	void delShop(int item_no);
+
 }

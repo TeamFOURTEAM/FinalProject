@@ -38,4 +38,9 @@ public class ShopServiceImpl implements ShopService {
 	public void editShop(ShopVO s) {
 		this.shopDAO.editShop(s);
 	}
+
+	@Override
+	public void delShop(int item_no) {
+		this.shopDAO.delShop(item_no);
+	}
 }

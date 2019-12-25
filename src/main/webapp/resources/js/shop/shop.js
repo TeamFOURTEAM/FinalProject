@@ -4,6 +4,7 @@
 
 /** shop 관리자 글쓰기 유효성 검증 **/
 
+/* 게시글 저장 */
 function shop_check(){
 	if($.trim($("#item_name").val())==""){
 		alert("상품명을 입력해주세요.");
@@ -33,6 +34,7 @@ function shop_check(){
 	alert('상품이 등록되었습니다.');
 }
 
+/* 게시글 수정 */
 function shop_edit_check(){
 	if($.trim($("#item_name").val())==""){
 		alert("상품명을 입력해주세요.");
@@ -62,7 +64,19 @@ function shop_edit_check(){
 	alert('상품이 수정되었습니다.');
 }
 
-	
+/* 게시글 삭제 */
+$(document).ready(function shop_del_check(){
+	$('#del_button').click(function(){
+		var result = confirm('삭제 하시겠습니까?');
+
+		if(result) {
+			alert("삭제 되었습니다.");
+		}else {
+			history.back();
+			return false;
+		}
+	})
+});
 
 /** shop 관리자 글쓰기 상품 가격 부분 숫자만 나오게 처리 **/
 function onlyNumber(event){

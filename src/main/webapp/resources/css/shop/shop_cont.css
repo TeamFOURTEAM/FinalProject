@@ -21,7 +21,7 @@
 .item_main .itemImg {
     position: relative;
     float: left;
-    width: 30%; height: 450px;
+    width: 40%; height: 450px;
     margin: 0 auto;
 }
 
@@ -84,20 +84,36 @@
     width: 55px; height: 35px;
 }
 
-/** 구매버튼영역 **/
-.item_main .itemBuyBox {
-    margin-top: 40px; 
+.item_main .itemContBox .itemCount .itemBuy {
+	margin-top: 15px; 
 }
-.item_main .itemBuyBox button {
+
+.item_main .itemContBox .itemCount .itemBuy button {
     padding: 15px; margin-right: 10px;
     font-size: 20px;
     border: 1px solid #000;
     margin: 10px 10px 10px 0;
 }
-.item_main .itemBuyBox .adminEditDel {
+
+/** 구매버튼영역 **/
+.item_main .itemBuyAdminBox {
+    margin-top: 20px; 
+}
+.item_main .itemBuyAdminBox button {
+    padding: 15px; margin-right: 10px;
+    font-size: 20px;
+    border: 1px solid #000;
+    margin: 10px 10px 10px 0;
+}
+.item_main .itemBuyAdminBox .adminEditDel {
+    display: inline-block;
+    width: 100%;
+}
+.item_main .itemBuyAdminBox .adminEditDel .del_form {
     display: inline-block;
 }
 
+/** 상품 세부 내용 영역 **/
 .item_Cont { 
 	margin: 30px auto; border: 1px solid #000;
 }

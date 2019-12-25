@@ -412,7 +412,29 @@ public class ShopController {
 	}//shop_edit_ok()
 	
 	/** shop 상품 삭제 **/
-	
+	@RequestMapping("/shop_del_ok")
+	public String shop_del_ok(
+			ShopVO s,int page,
+			HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		response.setContentType("text/html;charset=UTF-8");		
+		
+		String folder=request.getRealPath("resources/photo_upload");
+		//이진파일 업로드 서버 경로		
+		
+		if(s.getItem_img() != null) {
+			//첨부파일이 있는 경우
+			File file=new File(folder+s.getItem_img());
+			//삭제할 파일 객체 생성
+			file.delete();
+		}
+		
+		this.shopService.delShop(s.getItem_no());//DB로 부터 게시물 삭제
+		
+		return "redirect:/shop/total_shop?page="+page+"&find_field=item_name&find_name=";
+	}//shop_del_ok()
+
 }
 
 

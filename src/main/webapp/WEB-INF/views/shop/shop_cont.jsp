@@ -54,19 +54,28 @@
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
+                    <div class="itemBuy">
+	                    <button onclick="">장바구니에 담기</button>
+	                    <button onclick="">구매하기</button>
+                    </div>
+	               	</form>
                 </div>
                 
-                <div class="itemBuyBox">
-                    <button onclick="">장바구니에 담기</button>
-                    <button onclick="">구매하기</button>
-	               	</form>
+                <div class="itemBuyAdminBox">
                     <div class="adminEditDel">
 	                    <button type="button" 
 	                    onclick="location='shop_cont?state=edit&item_no=${s.item_no}&page=${page}';">
 	                    	수정하기</button>
-	                    <button type="button" 
-	                    onclick="location='shop_cont?state=del&item_no=${s.item_no}&page=${page}';">
-	                    	삭제하기</button>
+	                    <form method="post" action="/shop_del_ok"
+	                    	 onsubmit="return shop_del_check();" class="del_form">
+						<%-- 히든 값 --%>
+						<input type="hidden" name="item_no" value="${s.item_no}" /> 
+						<input type="hidden" name="page" value="${page}" />
+						
+						<button type="button" id="del_button"
+		                    onclick="location='shop_cont?state=del&item_no=${s.item_no}&page=${page}';">
+		                    	삭제하기</button>
+	                    </form>
 	                    <button type="button" 
 	                    onclick="location='total_shop?page=${page}&find_field=item_name&find_name=';">임시 뒤로 버튼</button>
 	                    <!-- 삭제해줘야함(임시버튼)-->
