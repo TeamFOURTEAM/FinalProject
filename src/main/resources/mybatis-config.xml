@@ -12,6 +12,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
  	<typeAlias type="com.project.vo.ShopVO" alias="s"/>
  	<!-- ShopVO 빈클래스의 객체 별칭명 s를 관리 -->
+ 	
+ 	<typeAlias type="com.project.BasketVO" alias="basket"/>
+ 	<!-- BasketVO 빈클래스의 객체 별칭명 basket을 관리 -->
 
  </typeAliases>
 </configuration>
