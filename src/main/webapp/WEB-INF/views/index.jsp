@@ -7,7 +7,7 @@
         content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
     <meta name="author" content="이재형">
     <meta name="description" content="Final Project 메인">
-    <title>CATS & DOGS : 고양이,강아지 분양</title>
+    <title>CATS AND DOGS : 고양이,강아지 분양</title>
 
     <!-- Style -->
     <link rel="stylesheet" href="css/reset.css">
@@ -31,7 +31,7 @@
                     <!--//header_menu -->
 
                     <div class="header_title">
-                        <a href="#">CATS & DOGS</a>
+                        <a href="#">CATS AND DOGS</a>
                     </div>
                     <!--//header_title -->
                 </div>
@@ -45,7 +45,6 @@
         <section id="contents">
             <div class="container">
                     <!-- 메뉴 영역 -->
-                <nav id="nav">
                     <div class="nav">
                         <div class="nav_item">
                             <div id="fullpage">
@@ -53,14 +52,14 @@
                                 <div class="section">
                                     <div class="main_menu_img">
                                         <div class="main_menu_btn">
-                                            <a href="cat/total_cat?class=cat" class="a1">고양이 분양</a>
+                                            <a href="cat/total_cat" class="a1">고양이 분양</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="section">
                                     <div class="main_menu_img">
                                         <div class="main_menu_btn">
-                                            <a href="dog/total_dog?class=dog" class="a1">강아지 분양</a>
+                                            <a href="dog/total_dog" class="a1">강아지 분양</a>
                                         </div>
                                     </div>
                                 </div>
@@ -74,7 +73,7 @@
                                 <div class="section">
                                     <div class="main_menu_img">
                                         <div class="main_menu_btn">
-                                            <a href="community/total_commu?class=commu" class="a4">커뮤니티</a>
+                                            <a href="community/total_commu" class="a4">커뮤니티</a>
                                         </div>
                                     </div>
                                 </div>
@@ -150,7 +149,7 @@
                                                         <address>
                                                             Copyright ©
                                                             <a href="https://namu.wiki/w/%EA%B7%80%EB%A9%B8%EC%9D%98%20%EC%B9%BC%EB%82%A0/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98">
-                                                            <strong>CATS & DOGS</strong></a>
+                                                            <strong>CATS AND DOGS</strong></a>
                                                             All Rights Reserved.
                                                         </address>
                                                     </div>
