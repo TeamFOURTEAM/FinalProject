@@ -64,7 +64,8 @@
 		                    <button onclick="">구매하기</button>
 	                    </div>
                     </c:if>
-	               	</form>
+               	</div>
+               	</form>
                 </div>
                 
                 <div class="itemBuyAdminBox">
@@ -88,12 +89,13 @@
                     </div>
                 </div>
             </div>
-            
+        <!--//상품 상세 영역 -->
+        
+        <!-- 상품 상세 설명 영역 -->
             <div class="item_Cont">
            		${s.item_cont}
             </div>
         </div>
-        <!--//상품 상세 영역 -->
-    </div>
+        <!--//상품 상세 설명 영역 -->
 </body>
 </html>
