@@ -25,7 +25,7 @@
         <!-- 상품 상세 영역 -->
         <div class="item_main">
             <div class="itemImg">
-                <img src="/resources/photo_upload${s.item_img}" class="target" data-zoom="3" />
+                <img src="/resources/photo_upload${s.item_img}" class="target" data-zoom="2" />
             </div>
 
             <div class="itemContBox">
