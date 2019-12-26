@@ -2,6 +2,7 @@ package com.project.vo;
 
 /** shop 장바구니 VO **/
 public class BasketVO {
+	
 	private int basket_no;//장바구니 번호
 	private String basket_id;//유저 아이디
 	private int product_no;//상품 번호

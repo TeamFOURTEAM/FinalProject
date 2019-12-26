@@ -61,8 +61,10 @@
                     </c:if>
                     <c:if test="${s.item_stockCount != '0'}">
 	                    <div class="itemBuy">
-		                    <button onclick="">장바구니에 담기</button>
-		                    <button onclick="">구매하기</button>
+		                    <button type="button" 
+		                    onclick="location='basket_add?item_no=${s.item_no}&page=${page}';">
+		                    	장바구니</button>
+		                    <button id="buy_button" onclick="">구매</button>
 	                    </div>
                     </c:if>
                	</div>
