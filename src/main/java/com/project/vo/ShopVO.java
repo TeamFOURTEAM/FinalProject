@@ -21,6 +21,7 @@ public class ShopVO {
 	private String find_field;
 	private String find_name;
 	
+	/** getter // setter **/
 	public int getItem_no() {
 		return item_no;
 	}

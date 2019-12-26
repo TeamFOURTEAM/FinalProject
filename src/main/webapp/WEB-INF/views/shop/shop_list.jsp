@@ -58,7 +58,7 @@
                     <span class="itemPrice">\20,000</span>
                 </div>
                 <div class="itemRecoRow">
-                    <span class="bestNum">추천수: 1</span>
+                    <span class="bestNum">이 제품이 좋아요 ! : 1</span>
                 </div>
                </div>
 
@@ -79,7 +79,7 @@
                     <span class="itemPrice">\20,000</span>
                 </div>
                 <div class="itemRecoRow">
-                    <span class="bestNum">추천수: 1</span>
+                    <span class="bestNum">이 제품이 좋아요 ! : 1</span>
                 </div>
                </div>
 
@@ -100,7 +100,7 @@
                     <span class="itemPrice">\20,000</span>
                 </div>
                 <div class="itemRecoRow">
-                    <span class="bestNum">추천수: 1</span>
+                    <span class="bestNum">이 제품이 좋아요 ! : 1</span>
                 </div>
                 </div>
             </div>
