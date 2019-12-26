@@ -66,7 +66,6 @@
                     </c:if>
                	</div>
                	</form>
-                </div>
                 
                 <div class="itemBuyAdminBox">
                     <div class="adminEditDel">
@@ -87,6 +86,7 @@
 	                    onclick="location='total_shop?page=${page}&find_field=item_name&find_name=';">임시 뒤로 버튼</button>
 	                    <!-- 삭제해줘야함(임시버튼)-->
                     </div>
+                </div>
                 </div>
             </div>
         <!--//상품 상세 영역 -->
