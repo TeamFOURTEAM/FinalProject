@@ -293,10 +293,7 @@ public class ShopController {
 	
 		}else if(state.equals("edit")) {//수정
 			model.setViewName("shop/shop_edit");
-			
-		}else if(state.equals("del")) {//삭제
-			model.setViewName("shop/shop_del");
-			
+		
 		}//if else if
 		
 		return model;
@@ -339,8 +336,7 @@ public class ShopController {
 		if(UpFile != null) {//첨부한 파일이 있는 경우
 			String fileName=UpFile.getName();//첨부한 파일명
 			File DelFile=new File(saveFolder+shopImg.getItem_img());
-			//삭제시켜야할 저장된 파일 경로 찾아올 수 있는지 실험.
-			System.out.println(DelFile.getAbsoluteFile());
+			
 			if(DelFile.exists()) {
 				DelFile.delete();//기존파일 삭제
 			}
@@ -412,7 +408,7 @@ public class ShopController {
 	}//shop_edit_ok()
 	
 	/** shop 상품 삭제 **/
-	@RequestMapping("/shop_del_ok")
+	@RequestMapping("/shop_del")
 	public String shop_del_ok(
 			ShopVO s,int page,
 			HttpServletRequest request,
@@ -420,9 +416,9 @@ public class ShopController {
 		
 		response.setContentType("text/html;charset=UTF-8");		
 		
-		String folder=request.getRealPath("resources/photo_upload");
+		String folder=request.getSession().getServletContext().getRealPath("resources/photo_upload");
 		//이진파일 업로드 서버 경로		
-		
+
 		if(s.getItem_img() != null) {
 			//첨부파일이 있는 경우
 			File file=new File(folder+s.getItem_img());

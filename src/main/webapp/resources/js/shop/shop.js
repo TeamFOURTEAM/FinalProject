@@ -62,20 +62,19 @@ function shop_edit_check(){
 		return false;
 	}
 	alert('상품이 수정되었습니다.');
-}
+};
 
 /* 게시글 삭제 */
 $(document).ready(function shop_del_check(){
 	$('#del_button').click(function(){
-		var result = confirm('삭제 하시겠습니까?');
+		var result = confirm('상품을 삭제 하시겠습니까?');
 
 		if(result) {
-			alert("삭제 되었습니다.");
+			alert("상품이 삭제 되었습니다.");
 		}else {
-			history.back();
 			return false;
 		}
-	})
+	});
 });
 
 /** shop 관리자 글쓰기 상품 가격 부분 숫자만 나오게 처리 **/
@@ -86,7 +85,8 @@ function onlyNumber(event){
     return;
   else
     return false;
-}
+};
+
 function removeChar(event) {
   event = event || window.event;
   var keyID = (event.which) ? event.which : event.keyCode;
@@ -94,7 +94,7 @@ function removeChar(event) {
     return;
   else
     event.target.value = event.target.value.replace(/[^0-9]/g, "");
-}
+};
 
 
 

@@ -18,6 +18,7 @@
     <!-- JavaScript Libraries -->
     <script src="/js/shop/zoom.js"></script>
     <script src="/js/jquery.js"></script>
+    <script src="/js/shop/shop.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -67,15 +68,14 @@
 	                    onclick="location='shop_cont?state=edit&item_no=${s.item_no}&page=${page}';">
 	                    	수정하기</button>
 	                    	
-	                    <form method="post" action="/shop_del_ok"
+	                    <form method="post" action="/shop_del"
 	                    	 onsubmit="return shop_del_check();" class="del_form">
 						<%-- 히든 값 --%>
 						<input type="hidden" name="item_no" value="${s.item_no}" /> 
 						<input type="hidden" name="page" value="${page}" />
+						<input type="hidden" name="item_img" value="${s.item_img}" />
 						
-						<button id="del_button"
-		                    onclick="location='shop_cont?state=del&item_no=${s.item_no}&page=${page}';">
-		                    	삭제하기</button>
+						<button id="del_button">삭제</button>
 	                    </form>
 	                    <button type="button" 
 	                    onclick="location='total_shop?page=${page}&find_field=item_name&find_name=';">임시 뒤로 버튼</button>
