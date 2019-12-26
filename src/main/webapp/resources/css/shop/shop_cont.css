@@ -71,6 +71,8 @@
     border-bottom: 1px solid #dcdcdc;
     font-size: 20px; padding: 20px 20px 20px 0;
 }
+
+/** 수량 & 구매 영역 **/
 .item_main .itemContBox .itemCount {
     border-bottom: 1px solid #dcdcdc;
     padding: 20px 20px 20px 0;
@@ -83,7 +85,10 @@
     font-size: 20px; 
     width: 55px; height: 35px;
 }
-
+.item_main .itemContBox .itemCount .stockZero {
+	font-size: 20px; color: #ff0000; 
+	padding-left: 15px;
+}
 .item_main .itemContBox .itemCount .itemBuy {
 	margin-top: 15px; 
 }

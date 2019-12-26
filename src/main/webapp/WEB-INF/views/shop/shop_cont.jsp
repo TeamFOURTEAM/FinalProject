@@ -55,10 +55,15 @@
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
-                    <div class="itemBuy">
-	                    <button onclick="">장바구니에 담기</button>
-	                    <button onclick="">구매하기</button>
-                    </div>
+                    <c:if test="${s.item_stockCount == '0'}">
+                    	<span class="stockZero">이 상품의 재고가 없습니다. 문의해주세요!</span>
+                    </c:if>
+                    <c:if test="${s.item_stockCount != '0'}">
+	                    <div class="itemBuy">
+		                    <button onclick="">장바구니에 담기</button>
+		                    <button onclick="">구매하기</button>
+	                    </div>
+                    </c:if>
 	               	</form>
                 </div>
                 
