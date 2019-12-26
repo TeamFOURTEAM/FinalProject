@@ -46,7 +46,7 @@
                     <span class="contReco">이 상품이 좋아요! : ${s.item_likeCount}</span>
                 </div>
 
-                <form method="get" name="itemBuy">
+                <form method="post" name="itemBuy">
                 <div class="itemCount">
                 	<span class="contCount" >수량 :  </span>
                     <select name="selectItemCount">
@@ -74,7 +74,7 @@
 	                    onclick="location='shop_cont?state=edit&item_no=${s.item_no}&page=${page}';">
 	                    	수정하기</button>
 	                    	
-	                    <form method="post" action="/shop_del"
+	                    <form method="get" action="/shop_del"
 	                    	 onsubmit="return shop_del_check();" class="del_form">
 						<%-- 히든 값 --%>
 						<input type="hidden" name="item_no" value="${s.item_no}" /> 
