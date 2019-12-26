@@ -10,6 +10,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
  	<!-- ShopVO 빈클래스의 객체 별칭명 s를 관리 -->
  	
  	<typeAlias type="com.project.vo.CatVO" alias="cat"/>
+ 	<typeAlias type="com.project.vo.MemberVO" alias="Member"/>
  </typeAliases>
 </configuration>
 
