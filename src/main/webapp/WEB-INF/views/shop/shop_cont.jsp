@@ -66,13 +66,14 @@
 	                    <button type="button" 
 	                    onclick="location='shop_cont?state=edit&item_no=${s.item_no}&page=${page}';">
 	                    	수정하기</button>
+	                    	
 	                    <form method="post" action="/shop_del_ok"
 	                    	 onsubmit="return shop_del_check();" class="del_form">
 						<%-- 히든 값 --%>
 						<input type="hidden" name="item_no" value="${s.item_no}" /> 
 						<input type="hidden" name="page" value="${page}" />
 						
-						<button type="button" id="del_button"
+						<button id="del_button"
 		                    onclick="location='shop_cont?state=del&item_no=${s.item_no}&page=${page}';">
 		                    	삭제하기</button>
 	                    </form>
