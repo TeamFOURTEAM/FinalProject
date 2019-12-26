@@ -26,6 +26,7 @@
         <div class="item_main">
             <div class="itemImg">
                 <img src="/resources/photo_upload${s.item_img}" class="target" data-zoom="2" />
+                <!-- data-zoom 으로 돋보기 크기 조절 -->
             </div>
 
             <div class="itemContBox">

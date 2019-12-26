@@ -50,7 +50,7 @@
 /** 상품 상세 정보 **/
 .item_main .itemContBox {
     width: 60%; overflow: hidden;
-    padding-left: 100px;
+    padding-left: 160px;
 }
 
 .item_main .itemContBox .itemContName {
@@ -120,7 +120,7 @@
 
 /** 상품 세부 내용 영역 **/
 .item_Cont { 
-	margin: 30px auto; border: 1px solid #000;
+	margin: 200px auto 0 auto; border: 1px solid #000;
 }
 
 
