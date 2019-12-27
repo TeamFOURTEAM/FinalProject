@@ -27,8 +27,10 @@ public class BasketController {
 		
 		/* session id 값이 있을 때 장바구니추가 활성화시켜야 함 */
 		
-//		System.out.println(basket.getProduct_no());
-//		System.out.println(basket.getBasket_count());
+		System.out.println(basket.getProduct_no());
+		System.out.println(basket.getBasket_count());
+		System.out.println(basket.getBasket_id());//(임시로 히든값으로 아이디 전달)
+		
 		
 		
 		

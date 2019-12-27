@@ -49,7 +49,7 @@
 
 /** 상품 상세 정보 **/
 .item_main .itemContBox {
-    width: 60%; overflow: hidden;
+    width: 65%; overflow: hidden;
     padding-left: 160px;
 }
 
@@ -84,6 +84,9 @@
 .item_main .itemContBox .itemCount select {
     font-size: 20px; 
     width: 55px; height: 35px;
+}
+.item_main .itemContBox .itemCount .stockCount {
+    display: none;
 }
 .item_main .itemContBox .itemCount .stockZero {
 	font-size: 20px; color: #ff0000; 
