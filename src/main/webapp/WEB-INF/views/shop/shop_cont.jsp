@@ -59,9 +59,11 @@
                 </div>
 
                 <form method="post" name="itemBuy" onsubmit="return item_Buy_Check();">
-                <input type="hidden" name="product_no" value="${s.item_no}" />
                 <input type="hidden" name="basket_id" value="pebble" />
+                <input type="hidden" name="product_no" value="${s.item_no}" />
+                <input type="hidden" name="price_sum" value="" />
                 <input type="hidden" name="page" value="${page}" />
+                
                 <div class="itemCount">
                 	<span class="contCount" >수량 :  </span>
                     <select name="basket_count" id="basket_count">
@@ -76,6 +78,7 @@
                     	<span class="stockZero">이 상품의 재고가 없습니다. 문의해주세요!</span>
                     </c:if>
                     <c:if test="${s.item_stockCount != '0'}">
+                    	<div class="itemPriceSum">총 합계금액 : </div>
 	                    <div class="itemBuy">
 	                    	<%-- 하나의 form에서 action을 2개로 나눔  --%>
 		                    <button 

@@ -13,6 +13,12 @@ create table shopList(
 
 select * from shopList order by item_no desc;
 
+--item_cont CLOB 타입으로 변경
+alter table shopList add (item_cont2 CLOB);
+update shopList set item_cont2 = item_cont;
+alter table shopList drop column item_cont;
+alter table shopList RENAME COLUMN item_cont2 to item_cont;
+
 
 --item_no_seq 시퀀스 생성
 create sequence item_no_seq

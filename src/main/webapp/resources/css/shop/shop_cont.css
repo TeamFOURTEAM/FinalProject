@@ -93,6 +93,10 @@
 	font-size: 20px; color: #ff0000; 
 	padding-left: 15px;
 }
+.item_main .itemContBox .itemCount .itemPriceSum {
+	font-size: 20px;
+	padding: 20px 0;
+}
 .item_main .itemContBox .itemCount .itemBuy {
 	margin-top: 15px; 
 }
