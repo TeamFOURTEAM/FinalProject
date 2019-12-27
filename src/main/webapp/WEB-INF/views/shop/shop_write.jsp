@@ -67,7 +67,9 @@
 				</tr>
 				<tr>
 					<th>가격</th>
-					<td><input name="item_price" id="item_price"  /></td>
+					<td><input name="item_price" id="item_price" 
+					onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' 
+					 style='ime-mode:disabled;'  /></td>
 				</tr>
 				<tr>
 					<th>상품 재고</th>

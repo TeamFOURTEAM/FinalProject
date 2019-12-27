@@ -127,7 +127,7 @@
                         <span><a href="shop_cont?state=cont&item_no=${n.item_no}&page=${page}" class="itemName">${n.item_name}</a></span>
                     </div>
                     <div class="itemPriceRow">
-                        <span class="itemPrice">${n.item_price}</span>
+                        <span class="itemPrice">\ ${n.item_price}</span>
                     </div>
                     <div class="itemRecoRow">
                         <span class="bestNum">이 제품이 좋아요 ! : ${n.item_likeCount}</span>

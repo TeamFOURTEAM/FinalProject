@@ -154,8 +154,8 @@ public class ShopController {
 		
 		String item_name=multi.getParameter("item_name");
 		String item_sub=multi.getParameter("item_sub");
-		String item_price=multi.getParameter("item_price");
-		String item_stockCount=multi.getParameter("item_stockCount");
+		int item_price=Integer.parseInt(multi.getParameter("item_price"));
+		int item_stockCount=Integer.parseInt(multi.getParameter("item_stockCount"));
 		String item_cont=multi.getParameter("item_cont");
 		
 		
@@ -325,8 +325,8 @@ public class ShopController {
 		int item_no=Integer.parseInt(multi.getParameter("item_no"));
 		String item_name=multi.getParameter("item_name");
 		String item_sub=multi.getParameter("item_sub");
-		String item_price=multi.getParameter("item_price");
-		String item_stockCount=multi.getParameter("item_stockCount");
+		int item_price=Integer.parseInt(multi.getParameter("item_price"));
+		int item_stockCount=Integer.parseInt(multi.getParameter("item_stockCount"));
 		String item_cont=multi.getParameter("item_cont");
 		
 		ShopVO shopImg=this.shopService.getShopCont(item_no);

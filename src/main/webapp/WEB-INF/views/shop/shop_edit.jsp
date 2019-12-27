@@ -76,7 +76,9 @@
 				<tr>
 					<th>가격</th>
 					<td>
-					<input name="item_price" id="item_price" value="${s.item_price}" />
+					<input name="item_price" id="item_price" 
+					onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' 
+					 style='ime-mode:disabled;' value="${s.item_price}" />
 					</td>
 				</tr>
 				<tr>
