@@ -9,6 +9,10 @@ public class BasketVO {
 	private int basket_count;//담은 상품 개수
 	private int validity;//상품의 상태. 1-> 장바구니에 담긴 상품, 2-> 주문완료 처리 된 상품
 	
+	private int price;//상품 개별 가격
+	private int price_sum;//총 가격
+	
+	
 	
 	/** getter // setter **/
 	public int getBasket_no() {
@@ -40,6 +44,18 @@ public class BasketVO {
 	}
 	public void setValidity(int validity) {
 		this.validity = validity;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getPrice_sum() {
+		return price_sum;
+	}
+	public void setPrice_sum(int price_sum) {
+		this.price_sum = price_sum;
 	}
 	
 	
