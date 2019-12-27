@@ -13,31 +13,34 @@
 <script src="/js/cat_board/cat.js"></script>
 
 <script type="text/javascript">
-$(function(){
-    //전역변수
-    var obj = [];              
-    //스마트에디터 프레임생성
-    nhn.husky.EZCreator.createInIFrame({
-        oAppRef: obj,
-        elPlaceHolder: "cat_cont",
-        sSkinURI: "/resources/smartEditor/SmartEditor2Skin.html",
-        htParams : {
-            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-            bUseToolbar : true,            
-            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-            bUseVerticalResizer : true,    
-            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-            bUseModeChanger : true,
-        }
-    });
-    //전송버튼
-    $("#save").click(function(){
-        //id가 smarteditor인 textarea에 에디터에서 대입
-        obj.getById["cat_cont"].exec("UPDATE_CONTENTS_FIELD", []);
-        //폼 submit
-        $("#frm").submit();
-    })
-})
+
+	$(function(){
+		var oEditors = [];
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef: oEditors,
+			elPlaceHolder: "cat_cont",
+			sSkinURI: "/resources/smartEditor/SmartEditor2Skin.html",
+			fCreator: "createSEditor2",
+			htParams: {
+				bUseToolbar : true, //툴바 사용 여부
+				bUseVerticalResizer : true, //입력창 크기 조절바 사용 여부
+				bUseModeChanger : true //모드 탭 사용 여부	
+			}
+		});
+		
+		$('#save').click(function () {
+			oEditors.getById['cat_cont'].exec('UPDATE_CONTENTS_FIELD',[]);
+			var cont1= $("#cat_cont").val();
+			
+			/** 스마트 에디터 입력부분 유효성 검증 **/
+			if( cont1 == ""  || cont1 == null || cont1 == '&nbsp;' || cont1 == '<p>&nbsp;</p>')  {
+	             alert("내용을을 입력해주세요.");
+	             oEditors.getById["cat_cont"].exec("FOCUS"); //포커싱
+	             return;
+	        }
+			$('#frm').submit();
+		});
+	});
 </script>
 
 <!-- 본문 내용 -->
@@ -47,7 +50,7 @@ $(function(){
 		<section id="cont">
 			<article class="column col1">
 				<div class="main">
-					<form method="post" action="/cat_write_ok" onsubmit="return write_check();"
+					<form method="post" action="/cat_write_ok" id="frm" onsubmit="return write_check();"
 					enctype="multipart/form-data">
 					
 					<table id="cat_write" >
@@ -66,7 +69,7 @@ $(function(){
 						<tr>
 							<th></th>
 							<td>
-								<input type="submit" class="size" id="save" value="저장" />
+								<input type="button" class="size" id="save" value="저장" />
 								<input type="button" class="size" value="취소" onclick="history.back();" />
 							</td>
 						</tr>

@@ -44,7 +44,11 @@ public class CatBoardController {
 			HttpServletRequest request) throws Exception{
 		
 		//날짜별 폴더 생성
-		String saveFolder=request.getRealPath("resources/photo_upload");
+		String saveFolder=request.getSession().getServletContext().getRealPath("resources/photo_upload");
+		/* 첨부파일 업로드 경로, 실제 톰캣 프로젝트 경로를 반환 =>
+		 * c:\spring_work\.metadata\.plugins\org.eclipse.wst.
+		 * server.core\tmp1\wtbwebapps\project\photo_upload
+		 */
 		
 		int fileSize=5*1024*1024;//첨부파일 최대크기(5MB)
 		MultipartRequest multi=null;//첨부파일을 가져오는 api
@@ -64,12 +68,18 @@ public class CatBoardController {
 			//1월이 0으로 반환되기 때문이다.
 			int date=cal.get(Calendar.DATE);//일 값
 			
-			String homedir=saveFolder+"/"+year+"-"+month+"-"+date;
+			String datedir=saveFolder+"/"+year+"-"+month+"-"+date;
+			String catdir=saveFolder+"/"+year+"-"+month+"-"+date+"/"+"cat";
 			//오늘 날짜 폴더 경로를 저장
-			File path1=new File(homedir);
+			File path1=new File(datedir);
+			File path2=new File(catdir);
+			
 			if(!(path1.exists())) {
-				path1.mkdir();//오늘 날짜 폴더 생성
-			}//if
+				path1.mkdir();//오늘 날짜 폴더 경로를 확인하고 저장
+			}
+			if(!(path2.exists())) {
+				path2.mkdir();//오늘 날짜 폴더 경로 + 하위의 cat폴더를 확인하고 저장
+			}
 			
 			Random r=new Random();
 			int random=r.nextInt(100000000);//0이상 1억미만 사이의
@@ -85,11 +95,11 @@ public class CatBoardController {
 			String refilename="cat"+year+month+date+random+"."+
 					fileExtendsion;//새로운 첨부파일명을 저장
 			String fileDBName="/"+year+"-"+month+"-"+date+"/"+
-					refilename;//DB에 저장될 레코드 값
-			UpFile.renameTo(new File(homedir+"/"+refilename));
+					"cat"+"/"+refilename;//DB에 저장될 레코드 값
+			
+			UpFile.renameTo(new File(catdir+"/"+refilename));
 			//바뀌어진 첨부파일명으로 업로드
 			c.setCat_file(fileDBName);
-			System.out.println(fileDBName);
 			
 		}else {
 			 //mybatis는 컬럼에 null을 저장하지 못함. 그러므로 파일을
@@ -201,9 +211,11 @@ public class CatBoardController {
 		response.setContentType("text/html;chrset=UTF-8");
 	
 		
-		String saveFolder=
-				request.getRealPath("resources/photo_upload");
-		//이진파일 업로드 서버 경로
+		String saveFolder=request.getSession().getServletContext().getRealPath("resources/photo_upload");
+		/* 첨부파일 업로드 경로, 실제 톰캣 프로젝트 경로를 반환 =>
+		 * c:\spring_work\.metadata\.plugins\org.eclipse.wst.
+		 * server.core\tmp1\wtbwebapps\project\photo_upload
+		 */
 		
 		int fileSize=5*1024*1024;//이진파일 최대크기
 		
@@ -219,12 +231,14 @@ public class CatBoardController {
 		String cat_title=multi.getParameter("cat_title");
 		String cat_cont=multi.getParameter("cat_cont");
 		
+		CatVO catImg=this.catService.getCatCont(cat_no);
+		
 		
 			File UpFile=multi.getFile("cat_file");//수정 첨부한 파일
 			
 			if(UpFile != null) {
 				String fileName=UpFile.getName();//첨부파일명
-				File DelFile=new File(saveFolder+c.getCat_file());
+				File DelFile=new File(saveFolder+catImg.getCat_file());
 				//삭제할 파일 객체 생성
 				if(DelFile.exists()) {
 					DelFile.delete();//기존파일 삭제
@@ -234,15 +248,21 @@ public class CatBoardController {
 				int year=cc.get(Calendar.YEAR);//년도값
 				int month=cc.get(Calendar.MONTH)+1;//월값
 				int date=cc.get(Calendar.DATE);//일값
-				String homedir=
-					saveFolder+"/"+year+"-"+month+"-"+date;
-				//오늘 날짜 폴더경로 저장
 				
+				String datedir=saveFolder+"/"+year+"-"+month+"-"+date;
+				//오늘 날짜 폴더 경로를 저장
+				String catdir=saveFolder+"/"+year+"-"+month+"-"+date+"/"+"cat";
+				//오늘 날짜 폴더 경로 + 하위의 cat폴더를 생성
+				File path1=new File(datedir);
+				File path2=new File(catdir);
 				
-				File path1=new File(homedir);
 				if(!(path1.exists())) {
-					path1.mkdir();//오늘날짜 폴더 생성
+					path1.mkdir();//오늘 날짜 폴더 경로를 확인하고 저장
 				}
+				if(!(path2.exists())) {
+					path2.mkdir();//오늘 날짜 폴더 경로 + 하위의 cat폴더를 확인하고 저장
+				}
+				
 				Random r=new Random();
 				int random=r.nextInt(100000000);
 				
@@ -256,17 +276,18 @@ public class CatBoardController {
 						+fileExtension;//새로운 첨부파일명
 				String fileDBName="/"+year+"-"+month+"-"+date+
 						"/"+refileName;//DB에 저장될 레코드 값
-				UpFile.renameTo(new File(homedir+"/"+refileName));
+				UpFile.renameTo(new File(catdir+"/"+refileName));
 				//바뀌어진 이진파일명으로 업로드
 				c.setCat_file(fileDBName);
 				
 			}else {//파일을 첨부하지 않았을 때
-				if(c.getCat_file() != null) {//기존파일이 있는 경우
-					c.setCat_file(c.getCat_file());
+				if(catImg.getCat_file() != null) {//기존파일이 있는 경우
+					c.setCat_file(catImg.getCat_file());
 				}else {//기존 파일이 없는 경우
 					c.setCat_file("");
 				}//if else
 			}//if else
+			
 			c.setCat_no(cat_no);
 			c.setCat_title(cat_title); c.setCat_cont(cat_cont);
 			
