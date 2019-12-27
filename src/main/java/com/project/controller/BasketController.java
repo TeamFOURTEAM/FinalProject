@@ -8,27 +8,31 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.project.service.BuyService;
+import com.project.service.BasketService;
 import com.project.vo.BasketVO;
 
+/** 장바구니 컨트롤러 **/
 @Controller
-public class BuyController {
+public class BasketController {
 	
 	@Autowired
-	private BuyService buyService;
+	private BasketService buyService;
 	
 	/** 장바구니에 추가 **/
-	@RequestMapping("/basket_add")
+	@RequestMapping("shop/basket_add")
 	public ModelAndView basket_add(
-			BasketVO b,
+			BasketVO basket,
 			HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response) throws Exception {
 		
-		/* session id 값이 있을 때 장바구니추가 활성화 */
+		/* session id 값이 있을 때 장바구니추가 활성화시켜야 함 */
+		
+//		System.out.println(basket.getProduct_no());
+//		System.out.println(basket.getBasket_count());
 		
 		
 		
-		return new ModelAndView("/basket_list");
+		return new ModelAndView("shop/basket_list");
 	}//basket_add()
 	
 }

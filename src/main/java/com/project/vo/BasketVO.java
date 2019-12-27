@@ -3,9 +3,9 @@ package com.project.vo;
 /** shop 장바구니 VO **/
 public class BasketVO {
 	
-	private int basket_no;//장바구니 번호
+	private int basket_no;//장바구니 상품 번호
 	private String basket_id;//유저 아이디
-	private int product_no;//상품 번호
+	private int product_no;//원래 상품 번호
 	private int basket_count;//담은 상품 개수
 	private int validity;//상품의 상태. 1-> 장바구니에 담긴 상품, 2-> 주문완료 처리 된 상품
 	

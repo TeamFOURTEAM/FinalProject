@@ -1,5 +1,5 @@
 package com.project.service;
 
-public interface BuyService {
+public interface BasketService {
 
 }

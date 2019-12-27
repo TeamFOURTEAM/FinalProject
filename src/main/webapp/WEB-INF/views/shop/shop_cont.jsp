@@ -47,9 +47,11 @@
                 </div>
 
                 <form method="post" name="itemBuy">
+                <input type="hidden" name="product_no" value="${s.item_no}" />
+                <input type="hidden" name="page" value="${page}" />
                 <div class="itemCount">
                 	<span class="contCount" >수량 :  </span>
-                    <select name="selectItemCount">
+                    <select name="basket_count">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -61,10 +63,11 @@
                     </c:if>
                     <c:if test="${s.item_stockCount != '0'}">
 	                    <div class="itemBuy">
-		                    <button type="button" 
-		                    onclick="location='basket_add?item_no=${s.item_no}&page=${page}';">
-		                    	장바구니</button>
-		                    <button id="buy_button" onclick="">구매</button>
+	                    	<%-- 하나의 form에서 action을 2개로 나눔  --%>
+		                    <button 
+		                    onclick="javascript: form.action='basket_add';">장바구니</button>
+		                    <button id="buy_button" 
+		                    onclick="javascript: form.action='buy';">구매</button>
 	                    </div>
                     </c:if>
                	</div>

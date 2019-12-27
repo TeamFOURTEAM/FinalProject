@@ -24,6 +24,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.project.service.ShopService;
 import com.project.vo.ShopVO;
 
+/** shop 상품 목록 & 관리자 컨트롤러 **/
 @Controller
 public class ShopController {
 	
@@ -48,7 +49,7 @@ public class ShopController {
 	@RequestMapping("/multiplePhotoUpload")
 	public void multiplePhotoUpload(
 			HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response) throws Exception {
 		
 		try {
 //			String saveFolder=request.getSession().getServletContext().getRealPath("resources/photo_upload");
@@ -228,7 +229,7 @@ public class ShopController {
 	@RequestMapping("shop/total_shop")
 	public String shop_list(
 			Model shopList,ShopVO s,
-			HttpServletRequest request) {
+			HttpServletRequest request) throws Exception {
 		
 		int page=1;
 		int limit=6;//한페이지에 보여지는 상품 개수
@@ -280,7 +281,7 @@ public class ShopController {
 	@RequestMapping("shop/shop_cont")
 	public ModelAndView shop_cont(
 			int item_no,int page,
-			String state,ShopVO s) {
+			String state,ShopVO s) throws Exception {
 		
 		s=this.shopService.getShopCont(item_no);
 		
