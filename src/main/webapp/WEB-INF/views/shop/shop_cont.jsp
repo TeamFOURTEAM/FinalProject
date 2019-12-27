@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="itemContPrice">
-                    <span class="contPrice">가격 : ${s.item_price}</span>
+                    <span class="contPrice">가격 : \ ${s.item_price}</span>
                 </div>
                 
                 <div class="itemContReco">
