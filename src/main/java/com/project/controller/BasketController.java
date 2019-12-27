@@ -27,16 +27,15 @@ public class BasketController {
 			HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
-		
-		System.out.println(basket.getBasket_id());//(임시로 히든값으로 아이디 전달)
-		System.out.println(basket.getProduct_no());
-		System.out.println(basket.getBasket_count());
-		System.out.println(basket.getPrice_sum());
-		
-		/* session id 값이 있을 때 장바구니추가 활성화시켜야 함(session으로 수정) */
-		
+		/* session id 값이 있을 때 장바구니추가 활성화시켜야 함(session으로 수정할것) */
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
+		
+		String basket_id=request.getParameter("basket_id");
+		int product_no=Integer.parseInt(request.getParameter("product_no"));
+		int basket_count=Integer.parseInt(request.getParameter("basket_count"));
+		int price=Integer.parseInt(request.getParameter("price"));
+		int price_sum=Integer.parseInt(request.getParameter("price_sum"));
 		
 		if(basket.getBasket_id() == null) {//id 값이 없을 때
 			out.println("<script>");
@@ -45,9 +44,13 @@ public class BasketController {
 			out.println("</script>");
 			
 		}else {//id 값이 있을 때
+			basket.setBasket_id(basket_id); basket.setProduct_no(product_no);
+			basket.setBasket_count(basket_count); basket.setPrice(price);
+			basket.setPrice_sum(price_sum); 
 			
+			this.buyService.addBasket(basket);//장바구니에 상품 추가
 			
-		}
+		}//if else
 		
 		
 		return new ModelAndView("shop/basket_list");

@@ -3,6 +3,9 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Basket"> <!-- mapper네임스페이스명 설정 -->
-	
-	
+	<!-- 장바구니에 상품 추가 -->
+	<insert id="basket_add">
+		insert into shopBasket values(basket_no_seq.nextval,#{basket_id},#{product_no},
+		#{basket_count})
+	</insert>
 </mapper>

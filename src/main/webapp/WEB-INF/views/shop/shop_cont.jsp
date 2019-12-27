@@ -40,6 +40,7 @@
 		var sum = price * selectedCount;
 		
 		$('.itemPriceSum').html('총 합계금액 : ￦ '+sum);
+		$('input[name=price]').attr('value',price);
 		$('input[name=price_sum]').attr('value',sum);
 	};
 </script>
@@ -73,8 +74,8 @@
                 <form method="post" name="itemBuy" onsubmit="return item_Buy_Check();">
                 <input type="hidden" name="basket_id" value="pebble" /><%-- 임시 아이디(지울것) --%>
                 <input type="hidden" name="product_no" value="${s.item_no}" />
+                <input type="hidden" name="price" value="" />
                 <input type="hidden" name="price_sum" value="" />
-                <input type="hidden" name="page" value="${page}" />
                 
                 <div class="itemCount">
                 	<span class="contCount" >수량 :  </span>
