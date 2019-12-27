@@ -26,11 +26,13 @@
 					<input type="button" value="목록" 
 					onclick="location='/cat/total_cat?page=${page}';" />
 					
-					<form method="post" action="/cat_del_ok" onsubmit="return del_check();">
+					<form method="get" action="/cat_del_ok" onsubmit="return del_check();">
 						<input type="hidden" name="cat_no" value="${c.cat_no}" />
    						<input type="hidden" name="page" value="${page}" />
+   						<input type="hidden" name="cat_img" value="${c.cat_file }" />
+   						
 						<input type="submit" value="삭제" id="del"
-						onclick="location='cat_cont?cat_no=${c.cat_no}&page=${page}&state=del';"/>
+						onclick="location='cat_cont?cat_no=${c.cat_no}&page=${page}&cat_img=${c.cat_file };"/> 
 					</form>	
 				</div>
 				

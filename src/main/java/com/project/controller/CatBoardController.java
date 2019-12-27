@@ -174,12 +174,7 @@ public class CatBoardController {
 			int cat_no, int page,
 			String state, CatVO c) {
 		
-		if(state.equals("cont")) {//내용보기
-			c=this.catService.getCatCont(cat_no);
-		}else {
-			//수정, 삭제폼
-			c=this.catService.getCatCont2(cat_no);
-		}
+		c=this.catService.getCatCont(cat_no);
 		
 		String cat_cont=c.getCat_cont();
 		
@@ -192,12 +187,9 @@ public class CatBoardController {
 			cm.setViewName("cat/cat_cont");
 			
 		}else if(state.equals("edit")) {//수정
-			cm.setViewName("cat/cat_edit");
-			
-		}else if(state.equals("del")) {//삭제
-			cm.setViewName("cat/cat_del");
-			
+			cm.setViewName("cat/cat_edit");			
 		}//if else if
+		
 		return cm;
 	}//cat_cont
 	
@@ -274,8 +266,9 @@ public class CatBoardController {
 				// .이후부터 마지막 문자까지 구함. 즉 확장자를 구함
 				String refileName="cat"+year+month+random+"."
 						+fileExtension;//새로운 첨부파일명
-				String fileDBName="/"+year+"-"+month+"-"+date+
-						"/"+refileName;//DB에 저장될 레코드 값
+				String fileDBName="/"+year+"-"+month+"-"+date+"/"+
+						"cat"+"/"+refileName;//DB에 저장될 레코드 값v
+				
 				UpFile.renameTo(new File(catdir+"/"+refileName));
 				//바뀌어진 이진파일명으로 업로드
 				c.setCat_file(fileDBName);
@@ -312,15 +305,20 @@ public class CatBoardController {
 		
 		response.setContentType("text/html;charset=UTF-8");		
 	
-		String up=request.getRealPath("resources/photo_upload");
+		String folder=request.getSession().getServletContext().getRealPath("resources/photo_upload");
 		//이진파일 업로드 서버 경로		
 		
-		if(c.getCat_file() != null) {
+		int cat_no=Integer.parseInt(request.getParameter("cat_no"));
+		CatVO catImg=this.catService.getCatCont(cat_no);
+
+		if(folder+catImg.getCat_file() != null) {
 			//첨부파일이 있는 경우
-			File file=new File(up+c.getCat_file());
+			File file=new File(folder+catImg.getCat_file());
 			//삭제할 파일 객체 생성
 			file.delete();
+			System.out.print(file);
 		}
+		
 		this.catService.delCat(c.getCat_no());//DB로 부터 게시물 삭제
 		
 		return "redirect:/cat/total_cat?page="+page;

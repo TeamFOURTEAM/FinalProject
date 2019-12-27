@@ -15,7 +15,7 @@ nocache;
 --bbs_no_seq 시퀀스 다음번호값 확인
 select cat_no_seq.nextval from dual;
 
-select * from cat_board 
+select * from cat_board order by cat_no desc
 
 select * from CAT_BOARD where cat_title='먼치킨'
 
