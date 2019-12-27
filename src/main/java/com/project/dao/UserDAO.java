@@ -26,4 +26,10 @@ public interface UserDAO {
     int pwdUPdate(MemberVO uv);
 
     int board_insert(BoardVO b);
+
+    BoardVO select_board(BoardVO b);
+
+    int insert_reply(BoardVO b);
+
+    List<BoardVO> get_select_reply(BoardVO b);
 }

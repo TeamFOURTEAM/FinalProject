@@ -1,12 +1,15 @@
 package com.project.vo;
 
 public class BoardVO {
-    private String back_end_list_no;
+    private int back_end_list_no;
     private String back_end_list_img;
     private String back_end_list_title;
     private String back_end_list_cont;
     private String back_end_list_id;
     private String back_end_list_date;
+
+    private int step;
+    private int ref;
 
     //페이징 관련변수
     private int startrow;//시작행번호
@@ -17,11 +20,27 @@ public class BoardVO {
     private String back_end_title; //검색 타이틀 ex: 제목으로 검색,내용 으로 검색
     private String back_end_field; //검색하고자하는 검색어
 
-    public String getBack_end_list_no() {
+    public int getStep() {
+        return step;
+    }
+
+    public void setStep(int step) {
+        this.step = step;
+    }
+
+    public int getRef() {
+        return ref;
+    }
+
+    public void setRef(int ref) {
+        this.ref = ref;
+    }
+
+    public int getBack_end_list_no() {
         return back_end_list_no;
     }
 
-    public void setBack_end_list_no(String back_end_list_no) {
+    public void setBack_end_list_no(int back_end_list_no) {
         this.back_end_list_no = back_end_list_no;
     }
 

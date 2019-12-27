@@ -62,9 +62,28 @@ public class UserDAOImpl implements UserDAO {
         return this.sqlSession.update("random_pwd",uv);
     }
 
+    //글쓰기
     @Override
     public int board_insert(BoardVO b) {
         return this.sqlSession.insert("board_insert",b);
+    }
+
+    //내용 보기
+    @Override
+    public BoardVO select_board(BoardVO b) {
+        return this.sqlSession.selectOne("select_my_board",b);
+    }
+
+    //답변저장
+    @Override
+    public int insert_reply(BoardVO b) {
+        return this.sqlSession.insert("insert_reply",b);
+    }
+
+    //답변 목록 가져오기
+    @Override
+    public List<BoardVO> get_select_reply(BoardVO b) {
+        return this.sqlSession.selectList("get_reply",b);
     }
 
 

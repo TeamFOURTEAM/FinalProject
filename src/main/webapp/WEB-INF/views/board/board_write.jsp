@@ -19,18 +19,18 @@
 <body>
 
 <div id="container">
-    <form action="board_list_write" enctype="multipart/form-data" method="post" id="frm">
+    <form action="board_list_write_ok" enctype="multipart/form-data" method="post" id="frm">
         <div class="cont_div">
             <span><input name="back_end_list_id" value="${user_id}" disabled></span>
             <br>
             <br>
             <input type="text" placeholder="제 목" name="back_end_list_title">
             <br>
-            <textarea rows="20" id="dog_cont" name="back_end_list_cont"></textarea>
+            <textarea rows="20" cols="123" id="back_end_list_cont" name="back_end_list_cont"></textarea>
         </div>
 
         <div>
-            <input type="file" name="back_end_list_img">
+            <input type="file" name="back_end_list_img" id="back_end_list_img">
             <br>
             <input type="button" id="save" value="저 장">
         </div>
@@ -42,7 +42,7 @@
         var oEditors = [];
         nhn.husky.EZCreator.createInIFrame({
             oAppRef: oEditors,
-            elPlaceHolder: "dog_cont",
+            elPlaceHolder: "back_end_list_cont",
             sSkinURI: "/resources/smartEditor/SmartEditor2Skin.html",
             fCreator: "createSEditor2",
             htParams: {
@@ -53,13 +53,13 @@
         });
 
         $('#save').click(function () {
-            oEditors.getById['dog_cont'].exec('UPDATE_CONTENTS_FIELD',[]);
-            var cont1= $("#dog_cont").val();
+            oEditors.getById['back_end_list_cont'].exec('UPDATE_CONTENTS_FIELD',[]);
+            var cont1= $("#back_end_list_cont").val();
 
             /** 스마트 에디터 입력부분 유효성 검증 **/
             if( cont1 == ""  || cont1 == null || cont1 == '&nbsp;' || cont1 == '<p>&nbsp;</p>')  {
                 alert("내용을을 입력해주세요.");
-                oEditors.getById["dog_cont"].exec("FOCUS"); //포커싱
+                oEditors.getById["back_end_list_cont"].exec("FOCUS"); //포커싱
                 return;
             }
             $('#frm').submit();

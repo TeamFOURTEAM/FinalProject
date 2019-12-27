@@ -67,5 +67,20 @@ public class UserServiceImpl implements UserService {
         return this.userDao.board_insert(b);
     }
 
+    @Override
+    public BoardVO select_board(BoardVO b) {
+        return this.userDao.select_board(b);
+    }
+
+    @Override
+    public int insert_reply(BoardVO b) {
+        return this.userDao.insert_reply(b);
+    }
+
+    @Override
+    public List<BoardVO> get_select_reply(BoardVO b) {
+        return this.userDao.get_select_reply(b);
+    }
+
 
 }
