@@ -6,6 +6,20 @@ create table cat_board(
  ,cat_file varchar2(200) not null -- 첨부파일
 );
 
+--cat_cont 컬럼 삭제
+ALTER TABLE cat_board DROP COLUMN cat_cont
+
+--cat_cont2 임시 컬럼명을 CLOB타입으로 추가
+ALTER TABLE cat_board ADD (cat_cont2 CLOB)
+
+--cat_cont2 컬럼명을 cat_cont로 변경
+ALTER TABLE cat_board RENAME COLUMN cat_cont2 TO cat_cont; 
+
+--cat_cont 컬럼 추가
+ALTER TABLE cat_board ADD(cat_cont(CLOB));
+ALTER TABLE cat_board MODIFY (cat_cont(CLOB));
+alter table cat_board modify (cat_cont(CLOB))
+
 --cat_no_seq 시퀀스 생성
 create sequence cat_no_seq
 start with 1

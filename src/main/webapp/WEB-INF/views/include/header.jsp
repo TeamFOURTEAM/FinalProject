@@ -21,7 +21,7 @@
 		
 			<div class="header">
 				<div class="header_menu">
-					<a href="#">MyPage</a> <a href="#">Login</a> <a href="#">Register</a>
+					<a href="/MyPage/MyPage_user">MyPage</a> <a href="#">Login</a> <a href="#">Register</a>
 				</div>
 				<!-- //header_menu -->
 				<div class="header_title">

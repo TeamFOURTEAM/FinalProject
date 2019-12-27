@@ -1,0 +1,43 @@
+@charset "UTF-8";
+#contents { width: 1320px; margin: 50px auto;}
+
+#menu {
+	text-align: center;
+}
+
+#menu .tabs li {
+ 	background: none;
+	display: inline-block;
+	margin-left: 50px;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+#menu .tabs li.current{
+	background: yellow;
+	color: #2698cb;
+}
+
+.tab-content{
+	display: none;
+	background: yellow;
+	padding: 50px;
+	text-align: center;
+}
+
+.tab-content.current{
+	display: inherit;
+}
+
+table,th,td,tr {
+	margin: 0 auto;
+	padding: 10px;
+	font-size: 15px;
+}
+
+#tab-1 .button input {
+	margin-right: 10px;
+	width: 50px;
+    height: 30px;
+    cursor: pointer;
+}

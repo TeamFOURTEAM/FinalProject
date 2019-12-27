@@ -29,6 +29,8 @@
 					<form method="post" action="/dog_del_ok" onsubmit="return del_check();">
 						<input type="hidden" name="dog_no" value="${d.dog_no}" />
    						<input type="hidden" name="page" value="${page}" />
+   						<input type="hidden" name="dog_img" value="${d.dog_file }" />
+   						
 						<input type="submit" value="삭제" id="del"
 						onclick="location='dog_cont?dog_no=${d.dog_no}&page=${page}&state=del';"/>
 					</form>	

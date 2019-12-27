@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.project.service.DogService;
+import com.project.vo.CatVO;
 import com.project.vo.DogVO;
 
 @Controller
@@ -38,7 +39,11 @@ public class DogBoardController {
 			HttpServletRequest request) throws Exception{
 		
 		//날짜별 폴더 생성
-		String saveFolder=request.getRealPath("resources/photo_upload");
+		String saveFolder=request.getSession().getServletContext().getRealPath("resources/photo_upload");
+		/* 첨부파일 업로드 경로, 실제 톰캣 프로젝트 경로를 반환 =>
+		* c:\spring_work\.metadata\.plugins\org.eclipse.wst.
+		* server.core\tmp1\wtbwebapps\project\photo_upload
+		*/
 		
 		int fileSize=5*1024*1024;//첨부파일 최대크기(5MB)
 		MultipartRequest multi=null;//첨부파일을 가져오는 api
@@ -58,12 +63,18 @@ public class DogBoardController {
 			//1월이 0으로 반환되기 때문이다.
 			int date=cal.get(Calendar.DATE);//일 값
 			
-			String homedir=saveFolder+"/"+year+"-"+month+"-"+date;
+			String datedir=saveFolder+"/"+year+"-"+month+"-"+date;
+			String dogdir=saveFolder+"/"+year+"-"+month+"-"+date+"/"+"dog";
 			//오늘 날짜 폴더 경로를 저장
-			File path1=new File(homedir);
+			File path1=new File(datedir);
+			File path2=new File(dogdir);
+			
 			if(!(path1.exists())) {
-				path1.mkdir();//오늘 날짜 폴더 생성
-			}//if
+				path1.mkdir();//오늘 날짜 폴더 경로를 확인하고 저장
+			}
+			if(!(path2.exists())) {
+				path2.mkdir();//오늘 날짜 폴더 경로 + 하위의 dog폴더를 확인하고 저장
+			}
 			
 			Random r=new Random();
 			int random=r.nextInt(100000000);//0이상 1억미만 사이의
@@ -79,11 +90,11 @@ public class DogBoardController {
 			String refilename="dog"+year+month+date+random+"."+
 					fileExtendsion;//새로운 첨부파일명을 저장
 			String fileDBName="/"+year+"-"+month+"-"+date+"/"+
-					refilename;//DB에 저장될 레코드 값
-			UpFile.renameTo(new File(homedir+"/"+refilename));
+					"dog"+"/"+refilename;//DB에 저장될 레코드 값
+			
+			UpFile.renameTo(new File(dogdir+"/"+refilename));
 			//바뀌어진 첨부파일명으로 업로드
 			d.setDog_file(fileDBName);
-			System.out.println(fileDBName);
 			
 		}else {
 			 //mybatis는 컬럼에 null을 저장하지 못함. 그러므로 파일을
@@ -158,12 +169,7 @@ public class DogBoardController {
 			int dog_no, int page,
 			String state, DogVO d) {
 		
-		if(state.equals("cont")) {//내용보기
-			d=this.dogService.getDogCont(dog_no);
-		}else {
-			//수정, 삭제폼
-			d=this.dogService.getDogCont2(dog_no);
-		}
+		d=this.dogService.getDogCont(dog_no);
 		
 		String dog_cont=d.getDog_cont();
 		
@@ -178,9 +184,6 @@ public class DogBoardController {
 		}else if(state.equals("edit")) {//수정
 			cm.setViewName("dog/dog_edit");
 			
-		}else if(state.equals("del")) {//삭제
-			cm.setViewName("dog/dog_del");
-			
 		}//if else if
 		return cm;
 	}//dog_cont
@@ -193,11 +196,12 @@ public class DogBoardController {
 			DogVO d) throws Exception {
 		
 		response.setContentType("text/html;chrset=UTF-8");
-	
 		
-		String saveFolder=
-				request.getRealPath("resources/photo_upload");
-		//이진파일 업로드 서버 경로
+		String saveFolder=request.getSession().getServletContext().getRealPath("resources/photo_upload");
+		/* 첨부파일 업로드 경로, 실제 톰캣 프로젝트 경로를 반환 =>
+		 * c:\spring_work\.metadata\.plugins\org.eclipse.wst.
+		 * server.core\tmp1\wtbwebapps\project\photo_upload
+		 */
 		
 		int fileSize=5*1024*1024;//이진파일 최대크기
 		
@@ -213,12 +217,14 @@ public class DogBoardController {
 		String dog_title=multi.getParameter("dog_title");
 		String dog_cont=multi.getParameter("dog_cont");
 		
+		DogVO dogImg=this.dogService.getDogCont(dog_no);
+		
 		
 			File UpFile=multi.getFile("dog_file");//수정 첨부한 파일
 			
 			if(UpFile != null) {
 				String fileName=UpFile.getName();//첨부파일명
-				File DelFile=new File(saveFolder+d.getDog_file());
+				File DelFile=new File(saveFolder+dogImg.getDog_file());
 				//삭제할 파일 객체 생성
 				if(DelFile.exists()) {
 					DelFile.delete();//기존파일 삭제
@@ -228,15 +234,21 @@ public class DogBoardController {
 				int year=cc.get(Calendar.YEAR);//년도값
 				int month=cc.get(Calendar.MONTH)+1;//월값
 				int date=cc.get(Calendar.DATE);//일값
-				String homedir=
-					saveFolder+"/"+year+"-"+month+"-"+date;
-				//오늘 날짜 폴더경로 저장
 				
+				String datedir=saveFolder+"/"+year+"-"+month+"-"+date;
+				//오늘 날짜 폴더 경로를 저장
+				String dogdir=saveFolder+"/"+year+"-"+month+"-"+date+"/"+"dog";
+				//오늘 날짜 폴더 경로 + 하위의 dog폴더를 생성
+				File path1=new File(datedir);
+				File path2=new File(dogdir);	
 				
-				File path1=new File(homedir);
 				if(!(path1.exists())) {
-					path1.mkdir();//오늘날짜 폴더 생성
+					path1.mkdir();//오늘 날짜 폴더 경로를 확인하고 저장
 				}
+				if(!(path2.exists())) {
+					path2.mkdir();//오늘 날짜 폴더 경로 + 하위의 cat폴더를 확인하고 저장
+				}
+				
 				Random r=new Random();
 				int random=r.nextInt(100000000);
 				
@@ -248,9 +260,9 @@ public class DogBoardController {
 				// .이후부터 마지막 문자까지 구함. 즉 확장자를 구함
 				String refileName="dog"+year+month+random+"."
 						+fileExtension;//새로운 첨부파일명
-				String fileDBName="/"+year+"-"+month+"-"+date+
-						"/"+refileName;//DB에 저장될 레코드 값
-				UpFile.renameTo(new File(homedir+"/"+refileName));
+				String fileDBName="/"+year+"-"+month+"-"+date+"/"+
+						"dog"+"/"+refileName;//DB에 저장될 레코드 값
+				UpFile.renameTo(new File(dogdir+"/"+refileName));
 				//바뀌어진 이진파일명으로 업로드
 				d.setDog_file(fileDBName);
 				
@@ -285,15 +297,20 @@ public class DogBoardController {
 		
 		response.setContentType("text/html;charset=UTF-8");		
 	
-		String up=request.getRealPath("resources/photo_upload");
+		String folder=request.getSession().getServletContext().getRealPath("resources/photo_upload");
 		//이진파일 업로드 서버 경로		
 		
-		if(d.getDog_file() != null) {
+		int dog_no=Integer.parseInt(request.getParameter("dog_no"));
+		DogVO dogImg=this.dogService.getDogCont(dog_no);		
+		
+		if(folder+dogImg.getDog_file() != null) {
 			//첨부파일이 있는 경우
-			File file=new File(up+d.getDog_file());
+			File file=new File(folder+dogImg.getDog_file());
 			//삭제할 파일 객체 생성
 			file.delete();
+			System.out.print(file);
 		}
+		
 		this.dogService.delDog(d.getDog_no());//DB로 부터 게시물 삭제
 		
 		return "redirect:/dog/total_dog?page="+page;

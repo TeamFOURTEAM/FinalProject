@@ -21,17 +21,21 @@ margin-top: 80px;}
 .title {
     height: 50px;  
     border-bottom: 1px solid #dbdbdb;
+    z-index: 1000;
 }
 .title li{
     margin: 0 auto;
-    width: 25%;          
+    width: 25%; 
+    z-index: 1000;         
 }
 .title li > div {
     border-right: 1px solid #dbdbdb;
+    z-index: 1000;
 }
 
 .title li:last-child > div {
     border-right: none;  
+    z-index: 1000;
 }
 .title .category>li{
     float: left;
@@ -40,16 +44,20 @@ margin-top: 80px;}
     text-align: center;
     background: #fff;
     position: relative;
-    font-size: 15px;       
+    font-size: 15px;    
+    z-index: 1000;   
 }
 .title .category>li:hover .sub_category{
     display: block;
+    z-index: 1000;
 }
 .title .category>li a{
     display: block;
+    z-index: 1000;
 }
 .title .category>li a:hover{
     color: #2698cb;
+    z-index: 1000;
 }
 /* 플로팅 메뉴를 위한 fixed클래스 */
 .fixed{
