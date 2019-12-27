@@ -22,14 +22,26 @@
     
 <script>
 	function item_Buy_Check(){
-		var stockCount = $.trim($(".stockCount").val());
-		var selectedCount = $("#basket_count option:selected");
+		var stockCount = ${s.item_stockCount};
+		var select = document.getElementById("basket_count");
+		var selectedCount = parseInt(select.options[select.selectedIndex].value);
 		
-		if(selectedCount > stockCount) {
+		 if(selectedCount > stockCount) {
 			alert('재고가 부족합니다. 보다 적은 수량을 선택해주세요.');
 			return false;
-		}
-	}
+		} 
+	};
+
+	/* 총가격 계산 후 span에 출력 */
+	function buyPrice(){
+		var select = document.getElementById("basket_count");
+		var selectedCount = parseInt(select.options[select.selectedIndex].value);
+		var price = ${s.item_price};
+		var sum = price * selectedCount;
+		
+		$('.itemPriceSum').html('총 합계금액 : ￦ '+sum);
+		$('input[name=price_sum]').attr('value',sum);
+	};
 </script>
 </head>
 <body>
@@ -59,26 +71,26 @@
                 </div>
 
                 <form method="post" name="itemBuy" onsubmit="return item_Buy_Check();">
-                <input type="hidden" name="basket_id" value="pebble" />
+                <input type="hidden" name="basket_id" value="pebble" /><%-- 임시 아이디(지울것) --%>
                 <input type="hidden" name="product_no" value="${s.item_no}" />
                 <input type="hidden" name="price_sum" value="" />
                 <input type="hidden" name="page" value="${page}" />
                 
                 <div class="itemCount">
                 	<span class="contCount" >수량 :  </span>
-                    <select name="basket_count" id="basket_count">
+                    <select name="basket_count" id="basket_count"
+                    	onchange="buyPrice()">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
-                	<span class="stockCount">${s.item_stockCount}</span>
                     <c:if test="${s.item_stockCount == '0'}">
                     	<span class="stockZero">이 상품의 재고가 없습니다. 문의해주세요!</span>
                     </c:if>
                     <c:if test="${s.item_stockCount != '0'}">
-                    	<div class="itemPriceSum">총 합계금액 : </div>
+                    	<div class="itemPriceSum"></div>
 	                    <div class="itemBuy">
 	                    	<%-- 하나의 form에서 action을 2개로 나눔  --%>
 		                    <button 

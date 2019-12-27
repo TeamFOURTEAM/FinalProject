@@ -77,9 +77,6 @@ $(document).ready(function shop_del_check(){
 	});
 });
 
-/* 총가격 계산 후 span에 출력 */
-$(document).ready(function()
-
 
 /** shop 관리자 글쓰기 상품 가격 부분 숫자만 나오게 처리 **/
 function onlyNumber(event){
