@@ -51,6 +51,17 @@
 		select * from shopList where item_no=#{item_no}
 	</select>
 	
+	<!-- shop 상품 내용 수정 -->
+	<update id="shop_edit">
+		update shopList set item_name=#{item_name},item_sub=#{item_sub},
+		item_price=#{item_price},item_stockCount=#{item_stockCount},
+		item_cont=#{item_cont},item_img=#{item_img} where item_no=#{item_no}
+	</update>
+	
+	<!-- shop 상품 내용 삭제 -->
+	<delete id="shop_del">
+		delete from shopList where item_no=#{item_no}
+	</delete>
 </mapper>
 
 

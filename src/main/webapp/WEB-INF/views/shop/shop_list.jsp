@@ -22,13 +22,15 @@
         <form method="GET" action="total_shop">
         <%-- 검색 결과 수 --%>
         <div class="searchResultRow">
-            "<c:if test="${find_name == ''}">전체</c:if>${find_name}"
-            에 대한 "${totalcount}"
-            개의 검색 결과가 있습니다.
-            
+            <div class="searchResult">
+	            <span>"<c:if test="${find_name == ''}">전체</c:if>${find_name}"</span>
+	            에 대한 <span>"${totalcount}"</span>
+	            개의 검색 결과가 있습니다.
+            </div>
 	        <div class="admin_write">
 	            <button type="button" onclick="location.href='shop_write?page=${page}';">관리자 글쓰기</button>
 	            <button type="button" onclick="location.href='/';">임시 메인 버튼</button>
+	            <!-- 삭제해줘야함 -->
 	        </div>
         </div>
         <%--//검색 결과 수 --%>
@@ -56,7 +58,7 @@
                     <span class="itemPrice">\20,000</span>
                 </div>
                 <div class="itemRecoRow">
-                    <span class="bestNum">추천수: 1</span>
+                    <span class="bestNum">이 제품이 좋아요 ! : 1</span>
                 </div>
                </div>
 
@@ -77,7 +79,7 @@
                     <span class="itemPrice">\20,000</span>
                 </div>
                 <div class="itemRecoRow">
-                    <span class="bestNum">추천수: 1</span>
+                    <span class="bestNum">이 제품이 좋아요 ! : 1</span>
                 </div>
                </div>
 
@@ -98,7 +100,7 @@
                     <span class="itemPrice">\20,000</span>
                 </div>
                 <div class="itemRecoRow">
-                    <span class="bestNum">추천수: 1</span>
+                    <span class="bestNum">이 제품이 좋아요 ! : 1</span>
                 </div>
                 </div>
             </div>
@@ -115,17 +117,17 @@
 					<div class="itemContainer">
                     <div class="itemImgBox">
                         <div class="itemImg">
-                            <a href="shop_cont?item_no=${n.item_no}&state=cont&page=${page}">
+                            <a href="shop_cont?state=cont&item_no=${n.item_no}&page=${page}">
                                 <img src="/resources/photo_upload${n.item_img}" alt="imgTest">
                             </a>
                         </div>
                     </div>
                     
                     <div class="itemNameRow">
-                        <span><a href="shop_cont?item_no=${n.item_no}&state=cont&page=${page}" class="itemName">${n.item_name}</a></span>
+                        <span><a href="shop_cont?state=cont&item_no=${n.item_no}&page=${page}" class="itemName">${n.item_name}</a></span>
                     </div>
                     <div class="itemPriceRow">
-                        <span class="itemPrice">${n.item_price}</span>
+                        <span class="itemPrice">\ ${n.item_price}</span>
                     </div>
                     <div class="itemRecoRow">
                         <span class="bestNum">이 제품이 좋아요 ! : ${n.item_likeCount}</span>
@@ -156,7 +158,7 @@
         		<c:if test="${page <=1}"></c:if>
         		<%--//page가 1페이지 이하일때 --%>
 				<c:if test="${page >1}">
-					<a href="total_shop?class=shop&page=${page-1}">
+					<a href="total_shop?page=${page-1}">
 		                <i class="fa fa-angle-left" aria-hidden="true"></i>
 	                	<span class="ir_su">prev</span>
 		            </a>
@@ -169,13 +171,13 @@
 						</c:if>
 
 						<c:if test="${n != page}">
-							<a href="total_shop?class=shop&page=${n}">${n}</a>
+							<a href="total_shop?page=${n}">${n}</a>
 						</c:if>
 					</c:forEach>
 
 					<c:if test="${page>=maxpage}"></c:if>
 					<c:if test="${page<maxpage}">
-						<a href="total_shop?class=shop&page=${page+1}"> <i
+						<a href="total_shop?page=${page+1}"> <i
 							class="fa fa-angle-right" aria-hidden="true"></i> 
 						</a>
 							<span class="ir_su">next</span>
@@ -190,7 +192,7 @@
         		<%-- page가 1페이지 이하일때 --%>
         		<c:if test="${page <=1}"></c:if>
 				<c:if test="${page >1}">
-					<a href="total_shop?class=shop&page=${page-1}&find_field=${find_field}&find_name=${find_name}">
+					<a href="total_shop?page=${page-1}&find_field=${find_field}&find_name=${find_name}">
 		                <i class="fa fa-angle-left" aria-hidden="true"></i>
 	                	<span class="ir_su">prev</span>
 		            </a>
@@ -203,13 +205,13 @@
 						</c:if>
 
 						<c:if test="${n != page}">
-							<a href="total_shop?class=shop&page=${n}&find_field=${find_field}&find_name=${find_name}">${n}</a>
+							<a href="total_shop?page=${n}&find_field=${find_field}&find_name=${find_name}">${n}</a>
 						</c:if>
 					</c:forEach>
 
 					<c:if test="${page>=maxpage}"></c:if>
 					<c:if test="${page<maxpage}">
-						<a href="total_shop?class=shop&page=${page+1}&find_field=${find_field}&find_name=${find_name}"> 
+						<a href="total_shop?page=${page+1}&find_field=${find_field}&find_name=${find_name}"> 
 						<i class="fa fa-angle-right" aria-hidden="true"></i> 
 						</a>
 						<span class="ir_su">next</span>
@@ -217,9 +219,8 @@
 					<%--//쪽번호 출력부분 --%>
 				</c:if>
         	<%--//page가 1페이지 이하일때 --%>
-        
         <%--//검색후 페이징 --%>
-        
+        </div>
         <!--//페이징 wrapper -->
         
         <!-- 검색 바 -->

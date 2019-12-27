@@ -18,13 +18,39 @@
     <!-- JavaScript Libraries -->
     <script src="/js/shop/zoom.js"></script>
     <script src="/js/jquery.js"></script>
+    <script src="/js/shop/shop.js"></script>
+    
+<script>
+	function item_Buy_Check(){
+		var stockCount = ${s.item_stockCount};
+		var select = document.getElementById("basket_count");
+		var selectedCount = parseInt(select.options[select.selectedIndex].value);
+		
+		 if(selectedCount > stockCount) {
+			alert('재고가 부족합니다. 보다 적은 수량을 선택해주세요.');
+			return false;
+		} 
+	};
+
+	/* 총가격 계산 후 span에 출력 */
+	function buyPrice(){
+		var select = document.getElementById("basket_count");
+		var selectedCount = parseInt(select.options[select.selectedIndex].value);
+		var price = ${s.item_price};
+		var sum = price * selectedCount;
+		
+		$('.itemPriceSum').html('총 합계금액 : ￦ '+sum);
+		$('input[name=price_sum]').attr('value',sum);
+	};
+</script>
 </head>
 <body>
 	<div class="container">
         <!-- 상품 상세 영역 -->
         <div class="item_main">
             <div class="itemImg">
-                <img src="/resources/photo_upload${s.item_img}" class="target" data-zoom="3" />
+                <img src="/resources/photo_upload${s.item_img}" class="target" data-zoom="2" />
+                <!-- data-zoom 으로 돋보기 크기 조절 -->
             </div>
 
             <div class="itemContBox">
@@ -37,32 +63,74 @@
                 </div>
 
                 <div class="itemContPrice">
-                    <span class="contPrice">${s.item_price}</span>
+                    <span class="contPrice">가격 : \ ${s.item_price}</span>
                 </div>
                 
                 <div class="itemContReco">
-                    <span class="contReco">${s.item_likeCount}</span>
+                    <span class="contReco">이 상품이 좋아요! : ${s.item_likeCount}</span>
                 </div>
 
-                <form method="get" name="itemBuy">
+                <form method="post" name="itemBuy" onsubmit="return item_Buy_Check();">
+                <input type="hidden" name="basket_id" value="pebble" /><%-- 임시 아이디(지울것) --%>
+                <input type="hidden" name="product_no" value="${s.item_no}" />
+                <input type="hidden" name="price_sum" value="" />
+                <input type="hidden" name="page" value="${page}" />
+                
                 <div class="itemCount">
-                    <select name="selectItemCount">
+                	<span class="contCount" >수량 :  </span>
+                    <select name="basket_count" id="basket_count"
+                    	onchange="buyPrice()">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
-                </div>
+                    <c:if test="${s.item_stockCount == '0'}">
+                    	<span class="stockZero">이 상품의 재고가 없습니다. 문의해주세요!</span>
+                    </c:if>
+                    <c:if test="${s.item_stockCount != '0'}">
+                    	<div class="itemPriceSum"></div>
+	                    <div class="itemBuy">
+	                    	<%-- 하나의 form에서 action을 2개로 나눔  --%>
+		                    <button 
+		                    onclick="javascript: form.action='basket_add';">장바구니</button>
+		                    <button id="buy_button" 
+		                    onclick="javascript: form.action='buy';">구매</button>
+	                    </div>
+                    </c:if>
+               	</div>
+               	</form>
                 
-                <div class="itemBuyBox">
-                    <button onclick="">장바구니에 담기</button>
-                    <button onclick="">구매하기</button>
-                </form>
+                <div class="itemBuyAdminBox">
+                    <div class="adminEditDel">
+	                    <button type="button" 
+	                    onclick="location='shop_cont?state=edit&item_no=${s.item_no}&page=${page}';">
+	                    	수정하기</button>
+	                    	
+	                    <form method="get" action="/shop_del"
+	                    	 onsubmit="return shop_del_check();" class="del_form">
+						<%-- 히든 값 --%>
+						<input type="hidden" name="item_no" value="${s.item_no}" /> 
+						<input type="hidden" name="page" value="${page}" />
+						<input type="hidden" name="item_img" value="${s.item_img}" />
+						
+						<button id="del_button">삭제</button>
+	                    </form>
+	                    <button type="button" 
+	                    onclick="location='total_shop?page=${page}&find_field=item_name&find_name=';">임시 뒤로 버튼</button>
+	                    <!-- 삭제해줘야함(임시버튼)-->
+                    </div>
+                </div>
                 </div>
             </div>
-        </div>
         <!--//상품 상세 영역 -->
-    </div>
+        
+        <!-- 상품 상세 설명 영역 -->
+            <div class="item_Cont">
+           		${s.item_cont}
+            </div>
+        </div>
+        <!--//상품 상세 설명 영역 -->
 </body>
 </html>

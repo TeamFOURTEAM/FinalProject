@@ -6,11 +6,11 @@ public class ShopVO {
 	private int item_no;//상품번호
 	private String item_name;//상품명
 	private String item_sub;//상품 세부 설명(상품명바로아래문장)
-	private String item_price;//상품 가격
-	private String item_stockCount;//상품 재고
+	private int item_price;//상품 가격
+	private int item_stockCount;//상품 재고
 	private String item_cont;//상품 상세 내용
 	private String item_img;//상품 이미지(자료실)
-	private String item_likeCount;//상품 추천수
+	private int item_likeCount;//상품 추천수
 	
 	
 	/** 페이징 변수 **/
@@ -21,6 +21,7 @@ public class ShopVO {
 	private String find_field;
 	private String find_name;
 	
+	/** getter // setter **/
 	public int getItem_no() {
 		return item_no;
 	}
@@ -39,16 +40,16 @@ public class ShopVO {
 	public void setItem_sub(String item_sub) {
 		this.item_sub = item_sub;
 	}
-	public String getItem_price() {
+	public int getItem_price() {
 		return item_price;
 	}
-	public void setItem_price(String item_price) {
+	public void setItem_price(int item_price) {
 		this.item_price = item_price;
 	}
-	public String getItem_stockCount() {
+	public int getItem_stockCount() {
 		return item_stockCount;
 	}
-	public void setItem_stockCount(String item_stockCount) {
+	public void setItem_stockCount(int item_stockCount) {
 		this.item_stockCount = item_stockCount;
 	}
 	public String getItem_cont() {
@@ -63,10 +64,10 @@ public class ShopVO {
 	public void setItem_img(String item_img) {
 		this.item_img = item_img;
 	}
-	public String getItem_likeCount() {
+	public int getItem_likeCount() {
 		return item_likeCount;
 	}
-	public void setItem_likeCount(String item_likeCount) {
+	public void setItem_likeCount(int item_likeCount) {
 		this.item_likeCount = item_likeCount;
 	}
 	public int getStartrow() {

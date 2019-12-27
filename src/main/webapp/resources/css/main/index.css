@@ -9,7 +9,6 @@ body {}
     background-color: rgba(0,0,0,0.4);
     z-index: 10;
 }
-#nav {}
 #menu_btn {}
 #menu_slide {position: relative;}
 #contents {min-height: 600px;}
