@@ -1,5 +1,7 @@
 package com.project.controller;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -25,13 +27,27 @@ public class BasketController {
 			HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
-		/* session id 값이 있을 때 장바구니추가 활성화시켜야 함 */
 		
+		System.out.println(basket.getBasket_id());//(임시로 히든값으로 아이디 전달)
 		System.out.println(basket.getProduct_no());
 		System.out.println(basket.getBasket_count());
-		System.out.println(basket.getBasket_id());//(임시로 히든값으로 아이디 전달)
+		System.out.println(basket.getPrice_sum());
 		
+		/* session id 값이 있을 때 장바구니추가 활성화시켜야 함(session으로 수정) */
 		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		
+		if(basket.getBasket_id() == null) {//id 값이 없을 때
+			out.println("<script>");
+			out.println("alert('다시 로그인 해주세요.');");
+			out.println("location='history.back();';");
+			out.println("</script>");
+			
+		}else {//id 값이 있을 때
+			
+			
+		}
 		
 		
 		return new ModelAndView("shop/basket_list");
