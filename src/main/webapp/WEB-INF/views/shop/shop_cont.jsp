@@ -26,10 +26,10 @@
 		var select = document.getElementById("basket_count");
 		var selectedCount = parseInt(select.options[select.selectedIndex].value);
 		
-		 if(selectedCount > stockCount) {
+	 	if(selectedCount > stockCount) {
 			alert('재고가 부족합니다. 보다 적은 수량을 선택해주세요.');
 			return false;
-		} 
+		}
 	};
 
 	/* 총가격 계산 후 span에 출력 */
@@ -74,8 +74,6 @@
                 <form method="post" name="itemBuy" onsubmit="return item_Buy_Check();">
                 <input type="hidden" name="basket_id" value="pebble" /><%-- 임시 아이디(지울것) --%>
                 <input type="hidden" name="product_no" value="${s.item_no}" />
-                <input type="hidden" name="price" value="" />
-                <input type="hidden" name="price_sum" value="" />
                 
                 <div class="itemCount">
                 	<span class="contCount" >수량 :  </span>
@@ -94,8 +92,8 @@
                     	<div class="itemPriceSum"></div>
 	                    <div class="itemBuy">
 	                    	<%-- 하나의 form에서 action을 2개로 나눔  --%>
-		                    <button 
-		                    onclick="javascript: form.action='basket_add';">장바구니</button>
+		                    <button id="basket_button"
+		                    onclick="javascript: form.action='basket_add';">장바구니에 담기</button>
 		                    <button id="buy_button" 
 		                    onclick="javascript: form.action='buy';">구매</button>
 	                    </div>

@@ -34,8 +34,6 @@ public class BasketController {
 		String basket_id=request.getParameter("basket_id");
 		int product_no=Integer.parseInt(request.getParameter("product_no"));
 		int basket_count=Integer.parseInt(request.getParameter("basket_count"));
-		int price=Integer.parseInt(request.getParameter("price"));
-		int price_sum=Integer.parseInt(request.getParameter("price_sum"));
 		
 		if(basket.getBasket_id() == null) {//id 값이 없을 때
 			out.println("<script>");
@@ -45,15 +43,13 @@ public class BasketController {
 			
 		}else {//id 값이 있을 때
 			basket.setBasket_id(basket_id); basket.setProduct_no(product_no);
-			basket.setBasket_count(basket_count); basket.setPrice(price);
-			basket.setPrice_sum(price_sum); 
+			basket.setBasket_count(basket_count);
 			
 			this.buyService.addBasket(basket);//장바구니에 상품 추가
 			
 		}//if else
 		
-		
-		return new ModelAndView("shop/basket_list");
+		return new ModelAndView("redirect:shop/basket_list");
 	}//basket_add()
 	
 }
