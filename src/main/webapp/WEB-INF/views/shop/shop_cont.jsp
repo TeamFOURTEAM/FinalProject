@@ -97,6 +97,10 @@
 		                    <button id="buy_button" 
 		                    onclick="javascript: form.action='buy';">구매</button>
 	                    </div>
+	                    <div class="basketAsk">
+	                    	장바구니에 상품이 담겼습니다.
+	                    	<button onclick="">장바구니로 가기</button>
+	                    </div>
                     </c:if>
                	</div>
                	</form>

@@ -22,7 +22,7 @@ public class BasketController {
 	
 	/** 장바구니에 추가 **/
 	@RequestMapping("shop/basket_add")
-	public ModelAndView basket_add(
+	public String basket_add(
 			BasketVO basket,
 			HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -49,7 +49,7 @@ public class BasketController {
 			
 		}//if else
 		
-		return new ModelAndView("redirect:shop/basket_list");
+		return "redirect:/shop/basket_list";
 	}//basket_add()
 	
 }
