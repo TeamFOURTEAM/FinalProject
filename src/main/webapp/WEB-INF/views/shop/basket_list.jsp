@@ -22,7 +22,7 @@
 			</div>
 			
 			<div class="basket_list">
-				<!-- 게시판 테이블 부분-->
+				<!-- 장바구니 목록 테이블 부분-->
                 <div class="basket_table">
                     <p class="basket_head">
                         <span style="width: 7%;">No.</span> 
@@ -35,25 +35,26 @@
                     </p>
 
                     <div class="basket_body">
-                            <div class="column table_no">1</div>
-                            <div class="column table_type"><a href="#">이미지</a></div>
-                            <div class="column table_title"><a href="#">상품명</a></div>
-                            <div class="column table_name">단가</div>
-                            <div class="column table_reco">
-	                            <select name="basket_count" id="basket_count"
-			                    	onchange="buyPrice()">
-			                        <option value="1">1</option>
-			                        <option value="2">2</option>
-			                        <option value="3">3</option>
-			                        <option value="4">4</option>
-			                        <option value="5">5</option>
-			                    </select>
-                            </div>
-                            <div class="column table_view">금액</div>
-                            <div class="column table_date"><button type="button">삭제</button></div>
+	                    <div class="column table_no">1</div>
+	                    <div class="column table_type"><a href="#">이미지</a></div>
+	                    <div class="column table_title"><a href="#">상품명</a></div>
+	                    <div class="column table_name">단가</div>
+	                    <div class="column table_reco">
+	                    	<select name="basket_count" id="basket_count"
+	               			onchange="buyPrice()">
+			                   <option value="1">1</option>
+			                   <option value="2">2</option>
+			                   <option value="3">3</option>
+			                   <option value="4">4</option>
+			                   <option value="5">5</option>
+	               			</select>
+	                    </div>
+	                    <div class="column table_view">금액</div>
+	                    
+	                    <div class="column table_date"><button type="button">삭제</button></div>
                     </div>
                 </div>
-                <!--//게시판 테이블 부분-->
+                <!--//장바구니 목록 테이블 부분-->
 				
 				
 				<div class="basket_info">

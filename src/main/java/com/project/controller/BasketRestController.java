@@ -1,8 +1,11 @@
 package com.project.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +19,7 @@ import com.project.vo.BasketVO;
 public class BasketRestController {
 	
 	@Autowired
-	private BasketService buyService;
+	private BasketService basketService;
 	
 	/** 장바구니에 추가 **/
 	@RequestMapping(value="/shop/basket_add",method=RequestMethod.POST)
@@ -32,7 +35,7 @@ public class BasketRestController {
 		
 		//장바구니에 먼저 담은 상품이 있는지 검사
 		int count=
-			this.buyService.countBasket(basket.getProduct_no(),basket.getBasket_id());
+			this.basketService.countBasket(basket.getProduct_no(),basket.getBasket_id());
 		
 		if(basket.getBasket_id() == null) {//id 값이 없을 때(session처리?)
 //			out.println("<script>");
@@ -44,9 +47,9 @@ public class BasketRestController {
 			try {
 				
 				if(count == 0) {//없으면 추가
-					this.buyService.addBasket(basket);//장바구니에 상품 추가
+					this.basketService.addBasket(basket);//장바구니에 상품 추가
 				}else {//있으면 수정(update)
-					this.buyService.updateBasket(basket);//장바구니 상품 갱신
+					this.basketService.updateBasket(basket);//장바구니 상품 갱신
 				}
 				
 				entity=new ResponseEntity<String>("SUCCESS",
@@ -64,7 +67,25 @@ public class BasketRestController {
 		return entity;
 	}//basket_add()
 	
-	/** 장바구니 목록 불러오기 **/
+	/** 회원 아이디에 따른 장바구니 목록 불러오기 **/
+	@RequestMapping(value="/shop/basketListAll/{basket_id}",method=RequestMethod.GET)
+	public ResponseEntity<List<BasketVO>> basketList(
+			@PathVariable("basket_id") String basket_id) {
+		
+		ResponseEntity<List<BasketVO>> entity=null;
+		
+		try {
+			entity=new ResponseEntity<>(
+				this.basketService.listBasket(basket_id),HttpStatus.OK);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			entity=new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}//try catch
+		
+		return entity;
+	}//basketList()
+	
 	/** 장바구니 수량 수정 **/
 	/** 장바구니 상품 삭제 **/
 }

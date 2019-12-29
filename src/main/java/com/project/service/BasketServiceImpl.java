@@ -1,5 +1,7 @@
 package com.project.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,11 @@ public class BasketServiceImpl implements BasketService{
 	@Override
 	public void updateBasket(BasketVO basket) {
 		this.basketDAO.updateBasket(basket);
+	}
+
+	@Override
+	public List<BasketVO> listBasket(String basket_id) {
+		return this.basketDAO.listBasket(basket_id);
 	}
 	
 	

@@ -1,6 +1,7 @@
 package com.project.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -32,5 +33,10 @@ public class BasketDAOImpl implements BasketDAO {
 	public void updateBasket(BasketVO basket) {
 		this.sqlSession.update("basketSame_update",basket);
 	}//장바구니 동일 상품 있을 시 갱신
+
+	@Override
+	public List<BasketVO> listBasket(String basket_id) {
+		return this.sqlSession.selectList("basket_list",basket_id);
+	}//장바구니 목록
 	
 }
