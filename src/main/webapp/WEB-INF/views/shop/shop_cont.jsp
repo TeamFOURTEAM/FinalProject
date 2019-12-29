@@ -21,7 +21,7 @@
     <script src="/js/shop/shop.js"></script>
     
 <script>
-	function item_Buy_Check(){
+	 function item_Buy_Check(){
 		var stockCount = ${s.item_stockCount};
 		var select = document.getElementById("basket_count");
 		var selectedCount = parseInt(select.options[select.selectedIndex].value);
@@ -30,7 +30,12 @@
 			alert('재고가 부족합니다. 보다 적은 수량을 선택해주세요.');
 			return false;
 		}
-	};
+	 	
+	 	$('#basket_button').on('click',function(){
+		
+	 	}); 
+	}; 
+	
 
 	/* 총가격 계산 후 span에 출력 */
 	function buyPrice(){
@@ -40,8 +45,6 @@
 		var sum = price * selectedCount;
 		
 		$('.itemPriceSum').html('총 합계금액 : ￦ '+sum);
-		$('input[name=price]').attr('value',price);
-		$('input[name=price_sum]').attr('value',sum);
 	};
 </script>
 </head>
@@ -92,14 +95,13 @@
                     	<div class="itemPriceSum"></div>
 	                    <div class="itemBuy">
 	                    	<%-- 하나의 form에서 action을 2개로 나눔  --%>
-		                    <button id="basket_button"
-		                    onclick="javascript: form.action='basket_add';">장바구니에 담기</button>
+		                    <button id="basket_button">장바구니에 담기</button>
 		                    <button id="buy_button" 
 		                    onclick="javascript: form.action='buy';">구매</button>
 	                    </div>
 	                    <div class="basketAsk">
 	                    	장바구니에 상품이 담겼습니다.
-	                    	<button onclick="">장바구니로 가기</button>
+	                    	<button onclick="#">장바구니로 가기</button>
 	                    </div>
                     </c:if>
                	</div>
