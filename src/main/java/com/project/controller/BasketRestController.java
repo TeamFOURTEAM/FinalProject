@@ -13,7 +13,7 @@ import com.project.vo.BasketVO;
 
 /** 장바구니 컨트롤러(RestController - ajax) **/
 @RestController
-public class BasketAddController {
+public class BasketRestController {
 	
 	@Autowired
 	private BasketService buyService;
