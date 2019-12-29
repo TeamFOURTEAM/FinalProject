@@ -18,7 +18,6 @@
 <body>
 
 	<header id="header" class=<%=request.getParameter("class") %> >
-		<div class="container">
 			<div class="header">
 				<div class="header_menu">
 					<a href="#">MyPage</a> <a href="#">Login</a> <a href="#">Register</a>
@@ -29,7 +28,6 @@
 				</div>
 				<!-- //header_title -->
 			</div>
-		</div>
 	</header>
 	<!-- //header -->
 

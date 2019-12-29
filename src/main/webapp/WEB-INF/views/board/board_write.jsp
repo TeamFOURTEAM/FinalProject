@@ -24,13 +24,14 @@
             <span><input name="back_end_list_id" value="${user_id}" disabled></span>
             <br>
             <br>
-            <input type="text" placeholder="제 목" name="back_end_list_title">
+            <input type="text" placeholder="제 목" name="back_end_list_title" id="back_end_list_title">
             <br>
             <textarea rows="20" cols="123" id="back_end_list_cont" name="back_end_list_cont"></textarea>
         </div>
 
         <div>
             <input type="file" name="back_end_list_img" id="back_end_list_img">
+            <br>
             <br>
             <input type="button" id="save" value="저 장">
         </div>
@@ -55,6 +56,15 @@
         $('#save').click(function () {
             oEditors.getById['back_end_list_cont'].exec('UPDATE_CONTENTS_FIELD',[]);
             var cont1= $("#back_end_list_cont").val();
+
+            //재명이가 추가한거임
+            var title=$('#back_end_list_title').val();
+
+            if(title==''){
+                alert('제목을 입력해주세요');
+                $('#back_end_list_title').focus();
+                return false;
+            }
 
             /** 스마트 에디터 입력부분 유효성 검증 **/
             if( cont1 == ""  || cont1 == null || cont1 == '&nbsp;' || cont1 == '<p>&nbsp;</p>')  {

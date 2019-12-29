@@ -63,7 +63,7 @@
 
             <c:if test="${empty member_id}">
                 <div>
-                    <textarea class="reply" id="reply1" name="reply"><h3><a href="#">로그인해주세요!</a></h3></textarea>
+                    <h3><a href="/login" style="color: blue">로그인해주세요!</a></h3>
                 </div>
             </c:if>
         </div>

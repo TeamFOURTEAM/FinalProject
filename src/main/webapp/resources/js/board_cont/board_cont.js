@@ -18,7 +18,6 @@ function reply_ok() {
                 alert('댓글 저장 실패!')
                 return false;
             }else{
-                alert('댓글 저장 성공!!')
                 // $('#reply_list_div').load(window.location.href+"#reply_list_div");
                 location.reload();
             }

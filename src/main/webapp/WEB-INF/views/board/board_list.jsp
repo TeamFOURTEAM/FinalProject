@@ -27,30 +27,26 @@
                 <div class="wrap">
                     <div class="back_end_cont">
                         <a href="cont?id=${b.back_end_list_id}&title=${b.back_end_list_title}&no=${b.back_end_list_no}">
-                                <h3>
-                                    <c:if test="${fn:length(b.back_end_list_title)>10}">
-                                        <%-- 제목 문자열 길이가 16자를 초과하면 실행 --%>
-                                        ${fn:substring(b.back_end_list_title,0,10)}...
-                                        <%--제목을 16자까지만 출력하고 나머지는 ... 표시 --%>
-                                    </c:if>
-                                    <c:if  test="${fn:length(b.back_end_list_title)<10}">
-                                        ${b.back_end_list_title}
-                                    </c:if>
-                                </h3>
-                                <c:if test="${fn:length(b.back_end_list_cont)>15}">
+                            <h3>
+
+                                <c:if test="${fn:length(b.back_end_list_title)>10}">
                                     <%-- 제목 문자열 길이가 16자를 초과하면 실행 --%>
-                                    ${fn:substring(b.back_end_list_cont,0,15)}...
+                                    ${fn:substring(b.back_end_list_title,0,10)}...
                                     <%--제목을 16자까지만 출력하고 나머지는 ... 표시 --%>
                                 </c:if>
-                                <c:if  test="${fn:length(b.back_end_list_cont)<15}">
-                                    ${b.back_end_list_cont}
+                                <c:if  test="${fn:length(b.back_end_list_title)<10}">
+                                    ${b.back_end_list_title}
                                 </c:if>
+                            </h3>
+
+                            <br>
+                            <span>${b.back_end_list_id}</span>&nbsp;&nbsp;<span>댓글</span>&nbsp;&nbsp;<span>날짜:${b.back_end_list_date}</span>
                         </a>
-                        <br>
-                        <span>${b.back_end_list_id}</span>&nbsp;&nbsp;<span>댓글</span>&nbsp;&nbsp;<span>날짜:${b.back_end_list_date}</span>
                     </div>
                     <div class="back_end_cont_image">
-                        <img class="image" src="/resources/photo_upload/${b.back_end_list_img}">
+                        <a href="cont?id=${b.back_end_list_id}&title=${b.back_end_list_title}&no=${b.back_end_list_no}">
+                            <img class="image" src="/resources/photo_upload/${b.back_end_list_img}">
+                        </a>
                     </div>
                 </div>
             </c:forEach>

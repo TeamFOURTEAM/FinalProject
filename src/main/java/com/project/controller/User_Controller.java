@@ -307,6 +307,9 @@ public class User_Controller {
         String back_end_list_cont = multi.getParameter("back_end_list_cont");
         //고양이 종류, 내용을 가져옴
 
+        System.out.println("아이디"+user_id);
+        System.out.println("아이디"+back_end_list_title);
+        System.out.println("아이디"+back_end_list_cont);
         File UpFile = multi.getFile("back_end_list_img");
         //첨부한 파일을 가져옴
 
