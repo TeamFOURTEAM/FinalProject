@@ -32,7 +32,7 @@ nocache;
 /*************************/
 drop table shopBasket;
 drop sequence basket_no_seq;
-
+delete from shopBasket;
 
 
 

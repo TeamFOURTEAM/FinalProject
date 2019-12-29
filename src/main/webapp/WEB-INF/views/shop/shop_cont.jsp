@@ -21,22 +21,7 @@
     <script src="/js/shop/shop.js"></script>
     
 <script>
-	 /* function item_Buy_Check(){
-		var stockCount = ${s.item_stockCount};
-		var select = document.getElementById("basket_count");
-		var selectedCount = parseInt(select.options[select.selectedIndex].value);
-		
-	 	if(selectedCount > stockCount) {
-			alert('재고가 부족합니다. 보다 적은 수량을 선택해주세요.');
-			return false;
-		}
-	};  */
-	
-	/* 장바구니 테이블에 저장 */
- 	$('#basket_button').on('click',function(){
- 		
- 	}); 
-	
+
 	/* 총가격 계산 후 span에 출력 */
 	function buyPrice(){
 		var select = document.getElementById("basket_count");
@@ -101,6 +86,7 @@
 	                    </div>
 	                    <div class="basketAsk">
 	                    	<span>장바구니에 상품이 담겼습니다.</span>
+	                    	<button type="button"><i class="fa fa-window-close-o" aria-hidden="true"></i></button>
 	                    	<button id="basket_list_button" 
 	                    	onclick="javascript: form.action='basket_list';">장바구니로 가기</button>
 	                    </div>
@@ -137,6 +123,53 @@
            		${s.item_cont}
             </div>
         </div>
-        <!--//상품 상세 설명 영역 -->        
+        <!--//상품 상세 설명 영역 -->
+<script>
+
+/* 장바구니 테이블에 저장(ajax) */
+$('#basket_button').on('click',function(){
+	var basket_id = 'pebble'; //임시 아이디
+	var product_no = ${s.item_no}; //상품번호
+	var select = document.getElementById("basket_count");//select값
+	var selectedCount = parseInt(select.options[select.selectedIndex].value);
+	//select 값 숫자로 변환. 선택한 상품수량
+	var stockCount = ${s.item_stockCount};//재고수량
+	
+	//로그인 여부 확인
+	if(basket_id == '') {
+		alert('로그인 되어있지 않습니다. 로그인 해주세요.');
+		return false;
+	}
+	
+	//재고수량 확인(재고보다 적으면 출력)
+	if(selectedCount > stockCount) {
+		alert('재고가 부족합니다. 보다 적은 수량을 선택해주세요.');
+		return false;
+	}
+
+	$.ajax({//jQuery ajax
+		type : 'post',
+		url : '/shop/basket_add',//매핑주소
+		headers : {
+			"Content-type" : "application/json",
+			"X-HTTP-Method-Override" : "POST" //HTTP코드 맨머리 앞에 
+			//추가적인 정보지정
+		},
+		dataType : 'text',//문자열
+		data : JSON.stringify({//내용이 json
+			basket_id : basket_id,//아이디
+			product_no : product_no,//상품 번호
+			basket_count : selectedCount//선택수량
+		}),
+		success : function(data){//장바구니저장 성공시 
+			//SUCCESS 문자열 반환
+			if(data == 'SUCCESS') {
+				alert('장바구니에 상품이 담겼습니다.');
+			}//if
+		}//function(data)
+	});
+}); 
+
+</script>
 </body>
 </html>
