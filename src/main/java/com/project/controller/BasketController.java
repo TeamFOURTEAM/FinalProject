@@ -23,7 +23,7 @@ public class BasketController {
 	/** 장바구니에 추가 **/
 	@RequestMapping("shop/basket_add")
 	public String basket_add(
-			BasketVO basket,String state,
+			BasketVO basket,
 			HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
@@ -50,11 +50,6 @@ public class BasketController {
 		}//if else
 		
 //		return "redirect:/shop/basket_list";
-		if(state.equals("yes")) {
-			return "redirect:/shop/basket_list";
-		}else if(state.equals("no")) {
-			return "redirect:/shop/basket_cont";
-		}
 		
 		return null;
 	}//basket_add()

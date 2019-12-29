@@ -94,9 +94,7 @@
 	font-size: 20px;
 	padding: 20px 0;
 }
-.item_main .itemContBox .itemCount .itemBuy {
-	margin-top: 15px; 
-}
+.item_main .itemContBox .itemCount .itemBuy {}
 
 .item_main .itemContBox .itemCount .itemBuy button {
     padding: 15px; margin-right: 10px;
@@ -105,8 +103,15 @@
     margin: 10px 10px 10px 0;
 }
 .item_main .itemContBox .itemCount .basketAsk {
+	text-align: center;
+	width: 350px; height: 125px;
 	font-size: 20px; border: 1px solid #000;
 	padding: 15px; margin: 10px 10px 10px 0;
+}
+.item_main .itemContBox .itemCount .basketAsk #basket_list_button{
+	font-size: 15px; margin-top: 20px;
+	padding: 10px;
+	border: 1px solid #000;
 }
 
 /** 구매버튼영역 **/

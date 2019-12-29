@@ -21,7 +21,7 @@
     <script src="/js/shop/shop.js"></script>
     
 <script>
-	 function item_Buy_Check(){
+	 /* function item_Buy_Check(){
 		var stockCount = ${s.item_stockCount};
 		var select = document.getElementById("basket_count");
 		var selectedCount = parseInt(select.options[select.selectedIndex].value);
@@ -30,13 +30,13 @@
 			alert('재고가 부족합니다. 보다 적은 수량을 선택해주세요.');
 			return false;
 		}
-	 	
-	 	$('#basket_button').on('click',function(){
-		
-	 	}); 
-	}; 
+	};  */
 	
-
+	/* 장바구니 테이블에 저장 */
+ 	$('#basket_button').on('click',function(){
+ 		
+ 	}); 
+	
 	/* 총가격 계산 후 span에 출력 */
 	function buyPrice(){
 		var select = document.getElementById("basket_count");
@@ -73,8 +73,7 @@
                 <div class="itemContReco">
                     <span class="contReco">이 상품이 좋아요! : ${s.item_likeCount}</span>
                 </div>
-
-                <form method="post" name="itemBuy" onsubmit="return item_Buy_Check();">
+                <form method="post" name="itemBuy">
                 <input type="hidden" name="basket_id" value="pebble" /><%-- 임시 아이디(지울것) --%>
                 <input type="hidden" name="product_no" value="${s.item_no}" />
                 
@@ -94,14 +93,16 @@
                     <c:if test="${s.item_stockCount != '0'}">
                     	<div class="itemPriceSum"></div>
 	                    <div class="itemBuy">
-	                    	<%-- 하나의 form에서 action을 2개로 나눔  --%>
-		                    <button id="basket_button">장바구니에 담기</button>
+	                    
+	                    	<%-- 하나의 form에서 action을 2개로 나눔. 장바구니쪽은 ajax 처리  --%>
+		                    <button type="button" id="basket_button">장바구니에 담기</button>
 		                    <button id="buy_button" 
 		                    onclick="javascript: form.action='buy';">구매</button>
 	                    </div>
 	                    <div class="basketAsk">
-	                    	장바구니에 상품이 담겼습니다.
-	                    	<button onclick="#">장바구니로 가기</button>
+	                    	<span>장바구니에 상품이 담겼습니다.</span>
+	                    	<button id="basket_list_button" 
+	                    	onclick="javascript: form.action='basket_list';">장바구니로 가기</button>
 	                    </div>
                     </c:if>
                	</div>
@@ -136,6 +137,6 @@
            		${s.item_cont}
             </div>
         </div>
-        <!--//상품 상세 설명 영역 -->
+        <!--//상품 상세 설명 영역 -->        
 </body>
 </html>
