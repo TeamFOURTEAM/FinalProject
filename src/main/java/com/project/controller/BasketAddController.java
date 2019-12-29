@@ -1,10 +1,5 @@
 package com.project.controller;
 
-import java.io.PrintWriter;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.service.BasketService;
 import com.project.vo.BasketVO;
 
-/** 장바구니 컨트롤러 **/
+/** 장바구니 담기 컨트롤러(RestController) **/
 @RestController
 public class BasketAddController {
 	
@@ -32,28 +27,31 @@ public class BasketAddController {
 //		response.setContentType("text/html;charset=UTF-8");
 //		PrintWriter out=response.getWriter();
 		
-//		String basket_id=request.getParameter("basket_id");
-//		int product_no=Integer.parseInt(request.getParameter("product_no"));
-//		int basket_count=Integer.parseInt(request.getParameter("basket_count"));
-		
 		ResponseEntity<String> entity=null;
+//		String userId = (String) session.getAttribute("user_id");
 		
-		if(basket.getBasket_id() == null) {//id 값이 없을 때
+		//장바구니에 먼저 담은 상품이 있는지 검사
+		int count=
+			this.buyService.countBasket(basket.getProduct_no(),basket.getBasket_id());
+		
+		if(basket.getBasket_id() == null) {//id 값이 없을 때(session처리?)
 //			out.println("<script>");
 //			out.println("alert('다시 로그인 해주세요.');");
 //			out.println("location='history.back();';");
 //			out.println("</script>");
 			
 		}else {//id 값이 있을 때
-//			basket.setBasket_id(basket_id); basket.setProduct_no(product_no);
-//			basket.setBasket_count(basket_count);
-			
-//			this.buyService.addBasket(basket);//장바구니에 상품 추가
 			try {
-				this.buyService.addBasket(basket);//장바구니에 상품 추가
+				
+				if(count == 0) {//없으면 추가
+					this.buyService.addBasket(basket);//장바구니에 상품 추가
+				}else {//있으면 수정(update)
+					this.buyService.updateBasket(basket);//장바구니 상품 갱신
+				}
+				
 				entity=new ResponseEntity<String>("SUCCESS",
-						HttpStatus.OK);//장바구니 성공시 'SUCCESS'문자열을
-						//반환하고 정상상태코드 200 을 반환(HttpStatus.OK에 해당)
+					HttpStatus.OK);//장바구니 성공시 'SUCCESS'문자열을
+				//반환하고 정상상태코드 200 을 반환(HttpStatus.OK에 해당)
 				
 			}catch(Exception e) {
 				e.printStackTrace();

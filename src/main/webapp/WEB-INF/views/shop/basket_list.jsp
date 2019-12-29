@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>장바구니</title>
+<title>장바구니 목록</title>
 
 	<!-- Style -->
     <link rel="stylesheet" href="/css/reset.css">

@@ -9,4 +9,18 @@
 		values(basket_no_seq.nextval,#{basket_id},#{product_no},
 		#{basket_count})
 	</insert>
+	
+	<!-- 장바구니 동일 상품 확인 -->
+	<select id="basket_count" resultType="int">
+		select count(*) from shopBasket where basket_id=#{basket_id} 
+		and product_no=#{product_no}
+	</select>
+	
+	<!-- 장바구니 동일 상품 갱신 -->
+	<update id="basketSame_update">
+		update shopBasket
+		set basket_count=#{basket_count}
+		where basket_id=#{basket_id} and product_no=#{product_no}
+	</update>
+	
 </mapper>
