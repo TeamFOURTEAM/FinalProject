@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.service.BasketService;
 import com.project.vo.BasketVO;
 
-/** 장바구니 담기 컨트롤러(RestController) **/
+/** 장바구니 컨트롤러(RestController - ajax) **/
 @RestController
 public class BasketAddController {
 	
