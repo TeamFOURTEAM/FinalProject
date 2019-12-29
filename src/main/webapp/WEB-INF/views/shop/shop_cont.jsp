@@ -61,6 +61,7 @@
                 <form method="post" name="itemBuy">
                 <input type="hidden" name="basket_id" value="pebble" /><%-- 임시 아이디(지울것) --%>
                 <input type="hidden" name="product_no" value="${s.item_no}" />
+                <input type="hidden" name="page" value="${page}" />
                 
                 <div class="itemCount">
                 	<span class="contCount" >수량 :  </span>

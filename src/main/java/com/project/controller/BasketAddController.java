@@ -64,6 +64,9 @@ public class BasketAddController {
 		return entity;
 	}//basket_add()
 	
+	/** 장바구니 목록 불러오기 **/
+	/** 장바구니 수량 수정 **/
+	/** 장바구니 상품 삭제 **/
 }
 
 
