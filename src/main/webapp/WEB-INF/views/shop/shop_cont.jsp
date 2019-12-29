@@ -86,7 +86,7 @@
 	                    </div>
 	                    <div class="basketAsk">
 	                    	<span>장바구니에 상품이 담겼습니다.</span>
-	                    	<button type="button"><i class="fa fa-window-close-o" aria-hidden="true"></i></button>
+	                    	<button type="button" id="basketCancel"><i class="fa fa-window-close-o" aria-hidden="true"></i></button>
 	                    	<button id="basket_list_button" 
 	                    	onclick="javascript: form.action='basket_list';">장바구니로 가기</button>
 	                    </div>
@@ -128,7 +128,7 @@
 
 /* 장바구니 테이블에 저장(ajax) */
 $('#basket_button').on('click',function(){
-	var basket_id = 'pebble'; //임시 아이디
+	var basket_id = 'pebble'; //임시 아이디(이후에 세션값을 가져오게끔 한다)
 	var product_no = ${s.item_no}; //상품번호
 	var select = document.getElementById("basket_count");//select값
 	var selectedCount = parseInt(select.options[select.selectedIndex].value);
@@ -164,11 +164,20 @@ $('#basket_button').on('click',function(){
 		success : function(data){//장바구니저장 성공시 
 			//SUCCESS 문자열 반환
 			if(data == 'SUCCESS') {
-				alert('장바구니에 상품이 담겼습니다.');
+				//alert('장바구니에 상품이 담겼습니다.');//지울 메시지(div로 대체)
+				$('.basketAsk').show();
+				setTimeout(function(){// 초 동안만 알림창을 유지
+					$('.basketAsk').hide();
+				},5000);
 			}//if
 		}//function(data)
 	});
-}); 
+});
+
+/* 장바구니 알림창 닫기 */
+$('#basketCancel').on('click',function(){
+	$('.basketAsk').hide();
+});
 
 </script>
 </body>
