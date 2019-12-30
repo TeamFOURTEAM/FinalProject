@@ -77,10 +77,7 @@
                     +'<span style="width: 15%;">금액</span>'
                     +'<span style="width: 5%;"></span>'
                 	+'</p>'
-    		 
-	    			/* $(data).each(function(){//jQuery 반복 함수
-	    				
-	    			}); */
+    		
 	    			$.each(data.list, function(index, list){
 	    				/* alert(list.basket_no);
 	    				alert(list.price); */
