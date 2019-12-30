@@ -9,6 +9,7 @@ public class BasketVO {
 	private int basket_count;//담은 상품 개수
 	private int validity;//상품의 상태. 1-> 장바구니에 담긴 상품, 2-> 주문완료 처리 된 상품
 	
+	private String user_name;//유저 이름
 	private String product_name;//상품명
 	private int price;//상품 개별 가격
 	private int price_sum;//총 가격
@@ -45,6 +46,18 @@ public class BasketVO {
 	}
 	public void setValidity(int validity) {
 		this.validity = validity;
+	}
+	public String getUser_name() {
+		return user_name;
+	}
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
+	public String getProduct_name() {
+		return product_name;
+	}
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
 	}
 	public int getPrice() {
 		return price;
