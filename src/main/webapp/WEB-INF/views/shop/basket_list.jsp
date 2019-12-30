@@ -46,8 +46,8 @@
 			                   <option value="5">5</option>
 	               			</select>
 	                    </div>
-	                    <div class="column table_view">금액</div> -->
-	                    <div class="column table_date"><button type="button">삭제</button></div>
+	                    <div class="column table_view">금액</div> 
+	                    <div class="column table_date"><button type="button">삭제</button></div> -->
                     </div>
                 </div>
                 <!--//장바구니 목록 테이블 부분-->
@@ -78,8 +78,7 @@
     				function(data){
     		 var str="";
     			$(data).each(function(){//jQuery 반복 함수
-    				console.log(data);
-    				alert(data.sumMoney);
+    				
     			});
     			$('.basket_body').html(str);//태그와 문자를 함께 변경 적용 
     		});
