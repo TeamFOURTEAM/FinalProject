@@ -165,6 +165,10 @@ public class User_Controller {
             //CodeMessage.sms_send(phone,codenum);
 
             out.print(codenum);
+        }else{
+            codenum = new CodeSend().cd1();
+             //CodeMessage.sms_send(phone,codenum);
+            out.println(codenum);
         }
         return null;
     }

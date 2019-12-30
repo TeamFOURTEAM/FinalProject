@@ -1,4 +1,5 @@
 #bigcontainer{
+    margin: 0 auto;
     background-color: rgba(35, 38, 59, 0.1);
     width: 1200px;
     height: 100%;
@@ -109,6 +110,17 @@
 
 a:hover{
     text-decoration: underline;
+}
+
+.login_div{
+    border: 1px solid;
+    height: 150px;
+    text-align: center;
+}
+
+.login_div h3{
+    margin-top: 50px;
+    font-size: 20px;
 }
 
 

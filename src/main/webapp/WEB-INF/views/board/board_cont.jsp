@@ -62,8 +62,8 @@
             </c:if>
 
             <c:if test="${empty member_id}">
-                <div>
-                    <h3><a href="/login" style="color: blue">로그인해주세요!</a></h3>
+                <div class="login_div">
+                    <h3><a href="/login" style="color: blue">로그인 이후 사용 가능합니다</a></h3>
                 </div>
             </c:if>
         </div>
