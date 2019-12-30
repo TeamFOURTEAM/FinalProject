@@ -14,4 +14,6 @@ public interface BasketDAO {
 
 	List<BasketVO> listBasket(String basket_id);
 
+	int sumMoney(String basket_id);
+
 }

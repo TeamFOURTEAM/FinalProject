@@ -36,6 +36,11 @@ public class BasketServiceImpl implements BasketService{
 	public List<BasketVO> listBasket(String basket_id) {
 		return this.basketDAO.listBasket(basket_id);
 	}
+
+	@Override
+	public int sumMoney(String basket_id) {
+		return this.basketDAO.sumMoney(basket_id);
+	}
 	
 	
 }

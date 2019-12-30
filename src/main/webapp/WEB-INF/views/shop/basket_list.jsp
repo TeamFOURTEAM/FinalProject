@@ -68,20 +68,20 @@
 	
     <script>
 	//장바구니 테이블 목록 구현
-    	var basket_id=${basket_id};//유저 아이디
+    	var basket_id="<c:out value='${basket_id}'/>";//유저 아이디
+    	//javascript 로 변수 선언할때 변수값을 다이렉트로 지정해주면 is not defined 에러발생.
     	
     	getBasketList();//장바구니 목록 함수 호출
     	
     	function getBasketList() {
     		$.getJSON("/shop/basketListAll/"+basket_id,
     				function(data){
-    		var str="";
+    		 var str="";
     			$(data).each(function(){//jQuery 반복 함수
-    				str += "<div class='column table_no'>"+this.basket_no+"</div>"
-    				+"<div class='column table_title'><a href='shop_cont?state=cont&item_no=${n.item_no}&page=${page}'>"+this.basket_+"</a></div>"
-    				+
+    				console.log(data);
+    				alert(data.sumMoney);
     			});
-    			$('.basket_body').html(str);//태그와 문자를 함께 변경 적용
+    			$('.basket_body').html(str);//태그와 문자를 함께 변경 적용 
     		});
     	}//getBasketList()
     </script>

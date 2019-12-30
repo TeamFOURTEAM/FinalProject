@@ -25,8 +25,28 @@
 	
 	<!-- 아이디에 따른 장바구니 목록 -->
 	<select id="basket_list" resultType="basket">
-		select * from shopBasket where basket_id=#{basket_id} and validity=1 
-		order by basket_no desc
+		select 
+			b.basket_no as basket_no,
+			b.basket_id as basket_id,
+			l.item_no as product_no,
+			'이재형' as user_name,<!-- 임시로 이름 줬음. 멤버 테이블에서 받아와야함 -->
+			l.item_name as product_name,
+			b.basket_count,
+			l.item_price as price,
+			(item_price * basket_count) sumPrice,
+			validity
+		from shopList l, shopBasket b 
+		where 
+			l.item_no = b.product_no
+			and b.basket_id=#{basket_id} and validity=1 
+		order by b.basket_no desc
+	</select>
+	
+	<!-- 장바구니 금액 합산 -->
+	<select id="basket_SumMoney" resultType="int">
+		SELECT NVL(SUM(item_price * basket_count), 0) sumPrice 
+		FROM shopBasket b, shopList l
+		WHERE b.product_no = l.item_no AND b.basket_id = #{basket_id}
 	</select>
 	
 </mapper>
