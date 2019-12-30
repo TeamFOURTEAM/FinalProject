@@ -51,9 +51,13 @@
 		<section id="cont">
 			<article class="column col1">
 				<div class="main">
-					<form method="post" action="/cat_write_ok" id="frm" onsubmit="return QandA_write_ok();">
+					<form method="post" action="/QandA_write_ok" id="frm" onsubmit="return QandA_write_ok();">
 					
 					<table id="QandA_write" >
+						<tr>
+							<th>이름</th>
+							<td><input name="QandA_name" id="QandA_name" size="14" /> </td>
+						</tr>
 						<tr>
 							<th>제목</th>
 							<td><input name="QandA_title" id="QandA_title" size="20" /> </td>
