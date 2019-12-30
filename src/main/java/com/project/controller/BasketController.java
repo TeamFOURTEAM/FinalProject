@@ -22,6 +22,9 @@ public class BasketController {
 			page=Integer.parseInt(request.getParameter("page"));
 		}//page 값 받아옴
 		
+		String basket_id=request.getParameter("basket_id");
+		
+		basketList.addAttribute("basket_id",basket_id);//id값 전달
 		basketList.addAttribute("page",page);//page 값 받아서 전달(목록버튼에 전달하기위함)
 		
 		return "shop/basket_list";

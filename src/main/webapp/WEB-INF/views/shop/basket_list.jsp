@@ -12,22 +12,20 @@
     
     <!-- JavaScript Libraries -->
     <script src="/js/jquery.js"></script>
-    
 </head>
 <body>
 	<div class="container">
 		<form method="post">
 			<div class="basket_title">
-				<span>${bakset_id}</span> 님의 장바구니 목록 ${page}
+				<span>${basket_id}</span>님의 장바구니 목록 ${page}
 			</div>
 			
 			<div class="basket_list">
 				<!-- 장바구니 목록 테이블 부분-->
                 <div class="basket_table">
                     <p class="basket_head">
-                        <span style="width: 7%;">No.</span> 
-                        <span style="width: 10%;">상품 이미지</span> 
-                        <span style="width: 30%;">상품명</span>
+                        <span style="width: 7%;">No.</span>
+                        <span style="width: 35%;">상품명</span>
                         <span style="width: 15%;">단가</span> 
                         <span style="width: 5%;">수량</span> 
                         <span style="width: 15%;">금액</span>
@@ -35,8 +33,7 @@
                     </p>
 
                     <div class="basket_body">
-	                    <div class="column table_no">1</div>
-	                    <div class="column table_type"><a href="#">이미지</a></div>
+	                    <!-- <div class="column table_no">1</div>
 	                    <div class="column table_title"><a href="#">상품명</a></div>
 	                    <div class="column table_name">단가</div>
 	                    <div class="column table_reco">
@@ -49,8 +46,7 @@
 			                   <option value="5">5</option>
 	               			</select>
 	                    </div>
-	                    <div class="column table_view">금액</div>
-	                    
+	                    <div class="column table_view">금액</div> -->
 	                    <div class="column table_date"><button type="button">삭제</button></div>
                     </div>
                 </div>
@@ -69,6 +65,26 @@
 			</div>
 		</form>
 	</div>
+	
+    <script>
+	//장바구니 테이블 목록 구현
+    	var basket_id=${basket_id};//유저 아이디
+    	
+    	getBasketList();//장바구니 목록 함수 호출
+    	
+    	function getBasketList() {
+    		$.getJSON("/shop/basketListAll/"+basket_id,
+    				function(data){
+    		var str="";
+    			$(data).each(function(){//jQuery 반복 함수
+    				str += "<div class='column table_no'>"+this.basket_no+"</div>"
+    				+"<div class='column table_title'><a href='shop_cont?state=cont&item_no=${n.item_no}&page=${page}'>"+this.basket_+"</a></div>"
+    				+
+    			});
+    			$('.basket_body').html(str);//태그와 문자를 함께 변경 적용
+    		});
+    	}//getBasketList()
+    </script>
 </body>
 </html>
 

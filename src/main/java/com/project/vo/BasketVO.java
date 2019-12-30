@@ -9,6 +9,7 @@ public class BasketVO {
 	private int basket_count;//담은 상품 개수
 	private int validity;//상품의 상태. 1-> 장바구니에 담긴 상품, 2-> 주문완료 처리 된 상품
 	
+	private String product_name;//상품명
 	private int price;//상품 개별 가격
 	private int price_sum;//총 가격
 	
