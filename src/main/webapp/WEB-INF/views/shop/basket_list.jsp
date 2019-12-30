@@ -23,7 +23,6 @@
 			<div class="basket_list">
 				<!-- 장바구니 목록 테이블 부분-->
                 <div class="basket_table">
-                    <div class="basket_box">
 	                    <!-- <div class="column table_no">1</div>
 	                    <div class="column table_title"><a href="#">상품명</a></div>
 	                    <div class="column table_name">단가</div>
@@ -38,8 +37,7 @@
 	               			</select>
 	                    </div>
 	                    <div class="column table_view">금액</div> 
-	                    <div class="column table_date"><button type="button">삭제</button></div> -->
-                    </div>
+	                    <div class="column table_date"><button type="button">삭제</button></div> -->    
                 </div>
                 <!--//장바구니 목록 테이블 부분-->
 				
@@ -82,8 +80,8 @@
 	    				/* alert(list.basket_no);
 	    				alert(list.price); */
 	    				str += "<div class='basket_body'><div class='column table_no'>"+list.basket_no+"</div>"
-	    				+"<div class='column table_img'><a href='#'><img src=/resources/photo_upload"+list.product_img+"/></a></div>"
-	    				+"<div class='column table_title'><a href='#'>"+list.product_name+"</a></div>"
+	    				+"<div class='column table_img'><a href='shop_cont?state=cont&item_no="+list.product_no+"&page="+${page}+"'><img src=/resources/photo_upload"+list.product_img+"/></a></div>"
+	    				+"<div class='column table_title'><a href='shop_cont?state=cont&item_no="+list.product_no+"&page="+${page}+"'>"+list.product_name+"</a></div>"
 	    				+"<div class='column table_name'>"+list.price+"</div>"
 	    				+"<div class='column table_reco'><select name='basket_count' class='basket_count'>"
 	                    +"<option value='1'>1</option>"
