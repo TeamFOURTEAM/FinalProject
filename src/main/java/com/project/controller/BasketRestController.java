@@ -1,6 +1,8 @@
 package com.project.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -69,24 +71,30 @@ public class BasketRestController {
 	
 	/** 회원 아이디에 따른 장바구니 목록 불러오기 **/
 	@RequestMapping(value="/shop/basketListAll/{basket_id}",method=RequestMethod.GET)
-	public ResponseEntity<List<BasketVO>> basketList(
+	public Map<String,Object> basketList(
 			@PathVariable("basket_id") String basket_id) {
 		
-		ResponseEntity<List<BasketVO>> entity=null;
+		Map<String,Object> map=new HashMap<String, Object>();
+		List<BasketVO> list=this.basketService.listBasket(basket_id);//장바구니 정보
+		int sumMoney=this.basketService.sumMoney(basket_id);//장바구니 전체 금액 호출
+		
+		/* 장바구니 전체 금액에 따라 배송비 구분 */
+		
 		
 		try {
-			entity=new ResponseEntity<>(
-				this.basketService.listBasket(basket_id),HttpStatus.OK);
+//			entity=new ResponseEntity<>(
+//				this.basketService.listBasket(basket_id),HttpStatus.OK);
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			entity=new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//			entity=new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}//try catch
 		
-		return entity;
+		return map;
 	}//basketList()
 	
 	/** 장바구니 수량 수정 **/
+	
 	/** 장바구니 상품 삭제 **/
 }
 

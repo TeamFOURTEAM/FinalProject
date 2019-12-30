@@ -12,7 +12,7 @@ public class BasketVO {
 	private String user_name;//유저 이름
 	private String product_name;//상품명
 	private int price;//상품 개별 가격
-	private int price_sum;//총 가격
+	private int sumPrice;//총 가격
 	
 	
 	
@@ -65,11 +65,11 @@ public class BasketVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getPrice_sum() {
-		return price_sum;
+	public int getSumPrice() {
+		return sumPrice;
 	}
-	public void setPrice_sum(int price_sum) {
-		this.price_sum = price_sum;
+	public void setSumPrice(int sumPrice) {
+		this.sumPrice = sumPrice;
 	}
 	
 	
