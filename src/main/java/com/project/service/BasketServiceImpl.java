@@ -31,12 +31,14 @@ public class BasketServiceImpl implements BasketService{
 	public void updateBasket(BasketVO basket) {
 		this.basketDAO.updateBasket(basket);
 	}
-
+	
+	/** 장바구니  목록 **/
 	@Override
 	public List<BasketVO> listBasket(String basket_id) {
 		return this.basketDAO.listBasket(basket_id);
 	}
 
+	/** 장바구니 상품금액 합계 **/
 	@Override
 	public int sumMoney(String basket_id) {
 		return this.basketDAO.sumMoney(basket_id);

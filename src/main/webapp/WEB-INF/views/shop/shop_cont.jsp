@@ -135,6 +135,7 @@ $('#basket_button').on('click',function(){
 	var selectedCount = parseInt(select.options[select.selectedIndex].value);
 	//select 값 숫자로 변환. 선택한 상품수량
 	var stockCount = ${s.item_stockCount};//재고수량
+	var page = ${page};//해당 상품 page
 	
 	//로그인 여부 확인
 	if(basket_id == '') {
@@ -160,7 +161,8 @@ $('#basket_button').on('click',function(){
 		data : JSON.stringify({//내용이 json
 			basket_id : basket_id,//아이디
 			product_no : product_no,//상품 번호
-			basket_count : selectedCount//선택수량
+			basket_count : selectedCount,//선택수량
+			basket_page : page//해당 상품 페이지 값
 		}),
 		success : function(data){//장바구니저장 성공시 
 			//SUCCESS 문자열 반환

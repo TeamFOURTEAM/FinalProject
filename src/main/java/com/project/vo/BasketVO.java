@@ -8,13 +8,13 @@ public class BasketVO {
 	private int product_no;//원래 상품 번호
 	private int basket_count;//담은 상품 개수
 	private int validity;//상품의 상태. 1-> 장바구니에 담긴 상품, 2-> 주문완료 처리 된 상품
+	private int basket_page;//해당 상품 page값 
 	
 	private String user_name;//유저 이름
 	private String product_name;//상품명
 	private String product_img;//상품 이미지 파일명
 	private int price;//상품 개별 가격
 	private int sumPrice;//총 가격
-	
 	
 	
 	/** getter // setter **/
@@ -78,7 +78,11 @@ public class BasketVO {
 	public void setSumPrice(int sumPrice) {
 		this.sumPrice = sumPrice;
 	}
-	
-	
+	public int getBasket_page() {
+		return basket_page;
+	}
+	public void setBasket_page(int basket_page) {
+		this.basket_page = basket_page;
+	}
 	
 }

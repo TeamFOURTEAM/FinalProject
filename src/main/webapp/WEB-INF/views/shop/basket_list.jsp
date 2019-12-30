@@ -17,7 +17,7 @@
 	<div class="container">
 		<form method="post">
 			<div class="basket_title">
-				<span>${basket_id}</span>님의 장바구니 목록 ${page}
+				<span>${basket_id}</span>님의 장바구니 목록
 			</div>
 			
 			<div class="basket_list">
@@ -50,6 +50,7 @@
 				<div class="basket_buy">
 					<button id="basketBuy_btn" >구매</button>
 					<button type="button" id="basketList_btn" onclick="location.href='total_shop?page=${page}&find_field=item_name&find_name=';">상품목록</button>
+					<%-- 상품목록 버튼의 ${page}값은 바로 이전 상품을 담고 오는 것이기 때문에 문제가 없다. 이전 상품이 있던 페이지로 돌아가는 것이기 때문. --%>
 				</div>
 			</div>
 		</form>
@@ -80,8 +81,8 @@
 	    				/* alert(list.basket_no);
 	    				alert(list.price); */
 	    				str += "<div class='basket_body'><div class='column table_no'>"+list.basket_no+"</div>"
-	    				+"<div class='column table_img'><a href='shop_cont?state=cont&item_no="+list.product_no+"&page="+${page}+"'><img src=/resources/photo_upload"+list.product_img+"/></a></div>"
-	    				+"<div class='column table_title'><a href='shop_cont?state=cont&item_no="+list.product_no+"&page="+${page}+"'>"+list.product_name+"</a></div>"
+	    				+"<div class='column table_img'><a href='shop_cont?state=cont&item_no="+list.product_no+"&page="+list.basket_page+"'><img src=/resources/photo_upload"+list.product_img+"/></a></div>"
+	    				+"<div class='column table_title'><a href='shop_cont?state=cont&item_no="+list.product_no+"&page="+list.basket_page+"'>"+list.product_name+"</a></div>"
 	    				+"<div class='column table_name'>"+list.price+"</div>"
 	    				+"<div class='column table_reco'><select name='basket_count' class='basket_count'>"
 	                    +"<option value='1'>1</option>"

@@ -8,6 +8,7 @@ create table shopBasket(
 	,basket_count number(38) not null --담은 상품 개수
 	,validity number(38) default 1 
 	--장바구니에 담은 상품의 상태. 1 -> 담긴 상품 // 2 -> 주문완료 된 상품(구매 목록)
+	,basket_page number(38) not null --해당상품의 페이지 값. 장바구니에서 해당상품클릭했을때 이동하기 위함.
 );
 
 select * from shopBasket order by basket_no desc;
@@ -22,7 +23,8 @@ select
 	b.basket_count,
 	l.item_price as price,
 	(item_price * basket_count) sumPrice,
-	validity
+	validity,
+	basket_page
 from shopList l, shopBasket b 
 where 
 	l.item_no = b.product_no
