@@ -74,7 +74,7 @@
 							<li><a href="#">고객센터 1</a></li>
 							<li><a href="#">고객센터 2</a></li>
 							<li><a href="#">고객센터 3</a></li>
-							<li><a href="#">고객센터 4</a></li>
+							<li><a href="/QandA/QandA_write">Q&A</a></li>
 						</ul></li>
 				</ul>
 			</div>
