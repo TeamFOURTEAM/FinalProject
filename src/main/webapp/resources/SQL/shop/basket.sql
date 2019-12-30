@@ -13,6 +13,7 @@ create table shopBasket(
 
 select * from shopBasket order by basket_no desc;
 
+/*****************************/
 select 
 	b.basket_no as basket_no,
 	b.basket_id as basket_id,
@@ -20,7 +21,7 @@ select
 	'이재형' as user_name,
 	l.item_name as product_name,
 	l.item_img as product_img,
-	b.basket_count,
+	b.basket_count as basket_count,
 	l.item_price as price,
 	(item_price * basket_count) sumPrice,
 	validity,
@@ -30,6 +31,7 @@ where
 	l.item_no = b.product_no
 	and b.basket_id='pebble' and validity=1 
 order by b.basket_no desc
+/*****************************/
 
 --shopBasket 참조키 제약조건 생성
 alter table shopBasket

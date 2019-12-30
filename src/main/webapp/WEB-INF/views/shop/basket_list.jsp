@@ -76,7 +76,7 @@
                     +'<span style="width: 15%;">금액</span>'
                     +'<span style="width: 5%;"></span>'
                 	+'</p>'
-    		
+
 	    			$.each(data.list, function(index, list){
 	    				/* alert(list.basket_no);
 	    				alert(list.price); */
@@ -94,8 +94,9 @@
 	                    +"</div>"
 	                    +"<div class='column table_view'>"+list.sumPrice+"</div>"
 	                    +"<div class='column table_date'><button type='button'>삭제</button></div>"
-	                    +"</div>"
-	    			});
+	                    +"</div>";
+	    				$(".basket_count").val('3').prop("selected", true);
+                    });
 	    			$('.basket_table').html(pTag+str);//태그와 문자를 함께 변경 적용
     			});
     	}//getBasketList()
