@@ -17,4 +17,9 @@ public class MemberJoinServiceImpl implements MemberJoinService {
 		mbDAO.insert(mb);
 	}
 
+	@Override
+	public String SearchID(String checkwords) {
+		return mbDAO.SearchID(checkwords);
+	}
+
 }

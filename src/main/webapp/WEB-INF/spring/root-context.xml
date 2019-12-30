@@ -42,7 +42,7 @@
 		
 	<!-- mybatis 매퍼 태그로 쿼리문을 다룸 => 매퍼태그 경로설정 -->
 	<property name="mapperLocations" 
-		value="classpath*:com/project/mappers/*/*.xml"/>
+		value="classpath:com/project/mappers/*/*.xml"/>
 	</bean>
 	
 	<!-- 스프링을 통한 트랜잭션 매니저 설정 -->

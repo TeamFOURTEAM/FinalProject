@@ -17,4 +17,10 @@ public class MemberJoinDAOImpl implements MemberJoinDAO {
 		sqlSession.insert("MemberJoin.MbJoin", mb);
 	}
 
+	@Override
+	public String SearchID(String checkwords) {
+		System.out.println("DAO에서 Query에 값 전달 : "+checkwords);
+		return sqlSession.selectOne("MemberJoin.SearchID", checkwords);		
+	}
+
 }

@@ -4,10 +4,9 @@
 
 
 <link rel="stylesheet" href="<c:url value="/resources/css/MemberJoin/MemberJoin.css" />" />
-<script src="<c:url value="/js/MemberJoin/MemberJoin.js" />"></script>
 
     <section>
-        <form action="/memberjoin_ok" name="MemberForm" autocomplete="off" method="post">
+        <form action="/memberjoin_ok" id="MemberForm" method="post">
             <div id="JoinContainer"> <!-- max size -->
                 <div class="content"><!--min size -->
                     <div class="divSize">
@@ -17,7 +16,7 @@
                             <!-- <span class="s-span-Size1">@naver.com</span> -->
                         </span>
                     </div>
-                    <div class="divLabel">
+                    <div class="divLabel box-transition">
                         <label id="labelID">아이디를 입력하세요</label>
                     </div>
 
@@ -82,7 +81,8 @@
 
                             <div class="birth-dd">
                                 <span>
-                                    <input name="user_birthdayDD" id='birthdayDD' class="birth-day-Size" type="text" maxlength="2" placeholder="일">
+                                    <input name="user_birthdayDD" id='birthdayDD' class="birth-day-Size" type="text" maxlength="2">
+                                    <p class='birthdayDD_text'>일</p>
                                 </span>
                             </div>
                         </div>

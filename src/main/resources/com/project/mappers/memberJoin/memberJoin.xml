@@ -8,6 +8,10 @@
 		insert into MEMBERJOIN (user_id, user_pwd, user_name, user_birthday, user_gender, user_email, user_phone)
 		values(#{user_id}, #{user_pwd}, #{user_name}, #{user_birthday}, #{user_gender}, #{user_email}, #{user_phone})
 	</insert>
+	
+	<select id="SearchID" parameterType="String" resultType="String">
+		SELECT USER_ID FROM MEMBERJOIN WHERE USER_ID = #{checkwords}
+	</select>
 </mapper>
 
 

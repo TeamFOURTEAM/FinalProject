@@ -25,11 +25,18 @@ h2 {
 	margin: 15px auto;
 }
 
+.divlabel.box-transition {
+	
+}
+.divLabel {
+	height: 10px;
+}
 /* divSize 안에 라벨들 */
 .divLabel label {
 	color: red;
 	display: none;
 }
+
 /* div inner span */
 .s-span-Size {
 	display: block;
@@ -84,8 +91,16 @@ h2 {
 	background-color: #fff;
 }
 
+.birthdayDD_text {
+	display: inline;
+	position: absolute;
+	right: 15px;
+	top: 16px;
+}
+
 /* span inner item */
 .birth-day-Size {
+	position: relative;
 	width: 99%;
 	height: 30px;
 	/* margin: 10px auto; */
@@ -127,7 +142,7 @@ h2 {
 
 /* 인증번호 div */
 .CodedivSize {
-	margin: 15px 0px 15px 0px;
+	margin: 0px 0px 10px 0px;
 }
 /* 인증번호 */
 .PSpanSizeCB {
@@ -171,8 +186,5 @@ h2 {
 	font-size: 30px;
 	font-weight: bold;
 	color: wheat;
-}
-/* 회원가입 div */
-.Memberjoin {
 	margin-top: 10px;
 }
