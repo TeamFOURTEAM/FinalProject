@@ -70,7 +70,8 @@
     		 		var str=""; 
     		 		var pTag='<p class="basket_head">'
                     +'<span style="width: 7%;">No.</span>'
-                    +'<span style="width: 35%;">상품명</span>'
+                    +'<span style="width: 15%;"></span>'
+                    +'<span style="width: 30%;">상품명</span>'
                     +'<span style="width: 15%;">단가</span>' 
                     +'<span style="width: 5%;">수량</span>' 
                     +'<span style="width: 15%;">금액</span>'
@@ -84,6 +85,7 @@
 	    				/* alert(list.basket_no);
 	    				alert(list.price); */
 	    				str += "<div class='basket_body'><div class='column table_no'>"+list.basket_no+"</div>"
+	    				+"<div class='column table_img'><a href='#'><img src=/resources/photo_upload"+list.product_img+"/></a></div>"
 	    				+"<div class='column table_title'><a href='#'>"+list.product_name+"</a></div>"
 	    				+"<div class='column table_name'>"+list.price+"</div>"
 	    				+"<div class='column table_reco'><select name='basket_count' class='basket_count'>"

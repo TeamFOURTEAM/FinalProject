@@ -48,12 +48,21 @@
 .basket_body .column {
     display: table-cell;
     text-align: center;
-    padding: 30px 0;
+    vertical-align : middle;
     border-bottom: 1px solid #dcdcdc;
+    font-size: 15px;
 }
-.basket_body #basket_count {
+.basket_body .basket_count {
 	font-size: 13px; text-align: center;
 	width: 40px; height: 25px;
+}
+.basket_body .column.table_img{
+	text-align: center;
+	padding: 15px;
+}
+.basket_body .column.table_img img {
+	margin: auto 0;
+	width: 150px; height: 150px;
 }
 .basket_body .column.table_date button {
 	font-size: 13px;

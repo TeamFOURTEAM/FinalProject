@@ -31,6 +31,7 @@
 			l.item_no as product_no,
 			'이재형' as user_name,<!-- 임시로 이름 줬음. 멤버 테이블에서 받아와야함 -->
 			l.item_name as product_name,
+			l.item_img as product_img,
 			b.basket_count,
 			l.item_price as price,
 			(item_price * basket_count) sumPrice,

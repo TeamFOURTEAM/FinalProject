@@ -11,6 +11,7 @@ public class BasketVO {
 	
 	private String user_name;//유저 이름
 	private String product_name;//상품명
+	private String product_img;//상품 이미지 파일명
 	private int price;//상품 개별 가격
 	private int sumPrice;//총 가격
 	
@@ -58,6 +59,12 @@ public class BasketVO {
 	}
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
+	}
+	public String getProduct_img() {
+		return product_img;
+	}
+	public void setProduct_img(String product_img) {
+		this.product_img = product_img;
 	}
 	public int getPrice() {
 		return price;
