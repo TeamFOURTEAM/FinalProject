@@ -58,7 +58,7 @@
 	                    			</a>
 		                    	</div>
 		                    	<div class="column table_name">
-		                    		<fmt:formatNumber pattern="###,###,###" value="${cart.price}" />
+		                    		\ <fmt:formatNumber pattern="###,###,###" value="${cart.price}" />
 		                    	</div>
 		                    	<div class="column table_reco">
 		                    	<select name="basket_count" class="basket_count"
@@ -71,7 +71,7 @@
 		               			</select>
 			                    </div>
 			                    <div class="column table_view">
-			                    	<fmt:formatNumber pattern="###,###,###" value="${cart.sumPrice}" />
+			                    	\ <fmt:formatNumber pattern="###,###,###" value="${cart.sumPrice}" />
 		                    	</div> 
 			                    <div class="column table_del">
 			                    	<button type="button">삭제</button>
@@ -86,9 +86,16 @@
                	</div><%-- basket list --%>
                	
 				<div class="basket_info">
-					<div class="item_price">장바구니 금액 합계 : </div>
-					<div class="deli_price">배송료 : </div>
-					<div class="all_price">전체 주문 금액 :</div>
+					<div class="item_price">
+						장바구니 금액 합계 : \ <fmt:formatNumber pattern="###,###,###" value="${map.sumMoney}" />
+					</div>
+					<div class="deli_price">
+						배송료 :  \ <fmt:formatNumber pattern="###,###,###" value="${map.fee}" />
+					</div>
+					<div class="info_line"></div>
+					<div class="all_price">
+						전체 주문 금액 :  \ <fmt:formatNumber pattern="###,###,###" value="${map.allSum}" />
+					</div>
 				</div>
 				<div class="basket_buy">
 					<button id="basketBuy_btn" >구매</button>

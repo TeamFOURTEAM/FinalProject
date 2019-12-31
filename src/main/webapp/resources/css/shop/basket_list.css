@@ -84,6 +84,19 @@
 	text-align: right;
 	font-size: 20px;
 }
+.basket_info .item_price {
+	padding-bottom: 15px;
+}
+.basket_info .deli_price {
+	padding-bottom: 15px;
+}
+.basket_info .info_line {
+	border-top: 1px solid #000;
+	margin-left: 50%;
+}
+.basket_info .all_price {
+	padding: 15px 0;
+}
 .basket_buy {
 	text-align: right;
 	margin: 10px 0;
