@@ -15,11 +15,11 @@
 </head>
 <body>
 	<div class="container">
-		<form method="post">
 			<div class="basket_title">
 				<span>${basket_id}</span>님의 장바구니 목록
 			</div>
 			
+          	<form method="post">
 			<div class="basket_list">
 				<!-- 장바구니 목록 테이블 부분-->
                 <div class="basket_table">
@@ -32,28 +32,54 @@
                 		<span style="width: 15%;">금액</span>
                 		<span style="width: 5%;"></span>
                 	</p>
-                	<div class='basket_body'>
-	                    <div class="column table_no">1</div>
-	                    <div class="column table_img">img</div>
-	                    <div class="column table_title"><a href="#">상품명</a></div>
-	                    <div class="column table_name">단가</div>
-	                    <div class="column table_reco">
-	                    	<select name="basket_count" id="basket_count"
-	               			onchange="buyPrice()">
-			                   <option value="1">1</option>
-			                   <option value="2">2</option>
-			                   <option value="3">3</option>
-			                   <option value="4">4</option>
-			                   <option value="5">5</option>
-	               			</select>
-	                    </div>
-                    <div class="column table_view">금액</div> 
-                    <div class="column table_date"><button type="button">삭제</button></div>    
+                	<%-- 장바구니 테이블 시작 --%>
+                	<c:choose>
+                		<c:when test="${map.count == 0}"><%-- 장바구니 정보가 없을 때 --%>
+                			<div class="basket_body">
+								<div class="column table_none">
+									장바구니에 상품이 없습니다.
+								</div>
+							</div>
+						</c:when>
+
+						<c:otherwise>
+	                    <c:forEach var="cart" items="${map.list}">
+						<div class="basket_body">
+		                    	<div class="column table_no">${cart.basket_no}</div>
+		                    	<div class="column table_img">
+		                    		<a href="shop_cont?state=cont&item_no=${cart.product_no}&page=${cart.basket_page}">
+		                    			<img src="/resources/photo_upload${cart.product_img}"/>
+		                    		</a>
+	                    		</div>
+		                    	<div class="column table_title">
+		                    		<a href="shop_cont?state=cont&item_no=${cart.product_no}&page=${cart.basket_page}">
+		                    			${cart.product_name}
+	                    			</a>
+		                    	</div>
+		                    	<div class="column table_name">${cart.price}</div>
+		                    	<div class="column table_reco">
+		                    	<select name="basket_count" class="basket_count"
+		               			onchange="buyPrice()">
+				                   <option value="1">1</option>
+				                   <option value="2">2</option>
+				                   <option value="3">3</option>
+				                   <option value="4">4</option>
+				                   <option value="5">5</option>
+		               			</select>
+			                    </div>
+			                    <div class="column table_view">${cart.sumPrice}</div> 
+			                    <div class="column table_del">
+			                    	<button type="button">삭제</button>
+			                    </div>
+		                    </div>
+		                    </c:forEach>
+	                    </c:otherwise>   
+	                </c:choose>
+                <%--//장바구니 테이블 시작 --%>
 	                </div>
-                </div>
                 <!--//장바구니 목록 테이블 부분-->
-				
-				
+               	</div><%-- basket list --%>
+               	
 				<div class="basket_info">
 					<div class="item_price">장바구니 금액 합계 : </div>
 					<div class="deli_price">배송료 : </div>
@@ -64,54 +90,15 @@
 					<button type="button" id="basketList_btn" onclick="location.href='total_shop?page=${page}&find_field=item_name&find_name=';">상품목록</button>
 					<%-- 상품목록 버튼의 ${page}값은 바로 이전 상품을 담고 오는 것이기 때문에 문제가 없다. 이전 상품이 있던 페이지로 돌아가는 것이기 때문. --%>
 				</div>
-			</div>
-		</form>
-	</div>
-	
+               	
+			</form>
+            </div><%-- container --%>
     <script>
-	//장바구니 테이블 목록 구현
+	//장바구니 테이블 목록 구현(취소)
     	var basket_id="<c:out value='${basket_id}'/>";//유저 아이디
     	//javascript 로 변수 선언할때 변수값을 다이렉트로 지정해주면 is not defined 에러발생.
     	
-    	//getBasketList();//장바구니 목록 함수 호출
     	
-    	function getBasketList() {
-    		$.getJSON("/shop/basketListAll/"+basket_id,
-   				function(data){
-    		 		var str=""; 
-    		 		var pTag='<p class="basket_head">'
-                    +'<span style="width: 7%;">No.</span>'
-                    +'<span style="width: 15%;"></span>'
-                    +'<span style="width: 30%;">상품명</span>'
-                    +'<span style="width: 15%;">단가</span>' 
-                    +'<span style="width: 5%;">수량</span>' 
-                    +'<span style="width: 15%;">금액</span>'
-                    +'<span style="width: 5%;"></span>'
-                	+'</p>'
-
-	    			$.each(data.list, function(index, list){
-	    				/* alert(list.basket_no);
-	    				alert(list.price); */
-	    				str += "<div class='basket_body'><div class='column table_no'>"+list.basket_no+"</div>"
-	    				+"<div class='column table_img'><a href='shop_cont?state=cont&item_no="+list.product_no+"&page="+list.basket_page+"'><img src=/resources/photo_upload"+list.product_img+"/></a></div>"
-	    				+"<div class='column table_title'><a href='shop_cont?state=cont&item_no="+list.product_no+"&page="+list.basket_page+"'>"+list.product_name+"</a></div>"
-	    				+"<div class='column table_name'>"+list.price+"</div>"
-	    				+"<div class='column table_reco'><select name='basket_count' class='basket_count'>"
-	                    +"<option value='1'>1</option>"
-	                    +"<option value='2'>2</option>"
-	                    +"<option value='3'>3</option>"
-	                    +"<option value='4'>4</option>"
-	                    +"<option value='5'>5</option>"
-               			+"</select>"
-	                    +"</div>"
-	                    +"<div class='column table_view'>"+list.sumPrice+"</div>"
-	                    +"<div class='column table_date'><button type='button'>삭제</button></div>"
-	                    +"</div>";
-	    				$(".basket_count").val('3').prop("selected", true);
-                    });
-	    			$('.basket_table').html(pTag+str);//태그와 문자를 함께 변경 적용
-    			});
-    	}//getBasketList()
     </script>
 </body>
 </html>
