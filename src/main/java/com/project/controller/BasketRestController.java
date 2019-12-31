@@ -66,23 +66,27 @@ public class BasketRestController {
 	}//basket_add()
 	
 	/** 회원 아이디와 상품번호에 따른 장바구니 수정 **/
-//	@RequestMapping(value="/shop/editBasket/",method=RequestMethod.GET)
-//	public String editBasket(
-//			@PathVariable("basket_id") String basket_id) {
-//		
-//		try {
-//			map.put("list",list); //장바구니 정보
-//			map.put("count",list.size());//장바구니 상품 유무
-//			map.put("sumMoney",sumMoney);//장바구니 합계 금액
-//			map.put("fee",fee);//배송비
-//			map.put("allSum",sumMoney+fee);//주문 총 합계 금액(상품 + 배송비)
-//			
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}//try catch
-//		
-//		return map;
-//	}//editBasket()
+	@RequestMapping(value="/shop/editBasket/",method={RequestMethod.PUT,RequestMethod.PATCH})
+	//PUT은 전체자료 수정, PATCH는 일부 자료 수정, 복수개의 
+	//메서드 방식 지정하는 법
+	public ResponseEntity<String> editBasket(
+				@RequestBody BasketVO basket) {
+		
+		ResponseEntity<String> entity=null;
+		
+		try {
+			this.basketService.editBasket(basket);//장바구니 정보 수정
+			entity=new ResponseEntity<String>("SUCCESS",
+					HttpStatus.OK);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			entity=new ResponseEntity<String>(e.getMessage(),
+					HttpStatus.BAD_REQUEST);
+		}//try catch
+		
+		return entity;
+	}//editBasket()
 	
 	/** 장바구니 상품 삭제 **/
 }

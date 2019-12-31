@@ -33,6 +33,7 @@
 			l.item_name as product_name,
 			l.item_img as product_img,
 			b.basket_count as basket_count,
+			l.item_stockCount as stockCount,
 			l.item_price as price,
 			(item_price * basket_count) sumPrice,
 			validity,
@@ -51,4 +52,13 @@
 		WHERE b.product_no = l.item_no AND b.basket_id = #{basket_id}
 	</select>
 	
+	<!-- 장바구니 정보 수정 -->
+	<update id="basket_update">
+		update shopBasket set basket_count=#{basket_count}
+		where product_no=#{product_no} and basket_id=#{basket_id}
+	</update>
 </mapper>
+
+
+
+

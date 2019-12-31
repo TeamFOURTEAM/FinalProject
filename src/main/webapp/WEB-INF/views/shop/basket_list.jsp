@@ -62,7 +62,7 @@
 		                    	</div>
 		                    	<div class="column table_reco">
 		                    	<select name="basket_count" class="basket_count"
-		               			onchange="editBasket(${cart.product_no},this.options[this.selectedIndex].text)">
+		               			onchange="editBasket(${cart.product_no},${cart.stockCount},this.options[this.selectedIndex].text)">
 				                   <option value="1" <c:if test="${cart.basket_count == 1}">selected</c:if>>1</option>
 				                   <option value="2" <c:if test="${cart.basket_count == 2}">selected</c:if>>2</option>
 				                   <option value="3" <c:if test="${cart.basket_count == 3}">selected</c:if>>3</option>
@@ -111,20 +111,55 @@
     	//javascript 로 변수 선언할때 변수값을 다이렉트로 지정해주면 is not defined 에러발생.
     	
     	/** select 박스 선택에 따른 상품 정보 수정 **/
-    	function editBasket(productNo,basket_count) {//모든 select 박스의 값을 가져오게끔 한다.
+    	function editBasket(productNo,stockCount,basket_count) {//3개의 값을 가져옴.
+    		//1. 상품 번호 , 2. 선택한 상품 수량
+    		
     		//var select = document.getElementsByName("basket_count");
     		//var selectedCount = parseInt(select.options[select.selectedIndex].value);
     		
-    		console.log(typeof productNo);
-    		console.log(typeof parseInt(basket_count));
+    		//console.log(productNo);
+    		//console.log(parseInt(basket_count));
+    		//alert(parseInt(stockCount));
     		
-    		editBasket();//장바구니 수량 수정 함수
-    		function editBasket() {
-    			
-			}
+    		var basket_count = parseInt(basket_count);
+    		var stockCount = parseInt(stockCount);
     		
-		}
-    	
+    		console.log(basket_count);
+    		console.log(stockCount);
+    		
+    		//재고수량 확인(재고보다 적으면 출력)
+    		if(basket_count > stockCount) {
+    			alert('재고가 부족합니다. 보다 적은 수량을 선택해주세요.');
+    			basket_count = 1;
+    			editBasket();
+    		}
+
+    		$.ajax({
+				type : 'put',
+				url : '/shop/editBasket/',
+				headers : {
+					"Content-Type" : "application/json",
+					"X-HTTP-Method-Override" : "PUT"
+				},
+				data : JSON.stringify({
+					product_no : productNo,
+					basket_count : basket_count,
+					basket_id : basket_id
+				}),
+				dataType : "text",
+				success : function(data) {
+					if(data == 'SUCCESS') {
+						location.reload();
+					}//if
+				}
+			});
+		}//editBasket()
+		
+		/** 장바구니 아이템 삭제 **/
+		$('#basket_button').on('click',function(){
+			
+			
+		});
     </script>
 </body>
 </html>

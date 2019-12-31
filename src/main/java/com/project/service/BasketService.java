@@ -16,4 +16,8 @@ public interface BasketService {
 
 	int sumMoney(String basket_id);
 
+	void editBasket(BasketVO basket);
+
+	
+
 }

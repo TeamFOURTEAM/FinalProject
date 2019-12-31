@@ -16,4 +16,6 @@ public interface BasketDAO {
 
 	int sumMoney(String basket_id);
 
+	void editBasket(BasketVO basket);
+
 }

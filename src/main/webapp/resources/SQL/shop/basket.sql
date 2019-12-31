@@ -22,6 +22,7 @@ select
 	l.item_name as product_name,
 	l.item_img as product_img,
 	b.basket_count as basket_count,
+	l.item_stockCount as stockCount,
 	l.item_price as price,
 	(item_price * basket_count) sumPrice,
 	validity,

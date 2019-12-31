@@ -43,6 +43,14 @@ public class BasketServiceImpl implements BasketService{
 	public int sumMoney(String basket_id) {
 		return this.basketDAO.sumMoney(basket_id);
 	}
+
+	/** 장바구니 정보 수정 **/
+	@Override
+	public void editBasket(BasketVO basket) {
+		this.basketDAO.editBasket(basket);
+	}
+	
+	
 	
 	
 }
