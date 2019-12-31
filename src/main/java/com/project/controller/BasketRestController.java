@@ -65,18 +65,10 @@ public class BasketRestController {
 		return entity;
 	}//basket_add()
 	
-	/** 회원 아이디에 따른 장바구니 목록 불러오기 **/
-//	@RequestMapping(value="/shop/basketListAll/{basket_id}",method=RequestMethod.GET)
-//	public Map<String,Object> basketList(
+	/** 회원 아이디와 상품번호에 따른 장바구니 수정 **/
+//	@RequestMapping(value="/shop/editBasket/",method=RequestMethod.GET)
+//	public String editBasket(
 //			@PathVariable("basket_id") String basket_id) {
-//		
-//		Map<String,Object> map=new HashMap<String, Object>();
-//		List<BasketVO> list=this.basketService.listBasket(basket_id);//장바구니 정보
-//		
-//		int sumMoney=this.basketService.sumMoney(basket_id);//장바구니 전체 금액 호출
-//		/* 장바구니 전체 금액에 따라 배송비 구분 */
-//		//배송료(10만원 이상 -> 무료, 미만 -> 2500원)
-//		int fee = sumMoney >= 100000 ? 0 : 2500;
 //		
 //		try {
 //			map.put("list",list); //장바구니 정보
@@ -90,9 +82,7 @@ public class BasketRestController {
 //		}//try catch
 //		
 //		return map;
-//	}//basketList()
-	
-	/** 장바구니 수량 수정 **/
+//	}//editBasket()
 	
 	/** 장바구니 상품 삭제 **/
 }
