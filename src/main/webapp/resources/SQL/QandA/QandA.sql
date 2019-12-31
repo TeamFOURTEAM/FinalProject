@@ -14,6 +14,9 @@ create table q_board(
 
 select * from q_board order by q_no desc;
 
+--컬럼 삭제
+alter table q_board drop column q_pwd
+
 --QandA_no_seq 시퀀스 생성
 create sequence q_no_seq
 start with 1

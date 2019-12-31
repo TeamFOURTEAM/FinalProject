@@ -112,14 +112,9 @@
                                         <option value="cat_cont" <c:if test="${find_field == 'cat_cont'}">
                                             ${'selected'}</c:if>>내용</option>
                                     </select>
-                                    <input name="find_name" id="find_name" size="30" value="${find_name}" />
+                                    <input name="find_name" id="find_name" id="find_name" autocomplete="off" size="30" value="${find_name}" />
                                     <input type="submit" value="검색" />
                                     <input type="button" class="cWrite" value="글쓰기" onclick="location='cat_write?class=cat'" />
-                                </div>
-
-                                <!-- 글쓰기 버튼 -->
-                                <div id="cWrite">
-                                    
                                 </div>
 
                             </div>

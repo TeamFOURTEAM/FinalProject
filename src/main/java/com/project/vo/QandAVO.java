@@ -3,9 +3,7 @@ package com.project.vo;
 public class QandAVO {
 	
 	private int q_no;
-	private String q_name;
 	private String q_title;
-	private String q_pwd;
 	private String q_cont;
 	private int q_hit;
 	private int q_ref;
@@ -27,24 +25,14 @@ public class QandAVO {
 	public void setQ_no(int q_no) {
 		this.q_no = q_no;
 	}
-	public String getQ_name() {
-		return q_name;
-	}
-	public void setQ_name(String q_name) {
-		this.q_name = q_name;
-	}
+	
 	public String getQ_title() {
 		return q_title;
 	}
 	public void setQ_title(String q_title) {
 		this.q_title = q_title;
 	}
-	public String getQ_pwd() {
-		return q_pwd;
-	}
-	public void setQ_pwd(String q_pwd) {
-		this.q_pwd = q_pwd;
-	}
+	
 	public String getQ_cont() {
 		return q_cont;
 	}

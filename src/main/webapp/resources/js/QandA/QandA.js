@@ -40,14 +40,14 @@ function edit_check() {
 //고양이 분양 게시판 글쓰기 관련
 function QandA_write_ok() {		
 	
-	if($.trim($("#QandA_title").val())==""){
+	if($.trim($("#q_title").val())==""){
 		alert("제목을 입력하세요");
-		$("#QandA_title").val("").focus();
+		$("#q_title").val("").focus();
 		return false;
 	}
-	if($.trim($("#QandA_pwd").val())==""){
+	if($.trim($("#q_pwd").val())==""){
 		alert("비밀번호를 입력하세요");
-		$("#QandA_pwd").val("").focus();
+		$("#q_pwd").val("").focus();
 		return false;
 	}		
 	alert("저장되었습니다.");		

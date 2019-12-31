@@ -38,14 +38,11 @@ public class QandAController {//Q&A게시판
 			QandAVO q,
 			HttpServletRequest request) throws Exception {
 		
-		String q_name=request.getParameter("QandA_name");
-		String q_title=request.getParameter("QandA_title");
-		String q_pwd=request.getParameter("QandA_pwd");
-		String q_cont=request.getParameter("QandA_cont");
-		//글쓴이, 제목, 비밀번호, 내용을 가져옴
+		String q_title=request.getParameter("q_title");
+		String q_cont=request.getParameter("q_cont");
+		//제목, 내용을 가져옴
 		
-		q.setQ_name(q_name); q.setQ_title(q_title);
-		q.setQ_pwd(q_pwd); q.setQ_cont(q_cont);
+		q.setQ_title(q_title); q.setQ_cont(q_cont);
 		
 		this.QandAService.insertQandA(q);//자료실 저장
 		

@@ -7,91 +7,107 @@ input, select {
 	cursor: pointer;	
 }
 
-/* 이미지형 게시판 전체 */
 .main {
     margin-top: 3px;
     width: 100%;
 }
 
-/* 이미지형 게시판 이름 */
-.name {
-	text-align: center;
-	margin-top: 10px;
-	font-size: 15px;
-	font-weight: bolder;
+
+#qList_t {
+	margin: 0 auto;
 }
 
-/* 이미지형 게시판 이미지 관련 */
-/* .board_list .item {
-	display: inline-block;
-	width: 316px;
-	height: 400px;
-	background: #fff;
-	margin: 10px 5px;
+#qFind_wrap .qWrite {
+	position: absolute;
+	left: 930px;
 }
 
-.board_list .img {
-	height: 90%;
-	background: yellow;
+#qList_t .qList_count {
+	padding-bottom: 10px;
+	font-size: 17px;
 }
 
-페이징
-#cList_paging {
+#qList_t th {
+	font-size: 20px;
+}
+
+#qList_t td {
+	font-size: 18px;
+}
+
+/* 페이징 */
+#qList_paging {
 	text-align: center;
 	font-size: 18px;
-	margin: 10px 0;
+	margin: 20px 0;
 }
 
-검색
-#cFind_wrap {
+/* 검색 */
+#qFind_wrap {
 	text-align: center;
-	padding: 20px;
+	padding: 0px;
 	position: relative; 
 }
 
-글쓰기
-#cFind_wrap .cWrite {
+/* 글쓰기 */
+#qFind_wrap .cWrite {
 	position: absolute; left: 1210px;
 	width: 50px;
     height: 30px;
 }
 
-내용보기 css
-#cat_menu {
-	padding: 20px;
-	display: flex;
-    justify-content: center;
-}
-
-이미지형 게시판 내용보기(cat_cont)
 #cont {
 	margin: 0 auto;
 }
 
-table,th,td,tr {
-	margin: 0 auto;
-}
-
-cat_cont input
-#cat_menu input {
-	margin-right: 10px;
-	width: 50px;
-    height: 30px;
-    cursor: pointer;
-} */
-
-/* cat_write */
 #main {
 	margin: 0 auto;
 }
 
+#find_name:focus {
+	outline: none;
+}
+
 #QandA_write {
 	width: 100%;
-	border-spacing: 10px;
+	padding-left: 140px;
 }
 
 .size{
 	width: 50px;
 	height: 30px;
+}
+
+#q_name {
+	margin-bottom: 20px;
+	width: 1000px;
+	height: 30px;
+	border: none;
+	font-size: 30px;
+}
+#q_name:focus {
+	outline: none;
+}
+
+#q_title {
+	margin-bottom: 20px;
+	width: 1000px;
+	height: 30px;
+	border: none;
+	font-size: 30px;
+}
+#q_title:focus {
+	outline: none;
+}
+
+#q_pwd {
+	margin-bottom: 20px;
+	width: 1000px;
+	height: 30px;
+	border: none;
+	font-size: 30px;
+}
+#q_pwd:focus {
+	outline: none;
 }
 

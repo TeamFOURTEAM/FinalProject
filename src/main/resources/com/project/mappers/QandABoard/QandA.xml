@@ -8,9 +8,9 @@
 	
 	<!-- QandA 게시판 저장 -->
 	<insert id="QandA_in">
-		insert into q_board (q_no,q_name,q_title,q_pwd,q_cont,q_ref,
-		q_step,q_level,q_date) values(q_no_seq.nextval,#{q_name},#{q_title},
-		#{q_pwd},#{q_cont},q_no_seq.nextval,0,0,sysdate)
+		insert into q_board (q_no,q_title,q_cont,q_ref,
+		q_step,q_level,q_date) values(q_no_seq.nextval,#{q_title},
+		#{q_cont},q_no_seq.nextval,0,0,sysdate)
 	</insert>
 	
 	<!-- 검색 전후 레코드 개수 -->
@@ -31,7 +31,7 @@
 	<!-- 검색 전후 게시판 목록 -->
 	<select id="QandA_list" resultType="QandA">
 		select * from(
-		select rowNum rNum,q_no,q_name,q_title,q_hit,q_ref,
+		select rowNum rNum,q_no,q_title,q_hit,q_ref,
 		q_step,q_level,q_date from(
 		select * from q_board
 		<where>

@@ -55,23 +55,19 @@
 					
 					<table id="dog_write" >
 						<tr>
-							<th>강아지 종류</th>
-							<td><input name="dog_title" id="dog_title" size="20" /> </td>
+							<td><input name="dog_title" id="dog_title" size="20" autocomplete="off" placeholder="강아지 종류"/> </td>
 						</tr>
 						<tr>
-							<th>내용</th>
-							<td><textarea name="dog_cont" id="dog_cont" cols="110" rows="30"></textarea></td>
+							<td><textarea name="dog_cont" id="dog_cont" cols="170" rows="30"></textarea></td>
 						</tr>
 						<tr>
-							<th>파일첨부</th>
     						<td><input type="file" name="dog_file" id="dog_file" /></td>
 						</tr>
 						<tr>
-							<th></th>
-							<td>
+							<th align="left">
 								<input type="button" class="size" id="save" value="저장" />
 								<input type="button" class="size" value="취소" onclick="history.back();" />
-							</td>
+							</th>
 						</tr>
 					</table>
 					

@@ -55,23 +55,19 @@
 					
 					<table id="cat_write" >
 						<tr>
-							<th>고양이 종류</th>
-							<td><input name="cat_title" id="cat_title" size="20" /> </td>
+							<td><input name="cat_title" id="cat_title" size="20" autocomplete="off" placeholder="고양이 종류" /> </td>
 						</tr>
 						<tr>
-							<th>내용</th>
-							<td><textarea name="cat_cont" id="cat_cont" cols="110" rows="30"></textarea></td>
+							<td><textarea name="cat_cont" id="cat_cont" cols="170" rows="30"></textarea></td>
 						</tr>
 						<tr>
-							<th>파일첨부</th>
     						<td><input type="file" name="cat_file" id="cat_file" /></td>
 						</tr>
 						<tr>
-							<th></th>
-							<td>
+							<th align="left">
 								<input type="button" class="size" id="save" value="저장" />
 								<input type="button" class="size" value="취소" onclick="history.back();" />
-							</td>
+							</th>
 						</tr>
 					</table>
 					

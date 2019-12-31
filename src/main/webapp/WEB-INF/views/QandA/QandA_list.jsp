@@ -18,14 +18,18 @@
                     <div class="main">
                         <form method="get" action="/QanA_list">
 
-                            <div class="bList_count">글개수: ${totalcount} </div>
-                            <table id="bList_t">
+                            <table id="qList_t">
+                            	<tr>
+                            		<td class="qList_count" colspan="5" align="left">
+                            			글개수: ${totalcount}
+                            		</td>
+                            	</tr>
                                 <tr>
                                     <th width="6%" height="26">번호</th>
-                                    <th width="50%">제목</th>
-                                    <th width="14%">작성자</th>
-                                    <th width="17%">작성일</th>
-                                    <th width="14%">조회수</th>
+                                    <th width="40%">제목</th>
+                                    <th width="20%">작성자</th>
+                                    <th width="20%">작성일</th>
+                                    <th width="20%">조회수</th>
                                 </tr>
 
                                 <c:if test="${!empty qlist}">
@@ -36,7 +40,7 @@
                                                     ${q.q_ref}
                                                 </c:if>
                                             </td>
-                                            <td>
+                                            <td align="center">
                                                 <c:if test="${q.q_step != 0}"><%--답변글일때 실행 --%>
                                                     <c:forEach begin="1" end="${q.q_step}" step="1">
                                                         &nbsp;<%--답변글 들여쓰기 --%>
@@ -47,14 +51,14 @@
                                                 <a
                                                     href="bbs_cont?bbs_no=${q.q_no}&state=cont&page=${page}">${q.q_title}</a>
                                             </td>
-                                            <td align="center">${q.q_name}</td>
+                                            <td align="center">작성자 아이디</td>
                                             <td align="center">${q.q_date}</td>
                                             <td align="center">${q.q_hit}</td>
                                         </tr>
                                     </c:forEach>
                                 </c:if>
 
-                                <c:if test="${empty blist}">
+                                <c:if test="${empty qlist}">
                                     <tr>
                                         <th colspan="5">자료실 목록이 없습니다.</th>
                                     </tr>
@@ -130,9 +134,9 @@
                                     <option value="cat_cont" <c:if test="${find_field == 'QandA_cont'}">
                                         ${'selected'}</c:if>>내용</option>
                                 </select>
-                                <input name="find_name" id="find_name" size="30" value="${find_name}" />
+                                <input name="find_name" id="find_name" id="find_name" size="30" value="${find_name}" />
                                 <input type="submit" value="검색" />
-                                <input type="button" class="cWrite" value="글쓰기" onclick="location='QandA_write'" />
+                                <input type="button" class="qWrite" value="글쓰기" onclick="location='QandA_write'" />
                             </div>
 
                         </form>

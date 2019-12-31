@@ -19,7 +19,7 @@
 		var oEditors = [];
 		nhn.husky.EZCreator.createInIFrame({
 			oAppRef: oEditors,
-			elPlaceHolder: "QandA_cont",
+			elPlaceHolder: "q_cont",
 			sSkinURI: "/resources/smartEditor/SmartEditor2Skin.html",
 			fCreator: "createSEditor2",
 			htParams: {
@@ -30,13 +30,13 @@
 		});
 		
 		$('#save').click(function () {
-			oEditors.getById['QandA_cont'].exec('UPDATE_CONTENTS_FIELD',[]);
-			var cont1= $("#QandA_cont").val();
+			oEditors.getById['q_cont'].exec('UPDATE_CONTENTS_FIELD',[]);
+			var cont1= $("#q_cont").val();
 			
 			/** 스마트 에디터 입력부분 유효성 검증 **/
 			if( cont1 == ""  || cont1 == null || cont1 == '&nbsp;' || cont1 == '<p>&nbsp;</p>')  {
 	             alert("내용을을 입력해주세요.");
-	             oEditors.getById["QandA_cont"].exec("FOCUS"); //포커싱
+	             oEditors.getById["q_cont"].exec("FOCUS"); //포커싱
 	             return;
 	        }
 			$('#frm').submit();
@@ -55,24 +55,13 @@
 					
 					<table id="QandA_write" >
 						<tr>
-							<th>이름</th>
-							<td><input name="QandA_name" id="QandA_name" size="14" /> </td>
-						</tr>
-						<tr>
-							<th>제목</th>
-							<td><input name="QandA_title" id="QandA_title" size="20" /> </td>
-						</tr>
-						<tr>
-							<th>비밀번호</th>
-							<td><input type="password" name="QandA_pwd" id="QandA_pwd" size="24" /> </td>
+							<td><input name="q_title" id="q_title" size="20" autocomplete="off" placeholder="제목" /> </td>
 						</tr>						
 						<tr>
-							<th>내용</th>
-							<td><textarea name="QandA_cont" id="QandA_cont" cols="110" rows="30"></textarea></td>
+							<td><textarea name="q_cont" id="q_cont" cols="170" rows="30"></textarea></td>
 						</tr>
 						<tr>
-							<th></th>
-							<td>
+							<td align="left">
 								<input type="button" class="size" id="save" value="저장" />
 								<input type="button" class="size" value="취소" onclick="history.back();" />
 							</td>
