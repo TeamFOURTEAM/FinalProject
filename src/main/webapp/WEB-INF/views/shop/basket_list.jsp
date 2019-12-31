@@ -25,7 +25,7 @@
 				<!-- 장바구니 목록 테이블 부분-->
                 <div class="basket_table">
                 	<p class="basket_head">
-                		<span style="width: 7%;">No.</span>
+                		<span style="width: 7%;">상품 번호</span>
                 		<span style="width: 15%;"></span>
                 		<span style="width: 30%;">상품명</span>
                 		<span style="width: 15%;">단가</span>
@@ -46,7 +46,7 @@
 						<c:otherwise>
 	                    <c:forEach var="cart" items="${map.list}">
 						<div class="basket_body">
-		                    	<div class="column table_no">${cart.basket_no}</div>
+		                    	<div class="column table_no">${cart.product_no}</div>
 		                    	<div class="column table_img">
 		                    		<a href="shop_cont?state=cont&item_no=${cart.product_no}&page=${cart.basket_page}">
 		                    			<img src="/resources/photo_upload${cart.product_img}"/>
@@ -62,7 +62,7 @@
 		                    	</div>
 		                    	<div class="column table_reco">
 		                    	<select name="basket_count" class="basket_count"
-		               			onchange="">
+		               			onchange="editBasket()">
 				                   <option value="1" <c:if test="${cart.basket_count == 1}">selected</c:if>>1</option>
 				                   <option value="2" <c:if test="${cart.basket_count == 2}">selected</c:if>>2</option>
 				                   <option value="3" <c:if test="${cart.basket_count == 3}">selected</c:if>>3</option>
@@ -110,6 +110,20 @@
     	var basket_id="<c:out value='${basket_id}'/>";//유저 아이디
     	//javascript 로 변수 선언할때 변수값을 다이렉트로 지정해주면 is not defined 에러발생.
     	
+    	/** select 박스 선택에 따른 상품 정보 수정 **/
+    	function editBasket() {//모든 select 박스의 값을 가져오게끔 한다.
+    		//var select = document.getElementsByName("basket_count");
+    		//var selectedCount = parseInt(select.options[select.selectedIndex].value);
+    		
+    		var size = document.getElementsByName("basket_count").length;
+    		//basket_count select의 개수
+    		
+    		for(var i=0;i<size;i++) {
+    			console.log(document.getElementsByName("basket_count")[i].value);
+    			console.log(typeof document.getElementsByName("basket_count")[i].value);
+   	
+    		}
+		}
     	
     </script>
 </body>
