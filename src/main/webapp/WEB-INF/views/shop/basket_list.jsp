@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,18 +57,22 @@
 		                    			${cart.product_name}
 	                    			</a>
 		                    	</div>
-		                    	<div class="column table_name">${cart.price}</div>
+		                    	<div class="column table_name">
+		                    		<fmt:formatNumber pattern="###,###,###" value="${cart.price}" />
+		                    	</div>
 		                    	<div class="column table_reco">
 		                    	<select name="basket_count" class="basket_count"
 		               			onchange="">
-				                   <option value="1">1</option>
-				                   <option value="2">2</option>
-				                   <option value="3">3</option>
-				                   <option value="4">4</option>
-				                   <option value="5">5</option>
+				                   <option value="1" <c:if test="${cart.basket_count == 1}">selected</c:if>>1</option>
+				                   <option value="2" <c:if test="${cart.basket_count == 2}">selected</c:if>>2</option>
+				                   <option value="3" <c:if test="${cart.basket_count == 3}">selected</c:if>>3</option>
+				                   <option value="4" <c:if test="${cart.basket_count == 4}">selected</c:if>>4</option>
+				                   <option value="5" <c:if test="${cart.basket_count == 5}">selected</c:if>>5</option>
 		               			</select>
 			                    </div>
-			                    <div class="column table_view">${cart.sumPrice}</div> 
+			                    <div class="column table_view">
+			                    	<fmt:formatNumber pattern="###,###,###" value="${cart.sumPrice}" />
+		                    	</div> 
 			                    <div class="column table_del">
 			                    	<button type="button">삭제</button>
 			                    </div>

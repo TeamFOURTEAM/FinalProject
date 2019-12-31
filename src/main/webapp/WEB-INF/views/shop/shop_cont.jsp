@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +54,9 @@
                 </div>
 
                 <div class="itemContPrice">
-                    <span class="contPrice">가격 : \ ${s.item_price}</span>
+                    <span class="contPrice">
+                    	가격 : \ <fmt:formatNumber pattern="###,###,###" value="${s.item_price}" />
+                    </span>
                 </div>
                 
                 <div class="itemContReco">
