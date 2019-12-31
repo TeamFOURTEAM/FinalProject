@@ -96,6 +96,7 @@
 	                    +"<div class='column table_date'><button type='button'>삭제</button></div>"
 	                    +"</div>";
 	    				$(".basket_count").val('3').prop("selected", true);
+	    				console.log(data.list);
                     });
 	    			$('.basket_table').html(pTag+str);//태그와 문자를 함께 변경 적용
     			});
