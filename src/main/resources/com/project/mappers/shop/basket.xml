@@ -19,7 +19,7 @@
 	<!-- 장바구니 동일 상품 갱신 -->
 	<update id="basketSame_update">
 		update shopBasket
-		set basket_count=#{basket_count}
+		set basket_count=#{basket_count},basket_page=#{basket_page} 
 		where basket_id=#{basket_id} and product_no=#{product_no}
 	</update>
 	

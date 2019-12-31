@@ -59,7 +59,7 @@
 		                    	<div class="column table_name">${cart.price}</div>
 		                    	<div class="column table_reco">
 		                    	<select name="basket_count" class="basket_count"
-		               			onchange="buyPrice()">
+		               			onchange="">
 				                   <option value="1">1</option>
 				                   <option value="2">2</option>
 				                   <option value="3">3</option>
