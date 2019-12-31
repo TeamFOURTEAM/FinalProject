@@ -44,8 +44,42 @@
 				</if>
 		</where>
 		order by q_ref desc,q_level asc))
-		where rNum &gt; = #{startrow} and rNum &lt; = #{endrow}
+		where rNum &gt;= #{startrow} and rNum &lt;=#{endrow}
 	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="QandA_hit" parameterType="int">
+		update q_board set q_hit=q_hit+1 
+		where q_no=#{q_no}
+	</update>
+	
+	<!-- 내용 보기 -->
+	<select id="QandA_cont" parameterType="int" resultType="QandA">
+		select * from q_board where q_no=#{q_no}
+	</select>
+	
+	<!-- 답변글 레벨 증가 -->
+	<update id="QandA_level_up">
+		update q_board set q_level=q_level+1 
+		where q_ref=#{q_ref} and q_level > #{q_level}
+	</update>
+	
+	<!-- 답변글 저장 -->
+	<insert id="QandA_reply_in">
+		insert into q_board (q_no,q_title,q_cont,q_ref,q_step,q_level,q_date) values(
+		q_no_seq.nextval,#{q_title},#{q_cont},#{q_ref},#{q_step}+1,#{q_level}+1,sysdate)
+	</insert>
+	
+	<!-- 게시판 글 수정 -->
+	<update id="QandA_edit">
+		update q_board set q_title=#{q_title},q_cont=#{q_cont}
+		where q_no=#{q_no}
+	</update>
+	
+	<!-- 게시판 글 삭제 -->
+	<delete id="QandA_del">
+		delete from q_board where q_no=#{q_no}
+	</delete>
 	
 	
 </mapper>

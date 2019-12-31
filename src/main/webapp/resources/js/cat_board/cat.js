@@ -51,4 +51,15 @@ function write_check() {
 		return false;
 	}		
 	alert("저장되었습니다.");		
-};	
+};
+
+$(document).ready(function () {
+
+    $('ul.tabs li').click(function () {
+
+        $('ul.tabs li').removeClass('current');
+
+        $(this).addClass('current');
+    })
+
+});

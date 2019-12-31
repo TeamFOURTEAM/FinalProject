@@ -13,13 +13,17 @@
 <main>
     <form method="get" action="total_cat">
         <section id="contents">
-            <div class="container">
                     <article class="column col1">
                         <div class="main">
 
                             <div class="board_list">
+                            <ul class="tabs">
+                            	<li class="current"><a href="/cat/total_cat?page=1">전체</a></li>
+                            	<li><a href="/cat/cat_mun_list?page=1">먼치킨</a></li>
+                            	<li><a href="">러시안 블루</a></li>
+                            </ul>
+                            
                                 <div class="cat_list">
-
                                     <c:if test="${!empty clist }">
                                         <c:forEach var="c" items="${clist }">
                                             <div class="item">
@@ -121,7 +125,6 @@
                         </div>
                     </article>
                 </section>
-            </div>
         <!-- contents -->
     </form>
 </main>

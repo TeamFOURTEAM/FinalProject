@@ -7,14 +7,24 @@ input, select {
 	cursor: pointer;	
 }
 
+table {
+	margin: 0 auto;
+}
+
 .main {
     margin-top: 3px;
     width: 100%;
 }
 
+img {
+	width: 25px;
+	height: 25px;
+}
+
 
 #qList_t {
 	margin: 0 auto;
+	width: 100%;
 }
 
 #qFind_wrap .qWrite {
@@ -24,15 +34,36 @@ input, select {
 
 #qList_t .qList_count {
 	padding-bottom: 10px;
-	font-size: 17px;
+	font-size: 20px;
+	font-weight: bold;
 }
 
 #qList_t th {
 	font-size: 20px;
+	padding: 10px;
+	background-color: #66bb6a;
+}
+
+#qList_t .title_css {
+	padding-left: 170px;
 }
 
 #qList_t td {
 	font-size: 18px;
+	padding: 10px;
+}
+
+#qList_t tr:nth-child(2n) {
+	background-color: #c8e6c9;
+}
+
+.OneLine {
+	display: inline-block;
+    width: 220px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
 }
 
 /* 페이징 */
@@ -109,5 +140,19 @@ input, select {
 }
 #q_pwd:focus {
 	outline: none;
+}
+
+/* 게시판 내용보기 */
+#q_menu {
+	padding: 20px;
+	display: flex;
+    justify-content: center;
+}
+
+#q_menu input {
+	margin-right: 10px;
+	width: 50px;
+    height: 30px;
+    cursor: pointer;
 }
 

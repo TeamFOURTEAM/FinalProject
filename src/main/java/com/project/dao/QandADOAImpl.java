@@ -27,5 +27,35 @@ public class QandADOAImpl implements QandADOA {
 	@Override
 	public List<QandAVO> getQandAList(QandAVO q) {
 		return this.sqlSession.selectList("QandA.QandA_list",q);
+	}//검색전후 자료실 전체목록
+
+	@Override
+	public void updateHit(int q_no) {
+		this.sqlSession.update("QandA.QandA_hit",q_no);
+	}//조회수 증가
+
+	@Override
+	public QandAVO getQandACont(int q_no) {
+		return this.sqlSession.selectOne("QandA.QandA_cont",q_no);
+	}//내용보기
+
+	@Override
+	public void QandA_updateLevel(QandAVO q) {
+		this.sqlSession.update("QandA.QandA_level_up",q);
+	}//답변글 레벨 증가
+
+	@Override
+	public void replyQandA(QandAVO q) {
+		this.sqlSession.insert("QandA.QandA_reply_in", q);
+	}//답변글 저장
+
+	@Override
+	public void editQandA(QandAVO q) {
+		this.sqlSession.update("QandA.QandA_edit", q);
+	}
+
+	@Override
+	public void delQandA(int q_no) {
+		this.sqlSession.delete("QandA.QandA_del", q_no);
 	}
 }
