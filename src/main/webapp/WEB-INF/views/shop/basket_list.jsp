@@ -23,7 +23,18 @@
 			<div class="basket_list">
 				<!-- 장바구니 목록 테이블 부분-->
                 <div class="basket_table">
-	                    <!-- <div class="column table_no">1</div>
+                	<p class="basket_head">
+                		<span style="width: 7%;">No.</span>
+                		<span style="width: 15%;"></span>
+                		<span style="width: 30%;">상품명</span>
+                		<span style="width: 15%;">단가</span>
+                		<span style="width: 5%;">수량</span>
+                		<span style="width: 15%;">금액</span>
+                		<span style="width: 5%;"></span>
+                	</p>
+                	<div class='basket_body'>
+	                    <div class="column table_no">1</div>
+	                    <div class="column table_img">img</div>
 	                    <div class="column table_title"><a href="#">상품명</a></div>
 	                    <div class="column table_name">단가</div>
 	                    <div class="column table_reco">
@@ -36,8 +47,9 @@
 			                   <option value="5">5</option>
 	               			</select>
 	                    </div>
-	                    <div class="column table_view">금액</div> 
-	                    <div class="column table_date"><button type="button">삭제</button></div> -->    
+                    <div class="column table_view">금액</div> 
+                    <div class="column table_date"><button type="button">삭제</button></div>    
+	                </div>
                 </div>
                 <!--//장바구니 목록 테이블 부분-->
 				
@@ -61,7 +73,7 @@
     	var basket_id="<c:out value='${basket_id}'/>";//유저 아이디
     	//javascript 로 변수 선언할때 변수값을 다이렉트로 지정해주면 is not defined 에러발생.
     	
-    	getBasketList();//장바구니 목록 함수 호출
+    	//getBasketList();//장바구니 목록 함수 호출
     	
     	function getBasketList() {
     		$.getJSON("/shop/basketListAll/"+basket_id,

@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-/** 장바구니 + 구매 컨트롤러 **/
+/** 장바구니 컨트롤러 **/
 @Controller
 public class BasketController {
 	
@@ -23,6 +23,11 @@ public class BasketController {
 		}//page 값 받아옴
 		
 		String basket_id=request.getParameter("basket_id");
+		
+		if(basket_id.equals("")) {//id 값이 없을 때(이후 세션으로 처리)
+			
+			
+		}
 		
 		basketList.addAttribute("basket_id",basket_id);//id값 전달
 		basketList.addAttribute("page",page);//page 값 받아서 전달(목록버튼에 전달하기위함)
