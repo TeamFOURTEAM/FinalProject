@@ -74,7 +74,6 @@
 			                    	\ <fmt:formatNumber pattern="###,###,###" value="${cart.sumPrice}" />
 		                    	</div> 
 			                    <div class="column table_del">
-			                    	<%-- <input type="hidden" name="basket_no" value="${cart.basket_no}" /> --%>
 						          	<input type="hidden" name="basket_id" value="${basket_id}" /><%-- 임시 아이디(지울것) --%>
 						          	<input type="hidden" name="page" value="${page}" />
 			                    	<button class="basket_del" onclick="javascript: form.action='basket_del?basket_no=${cart.basket_no}';">삭제</button>

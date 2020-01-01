@@ -13,10 +13,11 @@
 	<div class="container">
 		<div class="pay_ok">
 			<div class="message">
-				결제가 완료 되었습니다. 구매해주셔서 감사합니다.
+				결제가 완료 되었습니다. <br/>
+				구매해주셔서 감사합니다.
 			</div>
 			<div class="pay_ok_btnBox">
-				<button type="button" id="itemList" onclick="location.href=#">상품 목록</button>
+				<button type="button" id="itemList" onclick="location.href='total_shop?page=1&find_field=item_name&find_name=';">상품 목록</button>
 				<button type="button" id="payList" onclick="location.href=#">구매 내역</button>
 			</div>
 		</div>

@@ -1,16 +1,29 @@
 /** pay_page_ok.css **/
 
 .container {
-	width: 1000px; margin: 50px auto;
+	width: 1000px; margin: 150px auto;
 }
 .pay_ok {}
 .pay_ok .message{
 	text-align: center;
 	font-size: 50px;
 }
-.pay_ok .pay_ok_btnBox{}
-.pay_ok .pay_ok_btnBox #itemList{}
-.pay_ok .pay_ok_btnBox #payList{}
+.pay_ok .pay_ok_btnBox{
+	text-align: center;
+	margin-top: 30px; 
+}
+.pay_ok .pay_ok_btnBox #itemList{
+	font-size: 35px;
+	border: 1px solid #000;
+	padding: 10px;
+	margin: 15px;
+}
+.pay_ok .pay_ok_btnBox #payList{
+	font-size: 35px;
+	border: 1px solid #000;
+	padding: 10px;
+	margin: 15px;
+}
 
 
 
