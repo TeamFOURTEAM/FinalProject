@@ -8,6 +8,8 @@ public class PayVO {
 	private int pay_price;//총 구매금액
 	private String pay_date;//구매날짜
 	private int validity;//판매 승인 여부. 판매승인전 -> 1, 판매승인후 -> 2
+	
+	
 	public int getPay_no() {
 		return pay_no;
 	}

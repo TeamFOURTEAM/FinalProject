@@ -1,0 +1,24 @@
+/** pay_page_ok.css **/
+
+.container {
+	width: 1000px; margin: 50px auto;
+}
+.pay_ok {}
+.pay_ok .message{
+	text-align: center;
+	font-size: 50px;
+}
+.pay_ok .pay_ok_btnBox{}
+.pay_ok .pay_ok_btnBox #itemList{}
+.pay_ok .pay_ok_btnBox #payList{}
+
+
+
+
+
+
+
+
+
+
+

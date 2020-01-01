@@ -14,11 +14,20 @@ create table shopBasket(
 select * from shopBasket order by basket_no desc;
 
 
---shopBasket 참조키 제약조건 생성
+/** shopBasket 참조키 제약조건 생성 **/
+
+--shopList의 상품 번호를 참조
 alter table shopBasket
 add constraint product_no_fk
 foreign key (product_no) references shopList(item_no) on delete cascade;
 
+alter table shopBasket
+add pay_no number(38);
+
+--pay의 결제정보 번호를 참조
+alter table shopBasket
+add constraint pay_no_fk
+foreign key (pay_no) references pay(pay_no) on delete cascade;
 
 --basket_no_seq 시퀀스 생성
 create sequence basket_no_seq
@@ -26,9 +35,11 @@ start with 1
 increment by 1
 nocache;
 
-
-
-
+/*********** test ************/
+update shopBasket set validity=2,pay_no= 
+(select pay_no from (select pay_no from pay order by pay_no desc) where rownum = 1)
+where basket_id='pebble' and validity=1;
+/*********** test ************/
 
 
 /*************************/

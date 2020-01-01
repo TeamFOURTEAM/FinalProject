@@ -14,13 +14,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.service.BasketService;
+import com.project.service.PayService;
 import com.project.vo.BasketVO;
+import com.project.vo.PayVO;
 
 @Controller
 public class PayController {
 	
 	@Autowired
 	private BasketService basketService;
+	
+	@Autowired
+	private PayService payService;
 	
 	/** 결제 페이지의 상품 목록 **/
 	@RequestMapping("shop/pay_page")
@@ -58,12 +63,53 @@ public class PayController {
 			map.put("allSum",sumMoney+fee);//주문 총 합계 금액(상품 + 배송비)
 			
 			basketList.addAttribute("map",map);
+			
+			return "shop/pay_page";
 
 		}//if else 
 		
-		return "shop/pay_page";
+		return null;
 	}
 	
-	/** 결제하기 **/
+	/** 결제완료 페이지 **/
+	@RequestMapping("shop/pay_page_confirm")
+	public String pay_page_confirm() {
+		
+		return "shop/pay_page_confirm";
+	}//pay_page_confirm()
+	
+	/** 결제하기(주문 목록 추가) **/
+	@RequestMapping("shop/pay_page_ok")
+	public String pay_page_ok(
+			HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		
+		//session 처리!
+		String user_id = "pebble";
+		
+		if(user_id == null) {
+			out.println("<script>");
+			out.println("alert('로그인 하신 후 이용해주세요.');");
+			out.println("location='admin_login';");
+			out.println("</script>");
+			
+		}else {
+			int pay_price=Integer.parseInt(request.getParameter("pay_price"));
+			//총 결제 금액
+			PayVO pay = new PayVO();
+			pay.setUser_id(user_id); pay.setPay_price(pay_price);
+			//유저 아이디와 결제 금액 저장
+			
+			this.payService.insertPay(pay,user_id);//주문 내역 추가,장바구니 업데이트
+			//트랜잭션 적용
+			
+			return "redirect:/shop/pay_page_confirm";
+		}//if else 
+
+		return null;
+	}
 	
 }

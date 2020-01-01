@@ -4,6 +4,20 @@
 
 <mapper namespace="Pay"> <!-- mapper네임스페이스명 설정 -->
 	
+	<!-- 주문 목록에 주문 추가 -->
+	<insert id="pay_insert">
+		insert into pay (pay_no,user_id,pay_price,pay_date,validity) 
+		values(pay_no_seq.nextval,#{user_id},#{pay_price},sysdate,1)
+	</insert>
+	
+	<!-- 장바구니 컬럼 업데이트 -->
+	<update id="bs_update">
+		update shopBasket set validity=2,pay_no= 
+		(select pay_no from 
+		(select pay_no from pay order by pay_no desc) 
+		where rownum = 1)
+		where basket_id=#{user_id} and validity=1
+	</update>
 </mapper>
 
 

@@ -1,6 +1,6 @@
-/** pay.sql  -> 결제 정보 테이블  **/
+/** pay.sql  -> 주문 테이블  **/
 create table pay(
-	pay_no number(38) primary key --구매 내역 번호
+	pay_no number(38) primary key --주문 내역 번호
 	,user_id varchar2(100) not null--구매자 아이디
 	,pay_price number(38) not null--총 구매금액
  	,pay_date date --구매날짜
@@ -14,6 +14,15 @@ increment by 1
 nocache;
 
 select * from pay order by pay_no desc;
+
+
+/*********** test ************/
+select pay_no from (select pay_no from pay order by pay_no desc) where rownum = 1;
+insert into pay (pay_no,user_id,pay_price,pay_date,validity) 
+values(pay_no_seq.nextval,'pebble',12500,sysdate,1)
+/*********** test ************/
+
+
 
 
 

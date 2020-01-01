@@ -74,10 +74,10 @@
 			                    	\ <fmt:formatNumber pattern="###,###,###" value="${cart.sumPrice}" />
 		                    	</div> 
 			                    <div class="column table_del">
-			                    	<input type="hidden" name="basket_no" value="${cart.basket_no}" />
+			                    	<%-- <input type="hidden" name="basket_no" value="${cart.basket_no}" /> --%>
 						          	<input type="hidden" name="basket_id" value="${basket_id}" /><%-- 임시 아이디(지울것) --%>
 						          	<input type="hidden" name="page" value="${page}" />
-			                    	<button class="basket_del" onclick="javascript: form.action='basket_del';">삭제</button>
+			                    	<button class="basket_del" onclick="javascript: form.action='basket_del?basket_no=${cart.basket_no}';">삭제</button>
 			                    </div>
 		                    </div>
 		                    </c:forEach>
@@ -112,7 +112,6 @@
 	//장바구니 테이블 목록 구현(취소)
     	var basket_id="<c:out value='${basket_id}'/>";//유저 아이디
     	//javascript 로 변수 선언할때 변수값을 다이렉트로 지정해주면 is not defined 에러발생.
-    	
     	/** select 박스 선택에 따른 상품 정보 수정 **/
     	function editBasket(productNo,stockCount,basket_count) {//3개의 값을 가져옴.
     		//1. 상품 번호 , 2. 선택한 상품 수량

@@ -19,7 +19,7 @@
 				<span>주문 과정</span>
 			</div>
 			
-          	<form method="post">
+          	<form method="post" action="pay_page_ok">
 			<div class="basket_list">
 				<!-- 주문 과정 목록 테이블 부분-->
                 <div class="basket_table">
@@ -75,11 +75,12 @@
 					</div>
 				</div>
 				<div class="basket_buy">
-					<button id="basketBuy_btn" onclick="javascript: form.action='pay_ok_page';" >결제</button>
+					<input type="hidden" name="pay_price" value="${map.allSum}" />
+					<button id="basketBuy_btn">결제</button>
 					<button type="button" id="basketList_btn" onclick="history.back();">장바구니로 돌아가기</button>
 				</div>
 			</form>
-       </div><%-- container --%>
+       </div>
 </body>
 </html>
 
