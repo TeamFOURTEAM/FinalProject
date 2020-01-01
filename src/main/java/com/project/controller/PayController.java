@@ -43,9 +43,10 @@ public class PayController {
 			
 		}else {
 			Map<String,Object> map=new HashMap<String, Object>();
-			List<BasketVO> list=this.basketService.listBasket(user_id);//장바구니 정보
+			List<BasketVO> list=this.basketService.listBasket(user_id);//결제 페이지의 상품 정보
+			//만약 유저정보도 뽑아올거면 여기서 메서드 돌리기 -> 회원아이디로 회원정보에서 이름 전번 이메일
 			
-			int sumMoney=this.basketService.sumMoney(user_id);//장바구니 전체 금액 호출
+			int sumMoney=this.basketService.sumMoney(user_id);//결제 페이지의 상품 전체 금액 호출
 			/* 장바구니 전체 금액에 따라 배송비 구분 */
 			//배송료(10만원 이상 -> 무료, 미만 -> 2500원)
 			int fee = sumMoney >= 100000 ? 0 : 2500;
@@ -62,4 +63,7 @@ public class PayController {
 		
 		return "shop/pay_page";
 	}
+	
+	/** 결제하기 **/
+	
 }

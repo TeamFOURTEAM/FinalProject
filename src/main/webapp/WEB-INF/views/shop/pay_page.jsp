@@ -52,6 +52,16 @@
                 <!--//주문 과정 목록 목록 테이블 부분-->
                	</div><%-- basket list --%>
                	
+               	<div class="user_info">
+               		<div class="info_title">
+               			<span>주문 정보</span>
+               		</div>
+               		<div class="info_center">
+               			<div class="CusName">받으시는 분 : </div>
+               			<div class="CusPhone">휴대전화번호 : </div>
+               		</div>
+               	</div>
+               	
 				<div class="basket_info">
 					<div class="item_price">
 						주문 금액 합계 : \ <fmt:formatNumber pattern="###,###,###" value="${map.sumMoney}" />
