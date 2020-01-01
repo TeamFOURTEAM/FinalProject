@@ -1,13 +1,9 @@
 package com.project.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -69,34 +65,28 @@ public class BasketRestController {
 		return entity;
 	}//basket_add()
 	
-	/** 회원 아이디에 따른 장바구니 목록 불러오기 **/
-	@RequestMapping(value="/shop/basketListAll/{basket_id}",method=RequestMethod.GET)
-	public Map<String,Object> basketList(
-			@PathVariable("basket_id") String basket_id) {
+	/** 회원 아이디와 상품번호에 따른 장바구니 수정 **/
+	@RequestMapping(value="/shop/editBasket/",method={RequestMethod.PUT,RequestMethod.PATCH})
+	//PUT은 전체자료 수정, PATCH는 일부 자료 수정, 복수개의 
+	//메서드 방식 지정하는 법
+	public ResponseEntity<String> editBasket(
+				@RequestBody BasketVO basket) {
 		
-		Map<String,Object> map=new HashMap<String, Object>();
-		List<BasketVO> list=this.basketService.listBasket(basket_id);//장바구니 정보
-		
-		int sumMoney=this.basketService.sumMoney(basket_id);//장바구니 전체 금액 호출
-		/* 장바구니 전체 금액에 따라 배송비 구분 */
-		//배송료(10만원 이상 -> 무료, 미만 -> 2500원)
-		int fee = sumMoney >= 100000 ? 0 : 2500;
+		ResponseEntity<String> entity=null;
 		
 		try {
-			map.put("list",list); //장바구니 정보
-			map.put("count",list.size());//장바구니 상품 유무
-			map.put("sumMoney",sumMoney);//장바구니 합계 금액
-			map.put("fee",fee);//배송비
-			map.put("allSum",sumMoney+fee);//주문 총 합계 금액(상품 + 배송비)
+			this.basketService.editBasket(basket);//장바구니 정보 수정
+			entity=new ResponseEntity<String>("SUCCESS",
+					HttpStatus.OK);
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+			entity=new ResponseEntity<String>(e.getMessage(),
+					HttpStatus.BAD_REQUEST);
 		}//try catch
 		
-		return map;
-	}//basketList()
-	
-	/** 장바구니 수량 수정 **/
+		return entity;
+	}//editBasket()
 	
 	/** 장바구니 상품 삭제 **/
 }

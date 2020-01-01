@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +54,9 @@
                 </div>
 
                 <div class="itemContPrice">
-                    <span class="contPrice">가격 : \ ${s.item_price}</span>
+                    <span class="contPrice">
+                    	가격 : \ <fmt:formatNumber pattern="###,###,###" value="${s.item_price}" />
+                    </span>
                 </div>
                 
                 <div class="itemContReco">
@@ -61,6 +65,7 @@
                 <form method="post" name="itemBuy">
                 <input type="hidden" name="basket_id" value="pebble" /><%-- 임시 아이디(지울것) --%>
                 <input type="hidden" name="product_no" value="${s.item_no}" />
+                <input type="hidden" name="stockCount" value="${s.item_stockCount}"/>
                 <input type="hidden" name="page" value="${page}" />
                 
                 <div class="itemCount">
@@ -146,6 +151,8 @@ $('#basket_button').on('click',function(){
 	//재고수량 확인(재고보다 적으면 출력)
 	if(selectedCount > stockCount) {
 		alert('재고가 부족합니다. 보다 적은 수량을 선택해주세요.');
+		$("#basket_count").val("1").prop("selected", true);//select 영역 변경
+		buyPrice();//가격 계산 함수 재호출
 		return false;
 	}
 

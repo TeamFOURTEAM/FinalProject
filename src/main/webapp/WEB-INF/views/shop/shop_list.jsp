@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -127,7 +128,9 @@
                         <span><a href="shop_cont?state=cont&item_no=${n.item_no}&page=${page}" class="itemName">${n.item_name}</a></span>
                     </div>
                     <div class="itemPriceRow">
-                        <span class="itemPrice">\ ${n.item_price}</span>
+                        <span class="itemPrice">
+                        	\ <fmt:formatNumber pattern="###,###,###" value="${n.item_price}" />
+                        </span>
                     </div>
                     <div class="itemRecoRow">
                         <span class="bestNum">이 제품이 좋아요 ! : ${n.item_likeCount}</span>

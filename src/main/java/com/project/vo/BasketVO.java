@@ -15,6 +15,7 @@ public class BasketVO {
 	private String product_img;//상품 이미지 파일명
 	private int price;//상품 개별 가격
 	private int sumPrice;//총 가격
+	private int stockCount;//상품 재고
 	
 	
 	/** getter // setter **/
@@ -83,6 +84,12 @@ public class BasketVO {
 	}
 	public void setBasket_page(int basket_page) {
 		this.basket_page = basket_page;
+	}
+	public int getStockCount() {
+		return stockCount;
+	}
+	public void setStockCount(int stockCount) {
+		this.stockCount = stockCount;
 	}
 	
 }

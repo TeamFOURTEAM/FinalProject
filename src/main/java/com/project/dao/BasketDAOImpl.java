@@ -44,5 +44,15 @@ public class BasketDAOImpl implements BasketDAO {
 		this.sqlSession.selectOne("basket_SumMoney",basket_id);
 		return this.sqlSession.selectOne("basket_SumMoney",basket_id);
 	}//장바구니 금액 합산
+
+	@Override
+	public void editBasket(BasketVO basket) {
+		this.sqlSession.update("basket_update",basket);
+	}//장바구니 수정
+
+	@Override
+	public void delBasket(int basket_no) {
+		this.sqlSession.delete("basket_del",basket_no);
+	}//장바구니 삭제
 	
 }
