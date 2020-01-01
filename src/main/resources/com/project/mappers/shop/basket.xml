@@ -57,6 +57,11 @@
 		update shopBasket set basket_count=#{basket_count}
 		where product_no=#{product_no} and basket_id=#{basket_id}
 	</update>
+	
+	<!-- 장바구니 상품 삭제 -->
+	<delete id="basket_del">
+		delete from shopBasket where basket_no=#{basket_no}
+	</delete>
 </mapper>
 
 

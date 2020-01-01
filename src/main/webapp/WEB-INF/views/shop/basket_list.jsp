@@ -74,7 +74,10 @@
 			                    	\ <fmt:formatNumber pattern="###,###,###" value="${cart.sumPrice}" />
 		                    	</div> 
 			                    <div class="column table_del">
-			                    	<button type="button">삭제</button>
+			                    	<input type="hidden" name="basket_no" value="${cart.basket_no}" />
+						          	<input type="hidden" name="basket_id" value="${basket_id}" /><%-- 임시 아이디(지울것) --%>
+						          	<input type="hidden" name="page" value="${page}" />
+			                    	<button id="basket_del" onclick="javascript: form.action='basket_del';">삭제</button>
 			                    </div>
 		                    </div>
 		                    </c:forEach>
@@ -155,11 +158,6 @@
 			});
 		}//editBasket()
 		
-		/** 장바구니 아이템 삭제 **/
-		$('#basket_button').on('click',function(){
-			
-			
-		});
     </script>
 </body>
 </html>

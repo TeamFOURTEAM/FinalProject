@@ -18,6 +18,8 @@ public interface BasketService {
 
 	void editBasket(BasketVO basket);
 
+	void delBasket(int basket_no);
+
 	
 
 }
