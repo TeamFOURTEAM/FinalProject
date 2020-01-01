@@ -13,14 +13,14 @@
 	<!-- 장바구니 동일 상품 확인 -->
 	<select id="basket_count" resultType="int">
 		select count(*) from shopBasket where basket_id=#{basket_id} 
-		and product_no=#{product_no}
+		and product_no=#{product_no} and validity=1 
 	</select>
 	
 	<!-- 장바구니 동일 상품 갱신 -->
 	<update id="basketSame_update">
 		update shopBasket
 		set basket_count=#{basket_count},basket_page=#{basket_page} 
-		where basket_id=#{basket_id} and product_no=#{product_no}
+		where basket_id=#{basket_id} and product_no=#{product_no} and validity=1 
 	</update>
 	
 	<!-- 아이디에 따른 장바구니 목록 -->
@@ -49,18 +49,18 @@
 	<select id="basket_SumMoney" resultType="int">
 		SELECT NVL(SUM(item_price * basket_count), 0) sumPrice 
 		FROM shopBasket b, shopList l
-		WHERE b.product_no = l.item_no AND b.basket_id = #{basket_id}
+		WHERE b.product_no = l.item_no AND b.basket_id = #{basket_id} and validity=1 
 	</select>
 	
 	<!-- 장바구니 정보 수정 -->
 	<update id="basket_update">
 		update shopBasket set basket_count=#{basket_count}
-		where product_no=#{product_no} and basket_id=#{basket_id}
+		where product_no=#{product_no} and basket_id=#{basket_id} and validity=1 
 	</update>
 	
 	<!-- 장바구니 상품 삭제 -->
 	<delete id="basket_del">
-		delete from shopBasket where basket_no=#{basket_no}
+		delete from shopBasket where basket_no=#{basket_no} and validity=1 
 	</delete>
 </mapper>
 
