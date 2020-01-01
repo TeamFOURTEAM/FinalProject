@@ -88,7 +88,7 @@ public class BasketController {
 		 * 장바구니 목록 리스트를 리다이렉트 해줄때, 장바구니 목록에 들어가는 두가지 변수
 		 * 유저아이디와 page 변수를 똑같이 보내줘야 한다. 장바구니 목록에서 이 두개의 변수를
 		 * 담아서 리스트를 출력하고 있기 때문. 그러기위해서 변수를 받아와서
-		 * 리다이렉트 할때 변수를 보내주게끔 함.
+		 * 리다이렉트 할때 변수를 보내주게끔 함.(나중에 아이디는 뺀다. 세션으로 처리할것이기 때문)
 		 */
 		redirectAttributes.addAttribute("basket_id",basket_id);
 		redirectAttributes.addAttribute("page",page);
