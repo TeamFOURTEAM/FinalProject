@@ -77,7 +77,7 @@
 			                    	<input type="hidden" name="basket_no" value="${cart.basket_no}" />
 						          	<input type="hidden" name="basket_id" value="${basket_id}" /><%-- 임시 아이디(지울것) --%>
 						          	<input type="hidden" name="page" value="${page}" />
-			                    	<button id="basket_del" onclick="javascript: form.action='basket_del';">삭제</button>
+			                    	<button class="basket_del" onclick="javascript: form.action='basket_del';">삭제</button>
 			                    </div>
 		                    </div>
 		                    </c:forEach>
