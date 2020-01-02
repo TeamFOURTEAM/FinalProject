@@ -78,6 +78,7 @@ public class BasketController {
 		}else {
 			Map<String,Object> map=new HashMap<String, Object>();
 			basket.setBasket_id(user_id); basket.setValidity(1);
+			basket.setPay_no(0);
 			List<BasketVO> list=this.basketService.listBasket(basket);//장바구니 정보
 			
 			int sumMoney=this.basketService.sumMoney(basket);//장바구니 전체 금액 호출

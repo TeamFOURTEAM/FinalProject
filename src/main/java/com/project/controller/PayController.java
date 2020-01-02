@@ -69,6 +69,7 @@ public class PayController {
 		}else {
 			Map<String,Object> map=new HashMap<String, Object>();
 			basket.setBasket_id(user_id); basket.setValidity(1);
+			basket.setPay_no(0);
 			List<BasketVO> list=this.basketService.listBasket(basket);//결제 페이지의 상품 정보
 			//만약 유저정보도 뽑아올거면 여기서 메서드 돌리기 -> 회원아이디로 회원정보에서 이름 전번 이메일
 			
@@ -243,6 +244,8 @@ public class PayController {
 			if(validity == 1) {
 				Map<String,Object> map=new HashMap<String, Object>();
 				basket.setBasket_id(user_id); basket.setValidity(2);
+				basket.setPay_no(pay_no);//주문내역 번호. 주문내역을 묶어서 
+				//해당 주문 번호의 상품 목록만 보여주게끔 해주는 변수.
 				List<BasketVO> list=this.basketService.listBasket(basket);//장바구니 정보
 				//validity=2 인 장바구니 목록을 가져온다.
 				
@@ -259,6 +262,7 @@ public class PayController {
 				
 				payItemList.addAttribute("user_id",user_id);//id값 전달
 				payItemList.addAttribute("page",page);//page 값 받아서 전달(목록버튼에 전달하기위함)
+				payItemList.addAttribute("page",page);
 				payItemList.addAttribute("map",map);
 				
 			

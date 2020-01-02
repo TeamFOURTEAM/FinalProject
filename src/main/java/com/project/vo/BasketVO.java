@@ -9,6 +9,7 @@ public class BasketVO {
 	private int basket_count;//담은 상품 개수
 	private int validity;//상품의 상태. 1-> 장바구니에 담긴 상품, 2-> 주문완료 처리 된 상품
 	private int basket_page;//해당 상품 page값 
+	private int pay_no;//주문 내역 번호.
 	
 	private String user_name;//유저 이름
 	private String product_name;//상품명
@@ -84,6 +85,12 @@ public class BasketVO {
 	}
 	public void setBasket_page(int basket_page) {
 		this.basket_page = basket_page;
+	}
+	public int getPay_no() {
+		return pay_no;
+	}
+	public void setPay_no(int pay_no) {
+		this.pay_no = pay_no;
 	}
 	public int getStockCount() {
 		return stockCount;

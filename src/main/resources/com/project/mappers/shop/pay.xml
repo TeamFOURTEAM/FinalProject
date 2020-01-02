@@ -21,7 +21,7 @@
 	
 	<!-- 주문 내역 검색 -->
 	<select id="pay_list" resultType="pay">
-		select * from pay where user_id=#{user_id}
+		select * from pay where user_id=#{user_id} order by pay_no desc
 	</select>
 </mapper>
 

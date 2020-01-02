@@ -17,7 +17,7 @@
 <body>
 	<div class="container">
 			<div class="basket_title">
-				<span>${basket_id}</span>님의 주문 상품 내역
+				<span>${user_id}</span>님의 주문 상품 내역
 			</div>
 			
           	<form method="post" onsubmit="return pay_check();">
@@ -37,7 +37,7 @@
                 		<c:when test="${map.count == 0}"><%-- 장바구니 정보가 없을 때 --%>
                 			<div class="basket_body">
 								<div class="column table_none">
-									장바구니에 상품이 없습니다.
+									주문 상품이 없습니다!
 								</div>
 							</div>
 						</c:when>
@@ -60,21 +60,11 @@
 		                    		\ <fmt:formatNumber pattern="###,###,###" value="${cart.price}" />
 		                    	</div>
 		                    	<div class="column table_reco">
-		                    	<select name="basket_count" class="basket_count"
-		               			onchange="editBasket(${cart.product_no},${cart.stockCount},this.options[this.selectedIndex].text)">
-				                   <option value="1" <c:if test="${cart.basket_count == 1}">selected</c:if>>1</option>
-				                   <option value="2" <c:if test="${cart.basket_count == 2}">selected</c:if>>2</option>
-				                   <option value="3" <c:if test="${cart.basket_count == 3}">selected</c:if>>3</option>
-				                   <option value="4" <c:if test="${cart.basket_count == 4}">selected</c:if>>4</option>
-				                   <option value="5" <c:if test="${cart.basket_count == 5}">selected</c:if>>5</option>
-		               			</select>
+		                    		<fmt:formatNumber pattern="###,###,###" value="${cart.basket_count}" />
 			                    </div>
 			                    <div class="column table_view">
 			                    	\ <fmt:formatNumber pattern="###,###,###" value="${cart.sumPrice}" />
-		                    	</div> 
-			                    <div class="column table_del">
-						          	<input type="hidden" name="page" value="${page}" />
-			                    </div>
+		                    	</div>
 		                    </div>
 		                    </c:forEach>
 	                    </c:otherwise>   
