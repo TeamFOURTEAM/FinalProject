@@ -12,9 +12,9 @@ public interface BasketService {
 
 	void updateBasket(BasketVO basket);
 
-	List<BasketVO> listBasket(String basket_id);
+	List<BasketVO> listBasket(BasketVO basket);
 
-	int sumMoney(String basket_id);
+	int sumMoney(BasketVO basket);
 
 	void editBasket(BasketVO basket);
 

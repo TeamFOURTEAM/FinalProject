@@ -41,7 +41,7 @@
 		from shopList l, shopBasket b 
 		where 
 			l.item_no = b.product_no
-			and b.basket_id=#{basket_id} and validity=1 
+			and b.basket_id=#{basket_id} and validity=#{validity}
 		order by b.basket_no desc
 	</select>
 	
@@ -49,7 +49,7 @@
 	<select id="basket_SumMoney" resultType="int">
 		SELECT NVL(SUM(item_price * basket_count), 0) sumPrice 
 		FROM shopBasket b, shopList l
-		WHERE b.product_no = l.item_no AND b.basket_id = #{basket_id} and validity=1 
+		WHERE b.product_no = l.item_no AND b.basket_id = #{basket_id} and validity=#{validity} 
 	</select>
 	
 	<!-- 장바구니 정보 수정 -->

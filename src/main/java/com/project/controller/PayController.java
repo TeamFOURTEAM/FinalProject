@@ -30,7 +30,12 @@ public class PayController {
 	
 	/** 결제페이지로 이동 **/
 	@RequestMapping("shop/pay")
-	public String pay() {
+	public String pay(
+			HttpServletRequest request,
+			RedirectAttributes redirectAttributes) {
+		
+		int page = Integer.parseInt(request.getParameter("page"));
+		redirectAttributes.addAttribute("page",page);
 		
 		return "redirect:/shop/pay_page";
 	}//pay()
@@ -39,9 +44,15 @@ public class PayController {
 	/** 결제 페이지의 상품 목록 **/
 	@RequestMapping("shop/pay_page")
 	public String pay_list(
+			BasketVO basket,
 			HttpServletRequest request,
 			HttpServletResponse response,
 			Model basketList) throws Exception  {
+		
+		int page=1;
+		if(request.getParameter("page") != null) {
+			page=Integer.parseInt(request.getParameter("page"));
+		}//page 값 받아옴
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
@@ -57,10 +68,11 @@ public class PayController {
 			
 		}else {
 			Map<String,Object> map=new HashMap<String, Object>();
-			List<BasketVO> list=this.basketService.listBasket(user_id);//결제 페이지의 상품 정보
+			basket.setBasket_id(user_id); basket.setValidity(1);
+			List<BasketVO> list=this.basketService.listBasket(basket);//결제 페이지의 상품 정보
 			//만약 유저정보도 뽑아올거면 여기서 메서드 돌리기 -> 회원아이디로 회원정보에서 이름 전번 이메일
 			
-			int sumMoney=this.basketService.sumMoney(user_id);//결제 페이지의 상품 전체 금액 호출
+			int sumMoney=this.basketService.sumMoney(basket);//결제 페이지의 상품 전체 금액 호출
 			/* 장바구니 전체 금액에 따라 배송비 구분 */
 			//배송료(10만원 이상 -> 무료, 미만 -> 2500원)
 			int fee = sumMoney >= 100000 ? 0 : 2500;
@@ -70,6 +82,7 @@ public class PayController {
 			map.put("sumMoney",sumMoney);//장바구니 합계 금액
 			map.put("fee",fee);//배송비
 			map.put("allSum",sumMoney+fee);//주문 총 합계 금액(상품 + 배송비)
+			map.put("page",page);//페이지값전달
 			
 			basketList.addAttribute("map",map);
 			
@@ -82,7 +95,12 @@ public class PayController {
 	
 	/** 결제완료 페이지 **/
 	@RequestMapping("shop/pay_page_confirm")
-	public String pay_page_confirm() {
+	public String pay_page_confirm(
+			HttpServletRequest request,
+			Model m) {
+		
+		int page = Integer.parseInt(request.getParameter("page"));
+		m.addAttribute("page",page);
 		
 		return "shop/pay_page_confirm";
 	}//pay_page_confirm()
@@ -92,6 +110,11 @@ public class PayController {
 	public String pay_page_ok(
 			HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		
+		int page=1;
+		if(request.getParameter("page") != null) {
+			page=Integer.parseInt(request.getParameter("page"));
+		}//page 값 받아옴
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
@@ -115,7 +138,7 @@ public class PayController {
 			this.payService.insertPay(pay,user_id);//주문 내역 추가,장바구니 업데이트
 			//트랜잭션 적용
 			
-			return "redirect:/shop/pay_page_confirm";
+			return "redirect:/shop/pay_page_confirm?page="+page;
 		}//if else 
 
 		return null;
@@ -123,7 +146,13 @@ public class PayController {
 	
 	/** 주문 내역으로 이동 **/
 	@RequestMapping("shop/pay_list_go")
-	public String pay_list_go() {
+	public String pay_list_go(
+			HttpServletRequest request,
+			RedirectAttributes redirectAttributes) {
+		
+		int page = Integer.parseInt(request.getParameter("page"));
+		
+		redirectAttributes.addAttribute("page",page);
 		
 		return "redirect:/shop/pay_list";
 	}//pay_list_go()
@@ -132,8 +161,14 @@ public class PayController {
 	@RequestMapping("shop/pay_list")
 	public String pay_list(
 			PayVO pay,
+			HttpServletRequest request,
 			HttpServletResponse response,
 			Model payList) throws Exception {
+		
+		int page=1;
+		if(request.getParameter("page") != null) {
+			page=Integer.parseInt(request.getParameter("page"));
+		}//page 값 받아옴
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
@@ -151,6 +186,7 @@ public class PayController {
 			List<PayVO> list = this.payService.list_pay(user_id);//주문 내역 목록
 			
 			payList.addAttribute("list",list);
+			payList.addAttribute("page",page);
 			
 			return "shop/pay_list";
 		}//if else
@@ -175,9 +211,15 @@ public class PayController {
 	
 	@RequestMapping("shop/pay_item_list")
 	public String pay_item_list(
+			BasketVO basket,
 			HttpServletRequest request,
 			HttpServletResponse response,
 			Model payItemList) throws Exception {
+		
+		int page=1;
+		if(request.getParameter("page") != null) {
+			page=Integer.parseInt(request.getParameter("page"));
+		}//page 값 받아옴
 		
 		int pay_no = Integer.parseInt(request.getParameter("pay_no"));
 		//선택한 주문 번호
@@ -200,9 +242,11 @@ public class PayController {
 			//1 -> 결제 확인 중인 장바구니 상품 리스트. 장바구니의 vali=2인 상품을 불러옴
 			if(validity == 1) {
 				Map<String,Object> map=new HashMap<String, Object>();
-				List<BasketVO> list=this.payService.listBasket(user_id);//장바구니 정보
+				basket.setBasket_id(user_id); basket.setValidity(2);
+				List<BasketVO> list=this.basketService.listBasket(basket);//장바구니 정보
+				//validity=2 인 장바구니 목록을 가져온다.
 				
-				int sumMoney=this.payService.sumMoney(user_id);//장바구니 전체 금액 호출
+				int sumMoney=this.basketService.sumMoney(basket);//장바구니 전체 금액 호출
 				/* 장바구니 전체 금액에 따라 배송비 구분 */
 				//배송료(10만원 이상 -> 무료, 미만 -> 2500원)
 				int fee = sumMoney >= 100000 ? 0 : 2500;

@@ -17,10 +17,11 @@
 <body>
 	<div class="container">
 			<div class="basket_title">
-				<span>${basket_id}</span>님의 장바구니 목록
+				<span>${basket_id}</span>님의 장바구니 목록 
 			</div>
 			
           	<form method="post" onsubmit="return pay_check();">
+          	<input type="hidden" name="page" value="${page}" />
 			<div class="basket_list">
 				<!-- 장바구니 목록 테이블 부분-->
                 <div class="basket_table">
@@ -74,8 +75,6 @@
 			                    	\ <fmt:formatNumber pattern="###,###,###" value="${cart.sumPrice}" />
 		                    	</div> 
 			                    <div class="column table_del">
-						          	<input type="hidden" name="basket_id" value="${basket_id}" /><%-- 임시 아이디(지울것) --%>
-						          	<input type="hidden" name="page" value="${page}" />
 			                    	<button class="basket_del" onclick="javascript: form.action='basket_del?basket_no=${cart.basket_no}';">삭제</button>
 			                    </div>
 		                    </div>
@@ -100,7 +99,8 @@
 					</div>
 				</div>
 				<div class="basket_buy">
-					<button id="basketBuy_btn" onclick="javascript: form.action='pay';" >구매</button>
+					
+					<button id="basketBuy_btn" onclick="javascript: form.action='pay?page=${page}';" >구매</button>
 					<button type="button" id="basketList_btn" onclick="location.href='total_shop?page=${page}&find_field=item_name&find_name=';">상품목록</button>
 					<%-- 상품목록 버튼의 ${page}값은 바로 이전 상품을 담고 오는 것이기 때문에 문제가 없다. 이전 상품이 있던 페이지로 돌아가는 것이기 때문. --%>
 				</div>

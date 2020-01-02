@@ -71,7 +71,7 @@
               	<%-- basket list --%>
               	
 			<div class="basket_buy">
-				<button type="button" id="basketList_btn" onclick="location.href='total_shop?page=1&find_field=item_name&find_name=';">상품 목록</button>
+				<button type="button" id="basketList_btn" onclick="location.href='total_shop?page=${page}&find_field=item_name&find_name=';">상품 목록</button>
 			</div>
 		</form>
 	</div>

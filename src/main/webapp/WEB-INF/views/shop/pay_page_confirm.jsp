@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +18,8 @@
 				구매해주셔서 감사합니다.
 			</div>
 			<div class="pay_ok_btnBox">
-				<button type="button" id="itemList" onclick="location.href='total_shop?page=1&find_field=item_name&find_name=';">상품 목록</button>
-				<button type="button" id="payList" onclick="location.href='pay_list_go';">구매 내역</button>
+				<button type="button" id="itemList" onclick="location.href='total_shop?page=${page}&find_field=item_name&find_name=';">상품 목록</button>
+				<button type="button" id="payList" onclick="location.href='pay_list_go?page=${page}';">구매 내역</button>
 			</div>
 		</div>
 	</div>

@@ -76,6 +76,7 @@
 			</div>
 			<div class="basket_buy">
 				<input type="hidden" name="pay_price" value="${map.allSum}" />
+				<input type="hidden" name="page" value="${map.page}" />
 				<button id="basketBuy_btn">결제</button>
 				<button type="button" id="basketList_btn" onclick="history.back();">장바구니로 돌아가기</button>
 			</div>

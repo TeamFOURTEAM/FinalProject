@@ -31,10 +31,8 @@ public class BasketController {
 			HttpServletRequest request,
 			RedirectAttributes redirectAttributes) {
 		
-		String basket_id = request.getParameter("basket_id");
 		int page = Integer.parseInt(request.getParameter("page"));
 		
-		redirectAttributes.addAttribute("basket_id",basket_id);
 		redirectAttributes.addAttribute("page",page);
 		
 		/*  <매우 중요!>
@@ -56,6 +54,7 @@ public class BasketController {
 	/** 장바구니 상품 목록 **/
 	@RequestMapping("shop/basket_list")
 	public String basket_list(
+			BasketVO basket,
 			HttpServletRequest request,
 			HttpServletResponse response,
 			Model basketList) throws Exception {
@@ -68,9 +67,9 @@ public class BasketController {
 		response.setContentType("text/html;chrset=UTF-8");
 		PrintWriter out=response.getWriter();
 		
-		String basket_id= "pebble";
+		String user_id= "pebble";
 	
-		if(basket_id.equals(null)) {//id 값이 없을 때(나중에 세션으로 처리)
+		if(user_id.equals(null)) {//id 값이 없을 때(나중에 세션으로 처리)
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
 			out.println("history.back();");
@@ -78,9 +77,10 @@ public class BasketController {
 		
 		}else {
 			Map<String,Object> map=new HashMap<String, Object>();
-			List<BasketVO> list=this.basketService.listBasket(basket_id);//장바구니 정보
+			basket.setBasket_id(user_id); basket.setValidity(1);
+			List<BasketVO> list=this.basketService.listBasket(basket);//장바구니 정보
 			
-			int sumMoney=this.basketService.sumMoney(basket_id);//장바구니 전체 금액 호출
+			int sumMoney=this.basketService.sumMoney(basket);//장바구니 전체 금액 호출
 			/* 장바구니 전체 금액에 따라 배송비 구분 */
 			//배송료(10만원 이상 -> 무료, 미만 -> 2500원)
 			int fee = sumMoney >= 100000 ? 0 : 2500;
@@ -91,7 +91,7 @@ public class BasketController {
 			map.put("fee",fee);//배송비
 			map.put("allSum",sumMoney+fee);//주문 총 합계 금액(상품 + 배송비)
 			
-			basketList.addAttribute("basket_id",basket_id);//id값 전달
+			basketList.addAttribute("basket_id",user_id);//id값 전달
 			basketList.addAttribute("page",page);//page 값 받아서 전달(목록버튼에 전달하기위함)
 			basketList.addAttribute("map",map);
 			
