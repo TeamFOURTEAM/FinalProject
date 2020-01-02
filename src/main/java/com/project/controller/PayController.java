@@ -306,7 +306,7 @@ public class PayController {
 			
 		}else {
 			int page=1;
-			int limit=6;//한페이지에 보여지는 상품 개수
+			int limit=6;//한페이지에 보여지는 주문내역 개수
 			
 			if(request.getParameter("page") != null) {
 				page=Integer.parseInt(request.getParameter("page"));
@@ -353,6 +353,43 @@ public class PayController {
 		
 		return null;
 	}//admin_paylist()
+	
+	/** 판매 승인 처리 **/
+	@RequestMapping("shop/pay_admin_confirm")
+	public String pay_admin_confirm(
+			HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		
+		//session 처리!(관리자)
+		String user_id = "pebble";
+		int pay_no = Integer.parseInt(request.getParameter("pay_no"));
+		
+		if(user_id.equals(null)) {
+			out.println("<script>");
+			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
+			out.println("location='admin_login';");
+			out.println("</script>");
+			
+		}else {
+			
+			/* 트랜잭션 적용(총 3개)
+			 * 	1. pay_no에 해당하는 Pay 테이블의 주문내역 validity 값 2로 변경(결제 확인됐다는 의미).
+			 *  2. pay_no에 해당하는 장바구니 vali 2에 담긴 정보를 주문확정 테이블로 옮김
+			 *  3. 주문확정 테이블에서  payCom_no에 해당하는 장바구니 정보에서 상품 수량만 불러와 
+			 *     shop테이블의 상품 수량 정보를 업데이트 시킨다(마이너스 해서 수량을 줄임)
+			 *  4. 장바구니에 남은 vali 2 데이터 삭제
+			 */
+			
+			this.payService.payConfirm(pay_no);//판매 승인
+			
+			return "redirect:/shop/admin_paylist?page=1&find_field=item_name&find_name=";
+		}//if else
+		
+		return null;
+	}//pay_admin_confirm()
 }
 
 

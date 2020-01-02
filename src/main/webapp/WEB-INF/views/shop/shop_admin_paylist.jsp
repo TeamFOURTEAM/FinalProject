@@ -37,7 +37,7 @@
                		<span style="width: 15%;">결제금액</span>
                		<span style="width: 15%;">결제일</span>
                		<span style="width: 15%;">처리상태</span>
-               		<span style="width: 7%;">결제확인</span>
+               		<span style="width: 8%;">결제확인</span>
                	</p>
                	<%-- 상품 구매 내역 목록 테이블 시작 --%>
                	<c:choose>
@@ -75,10 +75,10 @@
 		                    	</div>
 		                    	<div class="column table_confirm">
 		                    		<c:if test="${p.validity == 1}">
-		                    			<button class="confirm_btn" onclick="javascript: form.action='pay_admin_confirm';">결제확인</button>
+		                    			<button class="confirm_btn" onclick="javascript: form.action='pay_admin_confirm?pay_no=${p.pay_no}';">주문확정</button>
 		                    		</c:if>
 			                    	<c:if test="${p.validity == 2}">
-			                    		결제확인완료
+			                    		<span>결제확인완료</span>
 			                    	</c:if>
 		                    	</div>
 		                    </div>

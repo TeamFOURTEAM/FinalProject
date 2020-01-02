@@ -69,8 +69,15 @@
 	font-size: 22px;
 }
 
-.basket_body .column.table_view {
-
+.basket_body .column.table_view {}
+.basket_body .column.table_confirm {}
+.basket_body .column.table_confirm .confirm_btn{
+	border:1px solid #000; padding: 5px;
+	font-size: 15px;
+}
+.basket_body .column.table_confirm span{
+	border:1px solid #000; padding: 5px;
+	font-size: 15px;
 }
 
 /** 하단부 **/
