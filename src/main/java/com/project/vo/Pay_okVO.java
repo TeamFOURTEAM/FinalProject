@@ -9,6 +9,7 @@ public class Pay_okVO {
 	private int product_no;//상품번호
 	private int basket_count;//담은 상품 수량
 	private int product_page;//해당상품의 페이지 값. 장바구니에서 해당상품클릭했을때 이동하기 위함.
+	
 	public int getPayCom_no() {
 		return payCom_no;
 	}

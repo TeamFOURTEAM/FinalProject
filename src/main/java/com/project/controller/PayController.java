@@ -18,7 +18,6 @@ import com.project.service.BasketService;
 import com.project.service.PayService;
 import com.project.vo.BasketVO;
 import com.project.vo.PayVO;
-import com.project.vo.ShopVO;
 
 @Controller
 public class PayController {
@@ -284,7 +283,7 @@ public class PayController {
 	@RequestMapping("shop/admin_paylist_go")
 	public String admin_paylist_go() {
 		
-		return "redirect:/shop/admin_paylist";
+		return "redirect:/shop/admin_paylist?page=1&find_field=item_name&find_name=";
 	}//admin_paylist_go()
 	
 	@RequestMapping("shop/admin_paylist")
@@ -353,7 +352,7 @@ public class PayController {
 		}//if else
 		
 		return null;
-	}//admin_paylist_go()
+	}//admin_paylist()
 }
 
 

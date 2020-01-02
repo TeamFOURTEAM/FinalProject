@@ -13,8 +13,14 @@
     font-size: 20px;
 }
 .basket_title span {
-	font-size: 40px; display: inline-block;
+	font-size: 30px; display: inline-block;
     margin-right: 10px;
+}
+.basket_title .searchResult {
+	font-size: 20px;
+}
+.basket_title .searchResult span {
+	font-weight: bold;
 }
 
 /** 장바구니 게시판 중앙 **/
@@ -68,6 +74,38 @@
 }
 
 /** 하단부 **/
+
+/* 페이징 */
+.container .paging_wrapper {
+    clear: both;
+    text-align: center; margin: 20px 0;
+    font-size: 20px;
+}
+.container .paging_wrapper a {
+    padding: 10px;
+}
+.container .paging_wrapper .recentPage {
+	padding: 5px 12px;
+	border: 2px solid #51b0dc;
+	border-radius: 50%;
+}
+/** 검색 바 **/
+.searchBar {}
+.searchRow {
+    text-align: center; margin: 20px auto;
+}
+.searchRow .search_box {
+    width: 9%;
+    height: 40px; border: 1px solid #000;
+}
+.searchRow .search_word {
+    box-sizing: border-box;
+    height: 40px; border: 1px solid #000;
+}
+.searchRow .search_btn {
+    width: 3%; border: 1px solid #000;
+    height: 40px;
+}
 
 .basket_buy {
 	text-align: right;
