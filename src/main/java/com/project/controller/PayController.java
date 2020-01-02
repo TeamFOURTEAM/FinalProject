@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.service.BasketService;
 import com.project.service.PayService;
@@ -158,16 +159,48 @@ public class PayController {
 	}//pay_list()
 	
 	/** 주문 상품명 클릭시, 해당 주문의 상품 리스트로 이동 **/
-	@RequestMapping("pay_item_list_go")
-	public String pay_item_list_go() {
+	@RequestMapping("shop/pay_item_list_go")
+	public String pay_item_list_go(
+			HttpServletRequest request,
+			RedirectAttributes redirectAttributes) {
+		
+		int pay_no = Integer.parseInt(request.getParameter("pay_no"));
+		int validity = Integer.parseInt(request.getParameter("validity"));
+		
+		redirectAttributes.addAttribute("pay_no",pay_no);
+		redirectAttributes.addAttribute("validity",validity);
 		
 		return "redirect:/shop/pay_item_list";
 	}//pay_item_list_go()
 	
-	@RequestMapping("pay_item_list")
-	public String pay_item_list() {
+	@RequestMapping("shop/pay_item_list")
+	public String pay_item_list(
+			HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 		
-		return "";
+		int pay_no = Integer.parseInt(request.getParameter("pay_no"));
+		int validity = Integer.parseInt(request.getParameter("validity"));
+		//선택한 주문 번호
+		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		
+		//session 처리!
+		String user_id = "pebble";
+		
+		if(user_id == null) {
+			out.println("<script>");
+			out.println("alert('로그인 하신 후 이용해주세요.');");
+			out.println("location='admin_login';");
+			out.println("</script>");
+			
+		}else {
+			
+			
+			return "shop/pay_item_list";
+		}//if else
+		
+		return "null";
 	}//pay_item_list()
 }
 

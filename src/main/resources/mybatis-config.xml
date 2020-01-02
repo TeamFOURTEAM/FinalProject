@@ -15,6 +15,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
  	
  	<typeAlias type="com.project.vo.PayVO" alias="pay"/>
  	<!-- PayVO 빈클래스의 객체 별칭명 pay를 관리 -->
+ 	
+ 	<typeAlias type="com.project.vo.Pay_okVO" alias="payOK"/>
+ 	<!-- Pay_okVO 빈클래스의 객체 별칭명 payOK를 관리 -->
 
  </typeAliases>
 </configuration>

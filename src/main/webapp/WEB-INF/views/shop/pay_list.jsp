@@ -47,7 +47,7 @@
 		                   			${p.pay_no}
 		                    	</div>
 		                    	<div class="column table_title">
-		                   			<a href="pay_item_list_go">상품명(임시)</a>
+		                   			<a href="pay_item_list_go?pay_no=${p.pay_no}&validity=${p.validity}">상품명(임시)</a>
 		                    	</div>
 		                    	<div class="column table_price">
 		                    		\ <fmt:formatNumber pattern="###,###,###" value="${p.pay_price}" />

@@ -1,5 +1,4 @@
-/** pay_list.css **/
-
+/** pay_item_list.css **/
 
 /** 컨테이너 **/
 .container {
@@ -52,7 +51,6 @@
     vertical-align : middle;
     border-bottom: 1px solid #dcdcdc;
     font-size: 18px;
-    padding: 18px;
 }
 .basket_body .column.table_none {
     display: block; width: 1000px;
@@ -62,13 +60,43 @@
 .basket_body .column.table_title {
 	font-size: 22px;
 }
-
-.basket_body .column.table_view {
-
+.basket_body .basket_count {
+	font-size: 18px; text-align: center;
+	width: 40px; height: 25px;
+}
+.basket_body .column.table_img{
+	text-align: center;
+	padding: 15px;
+}
+.basket_body .column.table_img img {
+	margin: auto 0;
+	width: 140px; height: 140px;
+}
+.basket_body .column.table_del .basket_del {
+	font-size: 18px;
+	border: 1px solid #000;
+	padding: 5px;
 }
 
 /** 하단부 **/
-
+.basket_info{
+	margin: 20px 0;
+	text-align: right;
+	font-size: 20px;
+}
+.basket_info .item_price {
+	padding-bottom: 15px;
+}
+.basket_info .deli_price {
+	padding-bottom: 30px;
+}
+.basket_info .info_line {
+	border-top: 1px solid #000;
+	margin-left: 50%;
+}
+.basket_info .all_price {
+	padding: 15px 0;
+}
 .basket_buy {
 	text-align: right;
 	margin: 10px 0;
@@ -80,50 +108,11 @@
 	padding: 5px;
 }
 .basket_buy #basketList_btn {
-	margin: 15px 0 0 15px;
+	margin-left: 10px;
 	font-size: 20px;
 	border: 1px solid #000;
 	padding: 5px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
