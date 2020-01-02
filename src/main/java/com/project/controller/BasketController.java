@@ -25,6 +25,34 @@ public class BasketController {
 	@Autowired
 	private BasketService basketService;
 	
+	/** 장바구니 목록으로 이동 **/
+	@RequestMapping("shop/basket_list_go")
+	public String basket_list_go(
+			HttpServletRequest request,
+			RedirectAttributes redirectAttributes) {
+		
+		String basket_id = request.getParameter("basket_id");
+		int page = Integer.parseInt(request.getParameter("page"));
+		
+		redirectAttributes.addAttribute("basket_id",basket_id);
+		redirectAttributes.addAttribute("page",page);
+		
+		/*  <매우 중요!>
+		 * 리다이렉트란? 무언가 기능이 작동해서 값이 변하는 등의 이벤트가 있을 때
+		 * 페이지를 다시 새로 연결해서 다른 페이지로 이동시키는 것이다.
+		 * 값이 변하는데도 단순하게 포워딩으로 넘겨버리면, 
+		 * 새로고침했을때 메서드가 계속해서 돌아버리는 문제점이 발생한다!
+		 * 주의 할것!
+		 * 
+		 * 장바구니 목록 리스트를 리다이렉트 해줄때, 장바구니 목록에 들어가는 두가지 변수
+		 * 유저아이디와 page 변수를 똑같이 보내줘야 한다. 장바구니 목록에서 이 두개의 변수를
+		 * 담아서 리스트를 출력하고 있기 때문. 그러기위해서 변수를 받아와서
+		 * 리다이렉트 할때 변수를 보내주게끔 함.(나중에 아이디는 뺀다. 세션으로 처리할것이기 때문)
+		 */
+		
+		return "redirect:/shop/basket_list";
+	}//basket_list_go()
+	
 	/** 장바구니 상품 목록 **/
 	@RequestMapping("shop/basket_list")
 	public String basket_list(
@@ -86,12 +114,6 @@ public class BasketController {
 		String basket_id = request.getParameter("basket_id");
 		int page = Integer.parseInt(request.getParameter("page"));
 		
-		/*  <매우 중요!>
-		 * 장바구니 목록 리스트를 리다이렉트 해줄때, 장바구니 목록에 들어가는 두가지 변수
-		 * 유저아이디와 page 변수를 똑같이 보내줘야 한다. 장바구니 목록에서 이 두개의 변수를
-		 * 담아서 리스트를 출력하고 있기 때문. 그러기위해서 변수를 받아와서
-		 * 리다이렉트 할때 변수를 보내주게끔 함.(나중에 아이디는 뺀다. 세션으로 처리할것이기 때문)
-		 */
 		redirectAttributes.addAttribute("basket_id",basket_id);
 		redirectAttributes.addAttribute("page",page);
 		

@@ -27,6 +27,14 @@ public class PayController {
 	@Autowired
 	private PayService payService;
 	
+	/** 결제페이지로 이동 **/
+	@RequestMapping("shop/pay")
+	public String pay() {
+		
+		return "redirect:/shop/pay_page";
+	}//pay()
+	
+	
 	/** 결제 페이지의 상품 목록 **/
 	@RequestMapping("shop/pay_page")
 	public String pay_list(
@@ -112,4 +120,10 @@ public class PayController {
 		return null;
 	}
 	
+	/** 구매 내역 **/
+	@RequestMapping("shop/pay_list")
+	public String pay_list() {
+		
+		return "shop/pay_list";
+	}
 }

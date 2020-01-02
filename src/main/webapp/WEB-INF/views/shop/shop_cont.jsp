@@ -94,7 +94,7 @@
 	                    	<span>장바구니에 상품이 담겼습니다.</span>
 	                    	<button type="button" id="basketCancel"><i class="fa fa-window-close-o" aria-hidden="true"></i></button>
 	                    	<button id="basket_list_button" 
-	                    	onclick="javascript: form.action='basket_list';">장바구니로 가기</button>
+	                    	onclick="javascript: form.action='basket_list_go';">장바구니로 가기</button>
 	                    </div>
                     </c:if>
                	</div>
