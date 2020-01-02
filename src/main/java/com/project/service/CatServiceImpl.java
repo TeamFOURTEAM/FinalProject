@@ -59,4 +59,37 @@ public class CatServiceImpl implements CatService {
 	public List<CatVO> getCatList_mun(CatVO c_mun) {
 		return this.catDao.getCatList_mun(c_mun);
 	}
+
+	//고양이(샴)
+	@Override
+	public int getListCount_shiam(CatVO c_shiam) {
+		return this.catDao.getListCount_shiam(c_shiam);
+	}
+
+	@Override
+	public List<CatVO> getCatList_shiam(CatVO c_shiam) {
+		return this.catDao.getCatList_shiam(c_shiam);
+	}
+
+	//고양이(폴드)
+	@Override
+	public int getListCount_fold(CatVO c_fold) {
+		return this.catDao.getListCount_fold(c_fold);
+	}
+
+	@Override
+	public List<CatVO> getCatList_fold(CatVO c_fold) {
+		return this.catDao.getCatList_fold(c_fold);
+	}
+
+	//고양이(페르시안)
+	@Override
+	public int getListCount_persian(CatVO c_persian) {
+		return this.catDao.getListCount_persian(c_persian);
+	}
+
+	@Override
+	public List<CatVO> getCatList_persian(CatVO c_persian) {
+		return this.catDao.getCatList_persian(c_persian);
+	}
 }

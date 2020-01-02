@@ -317,11 +317,11 @@ public class DogBoardController {
 	}//dog_del_ok
 	
 	
-/*	//먼치킨 고양이 목록
-	*//** 고양이 목록 **//*
-	@RequestMapping("/cat/cat_mun_list")
-	public String cat_mun_list(
-			Model listM,CatVO c_mun,
+	//시츄 강아지 목록
+	/** 강아지 목록 **/
+	@RequestMapping("/dog/dog_shih_list")
+	public String dog_shih_list(
+			Model listM,DogVO d_shih,
 			HttpServletRequest request) {
 		
 		int page=1;
@@ -334,15 +334,15 @@ public class DogBoardController {
 		String find_field=request.getParameter("find_field");
 		//검색어, 검색 필드를 저장
 		
-		c_mun.setFind_field(find_field);
-		c_mun.setFind_name("%"+find_name+"%");
+		d_shih.setFind_field(find_field);
+		d_shih.setFind_name("%"+find_name+"%");
 		
-		int totalCount=this.catService.getListCount_mun(c_mun);
+		int totalCount=this.dogService.getListCount_shih(d_shih);
 		//검색전후 레코드 개수
-		c_mun.setStartrow((page-1)*12+1);//시작행 번호
-		c_mun.setEndrow(c_mun.getStartrow()+limit-1);//끝행 번호
+		d_shih.setStartrow((page-1)*12+1);//시작행 번호
+		d_shih.setEndrow(d_shih.getStartrow()+limit-1);//끝행 번호
 		
-		List<CatVO> clist=this.catService.getCatList_mun(c_mun);
+		List<DogVO> dlist=this.dogService.getDogList_shih(d_shih);
 		//검색 전후 목록
 		
 		//총 페이지 수
@@ -357,7 +357,7 @@ public class DogBoardController {
 		if(endpage>startpage+12-1)
 			endpage=startpage+12-1;
 		
-		listM.addAttribute("clist", clist);
+		listM.addAttribute("dlist", dlist);
 		listM.addAttribute("page", page);
 		listM.addAttribute("startpage", startpage);
 		listM.addAttribute("endpage", endpage);
@@ -367,8 +367,115 @@ public class DogBoardController {
 		listM.addAttribute("find_name", find_name);
 		
 
-		return "cat/cat_mun_list";
-	}*/
+		return "dog/dog_shih_list";
+	}
+	
+	//말티즈 강아지 목록
+	/** 강아지 목록 **/
+	@RequestMapping("/dog/dog_mal_list")
+	public String dog_mal_list(
+			Model listM,DogVO d_mal,
+			HttpServletRequest request) {
+		
+		int page=1;
+		int limit=12;//한페이지에 보여지는 목록 개수
+		
+		if(request.getParameter("page") != null) {
+			page=Integer.parseInt(request.getParameter("page"));
+		}
+		String find_name=request.getParameter("find_name");
+		String find_field=request.getParameter("find_field");
+		//검색어, 검색 필드를 저장
+		
+		d_mal.setFind_field(find_field);
+		d_mal.setFind_name("%"+find_name+"%");
+		
+		int totalCount=this.dogService.getListCount_mal(d_mal);
+		//검색전후 레코드 개수
+		d_mal.setStartrow((page-1)*12+1);//시작행 번호
+		d_mal.setEndrow(d_mal.getStartrow()+limit-1);//끝행 번호
+		
+		List<DogVO> dlist=this.dogService.getDogList_mal(d_mal);
+		//검색 전후 목록
+		
+		//총 페이지 수
+		int maxpage=(int)((double)totalCount/limit+0.95);
+		
+		//시작 페이지 수
+		int startpage=(((int)((double)page/10+0.9))-1)*12+1;
+		
+		//마지막 페이지
+		int endpage=maxpage;
+		
+		if(endpage>startpage+12-1)
+			endpage=startpage+12-1;
+		
+		listM.addAttribute("dlist", dlist);
+		listM.addAttribute("page", page);
+		listM.addAttribute("startpage", startpage);
+		listM.addAttribute("endpage", endpage);
+		listM.addAttribute("maxpage", maxpage);
+		listM.addAttribute("totalcount", totalCount);
+		listM.addAttribute("find_field", find_field);
+		listM.addAttribute("find_name", find_name);
+		
+
+		return "dog/dog_mal_list";
+	}
+	
+	//말티즈 강아지 목록
+	/** 강아지 목록 **/
+	@RequestMapping("/dog/dog_poodle_list")
+	public String dog_poodle_list(
+			Model listM,DogVO d_poodle,
+			HttpServletRequest request) {
+		
+		int page=1;
+		int limit=12;//한페이지에 보여지는 목록 개수
+		
+		if(request.getParameter("page") != null) {
+			page=Integer.parseInt(request.getParameter("page"));
+		}
+		String find_name=request.getParameter("find_name");
+		String find_field=request.getParameter("find_field");
+		//검색어, 검색 필드를 저장
+		
+		d_poodle.setFind_field(find_field);
+		d_poodle.setFind_name("%"+find_name+"%");
+		
+		int totalCount=this.dogService.getListCount_poodle(d_poodle);
+		
+		//검색전후 레코드 개수
+		d_poodle.setStartrow((page-1)*12+1);//시작행 번호
+		d_poodle.setEndrow(d_poodle.getStartrow()+limit-1);//끝행 번호
+		
+		List<DogVO> dlist=this.dogService.getDogList_poodle(d_poodle);
+		//검색 전후 목록
+		
+		//총 페이지 수
+		int maxpage=(int)((double)totalCount/limit+0.95);
+		
+		//시작 페이지 수
+		int startpage=(((int)((double)page/10+0.9))-1)*12+1;
+		
+		//마지막 페이지
+		int endpage=maxpage;
+		
+		if(endpage>startpage+12-1)
+			endpage=startpage+12-1;
+		
+		listM.addAttribute("dlist", dlist);
+		listM.addAttribute("page", page);
+		listM.addAttribute("startpage", startpage);
+		listM.addAttribute("endpage", endpage);
+		listM.addAttribute("maxpage", maxpage);
+		listM.addAttribute("totalcount", totalCount);
+		listM.addAttribute("find_field", find_field);
+		listM.addAttribute("find_name", find_name);
+		
+
+		return "dog/dog_poodle_list";
+	}
 
 
 /*	//다중파일업로드

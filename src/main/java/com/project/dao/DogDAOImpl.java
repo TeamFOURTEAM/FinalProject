@@ -44,14 +44,38 @@ public class DogDAOImpl implements DogDAO {
 		this.sqlSession.delete("Dog.dog_del",dog_no);
 	}//삭제
 
-/*	//고양이(먼치킨)
 	@Override
-	public int getListCount_mun(CatVO c_mun) {
-		return this.sqlSession.selectOne("Cat.cat_mun_count", c_mun);
-	}//검색 전후 레코드 개수
+	public int getListCount_shih(DogVO d_shih) {
+		return this.sqlSession.selectOne("Dog.dog_shih_count", d_shih);
+	}
+
+	//시츄
+	@Override
+	public List<DogVO> getDogList_shih(DogVO d_shih) {
+		return this.sqlSession.selectList("Dog.dog_shih_list", d_shih);
+	}
+
+	//말티즈
+	@Override
+	public int getListCount_mal(DogVO d_mal) {
+		return this.sqlSession.selectOne("Dog.dog_mal_count", d_mal);
+	}
+	
+	@Override
+	public List<DogVO> getDogList_mal(DogVO d_mal) {
+		return this.sqlSession.selectList("Dog.dog_mal_list", d_mal);
+		
+	}
+
+	//푸들
+	@Override
+	public int getListCount_poodle(DogVO d_poodle) {
+		return this.sqlSession.selectOne("Dog.dog_poodle_count",d_poodle);
+	}
 
 	@Override
-	public List<CatVO> getCatList_mun(CatVO c_mun) {
-		return this.sqlSession.selectList("Cat.cat_mun_list",c_mun);
-	}*/
+	public List<DogVO> getDogList_poodle(DogVO d_poodle) {
+		return this.sqlSession.selectList("Dog.dog_poodle_list", d_poodle);
+	}
+	
 }

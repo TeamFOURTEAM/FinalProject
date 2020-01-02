@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.project.dao.DogDAO;
 import com.project.vo.DogVO;
 
+import oracle.net.aso.d;
+
 
 @Service
 public class DogServiceImpl implements DogService {
@@ -50,14 +52,35 @@ public class DogServiceImpl implements DogService {
 		this.dogDao.delDog(dog_no);
 	}//삭제
 
-	/*//고양이(먼치킨)
+	//시츄
 	@Override
-	public int getListCount_mun(CatVO c_mun) {
-		return this.catDao.getListCount_mun(c_mun);
+	public int getListCount_shih(DogVO d_shih) {
+		return this.dogDao.getListCount_shih(d_shih);
 	}
 
 	@Override
-	public List<CatVO> getCatList_mun(CatVO c_mun) {
-		return this.catDao.getCatList_mun(c_mun);
-	}*/
+	public List<DogVO> getDogList_shih(DogVO d_shih) {
+		return this.dogDao.getDogList_shih(d_shih);
+	}
+
+	//말티즈
+	@Override
+	public int getListCount_mal(DogVO d_mal) {
+		return this.dogDao.getListCount_mal(d_mal);
+	}
+
+	@Override
+	public List<DogVO> getDogList_mal(DogVO d_mal) {
+		return this.dogDao.getDogList_mal(d_mal);
+	}
+
+	@Override
+	public int getListCount_poodle(DogVO d_poodle) {
+		return this.dogDao.getListCount_poodle(d_poodle);
+	}
+
+	@Override
+	public List<DogVO> getDogList_poodle(DogVO d_poodle) {
+		return this.dogDao.getDogList_poodle(d_poodle);
+	}
 }

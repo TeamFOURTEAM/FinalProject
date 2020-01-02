@@ -4,47 +4,43 @@
 
 <!-- style -->
 <link rel="stylesheet" href="/css/reset.css">
-<link rel="stylesheet" href="/css/cat_board/cat.css">
+<link rel="stylesheet" href="/css/dog_board/dog.css">
 
-<!-- js -->
-<script src="/js/cat_board/cat.js"></script>
+<!-- jquery -->
+<script src="/js/dog_board/dog.js"></script>
 
 <!-- 본문 내용 -->
 <main>
-    <form method="get" action="total_cat">
+    <form method="get" action="total_dog">
         <section id="contents">
-            <div class="container">
-                <section id="cont">
                     <article class="column col1">
                         <div class="main">
 
                             <div class="board_list">
                             <ul class="tabs">
-                            	<li><a href="/cat/total_cat?page=1">전체</a></li>
-                            	<li class="current"><a href="/cat/cat_mun_list?page=1">먼치킨</a></li>
-                            	<li><a href="/cat/cat_shiam_list?page=1">샴</a></li>
-                            	<li><a href="/cat/cat_fold_list?page=1">폴드</a></li>
-                            	<li><a href="/cat/cat_persian_list?page=1">페르시안</a></li>
+                            	<li><a href="/dog/total_dog?page=1">전체</a></li>
+                            	<li class="current"><a href="/dog/dog_shih_list?page=1">시츄</a></li>
+                            	<li><a href="/dog/dog_mal_list?page=1">말티즈</a></li>
+                            	<li><a href="/dog/dog_poodle_list?page=1">푸들</a></li>
                             </ul>
                             
-                                <div class="cat_list">
-
-                                    <c:if test="${!empty clist }">
-                                        <c:forEach var="c" items="${clist }">
+                                <div class="dog_list">
+                                    <c:if test="${!empty dlist }">
+                                        <c:forEach var="d" items="${dlist }">
                                             <div class="item">
                                                 <div class="img">
-                                                    <a href="cat_cont?cat_no=${c.cat_no}&state=cont&page=${page}">
-                                                        <img src="/resources/photo_upload${c.cat_file }" width="316"
+                                                    <a href="dog_cont?dog_no=${d.dog_no}&state=cont&page=${page}">
+                                                        <img src="/resources/photo_upload${d.dog_file }" width="316"
                                                             height="360" />
                                                     </a>
                                                 </div>
                                                 <div class="name">
-                                                    <a href="cat_cont?cat_no=${c.cat_no}&state=cont&page=${page}">${c.cat_title}</a>
+                                                    <a href="dog_cont?dog_no=${d.dog_no}&state=cont&page=${page}">${d.dog_title}</a>
                                                 </div>
                                             </div>
                                         </c:forEach>
                                     </c:if>
-                                    <c:if test="${empty clist }">
+                                    <c:if test="${empty dlist }">
                                         	<p>목록이 없습니다. 관리자에게 문의해 주세요.<p>
                                     </c:if>
 
@@ -59,7 +55,7 @@
                                             &lt;&nbsp;
                                         </c:if>
                                         <c:if test="${page >1}">
-                                            <a href="cat_mun_list?page=${page-1}">&lt;</a>&nbsp;
+                                            <a href="dog/dog_shih_list?page=${page-1}">&lt;</a>&nbsp;
                                         </c:if>
 
                                         <%--쪽번호 출력부분 --%>
@@ -68,13 +64,13 @@
                                             </c:if>
 
                                             <c:if test="${a != page}">
-                                                <a href="cat_mun_list?page=${a}">${a}</a>&nbsp;
+                                                <a href="dog/dog_shih_list?page=${a}">${a}</a>&nbsp;
                                             </c:if>
                                         </c:forEach>
 
                                         <c:if test="${page>=maxpage}">&gt;</c:if>
                                         <c:if test="${page<maxpage}">
-                                            <a href="cat_mun_list?page=${page+1}">&gt;</a>
+                                            <a href="dog/dog_shih_list?page=${page+1}">&gt;</a>
                                         </c:if>
                                     </c:if>
 
@@ -85,7 +81,7 @@
                                         </c:if>
                                         <c:if test="${page >1}">
                                             <a
-                                                href="cat_mun_list?page=${page-1}&find_field=${find_field}&find_name=${find_name}">
+                                                href="dog/dog_shih_list?page=${page-1}&find_field=${find_field}&find_name=${find_name}">
                                                 &lt;</a>&nbsp;
                                         </c:if>
 
@@ -97,7 +93,7 @@
 
                                             <c:if test="${a != page}">
                                                 <a
-                                                    href="cat_mun_list?page=${a}&find_field=${find_field}&find_name=${find_name}">
+                                                    href="dog/dog_shih_list?page=${a}&find_field=${find_field}&find_name=${find_name}">
                                                     ${a}</a>&nbsp;
                                             </c:if>
                                         </c:forEach>
@@ -106,7 +102,7 @@
                                         </c:if>
                                         <c:if test="${page<maxpage}">
                                             <a
-                                                href="cat_mun_list?page=${page+1}&find_field=${find_field}&find_name=${find_name}">
+                                                href="dog/dog_shih_list?page=${page+1}&find_field=${find_field}&find_name=${find_name}">
                                                 &gt;</a>
                                         </c:if>
                                     </c:if>
@@ -116,22 +112,25 @@
                                 <%--검색폼 --%>
                                 <div id="cFind_wrap">
                                     <select name="find_field" class="select">
-                                        <option value="cat_title" <c:if test="${find_field == 'cat_title'}">
+                                        <option value="dog_title" <c:if test="${find_field == 'dog_title'}">
                                             ${'selected'}</c:if>>제목</option>
-                                        <option value="cat_cont" <c:if test="${find_field == 'cat_cont'}">
+                                        <option value="dog_cont" <c:if test="${find_field == 'dog_cont'}">
                                             ${'selected'}</c:if>>내용</option>
                                     </select>
                                     <input name="find_name" id="find_name" size="30" value="${find_name}" />
                                     <input type="submit" value="검색" />
-                                    <input type="button" class="cWrite" value="글쓰기" onclick="location='cat_write?class=cat'" />
+                                    <input type="button" class="cWrite" value="글쓰기" onclick="location='dog_write?'" />
+                                </div>
+
+                                <!-- 글쓰기 버튼 -->
+                                <div id="cWrite">
+                                    
                                 </div>
 
                             </div>
                         </div>
                     </article>
                 </section>
-            </div>
-        </section>
         <!-- contents -->
     </form>
 </main>

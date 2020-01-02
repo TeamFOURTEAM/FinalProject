@@ -17,7 +17,18 @@
 			<article class="column col1">
 	
 				<div class="main">
-					${q_cont }
+					<div class="qboard_name">
+						[Q&A]
+					</div>
+						<div class="qdate">${q.q_date }</div>
+						<div class="qhit">조회수: ${q.q_hit }</div>
+					<div class="qtitle">
+						${q.q_title }
+					</div>
+					<div class="qname">
+						작성자 이름
+					</div>
+						${q_cont }
 				</div>
 				
 				<div id="q_menu">

@@ -60,17 +60,14 @@ $(function(){
 					
 					<table id="dog_write" width="100%">
 						<tr>
-							<th>강아지종류</th>
 							<td><input name="dog_title" id="dog_title" size="20" value="${d.dog_title }" /> </td>
 						</tr>
 						<tr>
-							<th>내용</th>
-							<td><textarea name="dog_cont" id="dog_cont" cols="110" rows="30">
+							<td><textarea name="dog_cont" id="dog_cont" cols="170" rows="30">
 								${d.dog_cont }</textarea>
 							</td>
 						</tr>
 						<tr>
-							<th>파일첨부</th>
     						<td><input type="file" name="dog_file" id="dog_file" />
     						<br/>${d.dog_file }
     						</td>

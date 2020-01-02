@@ -13,13 +13,18 @@
 <main>
     <form method="get" action="total_dog">
         <section id="contents">
-            <div class="container">
                     <article class="column col1">
                         <div class="main">
 
                             <div class="board_list">
+                            <ul class="tabs">
+                            	<li class="current"><a href="/dog/total_dog?page=1">전체</a></li>
+                            	<li><a href="/dog/dog_shih_list?page=1">시츄</a></li>
+                            	<li><a href="/dog/dog_mal_list?page=1">말티즈</a></li>
+                            	<li><a href="/dog/dog_poodle_list?page=1">푸들</a></li>
+                            </ul>
+                            
                                 <div class="dog_list">
-
                                     <c:if test="${!empty dlist }">
                                         <c:forEach var="d" items="${dlist }">
                                             <div class="item">
@@ -36,7 +41,7 @@
                                         </c:forEach>
                                     </c:if>
                                     <c:if test="${empty dlist }">
-                                        	목록이 없습니다.
+                                        	<p>목록이 없습니다. 관리자에게 문의해 주세요.<p>
                                     </c:if>
 
                                 </div>
@@ -126,7 +131,6 @@
                         </div>
                     </article>
                 </section>
-            </div>
         <!-- contents -->
     </form>
 </main>

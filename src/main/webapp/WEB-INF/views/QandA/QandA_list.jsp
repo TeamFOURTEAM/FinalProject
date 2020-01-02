@@ -17,7 +17,9 @@
             <section id="cont">
                 <article class="column col1">
                     <div class="main">
-                        
+                        <div class="qboard_name">
+							[Q&A]
+						</div>
 
                             <table id="qList_t">
                             	<tr>
@@ -46,7 +48,7 @@
                                                     <c:forEach begin="1" end="${q.q_step}" step="1">
                                                         &nbsp;<%--답변글 들여쓰기 --%>
                                                     </c:forEach>
-                                                    <img src="/resources/img/QandA/reply.png" />
+                                                    <img class="reply" src="/resources/img/QandA/reply2.png" />
                                                     <%--답변글 이미지 --%>
                                                 </c:if>
                                                 <a class="OneLine" href="QandA_cont?q_no=${q.q_no}&state=cont&page=${page}">${q.q_title}</a>

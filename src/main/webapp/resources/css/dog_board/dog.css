@@ -120,4 +120,27 @@ table {
 	margin: 10px 0;
 }
 
+.board_list ul {	
+	padding-bottom: 50px;
+	text-align: center;
+}
 
+.board_list ul li {
+	display: inline-block;
+	font-size: 25px;
+	padding: 0 20px;
+}
+
+.board_list ul li.current {
+	background-color: red;
+}
+
+.board_list ul li.current a {
+	color: white;
+}
+
+.dog_list p{
+	text-align: center;
+	font-size: 30px;
+	padding-bottom: 25px;
+}

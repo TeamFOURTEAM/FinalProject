@@ -18,9 +18,18 @@ public interface DogDAO {
 
 	void delDog(int dog_no);
 
-	
-/*	//고양이(먼치킨)
-	int getListCount_mun(CatVO c_mun);
+	//강아지(시츄)
+	int getListCount_shih(DogVO d_shih);
 
-	List<CatVO> getCatList_mun(CatVO c_mun);*/
+	List<DogVO> getDogList_shih(DogVO d_shih);
+
+	//강아지(말티즈)
+	int getListCount_mal(DogVO d_mal);
+
+	List<DogVO> getDogList_mal(DogVO d_mal);
+
+	int getListCount_poodle(DogVO d_poodle);
+
+	List<DogVO> getDogList_poodle(DogVO d_poodle);
+
 }

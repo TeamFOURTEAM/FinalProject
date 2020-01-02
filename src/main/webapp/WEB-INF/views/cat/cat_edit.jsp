@@ -60,17 +60,14 @@
 					
 					<table id="cat_write" width="100%">
 						<tr>
-							<th>고양이 종류</th>
 							<td><input name="cat_title" id="cat_title" size="20" value="${c.cat_title }" /> </td>
 						</tr>
 						<tr>
-							<th>내용</th>
-							<td><textarea name="cat_cont" id="cat_cont" cols="110" rows="30">
+							<td><textarea name="cat_cont" id="cat_cont" cols="170" rows="30">
 								${c.cat_cont }</textarea>
 							</td>
 						</tr>
 						<tr>
-							<th>파일첨부</th>
     						<td><input type="file" name="cat_file" id="cat_file" />
     						<br/>${c.cat_file }
     						</td>

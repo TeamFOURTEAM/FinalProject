@@ -377,7 +377,165 @@ public class CatBoardController {
 
 		return "cat/cat_mun_list";
 	}
+	
+	//샴 고양이 목록
+	/** 샴 고양이 목록 **/
+	@RequestMapping("/cat/cat_shiam_list")
+	public String cat_shiam_list(
+			Model listM,CatVO c_shiam,
+			HttpServletRequest request) {
+		
+		int page=1;
+		int limit=12;//한페이지에 보여지는 목록 개수
+		
+		if(request.getParameter("page") != null) {
+			page=Integer.parseInt(request.getParameter("page"));
+		}
+		String find_name=request.getParameter("find_name");
+		String find_field=request.getParameter("find_field");
+		//검색어, 검색 필드를 저장
+		
+		c_shiam.setFind_field(find_field);
+		c_shiam.setFind_name("%"+find_name+"%");
+		
+		int totalCount=this.catService.getListCount_shiam(c_shiam);
+		//검색전후 레코드 개수
+		c_shiam.setStartrow((page-1)*12+1);//시작행 번호
+		c_shiam.setEndrow(c_shiam.getStartrow()+limit-1);//끝행 번호
+		
+		List<CatVO> clist=this.catService.getCatList_shiam(c_shiam);
+		//검색 전후 목록
+		
+		//총 페이지 수
+		int maxpage=(int)((double)totalCount/limit+0.95);
+		
+		//시작 페이지 수
+		int startpage=(((int)((double)page/10+0.9))-1)*12+1;
+		
+		//마지막 페이지
+		int endpage=maxpage;
+		
+		if(endpage>startpage+12-1)
+			endpage=startpage+12-1;
+		
+		listM.addAttribute("clist", clist);
+		listM.addAttribute("page", page);
+		listM.addAttribute("startpage", startpage);
+		listM.addAttribute("endpage", endpage);
+		listM.addAttribute("maxpage", maxpage);
+		listM.addAttribute("totalcount", totalCount);
+		listM.addAttribute("find_field", find_field);
+		listM.addAttribute("find_name", find_name);
+		
 
+		return "cat/cat_shiam_list";
+	}
+	
+	//폴드 고양이 목록
+	/** 폴드 고양이 목록 **/
+	@RequestMapping("/cat/cat_fold_list")
+	public String cat_fold_list(
+			Model listM,CatVO c_fold,
+			HttpServletRequest request) {
+		
+		int page=1;
+		int limit=12;//한페이지에 보여지는 목록 개수
+		
+		if(request.getParameter("page") != null) {
+			page=Integer.parseInt(request.getParameter("page"));
+		}
+		String find_name=request.getParameter("find_name");
+		String find_field=request.getParameter("find_field");
+		//검색어, 검색 필드를 저장
+		
+		c_fold.setFind_field(find_field);
+		c_fold.setFind_name("%"+find_name+"%");
+		
+		int totalCount=this.catService.getListCount_fold(c_fold);
+		//검색전후 레코드 개수
+		c_fold.setStartrow((page-1)*12+1);//시작행 번호
+		c_fold.setEndrow(c_fold.getStartrow()+limit-1);//끝행 번호
+		
+		List<CatVO> clist=this.catService.getCatList_fold(c_fold);
+		//검색 전후 목록
+		
+		//총 페이지 수
+		int maxpage=(int)((double)totalCount/limit+0.95);
+		
+		//시작 페이지 수
+		int startpage=(((int)((double)page/10+0.9))-1)*12+1;
+		
+		//마지막 페이지
+		int endpage=maxpage;
+		
+		if(endpage>startpage+12-1)
+			endpage=startpage+12-1;
+		
+		listM.addAttribute("clist", clist);
+		listM.addAttribute("page", page);
+		listM.addAttribute("startpage", startpage);
+		listM.addAttribute("endpage", endpage);
+		listM.addAttribute("maxpage", maxpage);
+		listM.addAttribute("totalcount", totalCount);
+		listM.addAttribute("find_field", find_field);
+		listM.addAttribute("find_name", find_name);
+		
+
+		return "cat/cat_fold_list";
+	}
+
+	//페르시안 고양이 목록
+	/** 페르시안 고양이 목록 **/
+	@RequestMapping("/cat/cat_persian_list")
+	public String cat_persian_list(
+			Model listM,CatVO c_persian,
+			HttpServletRequest request) {
+		
+		int page=1;
+		int limit=12;//한페이지에 보여지는 목록 개수
+		
+		if(request.getParameter("page") != null) {
+			page=Integer.parseInt(request.getParameter("page"));
+		}
+		String find_name=request.getParameter("find_name");
+		String find_field=request.getParameter("find_field");
+		//검색어, 검색 필드를 저장
+		
+		c_persian.setFind_field(find_field);
+		c_persian.setFind_name("%"+find_name+"%");
+		
+		int totalCount=this.catService.getListCount_persian(c_persian);
+		//검색전후 레코드 개수
+		c_persian.setStartrow((page-1)*12+1);//시작행 번호
+		c_persian.setEndrow(c_persian.getStartrow()+limit-1);//끝행 번호
+		
+		List<CatVO> clist=this.catService.getCatList_persian(c_persian);
+		//검색 전후 목록
+		
+		//총 페이지 수
+		int maxpage=(int)((double)totalCount/limit+0.95);
+		
+		//시작 페이지 수
+		int startpage=(((int)((double)page/10+0.9))-1)*12+1;
+		
+		//마지막 페이지
+		int endpage=maxpage;
+		
+		if(endpage>startpage+12-1)
+			endpage=startpage+12-1;
+		
+		listM.addAttribute("clist", clist);
+		listM.addAttribute("page", page);
+		listM.addAttribute("startpage", startpage);
+		listM.addAttribute("endpage", endpage);
+		listM.addAttribute("maxpage", maxpage);
+		listM.addAttribute("totalcount", totalCount);
+		listM.addAttribute("find_field", find_field);
+		listM.addAttribute("find_name", find_name);
+		
+
+		return "cat/cat_persian_list";
+	}
 
 /*	//다중파일업로드
 	@RequestMapping("/multiplePhotoUpload")

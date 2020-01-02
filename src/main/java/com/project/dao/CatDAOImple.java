@@ -54,4 +54,37 @@ public class CatDAOImple implements CatDAO {
 	public List<CatVO> getCatList_mun(CatVO c_mun) {
 		return this.sqlSession.selectList("Cat.cat_mun_list",c_mun);
 	}
+
+	//고양이(샴)
+	@Override
+	public int getListCount_shiam(CatVO c_shiam) {
+		return this.sqlSession.selectOne("Cat.cat_shiam_count", c_shiam);
+	}
+
+	@Override
+	public List<CatVO> getCatList_shiam(CatVO c_shiam) {
+		return this.sqlSession.selectList("Cat.cat_shiam_list", c_shiam);
+	}
+
+	//고양이(폴드)
+	@Override
+	public int getListCount_fold(CatVO c_fold) {
+		return this.sqlSession.selectOne("Cat.cat_fold_count", c_fold);
+	}
+
+	@Override
+	public List<CatVO> getCatList_fold(CatVO c_fold) {
+		return this.sqlSession.selectList("Cat.cat_fold_list", c_fold);
+	}
+
+	//고양이(페르시안)
+	@Override
+	public int getListCount_persian(CatVO c_persian) {
+		return this.sqlSession.selectOne("Cat.cat_persian_count",c_persian);
+	}
+
+	@Override
+	public List<CatVO> getCatList_persian(CatVO c_persian) {
+		return this.sqlSession.selectList("Cat.cat_persian_list", c_persian);
+	}
 }

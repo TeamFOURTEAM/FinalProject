@@ -20,7 +20,9 @@
                             <ul class="tabs">
                             	<li class="current"><a href="/cat/total_cat?page=1">전체</a></li>
                             	<li><a href="/cat/cat_mun_list?page=1">먼치킨</a></li>
-                            	<li><a href="">러시안 블루</a></li>
+                            	<li><a href="/cat/cat_shiam_list?page=1">샴</a></li>
+                            	<li><a href="/cat/cat_fold_list?page=1">폴드</a></li>
+                            	<li><a href="/cat/cat_persian_list?page=1">페르시안</a></li>
                             </ul>
                             
                                 <div class="cat_list">
@@ -28,19 +30,19 @@
                                         <c:forEach var="c" items="${clist }">
                                             <div class="item">
                                                 <div class="img">
-                                                    <a href="cat_cont?class=cat&cat_no=${c.cat_no}&state=cont&page=${page}">
+                                                    <a href="cat_cont?cat_no=${c.cat_no}&state=cont&page=${page}">
                                                         <img src="/resources/photo_upload${c.cat_file }" width="316"
                                                             height="360" />
                                                     </a>
                                                 </div>
                                                 <div class="name">
-                                                    <a href="cat_cont?class=cat&cat_no=${c.cat_no}&state=cont&page=${page}">${c.cat_title}</a>
+                                                    <a href="cat_cont?cat_no=${c.cat_no}&state=cont&page=${page}">${c.cat_title}</a>
                                                 </div>
                                             </div>
                                         </c:forEach>
                                     </c:if>
                                     <c:if test="${empty clist }">
-                                        	목록이 없습니다.
+                                        	<p>목록이 없습니다. 관리자에게 문의해 주세요.<p>
                                     </c:if>
 
                                 </div>
@@ -54,7 +56,7 @@
                                             &lt;&nbsp;
                                         </c:if>
                                         <c:if test="${page >1}">
-                                            <a href="total_cat?class=cat&page=${page-1}">&lt;</a>&nbsp;
+                                            <a href="total_cat?page=${page-1}">&lt;</a>&nbsp;
                                         </c:if>
 
                                         <%--쪽번호 출력부분 --%>
@@ -63,13 +65,13 @@
                                             </c:if>
 
                                             <c:if test="${a != page}">
-                                                <a href="total_cat?class=cat&page=${a}">${a}</a>&nbsp;
+                                                <a href="total_cat?page=${a}">${a}</a>&nbsp;
                                             </c:if>
                                         </c:forEach>
 
                                         <c:if test="${page>=maxpage}">&gt;</c:if>
                                         <c:if test="${page<maxpage}">
-                                            <a href="total_cat?class=cat&page=${page+1}">&gt;</a>
+                                            <a href="total_cat?page=${page+1}">&gt;</a>
                                         </c:if>
                                     </c:if>
 
@@ -80,7 +82,7 @@
                                         </c:if>
                                         <c:if test="${page >1}">
                                             <a
-                                                href="total_cat?class=cat&page=${page-1}&find_field=${find_field}&find_name=${find_name}">
+                                                href="total_cat?page=${page-1}&find_field=${find_field}&find_name=${find_name}">
                                                 &lt;</a>&nbsp;
                                         </c:if>
 
@@ -92,7 +94,7 @@
 
                                             <c:if test="${a != page}">
                                                 <a
-                                                    href="total_cat?class=cat&page=${a}&find_field=${find_field}&find_name=${find_name}">
+                                                    href="total_cat?page=${a}&find_field=${find_field}&find_name=${find_name}">
                                                     ${a}</a>&nbsp;
                                             </c:if>
                                         </c:forEach>
@@ -101,7 +103,7 @@
                                         </c:if>
                                         <c:if test="${page<maxpage}">
                                             <a
-                                                href="total_cat?class=cat&page=${page+1}&find_field=${find_field}&find_name=${find_name}">
+                                                href="total_cat?page=${page+1}&find_field=${find_field}&find_name=${find_name}">
                                                 &gt;</a>
                                         </c:if>
                                     </c:if>

@@ -21,8 +21,8 @@
                             <div class="board_list">
                             <ul class="tabs">
                             	<li><a href="/cat/total_cat?page=1">전체</a></li>
-                            	<li class="current"><a href="/cat/cat_mun_list?page=1">먼치킨</a></li>
-                            	<li><a href="/cat/cat_shiam_list?page=1">샴</a></li>
+                            	<li><a href="/cat/cat_mun_list?page=1">먼치킨</a></li>
+                            	<li class="current"><a href="/cat/cat_shiam_list?page=1">샴</a></li>
                             	<li><a href="/cat/cat_fold_list?page=1">폴드</a></li>
                             	<li><a href="/cat/cat_persian_list?page=1">페르시안</a></li>
                             </ul>
@@ -59,7 +59,7 @@
                                             &lt;&nbsp;
                                         </c:if>
                                         <c:if test="${page >1}">
-                                            <a href="cat_mun_list?page=${page-1}">&lt;</a>&nbsp;
+                                            <a href="cat_shiam_list?page=${page-1}">&lt;</a>&nbsp;
                                         </c:if>
 
                                         <%--쪽번호 출력부분 --%>
@@ -68,13 +68,13 @@
                                             </c:if>
 
                                             <c:if test="${a != page}">
-                                                <a href="cat_mun_list?page=${a}">${a}</a>&nbsp;
+                                                <a href="cat_shiam_list?page=${a}">${a}</a>&nbsp;
                                             </c:if>
                                         </c:forEach>
 
                                         <c:if test="${page>=maxpage}">&gt;</c:if>
                                         <c:if test="${page<maxpage}">
-                                            <a href="cat_mun_list?page=${page+1}">&gt;</a>
+                                            <a href="cat_shiam_list?page=${page+1}">&gt;</a>
                                         </c:if>
                                     </c:if>
 
@@ -85,7 +85,7 @@
                                         </c:if>
                                         <c:if test="${page >1}">
                                             <a
-                                                href="cat_mun_list?page=${page-1}&find_field=${find_field}&find_name=${find_name}">
+                                                href="cat_shiam_list?page=${page-1}&find_field=${find_field}&find_name=${find_name}">
                                                 &lt;</a>&nbsp;
                                         </c:if>
 
@@ -97,7 +97,7 @@
 
                                             <c:if test="${a != page}">
                                                 <a
-                                                    href="cat_mun_list?page=${a}&find_field=${find_field}&find_name=${find_name}">
+                                                    href="cat_shiam_list?page=${a}&find_field=${find_field}&find_name=${find_name}">
                                                     ${a}</a>&nbsp;
                                             </c:if>
                                         </c:forEach>
@@ -106,7 +106,7 @@
                                         </c:if>
                                         <c:if test="${page<maxpage}">
                                             <a
-                                                href="cat_mun_list?page=${page+1}&find_field=${find_field}&find_name=${find_name}">
+                                                href="cat_shiam_list?page=${page+1}&find_field=${find_field}&find_name=${find_name}">
                                                 &gt;</a>
                                         </c:if>
                                     </c:if>

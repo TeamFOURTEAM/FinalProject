@@ -41,22 +41,17 @@
 						</div>
 						<ul class="sub_category">
 							<li><a href="/cat/cat_mun_list?page=1">먼치킨</a></li>
-							<li><a href="#">고양이 분양 2</a></li>
-							<li><a href="#">고양이 분양 3</a></li>
-							<li><a href="#">고양이 분양 4</a></li>
-							<li><a href="#">고양이 분양 4</a></li>
-							<li><a href="#">고양이 분양 4</a></li>
-							<li><a href="#">고양이 분양 4</a></li>
-							<li><a href="#">고양이 분양 4</a></li>
+							<li><a href="/cat/cat_shiam_list?page=1">샴</a></li>
+							<li><a href="/cat/cat_fold_list?page=1">폴드</a></li>
+							<li><a href="/cat/cat_persian_list?page=1">페르시안</a></li>
 						</ul></li>
 					<li><div>
 							<a href="/dog/total_dog?page=1" >강아지 분양</a>
 						</div>
 						<ul class="sub_category">
-							<li><a href="#">강아지 분양 1</a></li>
-							<li><a href="#">강아지 분양 2</a></li>
-							<li><a href="#">강아지 분양 3</a></li>
-							<li><a href="#">강아지 분양 4</a></li>
+							<li><a href="/dog/dog_shih_list?page=1">시츄</a></li>
+							<li><a href="/dog/dog_mal_list?page=1">말티즈</a></li>
+							<li><a href="/dog/dog_poodle_list?page=1">푸들</a></li>
 						</ul></li>
 					<li><div>
 							<a href="/shop/total_shop?class=shop">SHOP</a>

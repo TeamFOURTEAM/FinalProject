@@ -24,5 +24,21 @@ public interface CatService {
 	int getListCount_mun(CatVO c_mun);
 
 	List<CatVO> getCatList_mun(CatVO c_mun);
+	
+	//고양이(샴)
+	int getListCount_shiam(CatVO c_shiam);
+
+	List<CatVO> getCatList_shiam(CatVO c_shiam);
+
+	//고양이(폴드)
+	int getListCount_fold(CatVO c_fold);
+
+	List<CatVO> getCatList_fold(CatVO c_fold);
+
+	//고양이(페르시안)
+	int getListCount_persian(CatVO c_persian);
+
+	List<CatVO> getCatList_persian(CatVO c_persian);
+
 
 }
