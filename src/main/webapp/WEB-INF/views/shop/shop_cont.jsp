@@ -134,7 +134,6 @@
 
 /* 장바구니 테이블에 저장(ajax) */
 $('#basket_button').on('click',function(){
-	var basket_id = 'pebble'; //임시 아이디(이후에 세션값을 가져오게끔 한다)
 	var product_no = ${s.item_no}; //상품번호
 	var select = document.getElementById("basket_count");//select값
 	var selectedCount = parseInt(select.options[select.selectedIndex].value);
@@ -142,11 +141,6 @@ $('#basket_button').on('click',function(){
 	var stockCount = ${s.item_stockCount};//재고수량
 	var page = ${page};//해당 상품 page
 	
-	//로그인 여부 확인
-	if(basket_id == '') {
-		alert('로그인 되어있지 않습니다. 로그인 해주세요.');
-		return false;
-	}
 	
 	//재고수량 확인(재고보다 적으면 출력)
 	if(selectedCount > stockCount) {
@@ -166,7 +160,6 @@ $('#basket_button').on('click',function(){
 		},
 		dataType : 'text',//문자열
 		data : JSON.stringify({//내용이 json
-			basket_id : basket_id,//아이디
 			product_no : product_no,//상품 번호
 			basket_count : selectedCount,//선택수량
 			basket_page : page//해당 상품 페이지 값

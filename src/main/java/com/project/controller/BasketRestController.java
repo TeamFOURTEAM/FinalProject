@@ -1,6 +1,10 @@
 package com.project.controller;
 
 
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,27 +26,29 @@ public class BasketRestController {
 	/** 장바구니에 추가 **/
 	@RequestMapping(value="/shop/basket_add",method=RequestMethod.POST)
 	public ResponseEntity<String> basket_add(
-			@RequestBody BasketVO basket) throws Exception {
+			@RequestBody BasketVO basket,
+			HttpServletResponse response) throws Exception {
 		
 		/* session id 값이 있을 때 장바구니추가 활성화시켜야 함(session으로 수정할것) */
-//		response.setContentType("text/html;charset=UTF-8");
-//		PrintWriter out=response.getWriter();
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		
+		String user_id= "pebble";// 세션으로 수정해야함
 		
 		ResponseEntity<String> entity=null;
-//		String userId = (String) session.getAttribute("user_id");
 		
-		//장바구니에 먼저 담은 상품이 있는지 검사
-		int count=
-			this.basketService.countBasket(basket.getProduct_no(),basket.getBasket_id());
-		
-		if(basket.getBasket_id() == null) {//id 값이 없을 때(session처리?)
-//			out.println("<script>");
-//			out.println("alert('다시 로그인 해주세요.');");
-//			out.println("location='history.back();';");
-//			out.println("</script>");
+		if(user_id.equals(null)) {//id 값이 없을 때(session처리?)
+			out.println("<script>");
+			out.println("alert('다시 로그인 해주세요.');");
+			out.println("location='history.back();';");
+			out.println("</script>");
 			
 		}else {//id 값이 있을 때
 			try {
+				//장바구니에 먼저 담은 상품이 있는지 검사
+				int count=
+						this.basketService.countBasket(basket.getProduct_no(),user_id);
+				basket.setBasket_id(user_id);//세션의 아이디값을 vo 객체에 저장
 				
 				if(count == 0) {//없으면 추가
 					this.basketService.addBasket(basket);//장바구니에 상품 추가
@@ -70,22 +76,40 @@ public class BasketRestController {
 	//PUT은 전체자료 수정, PATCH는 일부 자료 수정, 복수개의 
 	//메서드 방식 지정하는 법
 	public ResponseEntity<String> editBasket(
-				@RequestBody BasketVO basket) {
+				@RequestBody BasketVO basket,
+				HttpServletResponse response) throws Exception {
+		
+		/* session id 값이 있을 때 장바구니추가 활성화시켜야 함(session으로 수정할것) */
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		
+		String user_id= "pebble";// 세션으로 수정해야함
 		
 		ResponseEntity<String> entity=null;
 		
-		try {
-			this.basketService.editBasket(basket);//장바구니 정보 수정
-			entity=new ResponseEntity<String>("SUCCESS",
-					HttpStatus.OK);
+		if(user_id.equals(null)) {//id 값이 없을 때(session처리?)
+			out.println("<script>");
+			out.println("alert('다시 로그인 해주세요.');");
+			out.println("location='history.back();';");
+			out.println("</script>");
 			
-		}catch(Exception e) {
-			e.printStackTrace();
-			entity=new ResponseEntity<String>(e.getMessage(),
-					HttpStatus.BAD_REQUEST);
-		}//try catch
+		}else {//id 값이 있을 때
+			try {
+				basket.setBasket_id(user_id);//세션의 아이디값을 vo 객체에 저장
+				this.basketService.editBasket(basket);//장바구니 정보 수정
+				entity=new ResponseEntity<String>("SUCCESS",
+						HttpStatus.OK);
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+				entity=new ResponseEntity<String>(e.getMessage(),
+						HttpStatus.BAD_REQUEST);
+			}//try catch
+			
+		}//if else
 		
 		return entity;
+		
 	}//editBasket()
 	
 	/** 장바구니 상품 삭제 **/

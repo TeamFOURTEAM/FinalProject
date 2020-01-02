@@ -31,7 +31,7 @@
 	        <div class="admin_write">
 	            <button type="button" onclick="location.href='shop_write?page=${page}';">관리자 글쓰기</button>
 	            <button type="button" id="payList" onclick="location.href='basket_list_go?page=${page}&basket_id=pebble';">임시 장바구니</button>
-	            <button type="button" id="payList" onclick="location.href='pay_list_go';">임시 구매 내역</button>
+	            <button type="button" id="payList" onclick="location.href='pay_list_go?page=${page}';">임시 구매 내역</button>
 	            <button type="button" onclick="location.href='/';">임시 메인 버튼</button>
 	            <!-- 삭제해줘야함 -->
 	        </div>

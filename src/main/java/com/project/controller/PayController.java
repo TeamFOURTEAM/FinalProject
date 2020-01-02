@@ -49,7 +49,7 @@ public class PayController {
 		//session 처리!
 		String user_id = "pebble";
 		
-		if(user_id == null) {
+		if(user_id.equals(null)) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
 			out.println("location='admin_login';");
@@ -99,7 +99,7 @@ public class PayController {
 		//session 처리!
 		String user_id = "pebble";
 		
-		if(user_id == null) {
+		if(user_id.equals(null)) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
 			out.println("location='admin_login';");
@@ -121,7 +121,7 @@ public class PayController {
 		return null;
 	}
 	
-	/** 구매 내역으로 이동 **/
+	/** 주문 내역으로 이동 **/
 	@RequestMapping("shop/pay_list_go")
 	public String pay_list_go() {
 		
@@ -141,7 +141,7 @@ public class PayController {
 		//session 처리!
 		String user_id = "pebble";
 		
-		if(user_id == null) {
+		if(user_id.equals(null)) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
 			out.println("location='admin_login';");
@@ -176,11 +176,13 @@ public class PayController {
 	@RequestMapping("shop/pay_item_list")
 	public String pay_item_list(
 			HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+			HttpServletResponse response,
+			Model payItemList) throws Exception {
 		
 		int pay_no = Integer.parseInt(request.getParameter("pay_no"));
-		int validity = Integer.parseInt(request.getParameter("validity"));
 		//선택한 주문 번호
+		int validity = Integer.parseInt(request.getParameter("validity"));
+		//주문 내역의 validity. 1 -> 결제 확인중 , 2 -> 결제 확인 완료
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
@@ -188,14 +190,39 @@ public class PayController {
 		//session 처리!
 		String user_id = "pebble";
 		
-		if(user_id == null) {
+		if(user_id.equals(null)) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
 			out.println("location='admin_login';");
 			out.println("</script>");
 			
 		}else {
+			//1 -> 결제 확인 중인 장바구니 상품 리스트. 장바구니의 vali=2인 상품을 불러옴
+			if(validity == 1) {
+				Map<String,Object> map=new HashMap<String, Object>();
+				List<BasketVO> list=this.payService.listBasket(user_id);//장바구니 정보
+				
+				int sumMoney=this.payService.sumMoney(user_id);//장바구니 전체 금액 호출
+				/* 장바구니 전체 금액에 따라 배송비 구분 */
+				//배송료(10만원 이상 -> 무료, 미만 -> 2500원)
+				int fee = sumMoney >= 100000 ? 0 : 2500;
+				
+				map.put("list",list); //장바구니 정보
+				map.put("count",list.size());//장바구니 상품 유무
+				map.put("sumMoney",sumMoney);//장바구니 합계 금액
+				map.put("fee",fee);//배송비
+				map.put("allSum",sumMoney+fee);//주문 총 합계 금액(상품 + 배송비)
+				
+				payItemList.addAttribute("user_id",user_id);//id값 전달
+				payItemList.addAttribute("page",page);//page 값 받아서 전달(목록버튼에 전달하기위함)
+				payItemList.addAttribute("map",map);
+				
 			
+			//2 -> 결제 확인 끝난 장바구니 상품 리스트. 구매 확정 장바구니 테이블의 상품을 불러옴
+			}else if(validity == 2) {
+				
+				
+			}//if else
 			
 			return "shop/pay_item_list";
 		}//if else

@@ -109,7 +109,7 @@
             </div><%-- container --%>
     <script>
 	//장바구니 테이블 목록 구현(취소)
-    	var basket_id="<c:out value='${basket_id}'/>";//유저 아이디
+    	//var basket_id="<c:out value='${basket_id}'/>";//유저 아이디
     	//javascript 로 변수 선언할때 변수값을 다이렉트로 지정해주면 is not defined 에러발생.
     	/** select 박스 선택에 따른 상품 정보 수정 **/
     	function editBasket(productNo,stockCount,basket_count) {//3개의 값을 가져옴.
@@ -141,8 +141,7 @@
 				},
 				data : JSON.stringify({
 					product_no : productNo,
-					basket_count : basket_count,
-					basket_id : basket_id
+					basket_count : basket_count
 				}),
 				dataType : "text",
 				success : function(data) {

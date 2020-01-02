@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품 구매 내역</title>
+<title>상품 주문 내역</title>
 	<!-- Style -->
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/shop/pay_list.css">
@@ -14,7 +14,7 @@
 <body>
 	<div class="container">
 		<div class="basket_title">
-			<span>상품 구매 내역</span>
+			<span>상품 주문 내역</span>
 		</div>
 		
        	<form method="post">
@@ -56,7 +56,7 @@
 		                    		${p.pay_date}
 			                    </div>
 			                    <div class="column table_view">
-			                    	<c:if test="${p.validity == 1}">결제 확인중</c:if>
+			                    	<c:if test="${p.validity == 1}">결제 확인 중</c:if>
 			                    	<c:if test="${p.validity == 2}">결제 확인</c:if>
 		                    	</div>
 		                    </div>

@@ -68,7 +68,7 @@ public class BasketController {
 		response.setContentType("text/html;chrset=UTF-8");
 		PrintWriter out=response.getWriter();
 		
-		String basket_id=request.getParameter("basket_id");
+		String basket_id= "pebble";
 	
 		if(basket_id.equals(null)) {//id 값이 없을 때(나중에 세션으로 처리)
 			out.println("<script>");
@@ -115,7 +115,7 @@ public class BasketController {
 		//session 처리!
 		String user_id = "pebble";
 		
-		if(user_id == null) {
+		if(user_id.equals(null)) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
 			out.println("location='admin_login';");
