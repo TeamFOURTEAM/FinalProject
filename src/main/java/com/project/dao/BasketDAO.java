@@ -18,6 +18,6 @@ public interface BasketDAO {
 
 	void editBasket(BasketVO basket);
 
-	void delBasket(int basket_no);
+	void delBasket(BasketVO basket);
 
 }

@@ -52,11 +52,10 @@ public class BasketServiceImpl implements BasketService{
 	
 	/** 장바구니 상품 삭제 **/
 	@Override
-	public void delBasket(int basket_no) {
-		this.basketDAO.delBasket(basket_no);
+	public void delBasket(BasketVO basket) {
+		this.basketDAO.delBasket(basket);
 	}
-	
-	
-	
+
+
 	
 }

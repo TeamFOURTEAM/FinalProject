@@ -104,19 +104,38 @@ public class BasketController {
 	/** 장바구니 상품 삭제 **/
 	@RequestMapping("shop/basket_del")
 	public String basket_del(
-				BasketVO b, @RequestParam int basket_no,
+				BasketVO basket, @RequestParam int basket_no,
 				HttpServletRequest request,
+				HttpServletResponse response,
 				RedirectAttributes redirectAttributes) throws Exception {
 		
-		this.basketService.delBasket(basket_no);//폼 액션 매핑된 장바구니 번호값을 가져와서
-		//원하는 장바구니상품 한개만을 삭제
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
 		
-		String basket_id = request.getParameter("basket_id");
-		int page = Integer.parseInt(request.getParameter("page"));
+		//session 처리!
+		String user_id = "pebble";
 		
-		redirectAttributes.addAttribute("basket_id",basket_id);
-		redirectAttributes.addAttribute("page",page);
+		if(user_id == null) {
+			out.println("<script>");
+			out.println("alert('로그인 하신 후 이용해주세요.');");
+			out.println("location='admin_login';");
+			out.println("</script>");
+			
+		}else {
+			String basket_id = user_id;
+			basket.setBasket_no(basket_no); basket.setBasket_id(basket_id);
+			
+			this.basketService.delBasket(basket);//폼 액션 매핑된 장바구니 번호값을 가져와서
+			//원하는 장바구니상품 한개만을 삭제
+			
+			int page = Integer.parseInt(request.getParameter("page"));
+			
+			redirectAttributes.addAttribute("basket_id",basket_id);
+			redirectAttributes.addAttribute("page",page);
+			
+			return "redirect:/shop/basket_list";
+		}//if else 
 		
-		return "redirect:/shop/basket_list";
+		return null;
 	}//basket_del()	
 }

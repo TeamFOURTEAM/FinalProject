@@ -51,8 +51,8 @@ public class BasketDAOImpl implements BasketDAO {
 	}//장바구니 수정
 
 	@Override
-	public void delBasket(int basket_no) {
-		this.sqlSession.delete("basket_del",basket_no);
+	public void delBasket(BasketVO basket) {
+		this.sqlSession.delete("basket_del",basket);
 	}//장바구니 삭제
 	
 }
