@@ -120,10 +120,57 @@ public class PayController {
 		return null;
 	}
 	
+	/** 구매 내역으로 이동 **/
+	@RequestMapping("shop/pay_list_go")
+	public String pay_list_go() {
+		
+		return "redirect:/shop/pay_list";
+	}//pay_list_go()
+	
 	/** 구매 내역 **/
 	@RequestMapping("shop/pay_list")
-	public String pay_list() {
+	public String pay_list(
+			PayVO pay,
+			HttpServletResponse response,
+			Model payList) throws Exception {
 		
-		return "shop/pay_list";
-	}
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		
+		//session 처리!
+		String user_id = "pebble";
+		
+		if(user_id == null) {
+			out.println("<script>");
+			out.println("alert('로그인 하신 후 이용해주세요.');");
+			out.println("location='admin_login';");
+			out.println("</script>");
+			
+		}else {
+			List<PayVO> list = this.payService.list_pay(user_id);//주문 내역 목록
+			
+			payList.addAttribute("list",list);
+			
+			return "shop/pay_list";
+		}//if else
+		
+		return null;
+	}//pay_list()
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

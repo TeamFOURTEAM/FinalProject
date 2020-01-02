@@ -1,5 +1,7 @@
 package com.project.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,5 +21,10 @@ public class PayServiceImpl implements PayService {
 		this.payDAO.insertPay(pay);//주문내역 추가
 		this.payDAO.updateBasket(user_id);//장바구니 validity 업데이트
 	}//주문 내역 추가
+
+	@Override
+	public List<PayVO> list_pay(String user_id) {
+		return this.payDAO.list_pay(user_id);//주문 내역 불러옴
+	}
 
 }

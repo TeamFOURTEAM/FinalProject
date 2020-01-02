@@ -18,6 +18,11 @@
 		where rownum = 1)
 		where basket_id=#{user_id} and validity=1
 	</update>
+	
+	<!-- 주문 내역 검색 -->
+	<select id="pay_list" resultType="pay">
+		select * from pay where user_id=#{user_id}
+	</select>
 </mapper>
 
 
