@@ -24,7 +24,17 @@ public class PayServiceImpl implements PayService {
 
 	@Override
 	public List<PayVO> list_pay(String user_id) {
-		return this.payDAO.list_pay(user_id);//주문 내역 불러옴
-	}
+		return this.payDAO.list_pay(user_id);
+	}//주문 내역 불러옴
+
+	@Override
+	public int getAdminPayListCount(PayVO pay) {
+		return this.payDAO.getAdminPayListCount(pay);
+	}//관리자 주문 내역 레코드 개수
+
+	@Override
+	public List<PayVO> getAdminPayList(PayVO pay) {
+		return this.payDAO.getAdminPayList(pay);
+	}//관리자 주문 내역 목록 뽑아오기
 
 }

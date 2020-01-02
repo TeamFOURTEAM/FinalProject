@@ -44,7 +44,7 @@
     display: inline-block;
 }
 .searchResultRow .admin_write button {
-	width: 90px; height: 25px;
+	width: 100px; height: 25px;
 	font-weight: bold;
     border: 1px solid black;
     background: #fff;

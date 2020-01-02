@@ -19,10 +19,44 @@
 		where basket_id=#{user_id} and validity=1
 	</update>
 	
-	<!-- 주문 내역 검색 -->
+	<!-- 사용자 주문 내역 검색 -->
 	<select id="pay_list" resultType="pay">
 		select * from pay where user_id=#{user_id} order by pay_no desc
 	</select>
+	
+	<!-- 관리자 주문내역 목록 검색전후 레코드 개수 -->
+	<select id="pay_admin_count" parameterType="pay"
+		resultType="int">
+		select count(pay_no) from pay
+		<where>
+			<if test="find_field == ''"></if>
+			<if test="find_field == 'pay_no'">
+				pay_no like #{find_name}
+			</if>
+			<if test="find_field == 'user_id'">
+				user_id like #{find_name}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 관리자 주문내역 검색전후 목록 -->
+	<select id="pay_admin_list" parameterType="pay" resultType="pay">
+		select * from(
+		select rowNum rNum,pay_no,user_id,pay_price,pay_date,validity from(
+			select * from pay
+			<where>
+				<if test="find_field == ''"></if>
+				<if test="find_field == 'pay_no'">
+					pay_no like #{find_name}
+				</if>
+				<if test="find_field == 'user_id'">
+					user_id like #{find_name}
+				</if>
+			</where>
+			order by pay_no desc))
+		where rNum &gt;= #{startrow} and rNum &lt;=#{endrow}
+	</select>
+	
 </mapper>
 
 

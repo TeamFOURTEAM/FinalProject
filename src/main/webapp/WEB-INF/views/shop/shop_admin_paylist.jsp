@@ -1,20 +1,24 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품 주문 내역</title>
+<title>관리자 주문 내역 관리</title>
+
 	<!-- Style -->
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/shop/pay_list.css">
     
+    <!-- JavaScript Libraries -->
+    <script src="/js/jquery.js"></script>
 </head>
 <body>
 	<div class="container">
 		<div class="basket_title">
-			<span>${user_id}</span> 님의 주문 내역
+			<span>상품 주문 내역 관리</span>
 		</div>
 		
        	<form method="post">
@@ -56,7 +60,7 @@
 		                    		${p.pay_date}
 			                    </div>
 			                    <div class="column table_view">
-			                    	<c:if test="${p.validity == 1}">결제 확인 중</c:if>
+			                    	<c:if test="${p.validity == 1}">결제 대기 중</c:if>
 			                    	<c:if test="${p.validity == 2}">결제 확인</c:if>
 		                    	</div>
 		                    </div>
@@ -69,6 +73,9 @@
                <!--//상품 구매 내역 목록 목록 테이블 부분-->
            	</div>
               	<%-- basket list --%>
+              	
+              	<%-- 페이징 처리 --%>
+              	<%--//페이징 처리 --%>
               	
 			<div class="basket_buy">
 				<button type="button" id="basketList_btn" onclick="location.href='total_shop?page=${page}&find_field=item_name&find_name=';">상품 목록</button>

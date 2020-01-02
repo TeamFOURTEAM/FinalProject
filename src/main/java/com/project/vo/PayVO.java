@@ -9,6 +9,14 @@ public class PayVO {
 	private String pay_date;//구매날짜
 	private int validity;//판매 승인 여부. 판매승인전 -> 1, 판매승인후 -> 2
 	
+	/** 페이징 변수 **/
+	private int startrow;//시작행 번호
+	private int endrow;//끝행 번호
+	
+	/** 검색 필드와 검색어 **/
+	private String find_field;
+	private String find_name;
+	
 	
 	public int getPay_no() {
 		return pay_no;
@@ -41,5 +49,29 @@ public class PayVO {
 	public void setValidity(int validity) {
 		this.validity = validity;
 	}
-
+	public int getStartrow() {
+		return startrow;
+	}
+	public void setStartrow(int startrow) {
+		this.startrow = startrow;
+	}
+	public int getEndrow() {
+		return endrow;
+	}
+	public void setEndrow(int endrow) {
+		this.endrow = endrow;
+	}
+	public String getFind_field() {
+		return find_field;
+	}
+	public void setFind_field(String find_field) {
+		this.find_field = find_field;
+	}
+	public String getFind_name() {
+		return find_name;
+	}
+	public void setFind_name(String find_name) {
+		this.find_name = find_name;
+	}
+	
 }
