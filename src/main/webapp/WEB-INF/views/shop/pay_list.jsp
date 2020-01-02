@@ -17,7 +17,7 @@
 			<span>상품 구매 내역</span>
 		</div>
 		
-       	<form method="post" action="pay_page_ok">
+       	<form method="post">
 		<div class="basket_list">
 			<!-- 상품 구매 내역 목록 테이블 부분-->
                <div class="basket_table">
@@ -47,7 +47,7 @@
 		                   			${p.pay_no}
 		                    	</div>
 		                    	<div class="column table_title">
-		                   			<a href="#">상품명(임시)</a>
+		                   			<a href="pay_item_list_go">상품명(임시)</a>
 		                    	</div>
 		                    	<div class="column table_price">
 		                    		\ <fmt:formatNumber pattern="###,###,###" value="${p.pay_price}" />

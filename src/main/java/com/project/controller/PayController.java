@@ -156,6 +156,19 @@ public class PayController {
 		
 		return null;
 	}//pay_list()
+	
+	/** 주문 상품명 클릭시, 해당 주문의 상품 리스트로 이동 **/
+	@RequestMapping("pay_item_list_go")
+	public String pay_item_list_go() {
+		
+		return "redirect:/shop/pay_item_list";
+	}//pay_item_list_go()
+	
+	@RequestMapping("pay_item_list")
+	public String pay_item_list() {
+		
+		return "";
+	}//pay_item_list()
 }
 
 
