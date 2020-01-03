@@ -65,7 +65,7 @@
 	
 	<!-- 관리자 주문 validity update-->
 	<update id="pay_update">
-		update pay set validity=2 where pay_no=#{pay_no}
+		update pay set validity=#{validity} where pay_no=#{pay_no}
 	</update>
 	
 	<!-- 테이블 복사. 장바구니 해당주문 validitiy=2 값을 pay_ok에 복사 -->
@@ -79,6 +79,33 @@
 	<delete id="bs_clean">
 		delete from shopBasket where pay_no=#{pay_no}
 	</delete>
+	
+	<!-- 주문 번호에 따른 장바구니 목록 -->
+	<select id="payok_list" resultType="payOK">
+		select 
+			p.payCom_no as payCom_no,
+			p.payCom_id as payCom_id,
+			l.item_no as product_no,
+			l.item_name as product_name,
+			l.item_img as product_img,
+			p.basket_count as basket_count,
+			l.item_stockCount as stockCount,
+			l.item_price as price,
+			(item_price * basket_count) sumPrice,
+			p.product_page as basket_page
+		from shopList l, pay_ok p 
+		where 
+			l.item_no = p.product_no
+			and pay_no=#{pay_no}
+		order by p.payCom_no desc
+	</select>
+	
+	<!-- 주문 번호에 따른 상품 수량 조절 -->
+	<update id="stock_change">
+		update shopList
+			set item_stockCount = item_stockCount-#{item_stockCount}
+		where item_no = #{item_no}
+	</update>
 </mapper>
 
 

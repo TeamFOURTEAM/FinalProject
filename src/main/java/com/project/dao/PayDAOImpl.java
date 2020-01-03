@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.project.vo.PayVO;
+import com.project.vo.PayokVO;
+import com.project.vo.ShopVO;
 
 @Repository
 public class PayDAOImpl implements PayDAO{
@@ -41,18 +43,28 @@ public class PayDAOImpl implements PayDAO{
 	}//관리자 주문 내역 목록
 
 	@Override
-	public void updatePay(int pay_no) {
-		this.sqlSession.update("pay_update",pay_no);
+	public void updatePay(PayVO pay) {
+		this.sqlSession.update("pay_update",pay);
 	}//주문 내역 validity 업데이트
 
 	@Override
-	public void copyBasket(int pay_no) {
-		this.sqlSession.insert("payok_copy",pay_no);
+	public void copyBasket(PayVO pay) {
+		this.sqlSession.insert("payok_copy",pay);
 	}//장바구니 validity=2인 정보를 복사
 
 	@Override
-	public void cleanBasket(int pay_no) {
-		this.sqlSession.delete("bs_clean",pay_no);
+	public void cleanBasket(PayVO pay) {
+		this.sqlSession.delete("bs_clean",pay);
+	}
+
+	@Override
+	public List<PayokVO> stockView(int pay_no) {
+		return this.sqlSession.selectList("payok_list",pay_no);
 	}
 	
+	@Override
+	public void updateStock(ShopVO s) {
+		this.sqlSession.update("stock_change",s);
+	}
+
 }

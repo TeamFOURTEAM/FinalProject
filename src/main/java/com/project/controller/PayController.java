@@ -18,6 +18,8 @@ import com.project.service.BasketService;
 import com.project.service.PayService;
 import com.project.vo.BasketVO;
 import com.project.vo.PayVO;
+import com.project.vo.PayokVO;
+import com.project.vo.ShopVO;
 
 @Controller
 public class PayController {
@@ -361,6 +363,7 @@ public class PayController {
 	/** 판매 승인 처리 **/
 	@RequestMapping("shop/pay_admin_confirm")
 	public String pay_admin_confirm(
+			PayVO pay,
 			HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
@@ -370,6 +373,7 @@ public class PayController {
 		//session 처리!(관리자)
 		String user_id = "pebble";
 		int pay_no = Integer.parseInt(request.getParameter("pay_no"));
+		int validity = 2;//결제확인여부
 		
 		if(user_id.equals(null)) {
 			out.println("<script>");
@@ -377,17 +381,16 @@ public class PayController {
 			out.println("location='admin_login';");
 			out.println("</script>");
 			
-		}else {
+		}else if(user_id.equals("pebble")) {/** 관리자 계정으로 수정해야할것 **/
 			
 			/* 트랜잭션 적용(총 3개)
 			 * 	1. pay_no에 해당하는 Pay 테이블의 주문내역 validity 값 2로 변경(결제 확인됐다는 의미).
 			 *  2. pay_no에 해당하는 장바구니 validity 2에 담긴 정보를 주문확정 테이블로 옮김
-			 *  3. 주문확정 테이블에서  payCom_no에 해당하는 장바구니 정보에서 상품 수량만 불러와 
-			 *     shop테이블의 상품 수량 정보를 업데이트 시킨다(마이너스 해서 수량을 줄임)
-			 *  4. 장바구니에 남은 validity 2 데이터 삭제
+			 *  3. 장바구니에 남은 validity 2 데이터 삭제
 			 */
 			
-			this.payService.payConfirm(pay_no);//판매 승인
+			pay.setPay_no(pay_no); pay.setValidity(validity);
+			this.payService.payConfirm(pay);//판매 승인
 			//트랜잭션 적용
 			
 			return "redirect:/shop/admin_paylist?find_field=item_name&find_name=";
@@ -397,6 +400,54 @@ public class PayController {
 	}//pay_admin_confirm()
 	
 	/** 배송처리(상품 재고 감소) **/
+	@RequestMapping("shop/pay_admin_sendItem")
+	public String pay_admin_sendItem(
+			PayVO pay, PayokVO payOK,
+			HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		
+		//session 처리!(관리자)
+		String user_id = "pebble";
+		int pay_no = Integer.parseInt(request.getParameter("pay_no"));
+		int validity = 3;//발송처리여부
+		
+		if(user_id.equals(null)) {
+			out.println("<script>");
+			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
+			out.println("location='admin_login';");
+			out.println("</script>");
+			
+		}else if(user_id.equals("pebble")) {/** 관리자 계정으로 수정해야할것 **/
+			
+			/* 트랜잭션 적용 : 1. 주문내역 validity=3 으로 수정  2. 상품 재고 줄이기
+			 * 주문확정 테이블에서  payCom_no에 해당하는 장바구니 정보에서 상품 수량만 불러와 
+			 * shop테이블의 상품 수량 정보를 업데이트 시킨다(마이너스 해서 수량을 줄임)
+			 */
+			
+			
+			pay.setPay_no(pay_no); pay.setValidity(validity);
+			
+			List<PayokVO> stockView = this.payService.stockView(pay_no);
+//			ShopVO s = new ShopVO();
+//			
+//			for(PayokVO i : stockView) {
+//				s.setItem_no(i.getProduct_no());
+//				s.setItem_stockCount(i.getBasket_count());
+//				this.payService.updateStock(s);
+//			}//확장 for
+			
+//			System.out.println(s.getItem_no());
+			ShopVO s = new ShopVO();
+			this.payService.sendConfirm(pay,stockView,s);//상품 발송 승인
+			
+			return "redirect:/shop/admin_paylist?find_field=item_name&find_name=";
+		}//if else
+			
+		return null;
+	}//pay_admin_sendItem()
 }
 
 

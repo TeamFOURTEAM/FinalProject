@@ -3,6 +3,8 @@ package com.project.service;
 import java.util.List;
 
 import com.project.vo.PayVO;
+import com.project.vo.PayokVO;
+import com.project.vo.ShopVO;
 
 public interface PayService {
 
@@ -14,6 +16,11 @@ public interface PayService {
 
 	List<PayVO> getAdminPayList(PayVO pay);
 
-	void payConfirm(int pay_no);
+	void payConfirm(PayVO pay);
+	
+	List<PayokVO> stockView(int pay_no);
+
+	void sendConfirm(PayVO pay,List<PayokVO> stockView,ShopVO s);
+
 
 }

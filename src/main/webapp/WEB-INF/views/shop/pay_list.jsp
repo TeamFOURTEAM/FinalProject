@@ -58,6 +58,7 @@
 			                    <div class="column table_view">
 			                    	<c:if test="${p.validity == 1}">결제 확인 중</c:if>
 			                    	<c:if test="${p.validity == 2}">결제 확인</c:if>
+			                    	<c:if test="${p.validity == 3}">배송중</c:if>
 		                    	</div>
 		                    </div>
                     	</c:forEach>
