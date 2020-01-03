@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>장바구니 목록</title>
+<title>주문 상품 내역</title>
 
 	<!-- Style -->
     <link rel="stylesheet" href="/css/reset.css">
@@ -17,11 +17,10 @@
 <body>
 	<div class="container">
 			<div class="basket_title">
-				<span>${basket_id}</span>님의 장바구니 목록 
+				<span>${user_id}</span>님의 주문 상품 내역
 			</div>
 			
           	<form method="post" onsubmit="return pay_check();">
-          	<input type="hidden" name="page" value="${page}" />
 			<div class="basket_list">
 				<!-- 장바구니 목록 테이블 부분-->
                 <div class="basket_table">
@@ -32,14 +31,13 @@
                 		<span style="width: 15%;">단가</span>
                 		<span style="width: 5%;">수량</span>
                 		<span style="width: 15%;">금액</span>
-                		<span style="width: 5%;"></span>
                 	</p>
                 	<%-- 장바구니 테이블 시작 --%>
                 	<c:choose>
                 		<c:when test="${map.count == 0}"><%-- 장바구니 정보가 없을 때 --%>
                 			<div class="basket_body">
 								<div class="column table_none">
-									장바구니에 상품이 없습니다.
+									주문 상품이 없습니다!
 								</div>
 							</div>
 						</c:when>
@@ -62,21 +60,11 @@
 		                    		\ <fmt:formatNumber pattern="###,###,###" value="${cart.price}" />
 		                    	</div>
 		                    	<div class="column table_reco">
-		                    	<select name="basket_count" class="basket_count"
-		               			onchange="editBasket(${cart.product_no},${cart.stockCount},this.options[this.selectedIndex].text)">
-				                   <option value="1" <c:if test="${cart.basket_count == 1}">selected</c:if>>1</option>
-				                   <option value="2" <c:if test="${cart.basket_count == 2}">selected</c:if>>2</option>
-				                   <option value="3" <c:if test="${cart.basket_count == 3}">selected</c:if>>3</option>
-				                   <option value="4" <c:if test="${cart.basket_count == 4}">selected</c:if>>4</option>
-				                   <option value="5" <c:if test="${cart.basket_count == 5}">selected</c:if>>5</option>
-		               			</select>
+		                    		<fmt:formatNumber pattern="###,###,###" value="${cart.basket_count}" />
 			                    </div>
 			                    <div class="column table_view">
 			                    	\ <fmt:formatNumber pattern="###,###,###" value="${cart.sumPrice}" />
-		                    	</div> 
-			                    <div class="column table_del">
-			                    	<button class="basket_del" onclick="javascript: form.action='basket_del?basket_no=${cart.basket_no}';">삭제</button>
-			                    </div>
+		                    	</div>
 		                    </div>
 		                    </c:forEach>
 	                    </c:otherwise>   
@@ -99,83 +87,10 @@
 					</div>
 				</div>
 				<div class="basket_buy">
-					
-					<button id="basketBuy_btn" onclick="javascript: form.action='pay?page=${page}';" >구매</button>
 					<button type="button" id="basketList_btn" onclick="location.href='total_shop?page=${page}&find_field=item_name&find_name=';">상품목록</button>
 					<%-- 상품목록 버튼의 ${page}값은 바로 이전 상품을 담고 오는 것이기 때문에 문제가 없다. 이전 상품이 있던 페이지로 돌아가는 것이기 때문. --%>
 				</div>
-               	
 			</form>
-            </div><%-- container --%>
-    <script>
-	//장바구니 테이블 목록 구현(취소)
-    	//var basket_id="<c:out value='${basket_id}'/>";//유저 아이디
-    	//javascript 로 변수 선언할때 변수값을 다이렉트로 지정해주면 is not defined 에러발생.
-    	/** select 박스 선택에 따른 상품 정보 수정 **/
-    	function editBasket(productNo,stockCount,basket_count) {//3개의 값을 가져옴.
-    		//1. 상품 번호 , 2. 선택한 상품 수량
-    		
-    		//var select = document.getElementsByName("basket_count");
-    		//var selectedCount = parseInt(select.options[select.selectedIndex].value);
-    		
-    		//console.log(productNo);
-    		//console.log(parseInt(basket_count));
-    		//alert(parseInt(stockCount));
-    		
-    		var basket_count = parseInt(basket_count);
-    		var stockCount = parseInt(stockCount);
-    		
-    		//재고수량 확인(재고보다 적으면 출력)
-    		if(basket_count > stockCount) {
-    			alert('재고가 부족합니다. 보다 적은 수량을 선택해주세요.');
-    			basket_count = 1;
-    			editBasket();
-    		}
-
-    		$.ajax({
-				type : 'put',
-				url : '/shop/editBasket/',
-				headers : {
-					"Content-Type" : "application/json",
-					"X-HTTP-Method-Override" : "PUT"
-				},
-				data : JSON.stringify({
-					product_no : productNo,
-					basket_count : basket_count
-				}),
-				dataType : "text",
-				success : function(data) {
-					if(data == 'SUCCESS') {
-						location.reload();
-					}//if
-				}
-			});
-		}//editBasket()
-		
-		function pay_check() {
-			var count = ${map.count};
-			
-			if(count == 0) {
-				alert('장바구니가 비어있습니다. 장바구니에 상품을 담아주세요.');
-				return false;
-			}
-		}//pay_check()
-    </script>
+      </div><%-- container --%>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

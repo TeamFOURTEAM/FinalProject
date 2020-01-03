@@ -13,14 +13,15 @@
 	<!-- 장바구니 동일 상품 확인 -->
 	<select id="basket_count" resultType="int">
 		select count(*) from shopBasket where basket_id=#{basket_id} 
-		and product_no=#{product_no}
+		and product_no=#{product_no} and validity=1 and pay_no=0
 	</select>
 	
 	<!-- 장바구니 동일 상품 갱신 -->
 	<update id="basketSame_update">
 		update shopBasket
 		set basket_count=#{basket_count},basket_page=#{basket_page} 
-		where basket_id=#{basket_id} and product_no=#{product_no}
+		where basket_id=#{basket_id} and product_no=#{product_no} and validity=1 
+		and pay_no=0
 	</update>
 	
 	<!-- 아이디에 따른 장바구니 목록 -->
@@ -29,7 +30,7 @@
 			b.basket_no as basket_no,
 			b.basket_id as basket_id,
 			l.item_no as product_no,
-			'이재형' as user_name,<!-- 임시로 이름 줬음. 멤버 테이블에서 받아와야함 -->
+			'이재형' as user_name,<!-- 임시로 이름 줬음. 멤버 테이블에서 받아와야함. 바로밑에 where 부분도 수정 -->
 			l.item_name as product_name,
 			l.item_img as product_img,
 			b.basket_count as basket_count,
@@ -41,7 +42,7 @@
 		from shopList l, shopBasket b 
 		where 
 			l.item_no = b.product_no
-			and b.basket_id=#{basket_id} and validity=1 
+			and b.basket_id=#{basket_id} and validity=#{validity} and pay_no=#{pay_no}
 		order by b.basket_no desc
 	</select>
 	
@@ -49,18 +50,21 @@
 	<select id="basket_SumMoney" resultType="int">
 		SELECT NVL(SUM(item_price * basket_count), 0) sumPrice 
 		FROM shopBasket b, shopList l
-		WHERE b.product_no = l.item_no AND b.basket_id = #{basket_id}
+		WHERE b.product_no = l.item_no AND b.basket_id = #{basket_id} and validity=#{validity} 
+		and pay_no=#{pay_no} 
 	</select>
 	
 	<!-- 장바구니 정보 수정 -->
 	<update id="basket_update">
 		update shopBasket set basket_count=#{basket_count}
-		where product_no=#{product_no} and basket_id=#{basket_id}
+		where product_no=#{product_no} and basket_id=#{basket_id} and validity=1 
+		and pay_no=0
 	</update>
 	
 	<!-- 장바구니 상품 삭제 -->
 	<delete id="basket_del">
-		delete from shopBasket where basket_no=#{basket_no}
+		delete from shopBasket where basket_no=#{basket_no} 
+		and basket_id=#{basket_id} and validity=1 and pay_no=0
 	</delete>
 </mapper>
 

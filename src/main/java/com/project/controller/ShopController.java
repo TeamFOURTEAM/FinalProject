@@ -431,7 +431,7 @@ public class ShopController {
 		
 		return "redirect:shop/total_shop?page="+page+"&find_field=item_name&find_name=";
 	}//shop_del_ok()
-
+	
 }//ShopController
 
 

@@ -35,14 +35,14 @@ public class BasketDAOImpl implements BasketDAO {
 	}//장바구니 동일 상품 있을 시 갱신
 
 	@Override
-	public List<BasketVO> listBasket(String basket_id) {
-		return this.sqlSession.selectList("basket_list",basket_id);
+	public List<BasketVO> listBasket(BasketVO basket) {
+		return this.sqlSession.selectList("basket_list",basket);
 	}//장바구니 목록
 
 	@Override
-	public int sumMoney(String basket_id) {
-		this.sqlSession.selectOne("basket_SumMoney",basket_id);
-		return this.sqlSession.selectOne("basket_SumMoney",basket_id);
+	public int sumMoney(BasketVO basket) {
+		this.sqlSession.selectOne("basket_SumMoney",basket);
+		return this.sqlSession.selectOne("basket_SumMoney",basket);
 	}//장바구니 금액 합산
 
 	@Override
@@ -51,8 +51,8 @@ public class BasketDAOImpl implements BasketDAO {
 	}//장바구니 수정
 
 	@Override
-	public void delBasket(int basket_no) {
-		this.sqlSession.delete("basket_del",basket_no);
+	public void delBasket(BasketVO basket) {
+		this.sqlSession.delete("basket_del",basket);
 	}//장바구니 삭제
 	
 }
