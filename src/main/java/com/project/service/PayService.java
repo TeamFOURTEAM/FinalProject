@@ -20,7 +20,7 @@ public interface PayService {
 	
 	List<PayokVO> stockView(int pay_no);
 
-	void sendConfirm(PayVO pay,List<PayokVO> stockView,ShopVO s);
+	void sendConfirm(List<PayokVO> stockView,PayVO pay,ShopVO s);
 
 
 }

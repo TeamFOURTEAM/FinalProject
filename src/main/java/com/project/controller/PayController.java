@@ -431,17 +431,9 @@ public class PayController {
 			pay.setPay_no(pay_no); pay.setValidity(validity);
 			
 			List<PayokVO> stockView = this.payService.stockView(pay_no);
-//			ShopVO s = new ShopVO();
-//			
-//			for(PayokVO i : stockView) {
-//				s.setItem_no(i.getProduct_no());
-//				s.setItem_stockCount(i.getBasket_count());
-//				this.payService.updateStock(s);
-//			}//확장 for
-			
-//			System.out.println(s.getItem_no());
+
 			ShopVO s = new ShopVO();
-			this.payService.sendConfirm(pay,stockView,s);//상품 발송 승인
+			this.payService.sendConfirm(stockView,pay,s);//상품 발송 승인
 			
 			return "redirect:/shop/admin_paylist?find_field=item_name&find_name=";
 		}//if else

@@ -54,7 +54,7 @@ public class PayServiceImpl implements PayService {
 	
 	@Transactional
 	@Override
-	public void sendConfirm(PayVO pay,List<PayokVO> stockView,ShopVO s) {
+	public void sendConfirm(List<PayokVO> stockView,PayVO pay,ShopVO s) {
 		this.payDAO.updatePay(pay);//Pay 테이블 validity=3으로 업데이트
 		
 		for(PayokVO i : stockView) {
