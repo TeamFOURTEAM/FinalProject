@@ -2,7 +2,6 @@ package com.project.controller;
 
 import com.project.service.NormalService;
 import com.project.vo.NormalBoardVO;
-import org.apache.http.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
