@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<script src="/js/include/footer.js"></script>
 </head>
 <body>
 <footer id="footer">
@@ -27,6 +28,9 @@
                     </div>
                 </div>
             </div>
+            
+				<a id="move_top_btn" href="#">TOP</a>
+			
         </footer>
         <!-- footer -->
 </body>

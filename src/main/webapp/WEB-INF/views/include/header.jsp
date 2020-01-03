@@ -11,8 +11,7 @@
 
 <!-- jquery -->
 <script src="/resources/js/jquery.js"></script>
-<script src="/js/subpage/menu_floting.js"></script>
-<script src="/js/subpage/img_change.js"></script>
+<script src="/js/include/menu_floting.js"></script>
 
 </head>
 <body>
@@ -72,10 +71,6 @@
 							<li><a href="/QandA/QandA_list?page=1">Q&A</a></li>
 						</ul></li>
 				</ul>
-			</div>
-			
-			<div id="up">
-				<a href="#">up</a>
 			</div>
 			
 	</article>
