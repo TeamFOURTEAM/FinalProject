@@ -47,6 +47,11 @@ margin-top: 80px;}
     font-size: 15px;    
     z-index: 1000;   
 }
+
+.title .category>li a{
+    font-size: 15px;
+}
+
 .title .category>li:hover .sub_category{
     display: block;
     z-index: 1000;
