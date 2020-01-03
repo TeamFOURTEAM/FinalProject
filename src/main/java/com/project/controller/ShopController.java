@@ -277,7 +277,7 @@ public class ShopController {
 		return "shop/shop_list";
 	}//shop_list()
 	
-	/** 상품 내용 보기 + 수정 + 삭제 **/
+	/** 상품 내용 보기 + 수정  **/
 	@RequestMapping("shop/shop_cont")
 	public ModelAndView shop_cont(
 			int item_no,int page,
@@ -429,9 +429,9 @@ public class ShopController {
 		
 		this.shopService.delShop(s.getItem_no());//DB로 부터 게시물 삭제
 		
-		return "redirect:/shop/total_shop?page="+page+"&find_field=item_name&find_name=";
+		return "redirect:shop/total_shop?page="+page+"&find_field=item_name&find_name=";
 	}//shop_del_ok()
-
+	
 }//ShopController
 
 

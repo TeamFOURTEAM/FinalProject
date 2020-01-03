@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,16 +23,6 @@
     <script src="/js/shop/shop.js"></script>
     
 <script>
-	function item_Buy_Check(){
-		var stockCount = ${s.item_stockCount};
-		var select = document.getElementById("basket_count");
-		var selectedCount = parseInt(select.options[select.selectedIndex].value);
-		
-		 if(selectedCount > stockCount) {
-			alert('재고가 부족합니다. 보다 적은 수량을 선택해주세요.');
-			return false;
-		} 
-	};
 
 	/* 총가격 계산 후 span에 출력 */
 	function buyPrice(){
@@ -40,7 +32,6 @@
 		var sum = price * selectedCount;
 		
 		$('.itemPriceSum').html('총 합계금액 : ￦ '+sum);
-		$('input[name=price_sum]').attr('value',sum);
 	};
 </script>
 </head>
@@ -63,17 +54,18 @@
                 </div>
 
                 <div class="itemContPrice">
-                    <span class="contPrice">가격 : \ ${s.item_price}</span>
+                    <span class="contPrice">
+                    	가격 : \ <fmt:formatNumber pattern="###,###,###" value="${s.item_price}" />
+                    </span>
                 </div>
                 
                 <div class="itemContReco">
                     <span class="contReco">이 상품이 좋아요! : ${s.item_likeCount}</span>
                 </div>
-
-                <form method="post" name="itemBuy" onsubmit="return item_Buy_Check();">
+                <form method="post" name="itemBuy">
                 <input type="hidden" name="basket_id" value="pebble" /><%-- 임시 아이디(지울것) --%>
                 <input type="hidden" name="product_no" value="${s.item_no}" />
-                <input type="hidden" name="price_sum" value="" />
+                <input type="hidden" name="stockCount" value="${s.item_stockCount}"/>
                 <input type="hidden" name="page" value="${page}" />
                 
                 <div class="itemCount">
@@ -92,11 +84,17 @@
                     <c:if test="${s.item_stockCount != '0'}">
                     	<div class="itemPriceSum"></div>
 	                    <div class="itemBuy">
-	                    	<%-- 하나의 form에서 action을 2개로 나눔  --%>
-		                    <button 
-		                    onclick="javascript: form.action='basket_add';">장바구니</button>
+	                    
+	                    	<%-- 하나의 form에서 action을 2개로 나눔. 장바구니쪽은 ajax 처리  --%>
+		                    <button type="button" id="basket_button">장바구니에 담기</button>
 		                    <button id="buy_button" 
 		                    onclick="javascript: form.action='buy';">구매</button>
+	                    </div>
+	                    <div class="basketAsk">
+	                    	<span>장바구니에 상품이 담겼습니다.</span>
+	                    	<button type="button" id="basketCancel"><i class="fa fa-window-close-o" aria-hidden="true"></i></button>
+	                    	<button id="basket_list_button" 
+	                    	onclick="javascript: form.action='basket_list_go';">장바구니로 가기</button>
 	                    </div>
                     </c:if>
                	</div>
@@ -132,5 +130,58 @@
             </div>
         </div>
         <!--//상품 상세 설명 영역 -->
+<script>
+
+/* 장바구니 테이블에 저장(ajax) */
+$('#basket_button').on('click',function(){
+	var product_no = ${s.item_no}; //상품번호
+	var select = document.getElementById("basket_count");//select값
+	var selectedCount = parseInt(select.options[select.selectedIndex].value);
+	//select 값 숫자로 변환. 선택한 상품수량
+	var stockCount = ${s.item_stockCount};//재고수량
+	var page = ${page};//해당 상품 page
+	
+	
+	//재고수량 확인(재고보다 적으면 출력)
+	if(selectedCount > stockCount) {
+		alert('재고가 부족합니다. 보다 적은 수량을 선택해주세요.');
+		$("#basket_count").val("1").prop("selected", true);//select 영역 변경
+		buyPrice();//가격 계산 함수 재호출
+		return false;
+	}
+
+	$.ajax({//jQuery ajax
+		type : 'post',
+		url : '/shop/basket_add',//매핑주소
+		headers : {
+			"Content-type" : "application/json",
+			"X-HTTP-Method-Override" : "POST" //HTTP코드 맨머리 앞에 
+			//추가적인 정보지정
+		},
+		dataType : 'text',//문자열
+		data : JSON.stringify({//내용이 json
+			product_no : product_no,//상품 번호
+			basket_count : selectedCount,//선택수량
+			basket_page : page//해당 상품 페이지 값
+		}),
+		success : function(data){//장바구니저장 성공시 
+			//SUCCESS 문자열 반환
+			if(data == 'SUCCESS') {
+				//alert('장바구니에 상품이 담겼습니다.');//지울 메시지(div로 대체)
+				$('.basketAsk').show();
+				setTimeout(function(){// 초 동안만 알림창을 유지
+					$('.basketAsk').hide();
+				},5000);
+			}//if
+		}//function(data)
+	});
+});
+
+/* 장바구니 알림창 닫기 */
+$('#basketCancel').on('click',function(){
+	$('.basketAsk').hide();
+});
+
+</script>
 </body>
 </html>

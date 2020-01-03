@@ -1,10 +1,10 @@
-package com.project.service;
+package com.project.dao;
 
 import java.util.List;
 
 import com.project.vo.BasketVO;
 
-public interface BasketService {
+public interface BasketDAO {
 
 	void addBasket(BasketVO basket);
 
@@ -19,7 +19,5 @@ public interface BasketService {
 	void editBasket(BasketVO basket);
 
 	void delBasket(BasketVO basket);
-
-	
 
 }

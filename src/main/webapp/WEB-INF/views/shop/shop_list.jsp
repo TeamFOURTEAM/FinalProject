@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -29,6 +30,9 @@
             </div>
 	        <div class="admin_write">
 	            <button type="button" onclick="location.href='shop_write?page=${page}';">관리자 글쓰기</button>
+	            <button type="button" onclick="location.href='admin_paylist_go';">관리자 주문내역</button>
+	            <button type="button" id="basketList" onclick="location.href='basket_list_go?page=${page}&basket_id=pebble';">임시 장바구니</button>
+	            <button type="button" id="payList" onclick="location.href='pay_list_go?page=${page}';">임시 주문 내역</button>
 	            <button type="button" onclick="location.href='/';">임시 메인 버튼</button>
 	            <!-- 삭제해줘야함 -->
 	        </div>
@@ -127,7 +131,9 @@
                         <span><a href="shop_cont?state=cont&item_no=${n.item_no}&page=${page}" class="itemName">${n.item_name}</a></span>
                     </div>
                     <div class="itemPriceRow">
-                        <span class="itemPrice">\ ${n.item_price}</span>
+                        <span class="itemPrice">
+                        	\ <fmt:formatNumber pattern="###,###,###" value="${n.item_price}" />
+                        </span>
                     </div>
                     <div class="itemRecoRow">
                         <span class="bestNum">이 제품이 좋아요 ! : ${n.item_likeCount}</span>

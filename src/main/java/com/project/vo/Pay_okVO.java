@@ -1,15 +1,14 @@
 package com.project.vo;
 
-/** shop 장바구니 VO **/
-public class BasketVO {
+/** 결제 확인, 완료 테이블 VO **/
+
+public class Pay_okVO {
 	
-	private int basket_no;//장바구니 상품 번호
-	private String basket_id;//유저 아이디
-	private int product_no;//원래 상품 번호
-	private int basket_count;//담은 상품 개수
-	private int validity;//상품의 상태. 1-> 장바구니에 담긴 상품, 2-> 주문완료 처리 된 상품
-	private int basket_page;//해당 상품 page값 
-	private int pay_no;//주문 내역 번호.
+	private int payCom_no;//장바구니 번호
+	private String payCom_id;//유저 아이디
+	private int product_no;//상품번호
+	private int basket_count;//담은 상품 수량
+	private int product_page;//해당상품의 페이지 값. 장바구니에서 해당상품클릭했을때 이동하기 위함.
 	
 	private String user_name;//유저 이름
 	private String product_name;//상품명
@@ -18,19 +17,17 @@ public class BasketVO {
 	private int sumPrice;//총 가격
 	private int stockCount;//상품 재고
 	
-	
-	/** getter // setter **/
-	public int getBasket_no() {
-		return basket_no;
+	public int getPayCom_no() {
+		return payCom_no;
 	}
-	public void setBasket_no(int basket_no) {
-		this.basket_no = basket_no;
+	public void setPayCom_no(int payCom_no) {
+		this.payCom_no = payCom_no;
 	}
-	public String getBasket_id() {
-		return basket_id;
+	public String getPayCom_id() {
+		return payCom_id;
 	}
-	public void setBasket_id(String basket_id) {
-		this.basket_id = basket_id;
+	public void setPayCom_id(String payCom_id) {
+		this.payCom_id = payCom_id;
 	}
 	public int getProduct_no() {
 		return product_no;
@@ -44,11 +41,11 @@ public class BasketVO {
 	public void setBasket_count(int basket_count) {
 		this.basket_count = basket_count;
 	}
-	public int getValidity() {
-		return validity;
+	public int getProduct_page() {
+		return product_page;
 	}
-	public void setValidity(int validity) {
-		this.validity = validity;
+	public void setProduct_page(int product_page) {
+		this.product_page = product_page;
 	}
 	public String getUser_name() {
 		return user_name;
@@ -80,18 +77,6 @@ public class BasketVO {
 	public void setSumPrice(int sumPrice) {
 		this.sumPrice = sumPrice;
 	}
-	public int getBasket_page() {
-		return basket_page;
-	}
-	public void setBasket_page(int basket_page) {
-		this.basket_page = basket_page;
-	}
-	public int getPay_no() {
-		return pay_no;
-	}
-	public void setPay_no(int pay_no) {
-		this.pay_no = pay_no;
-	}
 	public int getStockCount() {
 		return stockCount;
 	}
@@ -100,3 +85,6 @@ public class BasketVO {
 	}
 	
 }
+
+
+
