@@ -22,4 +22,20 @@ public class MemberJoinServiceImpl implements MemberJoinService {
 		return mbDAO.SearchID(checkwords);
 	}
 
+	@Override
+	public MemberVO MypageView(MemberVO mVo) {
+		return mbDAO.MypageView(mVo);
+	}
+
+
+	@Override
+	public int UserInfoEmail(MemberVO updateMember) {
+		return mbDAO.UserInfoEmail(updateMember);
+	}
+
+	@Override
+	public int UserInfoPhone(MemberVO updateMember) {
+		return mbDAO.UserInfoPhone(updateMember);
+	}
+
 }

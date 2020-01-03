@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/MemberJoin/MemberJoin.css" />" />
 
     <section>
-        <form action="/memberjoin_ok" id="MemberForm" method="post">
+        <form action="/memberjoin_ok" id="MemberForm" method="post" autocomplete="off">
             <div id="JoinContainer"> <!-- max size -->
                 <div class="content"><!--min size -->
                     <div class="divSize">
@@ -148,3 +148,5 @@
     </section>
     <script src="<c:url value="/js/MemberJoin/MemberJoin.js" />"></script>
 <jsp:include page="../include/footer.jsp" />
+
+

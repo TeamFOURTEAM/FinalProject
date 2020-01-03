@@ -10,7 +10,7 @@ create table MemberJoin (
 
 select * from MemberJoin;
 
-SELECT USER_ID FROM MEMBERJOIN WHERE USER_ID = 'aaaaaa';
+SELECT USER_ID, USER_PHONE FROM MEMBERJOIN WHERE USER_ID = 'aaaaaa';
 
 
 insert into MEMBERJOIN (user_id, user_pwd, user_name, user_birthday, user_gender, user_email, user_phone)

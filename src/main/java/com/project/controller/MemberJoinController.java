@@ -51,6 +51,7 @@ public class MemberJoinController {
 		
 		String user_birthday = user_birthdayYY + user_birthdayMM + user_birthdayDD;
 		mb.setUser_birthday(user_birthday);
+		
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html; charset=UTF-8");
 		
@@ -67,7 +68,7 @@ public class MemberJoinController {
 			System.out.println("회원가입 성공");			
 			memberJoinService.insert(mb);
 			
-			out.println("<script>alert('회원가입이 정상적으로 처리되었습니다.'); location='memberjoin';</script>");
+			out.println("<script>alert('회원가입이 정상적으로 처리되었습니다.'); location='/memberjoin';</script>");
 			out.flush();
 		}
 		
@@ -75,8 +76,8 @@ public class MemberJoinController {
 		return null;		
 	}
 	
-	//인증번호 생성
-	@RequestMapping("/joinEquals")
+	//중복 아이디 체크
+	@RequestMapping("/checkID")
 	@ResponseBody
 	public String NewSmsCode(String checkwords) {
 

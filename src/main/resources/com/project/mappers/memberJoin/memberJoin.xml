@@ -12,6 +12,18 @@
 	<select id="SearchID" parameterType="String" resultType="String">
 		SELECT USER_ID FROM MEMBERJOIN WHERE USER_ID = #{checkwords}
 	</select>
+	
+	<select id="MyPageInfo" resultType="Member">
+		SELECT USER_ID, USER_NAME, USER_BIRTHDAY, USER_GENDER, USER_EMAIL, USER_PHONE FROM MEMBERJOIN WHERE USER_ID = #{user_id}
+	</select>
+	
+	<update id="updatePN">
+		UPDATE MEMBERJOIN SET USER_PHONE = #{user_phone} WHERE USER_ID = #{user_id}
+	</update>
+	<update id="updateEmail">
+		UPDATE MEMBERJOIN SET USER_EMAIL = #{user_email} WHERE USER_ID = #{user_id}
+	</update>
+	
 </mapper>
 
 

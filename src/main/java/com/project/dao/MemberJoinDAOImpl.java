@@ -23,4 +23,19 @@ public class MemberJoinDAOImpl implements MemberJoinDAO {
 		return sqlSession.selectOne("MemberJoin.SearchID", checkwords);		
 	}
 
+	@Override
+	public MemberVO MypageView(MemberVO mVo) {
+		return sqlSession.selectOne("MemberJoin.MyPageInfo", mVo);
+	}
+
+	@Override
+	public int UserInfoEmail(MemberVO updateMember) {
+		return sqlSession.update("MemberJoin.updateEmail", updateMember);
+	}
+
+	@Override
+	public int UserInfoPhone(MemberVO updateMember) {
+		return sqlSession.update("MemberJoin.updatePN",updateMember);
+	}
+
 }
