@@ -28,8 +28,6 @@
                     </div>
                 </div>
             </div>
-            
-				<a id="move_top_btn" href="#">TOP</a>
 			
         </footer>
         <!-- footer -->
