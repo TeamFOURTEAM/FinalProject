@@ -141,7 +141,10 @@ public class NormalController {
 ////        nbv.setNormal_no(normal_no);
 ////        nbv.setNormal_id(normal_title);
         this.normalService.update_hit(nbv);
+//        this.normalService.
+//
 //        this.normalService.select_update(nbv);
+
 
 
         NormalBoardVO n=this.normalService.selectnormalboardcont(nbv);
