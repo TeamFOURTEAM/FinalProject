@@ -92,7 +92,6 @@
     		}else {
     			return false;
     		}
-    		
     	});
     </script>
 </body>

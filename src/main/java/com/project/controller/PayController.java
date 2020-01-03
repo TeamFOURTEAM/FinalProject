@@ -263,15 +263,19 @@ public class PayController {
 				
 				payItemList.addAttribute("user_id",user_id);//id값 전달
 				payItemList.addAttribute("page",page);//page 값 받아서 전달(목록버튼에 전달하기위함)
-				payItemList.addAttribute("page",page);
 				payItemList.addAttribute("map",map);
 				
 			
-			//2 -> 결제 확인 끝난 장바구니 상품 리스트. 구매 확정 장바구니 테이블의 상품을 불러옴
-			}else if(validity == 2) {//주문 내역의 validity가 2일 때(결제확인후)
+			//2 -> 결제 확인 끝난 장바구니 상품 리스트. 구매 확정 테이블의 상품을 불러옴
+			//3 -> 발송 끝난 장바구니 상품 리스트. 함께 불러옴
+			}else if(validity == 2 || validity == 3) {//주문 내역의 validity가 2이거나 3일 때(결제확인후)
 				/** 작업 해줘야 함.  **/
 				
-			}//if else
+				
+				
+				payItemList.addAttribute("page",page);//page 값 받아서 전달(목록버튼에 전달하기위함)
+			
+			}//if else if
 			
 			return "shop/pay_item_list";
 		}//if else
@@ -386,11 +390,13 @@ public class PayController {
 			this.payService.payConfirm(pay_no);//판매 승인
 			//트랜잭션 적용
 			
-			return "redirect:/shop/admin_paylist?page=1&find_field=item_name&find_name=";
+			return "redirect:/shop/admin_paylist?find_field=item_name&find_name=";
 		}//if else
 		
 		return null;
 	}//pay_admin_confirm()
+	
+	/** 배송처리(상품 재고 감소) **/
 }
 
 

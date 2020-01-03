@@ -20,4 +20,6 @@ public interface PayDAO {
 
 	void copyBasket(int pay_no);
 
+	void cleanBasket(int pay_no);
+
 }

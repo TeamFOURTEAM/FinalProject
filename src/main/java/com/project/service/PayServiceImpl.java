@@ -42,6 +42,7 @@ public class PayServiceImpl implements PayService {
 	public void payConfirm(int pay_no) {
 		this.payDAO.updatePay(pay_no);//Pay 테이블 validity 업데이트
 		this.payDAO.copyBasket(pay_no);//장바구니 validity=2인 정보를 새로운 테이블에 옮김
+		this.payDAO.cleanBasket(pay_no);//pay_no값에 해당하는 장바구니 비우기
 	}//Transaction 적용
 
 }
