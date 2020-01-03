@@ -57,6 +57,11 @@
 		where rNum &gt;= #{startrow} and rNum &lt;=#{endrow}
 	</select>
 	
+	<!-- 관리자 주문 validity update-->
+	<update id="pay_update">
+		update pay set validity=2 where pay_no=#{pay_no}
+	</update>
+	
 </mapper>
 
 

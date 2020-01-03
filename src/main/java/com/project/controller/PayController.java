@@ -377,13 +377,14 @@ public class PayController {
 			
 			/* 트랜잭션 적용(총 3개)
 			 * 	1. pay_no에 해당하는 Pay 테이블의 주문내역 validity 값 2로 변경(결제 확인됐다는 의미).
-			 *  2. pay_no에 해당하는 장바구니 vali 2에 담긴 정보를 주문확정 테이블로 옮김
+			 *  2. pay_no에 해당하는 장바구니 validity 2에 담긴 정보를 주문확정 테이블로 옮김
 			 *  3. 주문확정 테이블에서  payCom_no에 해당하는 장바구니 정보에서 상품 수량만 불러와 
 			 *     shop테이블의 상품 수량 정보를 업데이트 시킨다(마이너스 해서 수량을 줄임)
-			 *  4. 장바구니에 남은 vali 2 데이터 삭제
+			 *  4. 장바구니에 남은 validity 2 데이터 삭제
 			 */
 			
 			this.payService.payConfirm(pay_no);//판매 승인
+			//트랜잭션 적용
 			
 			return "redirect:/shop/admin_paylist?page=1&find_field=item_name&find_name=";
 		}//if else

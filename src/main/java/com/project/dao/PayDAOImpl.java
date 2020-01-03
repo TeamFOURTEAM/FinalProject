@@ -17,13 +17,13 @@ public class PayDAOImpl implements PayDAO{
 	
 	@Override
 	public void insertPay(PayVO pay) {
-		this.sqlSession.insert("pay_insert",pay);//주문목록에 추가
-	}
+		this.sqlSession.insert("pay_insert",pay);
+	}//주문목록에 추가
 
 	@Override
 	public void updateBasket(String user_id) {
-		this.sqlSession.update("bs_update",user_id);//장바구니 컬럼 업데이트(유효성+주문값)
-	}
+		this.sqlSession.update("bs_update",user_id);
+	}//장바구니 컬럼 업데이트(유효성+주문값)
 
 	@Override
 	public List<PayVO> list_pay(String user_id) {
@@ -39,5 +39,15 @@ public class PayDAOImpl implements PayDAO{
 	public List<PayVO> getAdminPayList(PayVO pay) {
 		return this.sqlSession.selectList("pay_admin_list",pay);
 	}//관리자 주문 내역 목록
+
+	@Override
+	public void updatePay(int pay_no) {
+		this.sqlSession.update("pay_update",pay_no);
+	}//주문 내역 validity 업데이트
+
+	@Override
+	public void copyBasket(int pay_no) {
+		
+	}//장바구니 validity=2인 정보를 복사
 	
 }

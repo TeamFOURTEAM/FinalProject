@@ -10,6 +10,13 @@ public class Pay_okVO {
 	private int basket_count;//담은 상품 수량
 	private int product_page;//해당상품의 페이지 값. 장바구니에서 해당상품클릭했을때 이동하기 위함.
 	
+	private String user_name;//유저 이름
+	private String product_name;//상품명
+	private String product_img;//상품 이미지 파일명
+	private int price;//상품 개별 가격
+	private int sumPrice;//총 가격
+	private int stockCount;//상품 재고
+	
 	public int getPayCom_no() {
 		return payCom_no;
 	}
@@ -39,6 +46,42 @@ public class Pay_okVO {
 	}
 	public void setProduct_page(int product_page) {
 		this.product_page = product_page;
+	}
+	public String getUser_name() {
+		return user_name;
+	}
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
+	public String getProduct_name() {
+		return product_name;
+	}
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
+	public String getProduct_img() {
+		return product_img;
+	}
+	public void setProduct_img(String product_img) {
+		this.product_img = product_img;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getSumPrice() {
+		return sumPrice;
+	}
+	public void setSumPrice(int sumPrice) {
+		this.sumPrice = sumPrice;
+	}
+	public int getStockCount() {
+		return stockCount;
+	}
+	public void setStockCount(int stockCount) {
+		this.stockCount = stockCount;
 	}
 	
 }

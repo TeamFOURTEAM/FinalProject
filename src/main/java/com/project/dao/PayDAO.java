@@ -16,4 +16,8 @@ public interface PayDAO {
 
 	List<PayVO> getAdminPayList(PayVO pay);
 
+	void updatePay(int pay_no);
+
+	void copyBasket(int pay_no);
+
 }

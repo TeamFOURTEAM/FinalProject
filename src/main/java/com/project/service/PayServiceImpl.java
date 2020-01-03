@@ -37,4 +37,11 @@ public class PayServiceImpl implements PayService {
 		return this.payDAO.getAdminPayList(pay);
 	}//관리자 주문 내역 목록 뽑아오기
 
+	@Transactional
+	@Override
+	public void payConfirm(int pay_no) {
+		this.payDAO.updatePay(pay_no);//Pay 테이블 validity 업데이트
+		this.payDAO.copyBasket(pay_no);//장바구니 validity=2인 정보를 새로운 테이블에 옮김
+	}//Transaction 적용
+
 }

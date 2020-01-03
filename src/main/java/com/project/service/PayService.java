@@ -14,4 +14,6 @@ public interface PayService {
 
 	List<PayVO> getAdminPayList(PayVO pay);
 
+	void payConfirm(int pay_no);
+
 }
