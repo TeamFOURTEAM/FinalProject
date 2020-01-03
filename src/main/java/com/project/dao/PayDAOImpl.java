@@ -47,7 +47,7 @@ public class PayDAOImpl implements PayDAO{
 
 	@Override
 	public void copyBasket(int pay_no) {
-		
+		this.sqlSession.insert("payok_copy",pay_no);
 	}//장바구니 validity=2인 정보를 복사
 	
 }

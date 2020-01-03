@@ -30,6 +30,7 @@ values(pay_no_seq.nextval,'pebble',12500,sysdate,1)
 drop table pay;
 drop sequence pay_no_seq;
 delete from pay;
+delete from pay where pay_no = 2;
 
 
 

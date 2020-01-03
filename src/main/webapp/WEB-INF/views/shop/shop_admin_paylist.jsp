@@ -31,13 +31,13 @@
 			<!-- 상품 구매 내역 목록 테이블 부분-->
                <div class="basket_table">
                	<p class="basket_head">
-               		<span style="width: 7%;">주문 번호</span>
+               		<span style="width: 5%;">주문 번호</span>
                		<span style="width: 10%;">고객 아이디</span>
                		<span style="width: 30%;">상품명</span>
-               		<span style="width: 15%;">결제금액</span>
+               		<span style="width: 10%;">결제금액</span>
                		<span style="width: 15%;">결제일</span>
                		<span style="width: 15%;">처리상태</span>
-               		<span style="width: 8%;">결제확인</span>
+               		<span style="width: 15%;">결제확인</span>
                	</p>
                	<%-- 상품 구매 내역 목록 테이블 시작 --%>
                	<c:choose>

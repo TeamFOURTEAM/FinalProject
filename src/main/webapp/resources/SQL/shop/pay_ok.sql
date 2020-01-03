@@ -18,7 +18,10 @@ increment by 1
 nocache;
 
 
-
+/**********************************/
+insert into pay_ok (payCom_no,payCom_id,product_no,basket_count,product_page)
+select basket_no,basket_id,product_no,basket_count,basket_page from shopBasket 
+where pay_no=2;
 
 
 

@@ -62,6 +62,12 @@
 		update pay set validity=2 where pay_no=#{pay_no}
 	</update>
 	
+	<!-- 테이블 복사. 장바구니 해당주문 validitiy=2 값을 pay_ok에 복사 -->
+	<insert id="payok_copy">
+		insert into pay_ok (payCom_no,payCom_id,product_no,basket_count,product_page)
+		select basket_no,basket_id,product_no,basket_count,basket_page from shopBasket 
+		where pay_no=#{pay_no}
+	</insert>
 </mapper>
 
 
