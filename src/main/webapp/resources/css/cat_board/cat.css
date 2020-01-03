@@ -70,6 +70,7 @@ table {
 /* 이미지형 게시판 내용보기(cat_cont) */
 #cont {
 	margin: 0 auto;
+	width: 1000px;
 }
 
 /* cat_cont input */

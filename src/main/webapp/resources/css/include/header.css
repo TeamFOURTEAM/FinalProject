@@ -90,6 +90,13 @@ margin-top: 80px;}
     z-index: 100;
 }
 
+#up {
+	font-size: 100px;
+	position: fixed;
+	left: 1700px;
+	top: 600px;
+}
+
 /* footer */
 .footer {text-align: center; padding: 30px 50px;}
 .footer li {position: relative; display: inline; padding: 0 7px 0 10px; white-space: nowrap;}

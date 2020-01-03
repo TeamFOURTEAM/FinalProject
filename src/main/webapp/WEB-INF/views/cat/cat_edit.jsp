@@ -47,8 +47,6 @@
 <!-- 본문 내용 -->
 <main>
 <section id="contents">
-	<div class="container">
-		<section id="cont">
 			<article class="column col1">
 				<div class="main">
 					<form method="post" action="/cat_edit_ok" id="frm" onsubmit="return edit_check();" 
@@ -83,8 +81,6 @@
 				</div>
 			</article>
 		</section>
-	</div>
-</section>
 <!-- contents --> 
 </main>
 
