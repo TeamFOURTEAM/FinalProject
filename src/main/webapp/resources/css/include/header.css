@@ -12,9 +12,9 @@ body { }
     transition: color .5s ease;}
 .header .header_menu a:hover {color: #ccc;}
 
-.header .header_title {text-align: center; margin-top: auto; font-size: 60px;
+.header .header_title {text-align: center; margin-top: auto; 
 margin-top: 80px;}                         
-.header .header_title a {}
+.header .header_title a {font-size: 60px;}
 .header .header_title a:hover {color: #ccc;}
 
 /* title menu */

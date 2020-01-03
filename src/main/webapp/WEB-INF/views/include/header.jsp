@@ -20,7 +20,14 @@
 		
 			<div class="header">
 				<div class="header_menu">
-					<a href="/MyPage/MyPage_user">MyPage</a> <a href="#">Login</a> <a href="#">Register</a>
+					<a href="/MyPage/MyPage_user">MyPage</a>
+					<c:if test="${empty user_id}">
+					 <a href="/login">Login</a>
+					 </c:if>
+					 <c:if test="${!empty user_id}">
+					 <a href="/logout">LogOut</a>
+					 </c:if>
+					 <a href="#">Register</a>
 				</div>
 				<!-- //header_menu -->
 				<div class="header_title">
@@ -65,9 +72,8 @@
 							<a href="service_center">고객센터</a>
 						</div>
 						<ul class="sub_category">
-							<li><a href="#">고객센터 1</a></li>
-							<li><a href="#">고객센터 2</a></li>
-							<li><a href="#">고객센터 3</a></li>
+							<li><a href="/user_board_list?page=1">분양 게시판</a></li>
+							<li><a href="/normal_board_list">일반 게시판</a></li>
 							<li><a href="/QandA/QandA_list?page=1">Q&A</a></li>
 						</ul></li>
 				</ul>
