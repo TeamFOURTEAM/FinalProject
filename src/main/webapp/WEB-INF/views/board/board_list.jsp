@@ -5,7 +5,7 @@
   Time: 오후 8:47
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@include file="../include/header.jsp"%>
@@ -15,6 +15,9 @@
 </head>
 <link href="/resources/css/reset.css" rel="stylesheet">
 <link rel="stylesheet" href="/resources/css/board_list/back_end_list.css">
+
+<script src="/js/board_cont/board_cont.js"></script>
+
 <body>
 <div id="container">
     <div class="board_title"><h2>분  양</h2></div>

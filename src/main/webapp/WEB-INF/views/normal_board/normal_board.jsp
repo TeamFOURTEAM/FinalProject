@@ -5,12 +5,14 @@
   Time: 오후 1:15
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ include file="../include/header.jsp"%>
 <html>
 <head>
     <link rel="stylesheet" href="/resources/css/normal_board/normal_board.css">
-    <title>Q&A 게시판</title>
+    
+    <script type="text/javascript" src="/resources/js/normal_board_cont/normal_board_cont.js"></script>
+    <title></title>
 </head>
 <body>
 <div class="page-body">

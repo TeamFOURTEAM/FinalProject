@@ -5,12 +5,14 @@
   Time: 오후 3:30
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ include file="../include/header.jsp"%>
 <html>
 <head>
     <link rel="stylesheet" href="/resources/css/board_write/board_write.css">
     <link rel="stylesheet" href="/resources/css/reset.css">
+    
+    <script src="/js/board_cont/board_cont.js"></script>
 
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="/resources/smartEditor/js/HuskyEZCreator.js" charset="utf-8"></script>

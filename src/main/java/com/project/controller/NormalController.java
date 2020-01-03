@@ -133,8 +133,8 @@ public class NormalController {
 
         String user_id=(String)session.getAttribute("user_id");
 
-        int page=Integer.parseInt(request.getParameter("page"));
-        System.out.println(page);
+//        int page=Integer.parseInt(request.getParameter("page"));
+//        System.out.println(page);
 ////
 ////        int normal_no,String normal_title,String normal_id
 ////        nbv.setNormal_id(normal_id);

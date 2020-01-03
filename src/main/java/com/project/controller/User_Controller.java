@@ -62,7 +62,7 @@ public class User_Controller {
     @RequestMapping("logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/login";
+        return "redirect:/";
     }
 
     //게시판 목록
