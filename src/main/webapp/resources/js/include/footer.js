@@ -1,5 +1,5 @@
 /**
- * footer.js
+ * footer.js 18
  */
 
 $(function() {
