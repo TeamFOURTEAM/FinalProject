@@ -6,8 +6,19 @@
 
     <!-- 게시판 카운트-->
     <select id="list_count" resultType="int">
-        select count(back_end_list_no) from board where step=0
-
+        select count(BACK_END_LIST_NO) from board
+        <where>
+            <if test="back_end_title==''">
+                and step=0
+            </if>
+            <!-- 검색조건이 없어서 총레코드개수 -->
+            <if test="back_end_title =='board_title'"><!-- 검색조건이 제목인 경우 -->
+                back_end_list_title like #{back_end_field} and step=0<!-- like는 오라클 검색 연산자 -->
+            </if>
+            <if test="back_end_title=='board_cont'"><!-- 검색조건이 내용인 경우 -->
+                back_end_list_cont like #{back_end_field} and step=0
+            </if>
+        </where>
     </select>
 
     <select id="user_list" resultType="board">
@@ -25,7 +36,7 @@
                 back_end_list_cont like #{back_end_field}
             </if>
         </where>
-         where step=0 order by back_end_list_date desc )) where rNum &gt;= #{startrow} and rNum &lt;= #{endrow} and step=0
+        order by back_end_list_date desc )where step=0) where rNum &gt;= #{startrow} and rNum &lt;= #{endrow}
     </select>
 
     <!--아이디 로그인-->
@@ -52,5 +63,11 @@
     <update id="random_pwd">
         update MEMBERVO set USER_PWD=#{user_pwd} where USER_ID=#{user_id} and USER_NAME=#{user_name} and USER_PHONE=#{user_phone}
     </update>
+
+    <!--조회수증가-->
+    <update id="hit_up">
+        update NORMALBOARD set NORMAL_HIT=NORMAL_HIT+1 where NORMAL_NO=#{normal_no} and NORMAL_TITLE=#{normal_title} and NORMAL_ID=#{normal_id}
+    </update>
+
 </mapper>
 

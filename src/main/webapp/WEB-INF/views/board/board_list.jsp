@@ -14,7 +14,6 @@
     <title>백앤드 상세페이지</title>
 </head>
 <link href="/resources/css/reset.css" rel="stylesheet">
-<link rel="stylesheet" href="/resources/css/board_list">
 <link rel="stylesheet" href="/resources/css/board_list/back_end_list.css">
 <body>
 <div id="container">
@@ -97,8 +96,7 @@
                     [이전]&nbsp;
                 </c:if>
                 <c:if test="${page>1}">
-                    <a
-                            href="user_board_list?page=${page-1}&back_end_title=${back_end_title}&back_end_field=${back_end_field}">[이전]</a>&nbsp;
+                    <a href="user_board_list?page=${page-1}&back_end_title=${back_end_title}&back_end_field=${back_end_field}">[이전]</a>&nbsp;
                 </c:if>
 
                 <%--현재 쪽번호 출력--%>
@@ -127,6 +125,7 @@
 
             </c:if>
         </div>
+
         <%-- 검색후 페이징 --%>
         <div class="search_div">
             <input type="button" value="글쓰기" onclick="location='board_list_write'">

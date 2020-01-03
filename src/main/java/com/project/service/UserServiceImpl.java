@@ -16,8 +16,8 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDao;
 
     @Override
-    public int getListCount() {
-        return this.userDao.getListCount();
+    public int getListCount(BoardVO b) {
+        return this.userDao.getListCount(b);
     }
 
 	@Override
@@ -81,6 +81,7 @@ public class UserServiceImpl implements UserService {
     public List<BoardVO> get_select_reply(BoardVO b) {
         return this.userDao.get_select_reply(b);
     }
+
 
 
 }

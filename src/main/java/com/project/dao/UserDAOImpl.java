@@ -17,8 +17,8 @@ public class UserDAOImpl implements UserDAO {
     private SqlSession sqlSession;
 
     @Override
-    public int getListCount() {
-        return this.sqlSession.selectOne("list_count");
+    public int getListCount(BoardVO b) {
+        return this.sqlSession.selectOne("list_count",b);
     }
 
     @Override

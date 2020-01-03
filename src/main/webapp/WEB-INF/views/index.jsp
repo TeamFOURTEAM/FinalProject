@@ -25,12 +25,7 @@
         <div class="row">
             <div class="header">
                 <div class="header_menu">
-                    <c:if test="${empty user_id}">
-                        <a href="login">Login</a>
-                    </c:if>
-                    <c:if test="${!empty user_id}">
-                        <a href="logout">LogOut</a>
-                    </c:if>
+                    <a href="login">Login</a>
                     <a href="join">Join</a>
                 </div>
                 <!--//header_menu -->
@@ -168,6 +163,7 @@
                         </div>
                     </div>
                 </div>
+            </nav>
         </div>
     </section>
 </main>

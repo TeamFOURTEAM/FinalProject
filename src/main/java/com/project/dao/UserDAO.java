@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface UserDAO {
 
-    int getListCount();
+    int getListCount(BoardVO b);
 
 	List<BoardVO> getUserBoardList(BoardVO a);
 
@@ -32,4 +32,5 @@ public interface UserDAO {
     int insert_reply(BoardVO b);
 
     List<BoardVO> get_select_reply(BoardVO b);
+
 }

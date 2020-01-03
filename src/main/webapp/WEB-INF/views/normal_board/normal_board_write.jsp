@@ -9,11 +9,11 @@
 <%@ include file="../include/header.jsp"%>
 <html>
 <head>
-    <link rel="stylesheet" href="/resources/css/normal_board/normal_cont.css">
+    <link rel="stylesheet" href="/resources/css/normal_board/normal_write.css">
     <link rel="stylesheet" href="/resources/css/reset.css">
 
-    <script type="text/javascript" src="/code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="/resources/smartEditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="/resources/JayEditor_dont_touch/smartEditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 
     <title>Normal Board</title>
 </head>
@@ -22,19 +22,18 @@
     <div class="bbs-tit">
         <span class="braket">[</span><strong>일반게시판</strong><span class="braket">]</span>
     </div>
-    <form action="#">
+    <form action="normal_list_write_ok" id="frm" method="post">
+        <input type="hidden" name="normal_id" value="${user_id}">
         <div class="normal_title">
-            <input type="text" placeholder="제 목">
+            <input type="text" placeholder="제 목" name="normal_title">
         </div>
         <div class="normal_cont">
-            <%--            <textarea name="" id="" cols="30" rows="10" placeholder="내 용"></textarea>--%>
-            <%--            <textarea class="reply" id="reply" name="back_end_list_cont" placeholder="내 용: " ></textarea>--%>
             <textarea rows="20" cols="123" id="normal_cont" name="normal_cont"></textarea>
         </div>
 
         <div class="normal_button">
-            <input type="submit" value="글쓰기">
-            <input type="reset" value="취 소">
+            <input type="button" id="save" value="글쓰기">
+            <input type="reset" value="취 소" onclick="location='history.back();';">
         </div>
     </form>
 </div>
@@ -47,12 +46,12 @@
         nhn.husky.EZCreator.createInIFrame({
             oAppRef: oEditors,
             elPlaceHolder: "normal_cont",
-            sSkinURI: "/resources/smartEditor/SmartEditor2Skin.html",
+            sSkinURI: "/resources/JayEditor_dont_touch/smartEditor/SmartEditor2Skin.html",
             fCreator: "createSEditor2",
             htParams: {
                 bUseToolbar : true, //툴바 사용 여부
                 bUseVerticalResizer : true, //입력창 크기 조절바 사용 여부
-                bUseModeChanger : false //모드 탭 사용 여부
+                bUseModeChanger : true //모드 탭 사용 여부
             }
         });
 

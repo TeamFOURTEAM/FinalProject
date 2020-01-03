@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserService {
 
-    int getListCount();
+    int getListCount(BoardVO b);
 
 	List<BoardVO> getUserBoardList(BoardVO a);
 
@@ -30,4 +30,5 @@ public interface UserService {
     int insert_reply(BoardVO b);
 
     List<BoardVO> get_select_reply(BoardVO b);
+
 }

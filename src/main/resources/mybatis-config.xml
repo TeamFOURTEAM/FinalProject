@@ -12,6 +12,8 @@
         <typeAlias type="com.project.vo.MemberVO" alias="member"/>
 
         <typeAlias type="com.project.vo.BoardVO" alias="board"/>
+
+        <typeAlias type="com.project.vo.NormalBoardVO" alias="normal"/>
         <!--분양 게시판-->
         
     </typeAliases>

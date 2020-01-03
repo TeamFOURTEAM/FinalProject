@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -48,6 +47,8 @@ public class User_Controller {
     //아이디찾기
     @RequestMapping("find_id")
     public String find_id() {
+//        int count=this.userService.getListCount(b);
+//        System.out.println(count+"카운트");
         return "find_id/find_id";
     }
 
@@ -69,14 +70,7 @@ public class User_Controller {
     public String back_end_list(Model listM, BoardVO b, HttpServletResponse response, HttpServletRequest request) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        HttpSession session = request.getSession();
-        String user_id = (String) session.getAttribute("user_id");//관리자 세션 아이디를 구함.
-//        if (user_id == null) {
-//            out.println("<script>");
-//            out.println("alert('세션만료 다시로그인하세요!');");
-//            out.println("location='login';");
-//            out.println("</script>");
-//        } else {
+
         int page = 1;
         int limit = 7;//한페이지 보여지는 목록개수
         if (request.getParameter("page") != null) {
@@ -87,19 +81,18 @@ public class User_Controller {
         String back_end_field = request.getParameter("back_end_field");
         //검색어
         String back_end_title = request.getParameter("back_end_title");
-        //검색필드
+        //검색종류
 
         b.setBack_end_title(back_end_title);
         b.setBack_end_field("%" + back_end_field + "%");//%는 오라클에서 하나 이상의 임의의 모르는 문자와 매핑대응
 
-        int listcount = this.userService.getListCount();//검색전후 레코드 개수
+
+        int listcount = this.userService.getListCount(b);//검색전후 레코드 개수
         b.setStartrow((page - 1) * 7 + 1);//시작행번호
         b.setEndrow(b.getStartrow() + limit - 1);//끝행번호
 
         List<BoardVO> blist = this.userService.getUserBoardList(b);
         //관리자 게시판 검색전후 목록
-        System.out.println(b.getStartrow() + "jghghfhfghfghfghfghfghfghfghfghfg");
-        System.out.println(b.getEndrow());
 
 
         //총페이지
@@ -112,6 +105,17 @@ public class User_Controller {
         int endpage = maxpage;
         if (endpage > startpage + 10 - 1)
             endpage = startpage + 10 - 1;
+
+
+        System.out.println(page+"page");
+        System.out.println(startpage+"startpage");
+        System.out.println(endpage+"endpage");
+        System.out.println(maxpage+"maxpage");
+        System.out.println(listcount+"listcount");
+        System.out.println(back_end_field+"back_end_field");
+        System.out.println(back_end_title+"back_end_title");
+
+
         listM.addAttribute("blist", blist);//blist키이름에 컬렉션 제네릭 blist저장
         listM.addAttribute("page", page);
         listM.addAttribute("startpage", startpage);
@@ -122,8 +126,7 @@ public class User_Controller {
         listM.addAttribute("back_end_title", back_end_title);
 
         return "board/board_list";
-//        }
-//        return null;
+
     }
 
     //로그인 확인
