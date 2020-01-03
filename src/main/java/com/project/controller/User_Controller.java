@@ -80,8 +80,14 @@ public class User_Controller {
         }
         String back_end_field = request.getParameter("back_end_field");
         //검색어
+        if(request.getParameter("back_end_field")==null){
+            back_end_field="";
+        }
         String back_end_title = request.getParameter("back_end_title");
         //검색종류
+        if(request.getParameter("back_end_title")==null){
+            back_end_title="";
+        }
 
         b.setBack_end_title(back_end_title);
         b.setBack_end_field("%" + back_end_field + "%");//%는 오라클에서 하나 이상의 임의의 모르는 문자와 매핑대응

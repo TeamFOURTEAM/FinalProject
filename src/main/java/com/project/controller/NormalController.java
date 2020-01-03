@@ -36,8 +36,14 @@ public class NormalController {
         }
         String title = request.getParameter("title");
         //검색어
+        if (request.getParameter("title")==null){
+            title="";
+        }
         String field = request.getParameter("field");
         //검색필드
+        if (request.getParameter("field")==null){
+            field="";
+        }
 
         nbv.setTitle(title);
         nbv.setField("%" + field + "%");//%는 오라클에서 하나 이상의 임의의 모르는 문자와 매핑대응
@@ -153,7 +159,7 @@ public class NormalController {
             System.out.println(n.getNormal_title() + "제목입니다");
 
 
-            m.addAttribute("page",page);
+//            m.addAttribute("page",page);
             m.addAttribute("nlist",nlist);
             m.addAttribute("user_id", user_id);
             m.addAttribute("n", n);

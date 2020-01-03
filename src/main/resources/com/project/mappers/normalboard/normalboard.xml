@@ -13,7 +13,7 @@
         select count(NORMAL_NO) from NORMALBOARD
         <where>
             <if test="title==''">
-                where NORMAL_STEP=0
+                and NORMAL_STEP=0
             </if>
             <if test="title=='board_id'">
                 NORMAL_ID like #{field} and NORMAL_STEP=0
@@ -43,7 +43,7 @@
                 NORMAL_CONT like #{field}
             </if>
         </where>
-        order by normal_no desc) where NORMAL_STEP=0) where rNum &gt;= #{startrow} and rNum &lt;= #{endrow}
+        order by normal_no desc)where NORMAL_STEP=0) where rNum &gt;= #{startrow} and rNum &lt;= #{endrow}
     </select>
 
     <!--내용 불러오기-->

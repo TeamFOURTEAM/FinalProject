@@ -136,7 +136,7 @@
             <dt></dt>
             <dd>
                 <a class="write" href="#">글쓰기</a>
-                <a href="normal_board_list?page=${page}">
+                <a href="normal_board_list">
                     목록보기</a>
             </dd>
         </dl>
