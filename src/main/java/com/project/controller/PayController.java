@@ -431,9 +431,11 @@ public class PayController {
 			pay.setPay_no(pay_no); pay.setValidity(validity);
 			
 			List<PayokVO> stockView = this.payService.stockView(pay_no);
-
+			//pay_ok테이블에 담겨있는 상품 목록을 가져오기 위한 List객체 stockView
+			
 			ShopVO s = new ShopVO();
 			this.payService.sendConfirm(stockView,pay,s);//상품 발송 승인
+			//트랜잭션을 함께 적용
 			
 			return "redirect:/shop/admin_paylist?find_field=item_name&find_name=";
 		}//if else
