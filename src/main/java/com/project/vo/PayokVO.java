@@ -1,8 +1,8 @@
 package com.project.vo;
 
-/** 결제 확인, 완료 테이블 VO **/
+/** 결제 확인, 완료 테이블 PayokVO VO **/
 
-public class Pay_okVO {
+public class PayokVO {
 	
 	private int payCom_no;//장바구니 번호
 	private String payCom_id;//유저 아이디

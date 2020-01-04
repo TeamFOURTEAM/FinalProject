@@ -3,6 +3,8 @@ package com.project.dao;
 import java.util.List;
 
 import com.project.vo.PayVO;
+import com.project.vo.PayokVO;
+import com.project.vo.ShopVO;
 
 public interface PayDAO {
 
@@ -16,8 +18,15 @@ public interface PayDAO {
 
 	List<PayVO> getAdminPayList(PayVO pay);
 
-	void updatePay(int pay_no);
+	void updatePay(PayVO pay);
 
-	void copyBasket(int pay_no);
+	void copyBasket(PayVO pay);
+
+	void cleanBasket(PayVO pay);
+
+	List<PayokVO> stockView(int pay_no);
+	
+	void updateStock(ShopVO s);
+
 
 }

@@ -31,13 +31,13 @@
 			<!-- 상품 구매 내역 목록 테이블 부분-->
                <div class="basket_table">
                	<p class="basket_head">
-               		<span style="width: 7%;">주문 번호</span>
+               		<span style="width: 5%;">주문 번호</span>
                		<span style="width: 10%;">고객 아이디</span>
                		<span style="width: 30%;">상품명</span>
-               		<span style="width: 15%;">결제금액</span>
+               		<span style="width: 10%;">결제금액</span>
                		<span style="width: 15%;">결제일</span>
                		<span style="width: 15%;">처리상태</span>
-               		<span style="width: 8%;">결제확인</span>
+               		<span style="width: 15%;">결제확인</span>
                	</p>
                	<%-- 상품 구매 내역 목록 테이블 시작 --%>
                	<c:choose>
@@ -72,13 +72,19 @@
 			                    <div class="column table_view">
 			                    	<c:if test="${p.validity == 1}">결제 대기 중</c:if>
 			                    	<c:if test="${p.validity == 2}">결제 확인</c:if>
+			                    	<c:if test="${p.validity == 3}">발송 처리 완료</c:if>
 		                    	</div>
 		                    	<div class="column table_confirm">
 		                    		<c:if test="${p.validity == 1}">
-		                    			<button class="confirm_btn" onclick="javascript: form.action='pay_admin_confirm?pay_no=${p.pay_no}';">주문확정</button>
+		                    			<button class="confirm_order_btn" 
+		                    			onclick="javascript: form.action='pay_admin_confirm?pay_no=${p.pay_no}';">주문확정하기</button>
 		                    		</c:if>
 			                    	<c:if test="${p.validity == 2}">
-			                    		<span>결제확인완료</span>
+			                    		<button class="confirm_send_btn" 
+		                    			onclick="javascript: form.action='pay_admin_sendItem?pay_no=${p.pay_no}';">발송확정하기</button>
+			                    	</c:if>
+			                    	<c:if test="${p.validity == 3}">
+			                    		<span>발송완료</span>
 			                    	</c:if>
 		                    	</div>
 		                    </div>
@@ -194,7 +200,25 @@
 		</div>
 	</div>
 	<script>
+	$('.confirm_order_btn').on('click', function(){
+		var ask = confirm('해당 주문을 확정 하시겠습니까?');
 		
+		if(ask) {
+			
+		}else {
+			return false;
+		}
+	});
+	
+	$('.confirm_send_btn').on('click', function(){
+		var ask = confirm('해당 주문상품을 발송 하시겠습니까?');
+		
+		if(ask) {
+			
+		}else {
+			return false;
+		}
+	});
 	</script>
 </body>
 </html>

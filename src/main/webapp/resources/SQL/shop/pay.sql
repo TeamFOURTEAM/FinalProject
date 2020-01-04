@@ -4,7 +4,7 @@ create table pay(
 	,user_id varchar2(100) not null--구매자 아이디
 	,pay_price number(38) not null--총 구매금액
  	,pay_date date --구매날짜
- 	,validity number(38) default 1 --판매승인 여부. 판매승인전 -> 1, 판매승인후 -> 2
+ 	,validity number(38) default 1 --판매승인 여부. 판매승인전 -> 1, 판매승인후 -> 2, 발송처리후 -> 3
 );
 
 --pay_no_seq 시퀀스 생성
@@ -30,6 +30,7 @@ values(pay_no_seq.nextval,'pebble',12500,sysdate,1)
 drop table pay;
 drop sequence pay_no_seq;
 delete from pay;
+delete from pay where pay_no = 2;
 
 
 
