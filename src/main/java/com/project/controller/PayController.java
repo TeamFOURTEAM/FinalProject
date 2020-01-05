@@ -322,7 +322,7 @@ public class PayController {
 		PrintWriter out=response.getWriter();
 		
 		//session 처리!(관리자)
-		String user_id = "pebble";
+		String user_id = "pebble";//관리자 아이디로 변경
 		
 		if(user_id.equals(null)) {
 			out.println("<script>");

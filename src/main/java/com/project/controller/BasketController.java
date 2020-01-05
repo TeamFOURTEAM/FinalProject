@@ -67,7 +67,7 @@ public class BasketController {
 		response.setContentType("text/html;chrset=UTF-8");
 		PrintWriter out=response.getWriter();
 		
-		String user_id= "pebble";
+		String user_id= "pebble";//세션값으로 변경
 	
 		if(user_id.equals(null)) {//id 값이 없을 때(나중에 세션으로 처리)
 			out.println("<script>");
