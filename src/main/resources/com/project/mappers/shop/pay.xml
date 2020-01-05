@@ -27,7 +27,7 @@
 	<!-- 사용자 주문 내역에따른 상품명 검색(basket 장바구니 -> 결제 확인 이전) -->
 	<select id="getbasket_name" resultType="basket">
 		select 
-			LISTAGG(item_name,',') 
+			LISTAGG(item_name,', ') 
 			WITHIN GROUP (ORDER BY b.basket_no desc) 
 			AS product_name
 		from shopList l, shopBasket b 
@@ -40,7 +40,7 @@
 	<!-- 사용자 주문 내역에따른 상품명 검색(pay_ok 장바구니 -> 결제 확인 이후) -->
 	<select id="getbasket_name2" resultType="payOK">
 		select 
-			LISTAGG(item_name,',') 
+			LISTAGG(item_name,', ') 
 			WITHIN GROUP (ORDER BY p.payCom_no desc) 
 			AS product_name
 		from shopList l, pay_ok p 
