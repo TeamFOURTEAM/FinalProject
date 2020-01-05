@@ -18,11 +18,11 @@ function updateEmail_ok() {
 	var emailcode = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; // 이메일이 적합한지 검사할 정규식
 	
 //	아작스 처리 할 user_id값 + 수정할 email input값
-	var user_id = $(".MemberID").text();
+	var user_id = $(".MemberValue").text();
 	var update_email = document.getElementById('Update_Email');
 //	ajax로 변경값 출력해줄 String 값
-	var ajaxEmail = "<p class='OneLine'>"
-	var ajaxEmail1 = "</p> <input id='updateBtn_PN' type='button' value='수정' onclick='updateEmail();'>";
+	var ajaxEmail = "<p class='OneLine'>E-Mail : <span>"
+	var ajaxEmail1 = "</span></p> <input id='updateBtn_PN' type='button' value='수정' onclick='updateEmail();'>";
 	
 //	ajax로 보낼 매핑 주소값
 	var EmailURL = "/UpdateUserEmail";
@@ -56,13 +56,13 @@ function updatePN_ok() {
 	var PhoneNumberCode = /^[0-9]{10,11}$/;
 	
 	//ajax 처리시 db에서 id값을 기준으로 회원정보 변경 할 id값
-	var user_id = $(".MemberID").text();
+	var user_id = $(".MemberValue").text();
 	//핸드폰 번호 수정 할 input 값
 	var PnUpdateInfo = document.getElementById("Update_PN");
 	
 	//ajax값 출력할 div 만들어줄 innerHTML
-	var ajaxMessage = "<p class='OneLine'>";
-	var ajaxMessage1 = "</p><input id='updateBtn_PN' type='button' value='수정'onclick='updatePN();'>";
+	var ajaxMessage = "<p class='OneLine'>Phone :<span>";
+	var ajaxMessage1 = "</span></p><input id='updateBtn_PN' type='button' value='수정'onclick='updatePN();'>";
 	
 	//비동기식 url 주소로 보낼 매핑주소
 	var PhoneURL = "/updateUserPN";

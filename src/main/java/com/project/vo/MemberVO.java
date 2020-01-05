@@ -10,6 +10,7 @@ public class MemberVO{
     private String user_gender;
     private String user_email;
     private String user_phone;
+    private String join_date;
 
     public String getUser_id() {
         return user_id;
@@ -66,6 +67,14 @@ public class MemberVO{
     public void setUser_phone(String user_phone) {
         this.user_phone = user_phone;
     }
+
+	public String getJoin_date() {
+		return join_date;
+	}
+
+	public void setJoin_date(String join_date) {
+		this.join_date = join_date;
+	}
 
 
 }

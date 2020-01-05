@@ -47,6 +47,9 @@
 	margin-left: 7px;
 	border-right: solid 1px black;
 }
+.UpdateMember > p {
+	display: inline-block;
+}
 
 /* 수정 할 Email,PhoneNumber 안에 p태그 자리 잡기 */
 .Member_Email > p,
@@ -270,4 +273,9 @@
 		margin-left: 5px;
 	}
 	/* Board -end- */
+	
+	/* Shop */
+	#ShopLink {
+		right: 15px;
+	}
 }

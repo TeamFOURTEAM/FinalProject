@@ -49,7 +49,7 @@ public class MyPageController {
 		
 		int result;
 		
-		System.out.println("user_id:"+updateMember.getUser_id() + "update_email:" +updateMember.getUser_email());
+		System.out.println("user_id:"+updateMember.getUser_id() + "/ update_email:" +updateMember.getUser_email());
 		result = memberJoinService.UserInfoEmail(updateMember);
 		
 		if(result == 1) {
@@ -71,7 +71,7 @@ public class MyPageController {
 		
 		int result;
 		
-		System.out.println("user_id:"+updateMember.getUser_id() + "update_phone:" +updateMember.getUser_phone());
+		System.out.println("user_id:"+updateMember.getUser_id() + "/ update_phone:" +updateMember.getUser_phone());
 		result = memberJoinService.UserInfoPhone(updateMember);
 		
 		if(result == 1) {

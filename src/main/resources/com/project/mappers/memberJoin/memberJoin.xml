@@ -5,25 +5,25 @@
 <mapper namespace="MemberJoin"> <!-- mapper네임스페이스명 설정 -->
 	
 	<insert id="MbJoin">
-		insert into MEMBERJOIN (user_id, user_pwd, user_name, user_birthday, user_gender, user_email, user_phone)
-		values(#{user_id}, #{user_pwd}, #{user_name}, #{user_birthday}, #{user_gender}, #{user_email}, #{user_phone})
+		insert into MEMBERJOIN (user_id, user_pwd, user_name, user_birthday, user_gender, user_email, user_phone, join_date)
+		values(#{user_id}, #{user_pwd}, #{user_name}, #{user_birthday}, #{user_gender}, #{user_email}, #{user_phone},sysdate)
 	</insert>
 	
 	<select id="SearchID" parameterType="String" resultType="String">
 		SELECT USER_ID FROM MEMBERJOIN WHERE USER_ID = #{checkwords}
 	</select>
 	
-	<select id="MyPageInfo" resultType="Member">
+	<select id="MyPageInfo" resultType="MemberVO">
 		SELECT USER_ID, USER_NAME, USER_BIRTHDAY, USER_GENDER, USER_EMAIL, USER_PHONE FROM MEMBERJOIN WHERE USER_ID = #{user_id}
 	</select>
 	
-	<update id="updatePN">
-		UPDATE MEMBERJOIN SET USER_PHONE = #{user_phone} WHERE USER_ID = #{user_id}
-	</update>
 	<update id="updateEmail">
 		UPDATE MEMBERJOIN SET USER_EMAIL = #{user_email} WHERE USER_ID = #{user_id}
 	</update>
 	
+	<update id="updatePN">
+		UPDATE MEMBERJOIN SET USER_PHONE = #{user_phone} WHERE USER_ID = #{user_id}
+	</update>
 </mapper>
 
 

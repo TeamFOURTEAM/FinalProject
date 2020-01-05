@@ -30,6 +30,7 @@ public class MemberJoinDAOImpl implements MemberJoinDAO {
 
 	@Override
 	public int UserInfoEmail(MemberVO updateMember) {
+		System.out.println(updateMember.getUser_id()+"/"+updateMember.getUser_email());
 		return sqlSession.update("MemberJoin.updateEmail", updateMember);
 	}
 

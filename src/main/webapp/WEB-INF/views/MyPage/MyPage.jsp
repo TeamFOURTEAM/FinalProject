@@ -21,17 +21,17 @@
 				</div>
 				<!-- MemberInfo -->
 
-				<div class="MemberID UpdateMember" name="user_id"><span>${MemberInfo.user_id}</span></div>
+				<div class="MemberID UpdateMember" name="user_id"><p>ID : </p><span class="MemberValue">${MemberInfo.user_id}</span></div>
 
-				<div class="MemberName UpdateMember">${MemberInfo.user_name}</div>
+				<div class="MemberName UpdateMember"><p>Name : </p> <span>${MemberInfo.user_name}</span></div>
 
-				<div class="MemberBirthDay UpdateMember">${MemberInfo.user_birthday}</div>
+				<div class="MemberBirthDay UpdateMember"><p>Birthday : </p> <span>${MemberInfo.user_birthday}</span> </div>
 
-				<div class="MemberGender UpdateMember">${MemberInfo.user_gender}</div>
+				<div class="MemberGender UpdateMember"><p>Gender : </p> <span>${MemberInfo.user_gender}</span> </div>
 
 				<div class="MemberE_mail UpdateMember" id="user_update_email">
 					<div class="Member_Email" id="Member_Email">
-						<p class="OneLine">${MemberInfo.user_email}</p>
+						<p class="OneLine">E-Mail :<span>${MemberInfo.user_email}</span></p>
 						<input class="updateBtn" id="updateBtn_Email" type="button"
 							value="수정" onclick="updateEmail();">
 					</div>
@@ -45,7 +45,7 @@
 
 				<div class="MemberPhoneNumber UpdateMember">
 					<div class="Member_PhoneNumber" id="Member_PhoneNumber">
-						<p class="OneLine">${MemberInfo.user_phone}</p>
+						<p class="OneLine">Phone : <span>${MemberInfo.user_phone}</span></p>
 						<input id="updateBtn_PN" type="button" value="수정"
 							onclick="updatePN();">
 					</div>
