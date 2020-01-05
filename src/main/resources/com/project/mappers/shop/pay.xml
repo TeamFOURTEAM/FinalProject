@@ -28,13 +28,26 @@
 	<select id="getbasket_name" resultType="basket">
 		select 
 			LISTAGG(item_name,',') 
-			WITHIN GROUP (ORDER BY item_name) 
+			WITHIN GROUP (ORDER BY b.basket_no desc) 
 			AS product_name
 		from shopList l, shopBasket b 
 		where 
 			l.item_no = b.product_no
 			and pay_no=#{pay_no}
 		order by b.basket_no desc
+	</select>
+	
+	<!-- 사용자 주문 내역에따른 상품명 검색(pay_ok 장바구니 -> 결제 확인 이후) -->
+	<select id="getbasket_name2" resultType="payOK">
+		select 
+			LISTAGG(item_name,',') 
+			WITHIN GROUP (ORDER BY p.payCom_no desc) 
+			AS product_name
+		from shopList l, pay_ok p 
+		where 
+			l.item_no = p.product_no
+			and pay_no=#{pay_no}
+		order by p.payCom_no desc
 	</select>
 	
 	

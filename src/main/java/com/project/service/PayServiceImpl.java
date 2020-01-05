@@ -74,6 +74,11 @@ public class PayServiceImpl implements PayService {
 		return this.payDAO.getProductName(pay_no);
 	}//주문리스트에 해당하는 상품명 가져오기
 
+	@Override
+	public List<String> getProductName2(int pay_no) {
+		return this.payDAO.getProductName2(pay_no);
+	}//주문리스트에 해당하는 상품명 가져오기 2
+
 	
 
 

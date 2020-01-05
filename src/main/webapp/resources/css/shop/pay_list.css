@@ -62,10 +62,15 @@
 .basket_body .column.table_title {
 	font-size: 22px;
 }
-
-.basket_body .column.table_view {
-
+.basket_body .column.table_title a {
+	display:block;
+	overflow: hidden; 
+	text-overflow: ellipsis;
+	white-space: nowrap; 
+	width: 350px;
 }
+
+.basket_body .column.table_view {}
 
 /** 하단부 **/
 

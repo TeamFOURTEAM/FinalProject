@@ -26,5 +26,7 @@ public interface PayService {
 
 	List<String> getProductName(int pay_no);
 
+	List<String> getProductName2(int pay_no);
+
 	
 }

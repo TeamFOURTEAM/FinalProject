@@ -41,12 +41,12 @@ where basket_id='pebble' and validity=1;
 --상품명만 가져오기
 select 
 	LISTAGG(item_name,',') 
-	WITHIN GROUP (ORDER BY item_name) 
+	WITHIN GROUP (ORDER BY b.basket_no desc) 
 	AS product_name
 from shopList l, shopBasket b 
 where 
 	l.item_no = b.product_no
-	and pay_no=15
+	and pay_no=17
 order by b.basket_no desc
 
 /*********** test ************/

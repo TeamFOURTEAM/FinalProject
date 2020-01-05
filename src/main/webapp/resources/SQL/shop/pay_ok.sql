@@ -32,7 +32,15 @@ insert into pay_ok (payCom_no,payCom_id,product_no,basket_count,basket_page)
 select basket_no,basket_id,product_no,basket_count,basket_page from shopBasket 
 where pay_no=2;
 
-
+select 
+	LISTAGG(item_name,',') 
+	WITHIN GROUP (ORDER BY p.payCom_no desc) 
+	AS product_name
+from shopList l, pay_ok p 
+where 
+	l.item_no = p.product_no
+	and pay_no=15
+order by p.payCom_no desc
 
 
 /*************************/

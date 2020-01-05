@@ -77,6 +77,11 @@ public class PayDAOImpl implements PayDAO{
 		return this.sqlSession.selectList("getbasket_name", pay_no);
 	}//주문리스트에 해당하는 상품명 가져오기(장바구니)
 
+	@Override
+	public List<String> getProductName2(int pay_no) {
+		return this.sqlSession.selectList("getbasket_name2", pay_no);
+	}//주문리스트에 해당하는 상품명 가져오기(pay_ok)
+
 	
 
 }
