@@ -70,7 +70,7 @@
 		                    		${p.pay_date}
 			                    </div>
 			                    <div class="column table_view">
-			                    	<c:if test="${p.validity == 1}">결제 대기 중</c:if>
+			                    	<c:if test="${p.validity == 1}">상품 요청</c:if>
 			                    	<c:if test="${p.validity == 2}">결제 확인</c:if>
 			                    	<c:if test="${p.validity == 3}">발송 처리 완료</c:if>
 		                    	</div>

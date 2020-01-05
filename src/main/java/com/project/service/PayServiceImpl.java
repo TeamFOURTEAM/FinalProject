@@ -64,5 +64,10 @@ public class PayServiceImpl implements PayService {
 		}//확장 for -> 재고 수정 메서드 3번 반복
 	}//Transaction 적용
 
+	@Override
+	public int sumMoney(int pay_no) {
+		return this.payDAO.sumMoney(pay_no);
+	}//결제완료 장바구니 pay_ok의 가격 계산
+
 
 }

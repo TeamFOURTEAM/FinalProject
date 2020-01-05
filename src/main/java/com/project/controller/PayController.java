@@ -221,6 +221,7 @@ public class PayController {
 	/** 주문 상품명 클릭시, 해당 주문의 상품 리스트로 이동 **/
 	@RequestMapping("shop/pay_item_list_go")
 	public String pay_item_list_go(
+			PayVO pay,
 			HttpServletRequest request,
 			RedirectAttributes redirectAttributes) {
 		
@@ -235,7 +236,7 @@ public class PayController {
 	
 	@RequestMapping("shop/pay_item_list")
 	public String pay_item_list(
-			BasketVO basket,
+			BasketVO basket,PayVO pay,PayokVO payOK,
 			HttpServletRequest request,
 			HttpServletResponse response,
 			Model payItemList) throws Exception {
@@ -244,11 +245,10 @@ public class PayController {
 		if(request.getParameter("page") != null) {
 			page=Integer.parseInt(request.getParameter("page"));
 		}//page 값 받아옴
-		
 		int pay_no = Integer.parseInt(request.getParameter("pay_no"));
 		//선택한 주문 번호
 		int validity = Integer.parseInt(request.getParameter("validity"));
-		//주문 내역의 validity. 1 -> 결제 확인중 , 2 -> 결제 확인 완료
+		//주문 내역의 validity. 1 -> 결제 확인중 // 2 -> 결제 확인 완료, 3 -> 발송완료
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
@@ -292,15 +292,30 @@ public class PayController {
 			//3 -> 발송 끝난 장바구니 상품 리스트. 함께 불러옴
 			}else if(validity == 2 || validity == 3) {//주문 내역의 validity가 2이거나 3일 때(결제확인후)
 				/** 작업 해줘야 함.  **/
+				Map<String,Object> map=new HashMap<String, Object>();
 				
+				List<PayokVO> stockView = this.payService.stockView(pay_no);
+				//pay_ok테이블에 담겨있는 상품 목록을 가져오기 위한 List객체 stockView
 				
+				int sumMoney=this.payService.sumMoney(pay_no);//장바구니 전체 금액 호출
+				/* 장바구니 전체 금액에 따라 배송비 구분 */
+				//배송료(10만원 이상 -> 무료, 미만 -> 2500원)
+				int fee = sumMoney >= 100000 ? 0 : 2500;
 				
+				map.put("list",stockView); //장바구니 정보
+				map.put("count",stockView.size());//장바구니 상품 유무
+				map.put("sumMoney",sumMoney);//장바구니 합계 금액
+				map.put("fee",fee);//배송비
+				map.put("allSum",sumMoney+fee);//주문 총 합계 금액(상품 + 배송비)
+				
+				payItemList.addAttribute("user_id",user_id);//id값 전달
+				payItemList.addAttribute("map",map);
 				payItemList.addAttribute("page",page);//page 값 받아서 전달(목록버튼에 전달하기위함)
 			
-			}//if else if
+			}//if else if -> 장바구니 basket에서 불러오는가 // 주문확인 이후 payok테이블에서 불러오는가 분기시킴
 			
 			return "shop/pay_item_list";
-		}//if else
+		}//if else -> 로그인 여부 분기
 		
 		return null;
 	}//pay_item_list()
@@ -447,11 +462,11 @@ public class PayController {
 			 * shop테이블의 상품 수량 정보를 업데이트 시킨다(마이너스 해서 수량을 줄임)
 			 */
 			
-			
-			pay.setPay_no(pay_no); pay.setValidity(validity);
-			
 			List<PayokVO> stockView = this.payService.stockView(pay_no);
 			//pay_ok테이블에 담겨있는 상품 목록을 가져오기 위한 List객체 stockView
+			
+			pay.setPay_no(pay_no); pay.setValidity(validity);//주문 validity 
+			//변경을 위한 변수 담기
 			
 			ShopVO s = new ShopVO();
 			this.payService.sendConfirm(stockView,pay,s);//상품 발송 승인

@@ -55,16 +55,21 @@ public class PayDAOImpl implements PayDAO{
 	@Override
 	public void cleanBasket(PayVO pay) {
 		this.sqlSession.delete("bs_clean",pay);
-	}
+	}//기존 장바구니 비우기
 
 	@Override
 	public List<PayokVO> stockView(int pay_no) {
 		return this.sqlSession.selectList("payok_list",pay_no);
-	}
+	}//pay_ok 테이블에 담긴 상품 목록
 	
 	@Override
 	public void updateStock(ShopVO s) {
 		this.sqlSession.update("stock_change",s);
+	}//상품 재고 변경
+
+	@Override
+	public int sumMoney(int pay_no) {
+		return this.sqlSession.selectOne("payok_sumMoney",pay_no);
 	}
 
 }

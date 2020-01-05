@@ -8,7 +8,7 @@ public class PayokVO {
 	private String payCom_id;//유저 아이디
 	private int product_no;//상품번호
 	private int basket_count;//담은 상품 수량
-	private int product_page;//해당상품의 페이지 값. 장바구니에서 해당상품클릭했을때 이동하기 위함.
+	private int basket_page;//해당상품의 페이지 값. 장바구니에서 해당상품클릭했을때 이동하기 위함.
 	
 	private String user_name;//유저 이름
 	private String product_name;//상품명
@@ -41,11 +41,11 @@ public class PayokVO {
 	public void setBasket_count(int basket_count) {
 		this.basket_count = basket_count;
 	}
-	public int getProduct_page() {
-		return product_page;
+	public int getBasket_page() {
+		return basket_page;
 	}
-	public void setProduct_page(int product_page) {
-		this.product_page = product_page;
+	public void setBasket_page(int basket_page) {
+		this.basket_page = basket_page;
 	}
 	public String getUser_name() {
 		return user_name;

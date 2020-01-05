@@ -63,7 +63,6 @@
                     <span class="contReco">이 상품이 좋아요! : ${s.item_likeCount}</span>
                 </div>
                 <form method="post" name="itemBuy">
-                <input type="hidden" name="basket_id" value="pebble" /><%-- 임시 아이디(지울것) --%>
                 <input type="hidden" name="product_no" value="${s.item_no}" />
                 <input type="hidden" name="stockCount" value="${s.item_stockCount}"/>
                 <input type="hidden" name="page" value="${page}" />

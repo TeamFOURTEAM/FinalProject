@@ -22,5 +22,7 @@ public interface PayService {
 
 	void sendConfirm(List<PayokVO> stockView,PayVO pay,ShopVO s);
 
+	int sumMoney(int pay_no);
+
 
 }

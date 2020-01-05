@@ -28,5 +28,7 @@ public interface PayDAO {
 	
 	void updateStock(ShopVO s);
 
+	int sumMoney(int pay_no);
+
 
 }
