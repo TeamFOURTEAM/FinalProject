@@ -19,7 +19,7 @@
 <body>
 	<div class="container">
 		<div class="basket_title">
-			<span>상품 주문 내역 관리</span>
+			<span>관리자 주문 내역 관리</span>
 			<div class="searchResult">
 	            <span>"<c:if test="${find_name == ''}">전체</c:if>${find_name}"</span>
 	            에 대한 <span>"${totalcount}"</span> 개의 검색 결과가 있습니다.

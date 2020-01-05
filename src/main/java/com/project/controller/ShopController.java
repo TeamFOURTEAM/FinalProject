@@ -46,9 +46,9 @@ public class ShopController {
 		PrintWriter out=response.getWriter();
 		
 		//session 처리!(관리자)
-		String user_id = "pebble";//관리자로 변경
+		String user_id = "admin";//관리자로 변경
 		
-		if(user_id.equals(null)) {
+		if(!(user_id.equals("admin"))) {
 			out.println("<script>");
 			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
 			out.println("location='admin_login';");
@@ -159,9 +159,9 @@ public class ShopController {
 		PrintWriter out=response.getWriter();
 		
 		//session 처리!(관리자)
-		String user_id = "pebble";//관리자로 변경
+		String user_id = "admin";//관리자로 변경
 		
-		if(user_id.equals(null)) {
+		if(!(user_id.equals("admin"))) {
 			out.println("<script>");
 			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
 			out.println("location='admin_login';");
@@ -338,9 +338,9 @@ public class ShopController {
 		PrintWriter out=response.getWriter();
 		
 		//session 처리!
-		String user_id = "pebble";//관리자로 변경
+		String user_id = "admin";//관리자로 변경
 		
-		if(user_id.equals(null)) {
+		if(!(user_id.equals("admin"))) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
 			out.println("location='admin_login';");
@@ -463,9 +463,9 @@ public class ShopController {
 		PrintWriter out=response.getWriter();
 		
 		//session 처리!
-		String user_id = "pebble";//관리자로 변경
+		String user_id = "admin";//관리자로 변경
 		
-		if(user_id.equals(null)) {
+		if(!(user_id.equals("admin"))) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
 			out.println("location='admin_login';");

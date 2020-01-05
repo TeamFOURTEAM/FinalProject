@@ -61,7 +61,7 @@ public class PayServiceImpl implements PayService {
 			s.setItem_no(i.getProduct_no());
 			s.setItem_stockCount(i.getBasket_count());
 			this.payDAO.updateStock(s);
-		}//확장 for -> 재고 수정 메서드 3번 반복
+		}//확장 for -> 재고 수정 메서드 장바구니 상품수 만큼 반복
 	}//Transaction 적용
 
 	@Override

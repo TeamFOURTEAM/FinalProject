@@ -180,7 +180,7 @@ public class PayController {
 		return "redirect:/shop/pay_list";
 	}//pay_list_go()
 	
-	/** 구매 내역 **/
+	/** 주문 내역 **/
 	@RequestMapping("shop/pay_list")
 	public String pay_list(
 			PayVO pay,
@@ -207,6 +207,13 @@ public class PayController {
 			
 		}else {
 			List<PayVO> list = this.payService.list_pay(user_id);//주문 내역 목록
+			
+			
+//			if(validity == 1) {//주문 내역의 validity가 1일 때(결제확인전)
+//				
+//			}else if(validity == 2 || validity == 3) {
+//				
+//			}
 			
 			payList.addAttribute("user_id",user_id);//id값 전달
 			payList.addAttribute("list",list);
@@ -291,11 +298,12 @@ public class PayController {
 			//2 -> 결제 확인 끝난 장바구니 상품 리스트. 구매 확정 테이블의 상품을 불러옴
 			//3 -> 발송 끝난 장바구니 상품 리스트. 함께 불러옴
 			}else if(validity == 2 || validity == 3) {//주문 내역의 validity가 2이거나 3일 때(결제확인후)
-				/** 작업 해줘야 함.  **/
+				
 				Map<String,Object> map=new HashMap<String, Object>();
 				
 				List<PayokVO> stockView = this.payService.stockView(pay_no);
 				//pay_ok테이블에 담겨있는 상품 목록을 가져오기 위한 List객체 stockView
+				
 				
 				int sumMoney=this.payService.sumMoney(pay_no);//장바구니 전체 금액 호출
 				/* 장바구니 전체 금액에 따라 배송비 구분 */
@@ -337,9 +345,9 @@ public class PayController {
 		PrintWriter out=response.getWriter();
 		
 		//session 처리!(관리자)
-		String user_id = "pebble";//관리자 아이디로 변경
+		String user_id = "admin";//관리자 아이디로 변경
 		
-		if(user_id.equals(null)) {
+		if(!(user_id.equals("admin"))) {
 			out.println("<script>");
 			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
 			out.println("location='admin_login';");
@@ -406,17 +414,17 @@ public class PayController {
 		PrintWriter out=response.getWriter();
 		
 		//session 처리!(관리자)
-		String user_id = "pebble";
+		String user_id = "admin";
 		int pay_no = Integer.parseInt(request.getParameter("pay_no"));
 		int validity = 2;//결제확인여부
 		
-		if(user_id.equals(null)) {
+		if(!(user_id.equals("admin"))) {
 			out.println("<script>");
 			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
 			out.println("location='admin_login';");
 			out.println("</script>");
 			
-		}else if(user_id.equals("pebble")) {/** 관리자 계정으로 수정해야할것 **/
+		}else {/** 관리자 계정으로 수정해야할것 **/
 			
 			/* 트랜잭션 적용(총 3개)
 			 * 	1. pay_no에 해당하는 Pay 테이블의 주문내역 validity 값 2로 변경(결제 확인됐다는 의미).
@@ -445,17 +453,17 @@ public class PayController {
 		PrintWriter out=response.getWriter();
 		
 		//session 처리!(관리자)
-		String user_id = "pebble";
+		String user_id = "admin";
 		int pay_no = Integer.parseInt(request.getParameter("pay_no"));
 		int validity = 3;//주문상태를 3(발송처리)으로 변경
 		
-		if(user_id.equals(null)) {
+		if(!(user_id.equals("admin"))) {
 			out.println("<script>");
 			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
 			out.println("location='admin_login';");
 			out.println("</script>");
 			
-		}else if(user_id.equals("pebble")) {/** 관리자 계정으로 수정해야할것 **/
+		}else {/** 관리자 계정으로 수정해야할것 **/
 			
 			/* 트랜잭션 적용 : 1. 주문내역 validity=3 으로 수정  2. 상품 재고 줄이기
 			 * 주문확정 테이블에서  payCom_no에 해당하는 장바구니 정보에서 상품 수량만 불러와 
@@ -478,20 +486,6 @@ public class PayController {
 		return null;
 	}//pay_admin_sendItem()
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
