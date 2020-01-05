@@ -96,17 +96,6 @@ public class PayController {
 		return null;
 	}
 	
-	/** 결제완료 페이지 **/
-	@RequestMapping("shop/pay_page_confirm")
-	public String pay_page_confirm(
-			HttpServletRequest request,
-			Model m) {
-		
-		int page = Integer.parseInt(request.getParameter("page"));
-		m.addAttribute("page",page);
-		
-		return "shop/pay_page_confirm";
-	}//pay_page_confirm()
 	
 	/** 결제하기(주문 목록 추가) **/
 	@RequestMapping("shop/pay_page_ok")
@@ -146,6 +135,37 @@ public class PayController {
 
 		return null;
 	}
+	
+	/** 결제완료 페이지 **/
+	@RequestMapping("shop/pay_page_confirm")
+	public String pay_page_confirm(
+			HttpServletRequest request,
+			HttpServletResponse response,
+			Model m) throws Exception {
+		
+		int page = Integer.parseInt(request.getParameter("page"));
+		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		
+		//session 처리!
+		String user_id = "pebble";
+		
+		if(user_id.equals(null)) {
+			out.println("<script>");
+			out.println("alert('로그인 하신 후 이용해주세요.');");
+			out.println("location='admin_login';");
+			out.println("</script>");
+			
+		}else {
+			
+			m.addAttribute("page",page);
+			
+			return "shop/pay_page_confirm";
+		}//if else
+		
+		return null;
+	}//pay_page_confirm()
 	
 	/** 주문 내역으로 이동 **/
 	@RequestMapping("shop/pay_list_go")
@@ -289,7 +309,7 @@ public class PayController {
 	@RequestMapping("shop/admin_paylist_go")
 	public String admin_paylist_go() {
 		
-		return "redirect:/shop/admin_paylist?page=1&find_field=item_name&find_name=";
+		return "redirect:/shop/admin_paylist?find_field=item_name&find_name=";
 	}//admin_paylist_go()
 	
 	@RequestMapping("shop/admin_paylist")
@@ -412,7 +432,7 @@ public class PayController {
 		//session 처리!(관리자)
 		String user_id = "pebble";
 		int pay_no = Integer.parseInt(request.getParameter("pay_no"));
-		int validity = 3;//발송처리여부
+		int validity = 3;//주문상태를 3(발송처리)으로 변경
 		
 		if(user_id.equals(null)) {
 			out.println("<script>");
