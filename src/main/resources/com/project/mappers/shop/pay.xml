@@ -24,6 +24,18 @@
 		select * from pay where user_id=#{user_id} order by pay_no desc
 	</select>
 	
+	<!-- 사용자 주문 내역에따른 상품명 검색(basket 장바구니 -> 결제 확인 이전) -->
+	<select id="getbasket_name" resultType="basket">
+		select 
+			LISTAGG(item_name,',') 
+			WITHIN GROUP (ORDER BY item_name) 
+			AS product_name
+		from shopList l, shopBasket b 
+		where 
+			l.item_no = b.product_no
+			and pay_no=#{pay_no}
+		order by b.basket_no desc
+	</select>
 	
 	
 	<!--  /////////////////// 관리자 영역 ///////////////// -->

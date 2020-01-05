@@ -37,6 +37,18 @@ nocache;
 update shopBasket set validity=2,pay_no= 
 (select pay_no from (select pay_no from pay order by pay_no desc) where rownum = 1)
 where basket_id='pebble' and validity=1;
+
+--상품명만 가져오기
+select 
+	LISTAGG(item_name,',') 
+	WITHIN GROUP (ORDER BY item_name) 
+	AS product_name
+from shopList l, shopBasket b 
+where 
+	l.item_no = b.product_no
+	and pay_no=15
+order by b.basket_no desc
+
 /*********** test ************/
 
 

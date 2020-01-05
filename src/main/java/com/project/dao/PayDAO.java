@@ -30,5 +30,7 @@ public interface PayDAO {
 
 	int sumMoney(int pay_no);
 
+	List<String> getProductName(int pay_no);
+
 
 }

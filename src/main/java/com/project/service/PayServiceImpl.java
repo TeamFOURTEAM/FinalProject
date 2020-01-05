@@ -69,5 +69,12 @@ public class PayServiceImpl implements PayService {
 		return this.payDAO.sumMoney(pay_no);
 	}//결제완료 장바구니 pay_ok의 가격 계산
 
+	@Override
+	public List<String> getProductName(int pay_no) {
+		return this.payDAO.getProductName(pay_no);
+	}//주문리스트에 해당하는 상품명 가져오기
+
+	
+
 
 }

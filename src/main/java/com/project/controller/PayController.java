@@ -1,6 +1,7 @@
 package com.project.controller;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -208,15 +209,22 @@ public class PayController {
 		}else {
 			List<PayVO> list = this.payService.list_pay(user_id);//주문 내역 목록
 			
-			
-//			if(validity == 1) {//주문 내역의 validity가 1일 때(결제확인전)
-//				
-//			}else if(validity == 2 || validity == 3) {
-//				
-//			}
+			/** 각 주문 목록에서 상품 하나의 상품명만 가져와서 출력하게끔 한다. **/
+			List<String> payNameList = new ArrayList<String>();
+			//p.getPay_no()
+			for(PayVO p : list) {
+				if(p.getValidity() == 1) {
+					payNameList.addAll(this.payService.getProductName(p.getPay_no()));
+					//장바구니의 상품명을 가져옴
+				}else if(p.getValidity() == 2 || p.getValidity() == 3){
+//					payNameList = this.payService.getProductName2(p.getPay_no());
+					//주문확정 pay_ok 상품명을 가져옴
+				}//if else if
+			}//for
 			
 			payList.addAttribute("user_id",user_id);//id값 전달
 			payList.addAttribute("list",list);
+			payList.addAttribute("payNameList",payNameList);//상품명값
 			payList.addAttribute("page",page);
 			
 			return "shop/pay_list";

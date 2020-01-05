@@ -70,6 +70,13 @@ public class PayDAOImpl implements PayDAO{
 	@Override
 	public int sumMoney(int pay_no) {
 		return this.sqlSession.selectOne("payok_sumMoney",pay_no);
-	}
+	}//결제 확인 pay_ok테이블의 장바구니 금액 합계
+
+	@Override
+	public List<String> getProductName(int pay_no) {
+		return this.sqlSession.selectList("getbasket_name", pay_no);
+	}//주문리스트에 해당하는 상품명 가져오기(장바구니)
+
+	
 
 }
