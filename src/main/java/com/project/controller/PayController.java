@@ -395,7 +395,20 @@ public class PayController {
 			if(endpage>startpage+6-1)
 				endpage=startpage+6-1;
 			
+			/** 각 주문 목록에서 상품 하나의 상품명만 가져와서 출력하게끔 한다. **/
+			List<String> payNameList = new ArrayList<String>();
+			List<String> payNameList2 = new ArrayList<String>();
+
+			for(PayVO p : payList) {
+				payNameList.addAll(this.payService.getProductName(p.getPay_no()));
+				//장바구니의 상품명을 가져옴
+				payNameList2.addAll(this.payService.getProductName2(p.getPay_no()));
+				//주문확정 pay_ok 상품명을 가져옴
+			}//for
+			
 			m.addAttribute("payList",payList);
+			m.addAttribute("payNameList",payNameList);//상품명값
+			m.addAttribute("payNameList2",payNameList2);//상품명값(2,3)
 			m.addAttribute("page",page);
 			m.addAttribute("startpage",startpage);
 			m.addAttribute("endpage",endpage);

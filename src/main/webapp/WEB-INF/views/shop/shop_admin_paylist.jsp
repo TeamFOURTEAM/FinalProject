@@ -19,9 +19,9 @@
 <body>
 	<div class="container">
 		<div class="basket_title">
-			<span>관리자 주문 내역 관리</span>
+			<span class="admin_title">관리자 주문 내역 관리</span>
 			<div class="searchResult">
-	            <span>"<c:if test="${find_name == ''}">전체</c:if>${find_name}"</span>
+	            <span class="admin_subtitle_sub">"<c:if test="${find_name == ''}">전체</c:if>${find_name}"</span>
 	            에 대한 <span>"${totalcount}"</span> 개의 검색 결과가 있습니다.
             </div>
 		</div>
@@ -52,7 +52,7 @@
                		
                		<%-- 구매 내역이 있을 때 --%>
                		<c:otherwise>
-               			<c:forEach var="p" items="${payList}">
+               			<c:forEach var="p" items="${payList}" varStatus="status">
 							<div class="basket_body">
 		                    	<div class="column table_no">
 		                   			${p.pay_no}
@@ -61,7 +61,14 @@
 		                    		${p.user_id}
 		                    	</div>
 		                    	<div class="column table_title">
-		                   			<a href="pay_item_list_go?pay_no=${p.pay_no}&validity=${p.validity}">상품명(임시)</a>
+		                   			<c:if test="${p.validity == 1}">
+		                    			<a href="pay_item_list_go?pay_no=${p.pay_no}&validity=${p.validity}">
+		                   				${payNameList[status.index].product_name}</a>
+		                    		</c:if>
+		                    		<c:if test="${p.validity == 2 || p.validity == 3}">
+			                   			<a href="pay_item_list_go?pay_no=${p.pay_no}&validity=${p.validity}">
+			                   			${payNameList2[status.index].product_name}</a>
+		                    		</c:if>
 		                    	</div>
 		                    	<div class="column table_price">
 		                    		\ <fmt:formatNumber pattern="###,###,###" value="${p.pay_price}" />
