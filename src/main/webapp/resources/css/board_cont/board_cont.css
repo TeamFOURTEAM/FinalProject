@@ -41,6 +41,10 @@
     font-size: 15px;
 }
 
+.cont img{
+    width: 500px;
+}
+
 .reply_wrap{
     position: relative;
 }
@@ -86,6 +90,8 @@
     height: 64%;
 }
 
+
+
 .reply_div{
     padding: 50px 0px;
     margin: 0 auto;
@@ -122,6 +128,8 @@ a:hover{
     margin-top: 50px;
     font-size: 20px;
 }
+
+
 
 
 

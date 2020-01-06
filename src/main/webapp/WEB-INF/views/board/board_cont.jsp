@@ -14,11 +14,6 @@
 
     <script type="text/javascript" src="/resources/js/board_cont/board_cont.js"></script>
 
-    <style>
-        img{
-            width: 500px;
-        }
-    </style>
     <title>게시판 내용</title>
 </head>
 <body>
