@@ -18,7 +18,9 @@
 }
 
 .wrap .title{
-    font-size: 32px;
+    background-color: #fcfcfc;
+    padding-top: 12px;
+    font-size: 22px;
 }
 
 .wrap .id{
@@ -45,6 +47,23 @@
     width: 500px;
 }
 
+.controller{
+    width: 100px;
+    margin-left: 593px;
+    height: 25px;
+}
+
+.controller a{
+    background-color: white;
+    border: 1px solid black;
+}
+
+.controller a:hover{
+    background-color: black;
+    color: white;
+    text-decoration: none;
+}
+
 .reply_wrap{
     position: relative;
 }
@@ -60,16 +79,17 @@
     border: 1px solid;
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 240px;
     margin-top: 11px;
     /*background: grey;*/
 
 }
 
 .rep{
+    background-color: #fcfcfc;
     width: 100%;
     height: 50px;
-    border-bottom:1px solid;
+    border-bottom:1px solid #ccc;
 }
 
 .rep h4{
@@ -87,7 +107,22 @@
     background-color: white;
     margin: 0  auto;
     width: 97%;
-    height: 64%;
+    height: 59%;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+.reply_input a{
+    width: 50px;
+    margin-left: 5px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.reply_input a:hover{
+    background-color: black;
+    color: white;
+    text-decoration: none;
 }
 
 

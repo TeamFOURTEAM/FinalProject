@@ -26,6 +26,13 @@
             <div class="title">제목:${title}</div>
             <div class="id"><span class="left">아이디:${id}</span>&nbsp;<span class="right">날짜:${date}</span></div>
             <div class="cont">내용:${cont}</div>
+            <c:if test="${member_id==id}">
+                <div class="controller">
+                    <a href="user_board_list?page=${page}" >목록</a>
+                    <a href="user_board_list_del?back_end_list_no=${no}" onclick="return del_ok();">삭제</a>
+                    <a href="user_board_update?back_end_list_no=${no}" >수정</a>
+                </div>
+            </c:if>
         </div>
 
         <c:if test="${empty blist}">
@@ -39,8 +46,14 @@
                         <h5>${b.back_end_list_date}</h5>
                     </div>
                     <div class="reply_cont">
-                        ${b.back_end_list_cont}
+                            ${b.back_end_list_cont}
                     </div>
+                    <c:if test="${member_id==b.back_end_list_id}">
+                        <div class="reply_input">
+                            <a href="#" >수정</a>
+                            <a href="#" >삭제</a>
+                        </div>
+                    </c:if>
                 </div>
             </c:forEach>
         </c:if>
@@ -50,7 +63,7 @@
                 <div class="reply_wrap">
                     <h4>${member_id}</h4>
                     <input type="hidden" value="${member_id}" id="member_id">
-                    <textarea class="reply" id="reply" name="back_end_list_cont" placeholder="댓글 : " ></textarea>
+                    <textarea class="reply" id="reply" name="back_end_list_cont" placeholder="댓글 : " onkeyup="text_area_length();" ></textarea>
                     <input type="button" value="작성" onclick="return reply_ok();">
                     <input type="hidden" value="${no}" id="ref_no">
                 </div>
