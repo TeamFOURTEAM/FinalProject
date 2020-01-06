@@ -106,6 +106,14 @@ a#move_top_btn {
 	border-radius: 50%;	
 }
 
+a#store {
+	font-size: 30px;
+	position: fixed;
+	left: 2%;
+	bottom: 310px;
+	z-index: 999;
+}
+
 /* footer */
 .footer {text-align: center; padding: 30px 50px;}
 .footer li {position: relative; display: inline; padding: 0 7px 0 10px; white-space: nowrap;}

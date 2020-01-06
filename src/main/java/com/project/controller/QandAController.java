@@ -167,7 +167,8 @@ public class QandAController {//Q&A게시판
             out.println("alert('로그인 후 이용해주세요');");
             out.println("location='/login';");
             out.println("</script>");
-		}		
+		}
+		
 		return null;
 	}//QandA_cont
 	
