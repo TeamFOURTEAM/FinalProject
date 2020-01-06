@@ -4,6 +4,13 @@
 
 /** shop 관리자 글쓰기 유효성 검증 **/
 
+//shop 헤더 이미지 변경
+$(function (){
+    // .attr()은 속성값(property)을 설정할 수 있다.
+      $('#header').attr('style', 'background: url(/resources/img/shop/shop01.jpg); background-position:center; background-size:cover;');
+      
+  });
+
 /* 게시글 저장 */
 function shop_check(){
 	if($.trim($("#item_name").val())==""){

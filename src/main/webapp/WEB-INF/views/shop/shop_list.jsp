@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/css/shop/shop_list.css">
     <link rel="stylesheet" href="/css/main/font-awesome.css">
     
+    <script src="/js/shop/shop.js"></script>
+    
 	<div class="container">
         <form method="GET" action="total_shop">
         <%-- 검색 결과 수 --%>
