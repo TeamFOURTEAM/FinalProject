@@ -7,13 +7,12 @@ create table shopBasket(
 	,product_no number(38) not null --상품번호(shop테이블 참조)
 	,basket_count number(38) not null --담은 상품 개수
 	,validity number(38) default 1 
-	--장바구니에 담은 상품의 상태. 1 -> 담긴 상품 // 2 -> 결제완료 된 상품(구매 목록) // 3-> 판매 승인된 상품
+	--장바구니에 담은 상품의 상태. 1 -> 담긴 상품 // 2 -> 결제완료 된 상품(구매 목록) // 3-> 바로 구매하는 상품
 	,basket_page number(38) not null --해당상품의 페이지 값. 장바구니에서 해당상품클릭했을때 이동하기 위함.
 	,pay_no number(38) default 0 --주문 번호. 기본값은 0으로 장바구니에 담으면 0, 결제처리가 되면 바뀐다. 
 );
 
 select * from shopBasket order by basket_no desc;
-
 
 /** shopBasket 참조키 제약조건 생성 **/
 

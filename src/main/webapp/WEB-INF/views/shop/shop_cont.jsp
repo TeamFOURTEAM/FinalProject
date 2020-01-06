@@ -87,7 +87,7 @@
 	                    	<%-- 하나의 form에서 action을 2개로 나눔. 장바구니쪽은 ajax 처리  --%>
 		                    <button type="button" id="basket_button">장바구니에 담기</button>
 		                    <button id="buy_button" 
-		                    onclick="javascript: form.action='buy';">구매</button>
+		                    onclick="javascript: form.action='pay_direct_go';">구매</button>
 	                    </div>
 	                    <div class="basketAsk">
 	                    	<span>장바구니에 상품이 담겼습니다.</span>

@@ -90,7 +90,6 @@ public class BasketRestController {
 		
 	}//editBasket()
 	
-	/** 장바구니 상품 삭제 **/
 }
 
 
