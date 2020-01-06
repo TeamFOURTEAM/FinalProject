@@ -23,13 +23,24 @@ alter table pay_ok
 add constraint pay_no_confirm_fk
 foreign key (pay_no) references pay(pay_no) on delete cascade;
 
+--pay_ok테이블 컬럼 product_page명을 basket_page로 변경
+ALTER TABLE pay_ok RENAME COLUMN product_page TO basket_page;
+
 
 /**********************************/
-insert into pay_ok (payCom_no,payCom_id,product_no,basket_count,product_page)
+insert into pay_ok (payCom_no,payCom_id,product_no,basket_count,basket_page)
 select basket_no,basket_id,product_no,basket_count,basket_page from shopBasket 
 where pay_no=2;
 
-
+select 
+	LISTAGG(item_name,',') 
+	WITHIN GROUP (ORDER BY p.payCom_no desc) 
+	AS product_name
+from shopList l, pay_ok p 
+where 
+	l.item_no = p.product_no
+	and pay_no=15
+order by p.payCom_no desc
 
 
 /*************************/

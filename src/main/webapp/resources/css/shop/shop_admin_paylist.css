@@ -12,14 +12,14 @@
     border-bottom: 1px solid #000;
     font-size: 20px;
 }
-.basket_title span {
+.basket_title .admin_title {
 	font-size: 30px; display: inline-block;
-    margin-right: 10px;
+    margin: 0 10px 20px 0;
 }
 .basket_title .searchResult {
 	font-size: 20px;
 }
-.basket_title .searchResult span {
+.basket_title .searchResult .admin_subtitle_sub {
 	font-weight: bold;
 }
 
@@ -67,6 +67,13 @@
 }
 .basket_body .column.table_title {
 	font-size: 22px;
+}
+.basket_body .column.table_title a {
+	display:block;
+	overflow: hidden; 
+	text-overflow: ellipsis;
+	white-space: nowrap; 
+	width: 350px;
 }
 
 .basket_body .column.table_view {}

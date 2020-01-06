@@ -2,13 +2,14 @@ package com.project.service;
 
 import java.util.List;
 
+import com.project.vo.BasketVO;
 import com.project.vo.PayVO;
 import com.project.vo.PayokVO;
 import com.project.vo.ShopVO;
 
 public interface PayService {
 
-	void insertPay(PayVO pay,String user_id);
+	void insertPay(PayVO pay,BasketVO basket);
 
 	List<PayVO> list_pay(String user_id);
 
@@ -22,5 +23,11 @@ public interface PayService {
 
 	void sendConfirm(List<PayokVO> stockView,PayVO pay,ShopVO s);
 
+	int sumMoney(int pay_no);
 
+	List<String> getProductName(int pay_no);
+
+	List<String> getProductName2(int pay_no);
+
+	
 }
