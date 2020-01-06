@@ -64,10 +64,7 @@
         update MEMBERVO set USER_PWD=#{user_pwd} where USER_ID=#{user_id} and USER_NAME=#{user_name} and USER_PHONE=#{user_phone}
     </update>
 
-    <!--조회수증가-->
-    <update id="hit_up">
-        update NORMALBOARD set NORMAL_HIT=NORMAL_HIT+1 where NORMAL_NO=#{normal_no} and NORMAL_TITLE=#{normal_title} and NORMAL_ID=#{normal_id}
-    </update>
+
 
 </mapper>
 

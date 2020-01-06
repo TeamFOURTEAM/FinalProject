@@ -1,4 +1,4 @@
-<%--
+`<%--
   Created by IntelliJ IDEA.
   User: BlackJack21
   Date: 2020-01-01
@@ -64,13 +64,15 @@
                     </colgroup>
                     <tbody>
                     <tr>
-                        <td class="tb-right"><div class="com-name">${nl.normal_id}</div></td>
+
+                        <td class="tb-right"><div class="com-name">${nl.normal_id}  번호:${nl.normal_no}</div></td>
                         <td><div>${nl.normal_cont}</div></td>
                         <td class="tb-right">
                             <div class="bbs-link">
                         <span>${nl.normal_date}<br>
-                            <a href="#" onclick="comment_reply('1','0', '0', this);return false;" class="reply none">댓글</a>
-                            <a href="#" onclick="comment_password('1', 'delete', this, '0');return false;" class="delete">삭제</a>
+                            <c:if test="${nl.normal_id==user_id}">
+                                <a href="reply_del_ok?normal_id=${nl.normal_id}&normal_no=${nl.normal_no}&no=${n.normal_no}" class="delete">삭제</a>
+                            </c:if>
                         </span>
                             </div>
                         </td>
@@ -81,7 +83,7 @@
         </c:forEach>
     </c:if>
     <c:if test="${empty nlist}">
-        목록이없습니다
+        <div>목록이없습니다</div>
     </c:if>
     <form>
         <fieldset>
@@ -125,24 +127,30 @@
         </fieldset>
     </form>
     <div class="view-link">
-        <dl class="bbs-link con-link">
-            <dt></dt>
-            <dd>
-                <%--                <a href="#" class="none">수정</a>--%>
-                <%--                <a href="#">삭제</a>--%>
-                <%--                <a href="#">답변</a>--%>
-            </dd>
-        </dl>
         <dl class="bbs-link">
             <dt></dt>
+            <dl class="bbs-link con-link">
+                <dt></dt>
+                <dd>
+                    <c:if test="${n.normal_id==user_id}">
+                    <a href="board_cont_update?normal_no=${n.normal_no}" class="none">수정</a>
+                    <a class="write" href="normal_list_write_del_ok?normal_ref=${n.normal_no}" onclick="return del_ok();">삭제</a>
+                    </c:if>
+            </dl>
             <dd>
-                <a class="write" href="#">글쓰기</a>
-                <a href="normal_board_list">
-                    목록보기</a>
+                <c:if test="${n.normal_id==user_id}">
+                    <a class="write" href="normal_list_write">글쓰기</a>
+                    <a href="normal_board_list?page=${page}">목록보기</a>
+                </c:if>
+                <c:if test="${n.normal_id!=user_id}">
+                    <a href="normal_board_list?page=${page}">목록보기</a>
+                </c:if>
             </dd>
         </dl>
+
+
     </div>
 </div>
 </body>
 </html>
-<%@include file="../include/footer.jsp"%>
+<%@include file="../include/footer.jsp"%>`

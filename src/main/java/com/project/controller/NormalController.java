@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -86,6 +89,7 @@ public class NormalController {
         return "normal_board/normal_board";
     }
 
+    //글쓰기
     @RequestMapping("normal_list_write")
     public String normal_list_cont(HttpSession session,HttpServletResponse response) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
@@ -102,6 +106,7 @@ public class NormalController {
         return null;
     }
 
+    //게시글저장
     @RequestMapping("normal_list_write_ok")
     public String normal_list_write_ok(NormalBoardVO nbv, HttpServletResponse response) throws Exception{
         response.setContentType("text/html;charset=UTF-8");
@@ -125,52 +130,67 @@ public class NormalController {
         return null;
     }
 
+    //게시글 삭제
+    @RequestMapping("normal_list_write_del_ok")
+    public String normal_list_write_del_ok(HttpServletResponse response,NormalBoardVO nbv,HttpServletRequest request) throws IOException {
+        System.out.println(request.getParameter("normal_ref"));
 
+        PrintWriter out=response.getWriter();
+
+        nbv.setNormal_ref(Integer.parseInt(request.getParameter("normal_ref")));
+
+        int re=-1;
+
+        re=this.normalService.del_board(nbv);
+
+        if(re==1) {
+            out.println("<script>");
+            out.println("alert('게시글을 삭제 완료!');");
+            out.println("</script>");
+        }else {
+            out.println("<script>");
+            out.println("alert('게시글을 삭제 실패! 목록으로 돌아갑니다!');");
+            out.println("</script>");
+        }
+        return "redirect:/normal_board_list";
+    }
+
+    //내용
     @RequestMapping("normal_board_list_cont")
-    public String board_list_cont(Model m,NormalBoardVO nbv, HttpSession session, HttpServletResponse response,HttpServletRequest request) throws IOException {
+    public String board_list_cont(Model m, NormalBoardVO nbv, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
 
         String user_id=(String)session.getAttribute("user_id");
 
-//        int page=Integer.parseInt(request.getParameter("page"));
-//        System.out.println(page);
-////
-////        int normal_no,String normal_title,String normal_id
-////        nbv.setNormal_id(normal_id);
-////        nbv.setNormal_no(normal_no);
-////        nbv.setNormal_id(normal_title);
+        int page=1;
+
+        if(request.getParameter("page")!=null) {
+            page = Integer.parseInt(request.getParameter("page"));
+        }
+
+        if(request.getParameter("normal_no")!=null){
+            nbv.setNormal_no(Integer.parseInt(request.getParameter("normal_no")));
+        }
+
+
+        System.out.println(request.getParameter("normal_no")+"삭제후 전달될 번호값!");
+
+
         this.normalService.update_hit(nbv);
-//        this.normalService.
-//
-//        this.normalService.select_update(nbv);
-
-
-
         NormalBoardVO n=this.normalService.selectnormalboardcont(nbv);
         List<NormalBoardVO> nlist=this.normalService.getreplylist(nbv);
 
-        if (n==null) {
-            out.println("<script>");
-            out.println("alert('이 게시글은 삭제되거나 없는 게시글입니다!')");
-            out.println("history.back();");
-            out.println("</script>");
-
-        }else {
-            System.out.println("있는값");
-            System.out.println(n.getNormal_title() + "제목입니다");
-
-
-//            m.addAttribute("page",page);
+            m.addAttribute("page",page);
             m.addAttribute("nlist",nlist);
             m.addAttribute("user_id", user_id);
             m.addAttribute("n", n);
 
             return "normal_board/normal_board_cont";
-        }
-        return null;
+
     }
 
+    //댓글저장
     @RequestMapping("normal_board_list_cont_reply_ok")
     public String normal_board_list_cont_reply_ok(String id,String cont,int no,NormalBoardVO nbv,HttpSession session,HttpServletRequest request,HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -184,7 +204,7 @@ public class NormalController {
         int re=-1;
         re=this.normalService.normal_reply_ok(nbv);
 
-         if(re!=1){
+        if(re!=1){
             re=-1;
         }
 
@@ -193,5 +213,47 @@ public class NormalController {
         return null;
     }
 
+    //댓글삭제
+    @RequestMapping("reply_del_ok")
+    public String reply_del_ok(NormalBoardVO nbv, HttpServletRequest request, ServletResponse response, RedirectAttributes redirect)throws IOException{
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out=response.getWriter();
+
+        System.out.println(request.getParameter("normal_id"));
+        System.out.println(request.getParameter("normal_no"));
+
+        nbv.setNormal_id(request.getParameter("normal_id"));
+        nbv.setNormal_no(Integer.parseInt(request.getParameter("normal_no")));
+
+
+
+        int re=-1;
+
+        re=this.normalService.reply_del(nbv);
+
+        if(re==1){
+            re=1;
+
+        }
+
+        int no=Integer.parseInt(request.getParameter("no"));
+
+        redirect.addAttribute("normal_no",no);
+        return "redirect:/normal_board_list_cont";
+    }
+
+
+    //게시글수정
+    @RequestMapping("board_cont_update")
+    public String board_cont_update(NormalBoardVO nbv,HttpServletRequest request,RedirectAttributes redirect,HttpServletResponse response){
+        response.setContentType("text/html;charset=UTF-8");
+
+        nbv.setNormal_no(Integer.parseInt(request.getParameter("normal_no")));
+
+        this.normalService.delete_board(nbv);//여기서부터 시작하세요아시겠죠죵 집가서ㄱㄱㄱ
+
+        redirect.addAttribute("normal_no",request.getParameter("normal_no"));
+        return "redirect:/normal_board_cont";
+    }
 
 }
