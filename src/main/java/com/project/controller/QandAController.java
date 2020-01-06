@@ -131,7 +131,8 @@ public class QandAController {//Q&A게시판
 			HttpServletResponse response) throws Exception {
 		response.setContentType("text/html;charset=UTF-8");
 		
-		String user_id=(String)session.getAttribute("user_id");
+		String user_id=(String)session.getAttribute("user_id");		
+		
 		PrintWriter out=response.getWriter();
 		
 		if(state.equals("cont")) {
@@ -144,30 +145,41 @@ public class QandAController {//Q&A게시판
 		
 		String q_cont=q.getQ_cont();
 		int q_ref=q.getQ_ref();
+		String q_id=q.getQ_id();
 		ModelAndView cm=new ModelAndView();
 		cm.addObject("q", q);
 		cm.addObject("q_cont",q_cont);
 		cm.addObject("page", page);
 		cm.addObject("q_ref", q_ref);
 		cm.addObject("user_id", user_id);
+		cm.addObject("q_id", q_id);
 		
-		if(user_id != null) {		
-			if(state.equals("cont")) {//내용보기
-			cm.setViewName("/QandA/QandA_cont");
-			return cm;
-			}else if(state.equals("reply")) {//답변
-			cm.setViewName("/QandA/QandA_reply");
-			return cm;
-			}else if(state.equals("edit")) {//수정
-			cm.setViewName("/QandA/QandA_edit");
-			return cm;
-			}//if else if		
-		}else {
+		if(user_id != null) {//로그인을 했을 때
+			if(user_id.equals(q_id) || user_id.equals("admin")) {
+				//로그인한 아이디와 글쓴 아이디가 같거나 아이디가 "admin"일때 실행
+				if(state.equals("cont")) {//내용보기
+					cm.setViewName("/QandA/QandA_cont");
+					return cm;
+				}else if(state.equals("reply")) {//답변
+					cm.setViewName("/QandA/QandA_reply");
+					return cm;
+				}else if(state.equals("edit")) {//수정
+					cm.setViewName("/QandA/QandA_edit");
+					return cm;
+				}//if else if
+			}else {//로그인한 아이디와 글쓴 아이디와 아이디가 "admin"이 아닐때 실행
+				out.println("<script>");
+				out.println("alert('읽기 권한이 없습니다.');");
+				out.println("history.back();");
+				out.println("</script>");
+			}
+		}else {//로그인을 안했을때
 			out.println("<script>");
-            out.println("alert('로그인 후 이용해주세요');");
+            out.println("alert('로그인을 해주세요.');");
             out.println("location='/login';");
             out.println("</script>");
 		}
+		
 		
 		return null;
 	}//QandA_cont

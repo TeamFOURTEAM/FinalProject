@@ -42,7 +42,8 @@
 						<input type="hidden" name="q_no" value="${q.q_no}" />
    						<input type="hidden" name="page" value="${page}" />
    						
-   						<c:if test="${q.q_id == user_id}" >
+   						
+   						<c:if test="${q.q_id == user_id || user_id=='admin'}" >
    							<input type="button" value="수정" 
 							onclick="location='QandA_cont?q_no=${q.q_no}&page=${page }&state=edit';" />
 							

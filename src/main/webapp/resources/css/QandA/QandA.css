@@ -54,6 +54,12 @@ table {
 	height: 25px;
 }
 
+.qList_count {
+	padding-bottom: 10px;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: right;
+}
 
 #qList_t {
 	margin: 0 auto;
@@ -65,16 +71,10 @@ table {
 	left: 930px;
 }
 
-#qList_t .qList_count {
-	padding-bottom: 10px;
-	font-size: 20px;
-	font-weight: bold;
-}
-
 #qList_t th {
 	font-size: 20px;
 	padding: 10px;
-	background-color: #66bb6a;
+	background-color: #bdbdbd;
 }
 
 #qList_t .title_css {
@@ -87,12 +87,12 @@ table {
 }
 
 #qList_t tr:hover {
-	background-color: #c8e6c9;
+	background-color: #e0e0e0;
 }
 
 .OneLine {
 	display: inline-block;
-    width: 220px;
+    width: 210px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
