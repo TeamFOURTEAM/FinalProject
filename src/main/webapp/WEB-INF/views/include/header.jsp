@@ -87,4 +87,4 @@
 	
 	<a id="move_top_btn" href="#">TOP</a>
 	
-	<a id="store" href="/company"><img src="https://cdn.imweb.me/upload/S201807025b39d1981b0b0/b14a1347eb1ce.png"></a>
+	<a id="store" href="/company"><img class="company_img" src="https://cdn.imweb.me/upload/S201807025b39d1981b0b0/b14a1347eb1ce.png"></a>

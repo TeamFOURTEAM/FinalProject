@@ -118,9 +118,14 @@ a#move_top_btn {
 a#store {
 	font-size: 30px;
 	position: fixed;
-	left: 2%;
-	bottom: 270px;
+	left: 0;
+	bottom: 200px;
 	z-index: 999;
+}
+
+#store .company_img {
+	width: 150px;
+	height: 150px;
 }
 
 /* mypsge_hover  */

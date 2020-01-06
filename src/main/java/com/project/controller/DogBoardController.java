@@ -325,7 +325,7 @@ public class DogBoardController {
 			HttpServletRequest request) {
 		
 		int page=1;
-		int limit=12;//한페이지에 보여지는 목록 개수
+		int limit=8;//한페이지에 보여지는 목록 개수
 		
 		if(request.getParameter("page") != null) {
 			page=Integer.parseInt(request.getParameter("page"));
@@ -339,7 +339,7 @@ public class DogBoardController {
 		
 		int totalCount=this.dogService.getListCount_shih(d_shih);
 		//검색전후 레코드 개수
-		d_shih.setStartrow((page-1)*12+1);//시작행 번호
+		d_shih.setStartrow((page-1)*8+1);//시작행 번호
 		d_shih.setEndrow(d_shih.getStartrow()+limit-1);//끝행 번호
 		
 		List<DogVO> dlist=this.dogService.getDogList_shih(d_shih);
@@ -349,13 +349,13 @@ public class DogBoardController {
 		int maxpage=(int)((double)totalCount/limit+0.95);
 		
 		//시작 페이지 수
-		int startpage=(((int)((double)page/10+0.9))-1)*12+1;
+		int startpage=(((int)((double)page/10+0.9))-1)*8+1;
 		
 		//마지막 페이지
 		int endpage=maxpage;
 		
-		if(endpage>startpage+12-1)
-			endpage=startpage+12-1;
+		if(endpage>startpage+8-1)
+			endpage=startpage+8-1;
 		
 		listM.addAttribute("dlist", dlist);
 		listM.addAttribute("page", page);
@@ -378,7 +378,7 @@ public class DogBoardController {
 			HttpServletRequest request) {
 		
 		int page=1;
-		int limit=12;//한페이지에 보여지는 목록 개수
+		int limit=8;//한페이지에 보여지는 목록 개수
 		
 		if(request.getParameter("page") != null) {
 			page=Integer.parseInt(request.getParameter("page"));
@@ -392,7 +392,7 @@ public class DogBoardController {
 		
 		int totalCount=this.dogService.getListCount_mal(d_mal);
 		//검색전후 레코드 개수
-		d_mal.setStartrow((page-1)*12+1);//시작행 번호
+		d_mal.setStartrow((page-1)*8+1);//시작행 번호
 		d_mal.setEndrow(d_mal.getStartrow()+limit-1);//끝행 번호
 		
 		List<DogVO> dlist=this.dogService.getDogList_mal(d_mal);
@@ -402,13 +402,13 @@ public class DogBoardController {
 		int maxpage=(int)((double)totalCount/limit+0.95);
 		
 		//시작 페이지 수
-		int startpage=(((int)((double)page/10+0.9))-1)*12+1;
+		int startpage=(((int)((double)page/10+0.9))-1)*8+1;
 		
 		//마지막 페이지
 		int endpage=maxpage;
 		
-		if(endpage>startpage+12-1)
-			endpage=startpage+12-1;
+		if(endpage>startpage+8-1)
+			endpage=startpage+8-1;
 		
 		listM.addAttribute("dlist", dlist);
 		listM.addAttribute("page", page);
@@ -431,7 +431,7 @@ public class DogBoardController {
 			HttpServletRequest request) {
 		
 		int page=1;
-		int limit=12;//한페이지에 보여지는 목록 개수
+		int limit=8;//한페이지에 보여지는 목록 개수
 		
 		if(request.getParameter("page") != null) {
 			page=Integer.parseInt(request.getParameter("page"));
@@ -446,7 +446,7 @@ public class DogBoardController {
 		int totalCount=this.dogService.getListCount_poodle(d_poodle);
 		
 		//검색전후 레코드 개수
-		d_poodle.setStartrow((page-1)*12+1);//시작행 번호
+		d_poodle.setStartrow((page-1)*8+1);//시작행 번호
 		d_poodle.setEndrow(d_poodle.getStartrow()+limit-1);//끝행 번호
 		
 		List<DogVO> dlist=this.dogService.getDogList_poodle(d_poodle);
@@ -456,13 +456,13 @@ public class DogBoardController {
 		int maxpage=(int)((double)totalCount/limit+0.95);
 		
 		//시작 페이지 수
-		int startpage=(((int)((double)page/10+0.9))-1)*12+1;
+		int startpage=(((int)((double)page/10+0.9))-1)*8+1;
 		
 		//마지막 페이지
 		int endpage=maxpage;
 		
-		if(endpage>startpage+12-1)
-			endpage=startpage+12-1;
+		if(endpage>startpage+8-1)
+			endpage=startpage+8-1;
 		
 		listM.addAttribute("dlist", dlist);
 		listM.addAttribute("page", page);
