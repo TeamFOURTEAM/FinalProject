@@ -4,7 +4,7 @@
 
 $(function() {
 	$(window).scroll(function() {
-		if ($(this).scrollTop() > 500) {
+		if ($(this).scrollTop() > 400) {
 			$('#move_top_btn').fadeIn();
 		} else {
 			$('#move_top_btn').fadeOut();
