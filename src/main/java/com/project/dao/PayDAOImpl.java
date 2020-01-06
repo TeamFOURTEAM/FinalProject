@@ -6,7 +6,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.vo.BasketVO;
 import com.project.vo.PayVO;
+import com.project.vo.PayokVO;
+import com.project.vo.ShopVO;
 
 @Repository
 public class PayDAOImpl implements PayDAO{
@@ -21,8 +24,8 @@ public class PayDAOImpl implements PayDAO{
 	}//주문목록에 추가
 
 	@Override
-	public void updateBasket(String user_id) {
-		this.sqlSession.update("bs_update",user_id);
+	public void updateBasket(BasketVO basket) {
+		this.sqlSession.update("bs_update",basket);
 	}//장바구니 컬럼 업데이트(유효성+주문값)
 
 	@Override
@@ -41,13 +44,45 @@ public class PayDAOImpl implements PayDAO{
 	}//관리자 주문 내역 목록
 
 	@Override
-	public void updatePay(int pay_no) {
-		this.sqlSession.update("pay_update",pay_no);
+	public void updatePay(PayVO pay) {
+		this.sqlSession.update("pay_update",pay);
 	}//주문 내역 validity 업데이트
 
 	@Override
-	public void copyBasket(int pay_no) {
-		this.sqlSession.insert("payok_copy",pay_no);
+	public void copyBasket(PayVO pay) {
+		this.sqlSession.insert("payok_copy",pay);
 	}//장바구니 validity=2인 정보를 복사
+
+	@Override
+	public void cleanBasket(PayVO pay) {
+		this.sqlSession.delete("bs_clean",pay);
+	}//기존 장바구니 비우기
+
+	@Override
+	public List<PayokVO> stockView(int pay_no) {
+		return this.sqlSession.selectList("payok_list",pay_no);
+	}//pay_ok 테이블에 담긴 상품 목록
 	
+	@Override
+	public void updateStock(ShopVO s) {
+		this.sqlSession.update("stock_change",s);
+	}//상품 재고 변경
+
+	@Override
+	public int sumMoney(int pay_no) {
+		return this.sqlSession.selectOne("payok_sumMoney",pay_no);
+	}//결제 확인 pay_ok테이블의 장바구니 금액 합계
+
+	@Override
+	public List<String> getProductName(int pay_no) {
+		return this.sqlSession.selectList("getbasket_name", pay_no);
+	}//주문리스트에 해당하는 상품명 가져오기(장바구니)
+
+	@Override
+	public List<String> getProductName2(int pay_no) {
+		return this.sqlSession.selectList("getbasket_name2", pay_no);
+	}//주문리스트에 해당하는 상품명 가져오기(pay_ok)
+
+	
+
 }

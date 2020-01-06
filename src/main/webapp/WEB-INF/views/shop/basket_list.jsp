@@ -118,10 +118,6 @@
     		//var select = document.getElementsByName("basket_count");
     		//var selectedCount = parseInt(select.options[select.selectedIndex].value);
     		
-    		//console.log(productNo);
-    		//console.log(parseInt(basket_count));
-    		//alert(parseInt(stockCount));
-    		
     		var basket_count = parseInt(basket_count);
     		var stockCount = parseInt(stockCount);
     		

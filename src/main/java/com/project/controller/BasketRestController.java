@@ -33,10 +33,12 @@ public class BasketRestController {
 		ResponseEntity<String> entity=null;
 	
 		try {
+			basket.setBasket_id(user_id);//세션의 아이디값을 vo 객체에 저장
+			basket.setValidity(1);
+			
 			//장바구니에 먼저 담은 상품이 있는지 검사
 			int count=
-					this.basketService.countBasket(basket.getProduct_no(),user_id);
-			basket.setBasket_id(user_id);//세션의 아이디값을 vo 객체에 저장
+					this.basketService.countBasket(basket);
 			
 			if(count == 0) {//없으면 추가
 				this.basketService.addBasket(basket);//장바구니에 상품 추가
@@ -90,7 +92,29 @@ public class BasketRestController {
 		
 	}//editBasket()
 	
-	/** 장바구니 상품 삭제 **/
+	/** 결제 단계 장바구니 비우기(페이지 나갔을 때) **/
+	@RequestMapping(value="/shop/basket_direct_del",method=RequestMethod.GET)
+	public ResponseEntity<String> basket_direct_del(
+			BasketVO basket) throws Exception {
+	
+		String user_id= "pebble";// 세션으로 수정해야함
+		
+		ResponseEntity<String> entity=null;	
+			try {
+				basket.setBasket_id(user_id);//세션의 아이디값을 vo 객체에 저장
+				this.basketService.directDel(basket);//페이지 나갈때
+				//validity = 3, 유저 아이디 인 경우 삭제
+				entity=new ResponseEntity<String>("SUCCESS",
+						HttpStatus.OK);
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+				entity=new ResponseEntity<String>(e.getMessage(),
+						HttpStatus.BAD_REQUEST);
+			}//try catch
+		return entity;
+	}//basket_direct_del()
+	
 }
 
 

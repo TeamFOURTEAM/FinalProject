@@ -42,10 +42,10 @@ public class BasketController {
 		 * 새로고침했을때 메서드가 계속해서 돌아버리는 문제점이 발생한다!
 		 * 주의 할것!
 		 * 
-		 * 장바구니 목록 리스트를 리다이렉트 해줄때, 장바구니 목록에 들어가는 두가지 변수
-		 * 유저아이디와 page 변수를 똑같이 보내줘야 한다. 장바구니 목록에서 이 두개의 변수를
+		 * 장바구니 목록 리스트를 리다이렉트 해줄때, 장바구니 목록에 들어가는  변수 
+		 * page를 똑같이 보내줘야 한다. 장바구니 목록에서 이 변수를
 		 * 담아서 리스트를 출력하고 있기 때문. 그러기위해서 변수를 받아와서
-		 * 리다이렉트 할때 변수를 보내주게끔 함.(나중에 아이디는 뺀다. 세션으로 처리할것이기 때문)
+		 * 리다이렉트 할때 변수를 보내주게끔 함. 
 		 */
 		
 		return "redirect:/shop/basket_list";
@@ -67,7 +67,7 @@ public class BasketController {
 		response.setContentType("text/html;chrset=UTF-8");
 		PrintWriter out=response.getWriter();
 		
-		String user_id= "pebble";
+		String user_id= "pebble";//세션값으로 변경
 	
 		if(user_id.equals(null)) {//id 값이 없을 때(나중에 세션으로 처리)
 			out.println("<script>");
@@ -123,15 +123,14 @@ public class BasketController {
 			out.println("</script>");
 			
 		}else {
-			String basket_id = user_id;
-			basket.setBasket_no(basket_no); basket.setBasket_id(basket_id);
+			basket.setBasket_no(basket_no); basket.setBasket_id(user_id);
 			
 			this.basketService.delBasket(basket);//폼 액션 매핑된 장바구니 번호값을 가져와서
 			//원하는 장바구니상품 한개만을 삭제
 			
 			int page = Integer.parseInt(request.getParameter("page"));
 			
-			redirectAttributes.addAttribute("basket_id",basket_id);
+			redirectAttributes.addAttribute("basket_id",user_id);
 			redirectAttributes.addAttribute("page",page);
 			
 			return "redirect:/shop/basket_list";
