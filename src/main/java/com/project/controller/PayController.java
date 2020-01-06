@@ -550,56 +550,7 @@ public class PayController {
 		return "redirect:/shop/pay_page";
 	}//pay_direct_go()
 	
-//	@RequestMapping("shop/pay_direct")
-//	public String pay_direct(
-//			BasketVO basket,
-//			HttpServletRequest request,
-//			HttpServletResponse response,
-//			Model basketList) throws Exception {
-//		
-//		int page=1;
-//		if(request.getParameter("page") != null) {
-//			page=Integer.parseInt(request.getParameter("page"));
-//		}//page 값 받아옴
-//		
-//		response.setContentType("text/html;charset=UTF-8");
-//		PrintWriter out=response.getWriter();
-//		
-//		//session 처리!
-//		String user_id = "pebble";
-//		
-//		if(user_id.equals(null)) {
-//			out.println("<script>");
-//			out.println("alert('로그인 하신 후 이용해주세요.');");
-//			out.println("location='admin_login';");
-//			out.println("</script>");
-//			
-//		}else {
-//			Map<String,Object> map=new HashMap<String, Object>();
-//			basket.setBasket_id(user_id); basket.setValidity(3);//다이렉트 구매 장바구니 validity값
-//			basket.setPay_no(0);
-//			List<BasketVO> list=this.basketService.listBasket(basket);//결제 페이지의 상품 정보
-//			//만약 유저정보도 뽑아올거면 여기서 메서드 돌리기 -> 회원아이디로 회원정보에서 이름 전번 이메일
-//			
-//			int sumMoney=this.basketService.sumMoney(basket);//결제 페이지의 상품 전체 금액 호출
-//			/* 장바구니 전체 금액에 따라 배송비 구분 */
-//			//배송료(10만원 이상 -> 무료, 미만 -> 2500원)
-//			int fee = sumMoney >= 100000 ? 0 : 2500;
-//			
-//			map.put("list",list); //장바구니 정보
-//			map.put("count",list.size());//장바구니 상품 유무
-//			map.put("sumMoney",sumMoney);//장바구니 합계 금액
-//			map.put("fee",fee);//배송비
-//			map.put("allSum",sumMoney+fee);//주문 총 합계 금액(상품 + 배송비)
-//			map.put("page",page);//페이지값전달
-//			
-//			basketList.addAttribute("map",map);
-//			
-//			
-//		}//if else
-//		
-//		return null;
-//	}//pay_direct()
+
 }
 
 
