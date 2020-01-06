@@ -73,7 +73,7 @@
 	overflow: hidden; 
 	text-overflow: ellipsis;
 	white-space: nowrap; 
-	width: 350px;
+	width: 320px;
 }
 
 .basket_body .column.table_view {}
