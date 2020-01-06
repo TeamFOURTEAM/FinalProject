@@ -4,7 +4,7 @@ body { }
 
 /* header */
 .header {height: 300px; width: 95%;} 
-.header .header_menu {text-align: right; }                         
+.header .header_menu {text-align: right; position: relative; }                         
 .header .header_menu a {color: #fff; 
     /* 패딩값을 먹게 하려면 인라인요소로 블록구조 */
     padding: 8px 0 6px 10px; display: inline-block; 
@@ -55,6 +55,7 @@ margin-top: 80px;}
 .title .category>li:hover .sub_category{
     display: block;
     z-index: 1000;
+    
 }
 .title .category>li a{
     display: block;
@@ -63,6 +64,7 @@ margin-top: 80px;}
 .title .category>li a:hover{
     color: #2698cb;
     z-index: 1000;
+    transition: all 0.5s ease-in-out;
 }
 /* 플로팅 메뉴를 위한 fixed클래스 */
 .fixed{
@@ -75,6 +77,7 @@ margin-top: 80px;}
 /* sub_category */
 .title .category .sub_category{
     position: absolute;
+    opacity: 0.9;
     top: 50px;
     left: -1.5px;
     width: 100%;
@@ -110,8 +113,27 @@ a#store {
 	font-size: 30px;
 	position: fixed;
 	left: 2%;
-	bottom: 310px;
+	bottom: 270px;
 	z-index: 999;
+}
+
+/* mypsge_hover  */
+#mypage_hover{
+	position: absolute;
+	right: 114px;
+	opacity: 0.7;
+	display: none;
+}
+#mypage_hover:hover {
+	display: block;
+}
+#mypage_cont:hover ~ div{
+	display: block;
+}
+
+#mypage_cont {
+	margin: 0 auto;
+    width: 45px;
 }
 
 /* footer */

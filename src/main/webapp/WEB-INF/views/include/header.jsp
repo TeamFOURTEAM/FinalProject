@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>Cats&Dogs</title>
 <!-- style -->
 <link rel="stylesheet" href="/css/reset.css">
 <link rel="stylesheet" href="/css/include/header.css">
+<link rel="stylesheet" href="<c:url value='/resources/css/font-awesome.css'/>">
 
 <!-- jquery -->
 <script src="/resources/js/jquery.js"></script>
@@ -20,7 +21,15 @@
 		
 			<div class="header">
 				<div class="header_menu">
-					<a href="/MyPage/MyPage_user">MyPage</a>
+					<a id="mypage_cont" href="/mypage">MyPage</a>
+						<div id="mypage_hover">
+							<p><a href="">회원정보</a></p>
+							<p><a href="">장바구니</a></p>
+							<p align="center"><a href="">구&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매</a></p>							
+						</div>
+					
+					
+					
 					<c:if test="${empty user_id}">
 					 <a href="/login">Login</a>
 					 </c:if>
@@ -76,6 +85,7 @@
 			</div>
 			
 	</article>
+	
 	
 	<a id="move_top_btn" href="#">TOP</a>
 	
