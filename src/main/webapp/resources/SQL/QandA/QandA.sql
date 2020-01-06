@@ -1,9 +1,8 @@
 --q_board 게시판 테이블 생성
 create table q_board(
 	q_no int primary key
-	,q_name varchar2(200) not null
+	,q_id varchar2(200) not null constraint memver_id_q references MEMBERVO
 	,q_title varchar2(200) not null --제목
-	,q_pwd varchar2(20) not null --비밀번호
 	,q_cont CLOB not null --내용
 	,q_hit int default 0 --조회수
 	,q_ref int --원본글과 답변글을 묶어주는 글그룹번호
@@ -13,9 +12,6 @@ create table q_board(
 );
 
 select * from q_board order by q_no desc;
-
---컬럼 삭제
-alter table q_board drop column q_pwd
 
 --QandA_no_seq 시퀀스 생성
 create sequence q_no_seq

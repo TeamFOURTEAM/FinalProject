@@ -4,7 +4,8 @@
 //강아지 분양 헤더 이미지 변경
 $(function (){
     // .attr()은 속성값(property)을 설정할 수 있다.
-      $('#header').attr('style', 'background: url(/resources/img/dog/light09.jpg);');
+    $('#header').attr('style', 'background: url(/resources/img/dog/dog_wallpaper.jpg); background-position:center; background-size:cover;');
+
   });
 
 //강아지 분양 게시판 삭제 관련

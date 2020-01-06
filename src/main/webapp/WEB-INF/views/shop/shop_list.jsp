@@ -1,24 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-    <meta name="viewport"
-        content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
-    <meta name="author" content="이재형">
-    <meta name="description" content="반려동물용품목록">
-    <title>반려동물용품목록</title>
+<%@ include file="../include/header.jsp"%>
 
     <!-- Style -->
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/shop/shop_list.css">
     <link rel="stylesheet" href="/css/main/font-awesome.css">
     
-</head>
-<body>
 	<div class="container">
         <form method="GET" action="total_shop">
         <%-- 검색 결과 수 --%>
@@ -253,5 +242,5 @@
             </form>
         <!--//검색 바 -->
     </div>
-</body>
-</html>
+
+<jsp:include page="../include/footer.jsp" />

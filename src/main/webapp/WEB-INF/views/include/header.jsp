@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>Cats&Dogs</title>
 <!-- style -->
 <link rel="stylesheet" href="/css/reset.css">
 <link rel="stylesheet" href="/css/include/header.css">
@@ -20,7 +20,14 @@
 		
 			<div class="header">
 				<div class="header_menu">
-					<a href="/MyPage/MyPage_user">MyPage</a>
+					<a id="mypage_cont" href="/mypage">MyPage</a>
+						<div id="mypage_hover">
+							<p><a href="">회원정보</a></p>
+							<p><a href="/shop/basket_list?page=${page}">장바구니</a></p>						
+						</div>
+					
+					
+					
 					<c:if test="${empty user_id}">
 					 <a href="/login">Login</a>
 					 </c:if>
@@ -31,7 +38,7 @@
 				</div>
 				<!-- //header_menu -->
 				<div class="header_title">
-					<a href="/">사이트 제목</a>
+					<a href="/"><img class="title" src="/img/title.png" /></a>
 				</div>
 				<!-- //header_title -->
 			</div>
@@ -63,13 +70,9 @@
 							<a href="/shop/total_shop?class=shop">SHOP</a>
 						</div>
 						<ul class="sub_category">
-							<li><a href="#">SHOP 1</a></li>
-							<li><a href="#">SHOP 2</a></li>
-							<li><a href="#">SHOP 3</a></li>
-							<li><a href="#">SHOP 4</a></li>
 						</ul></li>
 					<li><div>
-							<a href="service_center">고객센터</a>
+							<a href="/user_board_list?page=1">고객센터</a>
 						</div>
 						<ul class="sub_category">
 							<li><a href="/user_board_list?page=1">분양 게시판</a></li>
@@ -81,4 +84,7 @@
 			
 	</article>
 	
+	
 	<a id="move_top_btn" href="#">TOP</a>
+	
+	<a id="store" href="/company"><img src="https://cdn.imweb.me/upload/S201807025b39d1981b0b0/b14a1347eb1ce.png"></a>

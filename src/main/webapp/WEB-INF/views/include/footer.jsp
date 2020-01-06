@@ -22,7 +22,7 @@
                         </ul>
                         <address>
                             Copyright ©
-                            <a href="#"><strong>사이트 제목</strong></a>
+                            <a href="#"><strong>Cats&Dogs</strong></a>
                             All Rights Reserved.
                         </address>
                     </div>

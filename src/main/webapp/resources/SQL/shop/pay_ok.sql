@@ -6,6 +6,7 @@ create table pay_ok(
 	,product_no number(38) not null --상품번호
 	,basket_count number(38) not null --담은 상품 개수
 	,product_page number(38) not null --해당상품의 페이지 값. 장바구니에서 해당상품클릭했을때 이동하기 위함.
+	,pay_no number(38) not null --주문 번호
 );
 
 
@@ -17,13 +18,29 @@ start with 1
 increment by 1
 nocache;
 
+--pay의 주문번호를 참조
+alter table pay_ok
+add constraint pay_no_confirm_fk
+foreign key (pay_no) references pay(pay_no) on delete cascade;
+
+--pay_ok테이블 컬럼 product_page명을 basket_page로 변경
+ALTER TABLE pay_ok RENAME COLUMN product_page TO basket_page;
+
 
 /**********************************/
-insert into pay_ok (payCom_no,payCom_id,product_no,basket_count,product_page)
+insert into pay_ok (payCom_no,payCom_id,product_no,basket_count,basket_page)
 select basket_no,basket_id,product_no,basket_count,basket_page from shopBasket 
 where pay_no=2;
 
-
+select 
+	LISTAGG(item_name,',') 
+	WITHIN GROUP (ORDER BY p.payCom_no desc) 
+	AS product_name
+from shopList l, pay_ok p 
+where 
+	l.item_no = p.product_no
+	and pay_no=15
+order by p.payCom_no desc
 
 
 /*************************/

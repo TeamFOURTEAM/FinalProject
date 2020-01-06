@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>주문 상품 내역</title>
+<title>주문 상품 상세 내역</title>
 
 	<!-- Style -->
     <link rel="stylesheet" href="/css/reset.css">

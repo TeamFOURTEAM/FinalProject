@@ -22,8 +22,8 @@ public class BasketServiceImpl implements BasketService{
 
 	/** 장바구니 수량 확인 **/
 	@Override
-	public int countBasket(int product_no, String basket_id) {
-		return this.basketDAO.countBasket(product_no,basket_id);
+	public int countBasket(BasketVO basket) {
+		return this.basketDAO.countBasket(basket);
 	}
 
 	/** 장바구니 수량 변경 **/
@@ -54,6 +54,12 @@ public class BasketServiceImpl implements BasketService{
 	@Override
 	public void delBasket(BasketVO basket) {
 		this.basketDAO.delBasket(basket);
+	}
+
+	/** 장바구니 비우기(페이지나갈때) **/
+	@Override
+	public void directDel(BasketVO basket) {
+		this.basketDAO.directDel(basket);
 	}
 
 

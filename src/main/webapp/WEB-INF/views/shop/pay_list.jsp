@@ -41,13 +41,20 @@
                		
                		<%-- 구매 내역이 있을 때 --%>
                		<c:otherwise>
-               			<c:forEach var="p" items="${list}">
+               			<c:forEach var="p" items="${list}" varStatus="status">
 							<div class="basket_body">
 		                    	<div class="column table_no">
 		                   			${p.pay_no}
 		                    	</div>
 		                    	<div class="column table_title">
-		                   			<a href="pay_item_list_go?pay_no=${p.pay_no}&validity=${p.validity}">상품명(임시)</a>
+		                    		<c:if test="${p.validity == 1}">
+		                    			<a href="pay_item_list_go?pay_no=${p.pay_no}&validity=${p.validity}">
+		                   				${payNameList[status.index].product_name}</a>
+		                    		</c:if>
+		                    		<c:if test="${p.validity == 2 || p.validity == 3}">
+			                   			<a href="pay_item_list_go?pay_no=${p.pay_no}&validity=${p.validity}">
+			                   			${payNameList2[status.index].product_name}</a>
+		                    		</c:if>
 		                    	</div>
 		                    	<div class="column table_price">
 		                    		\ <fmt:formatNumber pattern="###,###,###" value="${p.pay_price}" />
@@ -58,6 +65,7 @@
 			                    <div class="column table_view">
 			                    	<c:if test="${p.validity == 1}">결제 확인 중</c:if>
 			                    	<c:if test="${p.validity == 2}">결제 확인</c:if>
+			                    	<c:if test="${p.validity == 3}">배송중</c:if>
 		                    	</div>
 		                    </div>
                     	</c:forEach>

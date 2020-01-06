@@ -22,11 +22,8 @@ public class BasketDAOImpl implements BasketDAO {
 	}//장바구니 추가
 
 	@Override
-	public int countBasket(int product_no, String basket_id) {
-		Map<String, Object> map=new HashMap<String, Object>();
-		map.put("product_no",product_no);
-		map.put("basket_id",basket_id);
-		return this.sqlSession.selectOne("basket_count",map);
+	public int countBasket(BasketVO basket) {
+		return this.sqlSession.selectOne("basket_count",basket);
 	}//장바구니 동일 상품 확인
 
 	@Override
@@ -54,5 +51,10 @@ public class BasketDAOImpl implements BasketDAO {
 	public void delBasket(BasketVO basket) {
 		this.sqlSession.delete("basket_del",basket);
 	}//장바구니 삭제
+
+	@Override
+	public void directDel(BasketVO basket) {
+		this.sqlSession.delete("direct_clean",basket);
+	}//장바구니 비우기(페이지 나갈 때)
 	
 }

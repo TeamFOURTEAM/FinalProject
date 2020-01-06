@@ -9,6 +9,8 @@ public class PayVO {
 	private String pay_date;//구매날짜
 	private int validity;//판매 승인 여부. 판매승인전 -> 1, 판매승인후 -> 2
 	
+	private String product_name;//상품명
+	
 	/** 페이징 변수 **/
 	private int startrow;//시작행 번호
 	private int endrow;//끝행 번호
@@ -48,6 +50,12 @@ public class PayVO {
 	}
 	public void setValidity(int validity) {
 		this.validity = validity;
+	}
+	public String getProduct_name() {
+		return product_name;
+	}
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
 	}
 	public int getStartrow() {
 		return startrow;
