@@ -48,6 +48,11 @@ where
 	and pay_no=17
 order by b.basket_no desc
 
+
+insert into shopBasket (basket_no,basket_id,product_no,basket_count,validity,basket_page) 
+		values(basket_no_seq.nextval,'pebble',19,
+		1,3,1)
+
 /*********** test ************/
 
 
@@ -55,7 +60,7 @@ order by b.basket_no desc
 drop table shopBasket;
 drop sequence basket_no_seq;
 delete from shopBasket;
-
+delete from shopBasket where basket_no = 45;
 
 
 

@@ -2,6 +2,7 @@ package com.project.dao;
 
 import java.util.List;
 
+import com.project.vo.BasketVO;
 import com.project.vo.PayVO;
 import com.project.vo.PayokVO;
 import com.project.vo.ShopVO;
@@ -10,7 +11,7 @@ public interface PayDAO {
 
 	void insertPay(PayVO pay);
 
-	void updateBasket(String user_id);
+	void updateBasket(BasketVO basket);
 
 	List<PayVO> list_pay(String user_id);
 

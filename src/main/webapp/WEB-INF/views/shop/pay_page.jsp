@@ -19,7 +19,7 @@
 			<span>주문 과정</span>
 		</div>
 		
-         	<form method="post" action="pay_page_ok">
+         	<form method="post" action="pay_page_ok" id="checkOut">
 		<div class="basket_list">
 			<!-- 주문 과정 목록 테이블 부분-->
                <div class="basket_table">
@@ -77,18 +77,32 @@
 			<div class="basket_buy">
 				<input type="hidden" name="pay_price" value="${map.allSum}" />
 				<input type="hidden" name="page" value="${map.page}" />
-				<button id="basketBuy_btn">결제</button>
+				<input type="hidden" name="validity" value="${map.validity}" />
+				<button type="button" id="basketBuy_btn">결제</button>
 				<button type="button" id="basketList_btn" onclick="history.back();">장바구니로 돌아가기</button>
 			</div>
 		</form>
     </div>
     
     <script>
+    	//페이지 나가는 이벤트 시에 다이렉트 구매 장바구니 비워주기
+    	//var checkUnload = true;
+    	var validity = ${map.validity};
+    	$(window).on("beforeunload", function(){
+    		//if(checkUnload) 
+    		$.ajax({//jQuery ajax
+    			type : 'post',
+    			url : '/shop/basket_direct_del',//매핑주소
+    			async : false, //동기화 설정(비동기화 사용안함)
+    		});
+    	});
+    	
     	$('#basketBuy_btn').on('click', function(){
     		var ask = confirm('결제 하시겠습니까?');
     		
     		if(ask) {
-    			
+    			checkUnload = false;
+    			$('#checkOut').submit();
     		}else {
     			return false;
     		}

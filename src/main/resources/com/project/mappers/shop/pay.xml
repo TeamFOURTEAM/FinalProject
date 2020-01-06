@@ -16,7 +16,7 @@
 		(select pay_no from 
 		(select pay_no from pay order by pay_no desc) 
 		where rownum = 1)
-		where basket_id=#{user_id} and validity=1
+		where basket_id=#{basket_id} and validity=#{validity}
 	</update>
 	
 	<!-- 사용자 주문 내역 검색 -->

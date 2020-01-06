@@ -39,6 +39,7 @@ public class PayController {
 		
 		int page = Integer.parseInt(request.getParameter("page"));
 		redirectAttributes.addAttribute("page",page);
+		redirectAttributes.addAttribute("vali",1);
 		
 		return "redirect:/shop/pay_page";
 	}//pay()
@@ -56,6 +57,7 @@ public class PayController {
 		if(request.getParameter("page") != null) {
 			page=Integer.parseInt(request.getParameter("page"));
 		}//page 값 받아옴
+		int vali = Integer.parseInt(request.getParameter("vali"));
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
@@ -71,8 +73,28 @@ public class PayController {
 			
 		}else {
 			Map<String,Object> map=new HashMap<String, Object>();
-			basket.setBasket_id(user_id); basket.setValidity(1);
+			basket.setBasket_id(user_id); 
 			basket.setPay_no(0);
+			
+			if(vali == 1) {
+				basket.setValidity(1);
+				
+			}else if(vali == 3) {
+				basket.setValidity(3); basket.setBasket_page(page);
+				//장바구니에 먼저 담은 상품이 있는지 검사
+				int count=
+						this.basketService.countBasket(basket);
+				
+				if(count == 0) {//없으면 추가
+					this.basketService.addBasket(basket);//장바구니에 상품 추가
+					
+				}else {//있으면 수정(update)
+					this.basketService.updateBasket(basket);//장바구니 상품 갱신
+					
+				}//if else
+				
+			}//if else if
+			
 			List<BasketVO> list=this.basketService.listBasket(basket);//결제 페이지의 상품 정보
 			//만약 유저정보도 뽑아올거면 여기서 메서드 돌리기 -> 회원아이디로 회원정보에서 이름 전번 이메일
 			
@@ -86,12 +108,14 @@ public class PayController {
 			map.put("sumMoney",sumMoney);//장바구니 합계 금액
 			map.put("fee",fee);//배송비
 			map.put("allSum",sumMoney+fee);//주문 총 합계 금액(상품 + 배송비)
+			map.put("validity",vali);//validity 값 전달
 			map.put("page",page);//페이지값전달
+			
 			
 			basketList.addAttribute("map",map);
 			
 			return "shop/pay_page";
-
+			
 		}//if else 
 		
 		return null;
@@ -101,6 +125,7 @@ public class PayController {
 	/** 결제하기(주문 목록 추가) **/
 	@RequestMapping("shop/pay_page_ok")
 	public String pay_page_ok(
+			PayVO pay,BasketVO basket,
 			HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
@@ -109,11 +134,14 @@ public class PayController {
 			page=Integer.parseInt(request.getParameter("page"));
 		}//page 값 받아옴
 		
+		int validity = Integer.parseInt(request.getParameter("validity"));
+		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
 		
 		//session 처리!
 		String user_id = "pebble";
+		String basket_id = "pebble";
 		
 		if(user_id.equals(null)) {
 			out.println("<script>");
@@ -124,11 +152,11 @@ public class PayController {
 		}else {
 			int pay_price=Integer.parseInt(request.getParameter("pay_price"));
 			//총 결제 금액
-			PayVO pay = new PayVO();
+			basket.setBasket_id(basket_id); basket.setValidity(validity);
 			pay.setUser_id(user_id); pay.setPay_price(pay_price);
 			//유저 아이디와 결제 금액 저장
 			
-			this.payService.insertPay(pay,user_id);//주문 내역 추가,장바구니 업데이트
+			this.payService.insertPay(pay,basket);//주문 내역 추가,장바구니 업데이트
 			//트랜잭션 적용
 			
 			return "redirect:/shop/pay_page_confirm?page="+page;
@@ -517,9 +545,9 @@ public class PayController {
 		redirectAttributes.addAttribute("page",page);
 		redirectAttributes.addAttribute("product_no",basket.getProduct_no());
 		redirectAttributes.addAttribute("basket_count",basket.getBasket_count());
-		redirectAttributes.addAttribute("validity",3);//3값 전달
+		redirectAttributes.addAttribute("vali",3);//3값 전달
 		
-		return "redirect:/shop/pay_direct";
+		return "redirect:/shop/pay_page";
 	}//pay_direct_go()
 	
 //	@RequestMapping("shop/pay_direct")

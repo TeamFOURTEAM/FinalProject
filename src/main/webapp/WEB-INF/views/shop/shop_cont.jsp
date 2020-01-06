@@ -166,7 +166,6 @@ $('#basket_button').on('click',function(){
 		success : function(data){//장바구니저장 성공시 
 			//SUCCESS 문자열 반환
 			if(data == 'SUCCESS') {
-				//alert('장바구니에 상품이 담겼습니다.');//지울 메시지(div로 대체)
 				$('.basketAsk').show();
 				setTimeout(function(){// 초 동안만 알림창을 유지
 					$('.basketAsk').hide();
@@ -174,6 +173,21 @@ $('#basket_button').on('click',function(){
 			}//if
 		}//function(data)
 	});
+});
+/* 바로 구매 버튼 눌렀을 때 */
+$('#buy_button').on('click',function(){
+	var select = document.getElementById("basket_count");//select값
+	var selectedCount = parseInt(select.options[select.selectedIndex].value);
+	//select 값 숫자로 변환. 선택한 상품수량
+	var stockCount = ${s.item_stockCount};//재고수량
+	
+	//재고수량 확인(재고보다 적으면 출력)
+	if(selectedCount > stockCount) {
+		alert('재고가 부족합니다. 보다 적은 수량을 선택해주세요.');
+		$("#basket_count").val("1").prop("selected", true);//select 영역 변경
+		buyPrice();//가격 계산 함수 재호출
+		return false;
+	}
 });
 
 /* 장바구니 알림창 닫기 */

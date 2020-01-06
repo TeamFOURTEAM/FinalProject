@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.project.dao.PayDAO;
+import com.project.vo.BasketVO;
 import com.project.vo.PayVO;
 import com.project.vo.PayokVO;
 import com.project.vo.ShopVO;
@@ -19,9 +20,9 @@ public class PayServiceImpl implements PayService {
 	
 	@Transactional
 	@Override
-	public void insertPay(PayVO pay,String user_id) {
+	public void insertPay(PayVO pay,BasketVO basket) {
 		this.payDAO.insertPay(pay);//주문내역 추가
-		this.payDAO.updateBasket(user_id);//장바구니 validity 업데이트
+		this.payDAO.updateBasket(basket);//장바구니 validity 업데이트
 	}//주문 내역 추가
 
 	@Override

@@ -8,7 +8,7 @@ public interface BasketService {
 
 	void addBasket(BasketVO basket);
 
-	int countBasket(int product_no, String basket_id);
+	int countBasket(BasketVO basket);
 
 	void updateBasket(BasketVO basket);
 
@@ -19,6 +19,8 @@ public interface BasketService {
 	void editBasket(BasketVO basket);
 
 	void delBasket(BasketVO basket);
+
+	void directDel(BasketVO basket);
 
 	
 

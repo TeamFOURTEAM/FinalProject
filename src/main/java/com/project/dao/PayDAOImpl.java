@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.vo.BasketVO;
 import com.project.vo.PayVO;
 import com.project.vo.PayokVO;
 import com.project.vo.ShopVO;
@@ -23,8 +24,8 @@ public class PayDAOImpl implements PayDAO{
 	}//주문목록에 추가
 
 	@Override
-	public void updateBasket(String user_id) {
-		this.sqlSession.update("bs_update",user_id);
+	public void updateBasket(BasketVO basket) {
+		this.sqlSession.update("bs_update",basket);
 	}//장바구니 컬럼 업데이트(유효성+주문값)
 
 	@Override
