@@ -24,4 +24,6 @@ public interface NormalServiceDAO {
     int reply_del(NormalBoardVO nbv);
 
     int del_board(NormalBoardVO nbv);
+
+    void update_board(NormalBoardVO nbv);
 }

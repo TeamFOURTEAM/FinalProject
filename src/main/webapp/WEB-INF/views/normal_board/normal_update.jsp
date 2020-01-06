@@ -22,18 +22,19 @@
     <div class="bbs-tit">
         <span class="braket">[</span><strong>일반게시판</strong><span class="braket">]</span>
     </div>
-    <form action="normal_list_write_ok" id="frm" method="post">
+    <form action="board_cont_update_ok" id="frm" method="post">
+        <input type="hidden" name="normal_no" value="${n.normal_no}">
         <input type="hidden" name="normal_id" value="${user_id}">
         <div class="normal_title">
-            <input type="text" placeholder="제 목" name="normal_title">
+            <input type="text" placeholder="제 목" name="normal_title" value="${n.normal_title}">
         </div>
         <div class="normal_cont">
-            <textarea rows="20" cols="123" id="normal_cont" name="normal_cont"></textarea>
+            <textarea rows="20" cols="123" id="normal_cont" name="normal_cont">${n.normal_cont}</textarea>
         </div>
 
         <div class="normal_button">
-            <input type="button" id="save" value="글쓰기">
-            <input type="reset" value="취 소" onclick="location='history.back();';">
+            <input type="button" id="save" value="수정">
+            <input type="reset" value="취 소" onclick="history.back();">
         </div>
     </form>
 </div>

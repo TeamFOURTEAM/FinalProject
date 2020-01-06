@@ -57,4 +57,9 @@ public class NormalServiceImpl implements NormalService {
     public int del_board(NormalBoardVO nbv) {
         return this.normalServiceDAO.del_board(nbv);
     }
+
+    @Override
+    public void update_board(NormalBoardVO nbv) {
+        this.normalServiceDAO.update_board(nbv);
+    }
 }

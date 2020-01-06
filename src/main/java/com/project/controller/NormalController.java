@@ -242,18 +242,46 @@ public class NormalController {
         return "redirect:/normal_board_list_cont";
     }
 
-
-    //게시글수정
+    //게시글 수정
     @RequestMapping("board_cont_update")
-    public String board_cont_update(NormalBoardVO nbv,HttpServletRequest request,RedirectAttributes redirect,HttpServletResponse response){
+    public String board_cont_update(HttpSession session,NormalBoardVO nbv,Model m,HttpServletResponse response) throws IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        String user_id=(String)session.getAttribute("user_id");
+        PrintWriter out = response.getWriter();
+
+        if(user_id!=null){
+            NormalBoardVO n=this.normalService.selectnormalboardcont(nbv);
+            m.addAttribute("n",n);
+            return "normal_board/normal_update";
+
+        }else{
+            out.println("<script>");
+            out.println("alert('세션만료 다시로그인 해주세요');");
+            out.println("location='normal_board_list';");
+            out.println("</script>");
+        }
+
+        return null;
+
+
+
+    }
+
+    //게시글수정완료
+    @RequestMapping("board_cont_update_ok")
+    public String board_cont_update(NormalBoardVO nbv,HttpServletRequest request,RedirectAttributes redirect,HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        nbv.setNormal_no(Integer.parseInt(request.getParameter("normal_no")));
+        PrintWriter out=response.getWriter();
 
-        this.normalService.delete_board(nbv);//여기서부터 시작하세요아시겠죠죵 집가서ㄱㄱㄱ
+        System.out.println(nbv.getNormal_no());
+        System.out.println(nbv.getNormal_title());
+        System.out.println(nbv.getNormal_cont());
 
-        redirect.addAttribute("normal_no",request.getParameter("normal_no"));
-        return "redirect:/normal_board_cont";
+            this.normalService.update_board(nbv);
+
+
+        return "redirect:/normal_board_list_cont?normal_no="+nbv.getNormal_no();
     }
 
 }

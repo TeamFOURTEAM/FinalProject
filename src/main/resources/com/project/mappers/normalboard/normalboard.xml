@@ -77,4 +77,8 @@
         update NORMALBOARD set NORMAL_HIT=NORMAL_HIT+1 where NORMAL_NO=#{normal_no}
     </update>
 
+    <update id="update_board_ok" parameterType="normal">
+        update NORMALBOARD set NORMAL_TITLE=#{normal_title} , NORMAL_CONT=#{normal_cont} where NORMAL_NO=#{normal_no} and NORMAL_STEP=0
+    </update>
+
 </mapper>
