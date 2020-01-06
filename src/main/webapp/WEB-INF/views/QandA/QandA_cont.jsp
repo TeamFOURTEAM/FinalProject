@@ -26,7 +26,7 @@
 						${q.q_title }
 					</div>
 					<div class="qname">
-						작성자 이름
+						작성자 : ${q.q_id }
 					</div>
 						${q_cont }
 				</div>
@@ -35,9 +35,6 @@
 					<input type="button" value="답변" 
 					onclick="location='QandA_cont?q_no=${q.q_no}&page=${page }&state=reply';" />
 					
-					<input type="button" value="수정" 
-					onclick="location='QandA_cont?q_no=${q.q_no}&page=${page }&state=edit';" />
-					
 					<input type="button" value="목록" 
 					onclick="location='/QandA/QandA_list?page=${page}';" />
 					
@@ -45,8 +42,13 @@
 						<input type="hidden" name="q_no" value="${q.q_no}" />
    						<input type="hidden" name="page" value="${page}" />
    						
-						<input type="submit" value="삭제" id="del"
-						onclick="location='QandA_list?q_no=${q.q_no}&page=${page};"/> 
+   						<c:if test="${q.q_id == user_id}" >
+   							<input type="button" value="수정" 
+							onclick="location='QandA_cont?q_no=${q.q_no}&page=${page }&state=edit';" />
+							
+							<input type="submit" value="삭제" id="del"
+							onclick="location='QandA_list?q_no=${q.q_no}&page=${page};"/>					 
+						</c:if>
 					</form>	
 				</div>
 				

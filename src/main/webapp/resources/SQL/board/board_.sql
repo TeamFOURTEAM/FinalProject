@@ -13,6 +13,8 @@ create table BOARD
     REF                 NUMBER
 );
 
+select * from board
+
 create sequence back_end_list_no_seq
 start with 1
 increment by 1

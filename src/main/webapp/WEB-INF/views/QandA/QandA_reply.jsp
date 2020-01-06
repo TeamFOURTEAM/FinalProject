@@ -61,18 +61,19 @@
 					<input type="hidden" name="q_level" value="${q.q_level }" />
 					<%--페이징 히든값 => 책갈피 기능 --%>
 					<input type="hidden" name="page" value="${page }" />
+					<input type="hidden" name="q_id" value="${user_id }" />
 					
 					<table id="QandA_write" >
 						<tr>
 							<td><input name="q_title" id="q_title" size="20" autocomplete="off" 
-									value="Re:${q.q_title }" readonly/> </td>
+									value="Re: ${q.q_title }" /> </td>
 						</tr>						
 						<tr>
-							<td><textarea name="q_cont" id="q_cont" cols="170" rows="30"></textarea></td>
+							<td><textarea name="q_cont" id="q_cont" cols="150" rows="30"></textarea></td>
 						</tr>
 						<tr>
 							<td align="left">
-								<input type="button" class="size" id="save" value="답변 저장" />
+								<input type="button" class="size" id="save" value="답변" />
 								<input type="button" class="size" value="취소" onclick="history.back();" />
 							</td>
 						</tr>

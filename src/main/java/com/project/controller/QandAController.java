@@ -1,9 +1,12 @@
 package com.project.controller;
 
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,15 +28,30 @@ public class QandAController {//Q&A게시판
 	/* 질문 게시판 글쓰기*/
 	@RequestMapping("/QandA/QandA_write")
 	public String QandA_write(
-			HttpServletRequest request, Model m){
+			HttpServletRequest request, Model m, HttpSession session,
+			HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+		
+		String user_id=(String)session.getAttribute("user_id");
+		PrintWriter out=response.getWriter();
 		
 		int page=1;
 		if(request.getParameter("page") != null) {
 			page=Integer.parseInt(request.getParameter("page"));
 		}
-		m.addAttribute("page", page);
 		
-		return "QandA/QandA_write";
+		if(user_id==null) {
+			out.println("<script>");
+            out.println("alert('로그인 후 이용해주세요');");
+            out.println("location='/login';");
+            out.println("</script>");
+		}else {
+			m.addAttribute("page", page);
+			m.addAttribute("user_id", user_id);
+			return "QandA/QandA_write";
+		}
+		
+		return null;
 	}//QandA_write
 	
 	/* QandA 게시판 저장 */
@@ -108,7 +126,13 @@ public class QandAController {//Q&A게시판
 	@RequestMapping("/QandA/QandA_cont")
 	public ModelAndView QandA_cont(
 			int q_no,int page,
-			String state,QandAVO q) {
+			String state,QandAVO q,
+			HttpSession session,
+			HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+		
+		String user_id=(String)session.getAttribute("user_id");
+		PrintWriter out=response.getWriter();
 		
 		if(state.equals("cont")) {
 			q=this.QandAService.getQandACont(q_no);
@@ -125,27 +149,44 @@ public class QandAController {//Q&A게시판
 		cm.addObject("q_cont",q_cont);
 		cm.addObject("page", page);
 		cm.addObject("q_ref", q_ref);
+		cm.addObject("user_id", user_id);
 		
-		if(state.equals("cont")) {//내용보기
+		if(user_id != null) {		
+			if(state.equals("cont")) {//내용보기
 			cm.setViewName("/QandA/QandA_cont");
-		}else if(state.equals("reply")) {//답변
+			return cm;
+			}else if(state.equals("reply")) {//답변
 			cm.setViewName("/QandA/QandA_reply");
-		}else if(state.equals("edit")) {//수정
+			return cm;
+			}else if(state.equals("edit")) {//수정
 			cm.setViewName("/QandA/QandA_edit");
-		}//if else if
-		return cm;
+			return cm;
+			}//if else if		
+		}else {
+			out.println("<script>");
+            out.println("alert('로그인 후 이용해주세요');");
+            out.println("location='/login';");
+            out.println("</script>");
+		}		
+		return null;
 	}//QandA_cont
 	
 	/* 답변저장 */
 	@RequestMapping("/QandA_reply_ok")
 	public String QandA_reply_ok(
 			@ModelAttribute QandAVO q,
-			@RequestParam("page") int page) {
+			Model m,
+			@RequestParam("page") int page,
+			HttpSession session) throws Exception {
+		
+		String user_id=(String)session.getAttribute("user_id");
+		
+		m.addAttribute("user_id", user_id);
 		
 		this.QandAService.replyQandA(q);
 		//답변저장+답변 레벨 증가 => 트랜잭션 적용 대상
-		
 		return "redirect:/QandA/QandA_list?page="+page;
+		
 	}//QandA_reply_ok
 	
 	/* 게시판 글 수정 */

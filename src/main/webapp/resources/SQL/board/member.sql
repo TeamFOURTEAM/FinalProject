@@ -12,5 +12,6 @@ create table MEMBERVO
 )
 
 insert into membervo values('dlrudgns90','1234','이경훈','5월','남','dlrudgns1004@gmail.com','010-8570-2108')
+insert into membervo values('lkh','1234','이경훈','5월','남','dlrudgns1004@gmail.com','010-8570-2108')
 
 select * from membervo

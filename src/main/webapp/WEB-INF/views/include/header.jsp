@@ -63,13 +63,9 @@
 							<a href="/shop/total_shop?class=shop">SHOP</a>
 						</div>
 						<ul class="sub_category">
-							<li><a href="#">SHOP 1</a></li>
-							<li><a href="#">SHOP 2</a></li>
-							<li><a href="#">SHOP 3</a></li>
-							<li><a href="#">SHOP 4</a></li>
 						</ul></li>
 					<li><div>
-							<a href="service_center">고객센터</a>
+							<a href="/user_board_list?page=1">고객센터</a>
 						</div>
 						<ul class="sub_category">
 							<li><a href="/user_board_list?page=1">분양 게시판</a></li>

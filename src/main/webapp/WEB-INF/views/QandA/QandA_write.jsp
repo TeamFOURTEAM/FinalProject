@@ -47,18 +47,16 @@
 <!-- 본문 내용 -->
 <main>
 <section id="contents">
-	<div class="container">
-		<section id="cont">
 			<article class="column col1">
 				<div class="main">
 					<form method="post" action="/QandA_write_ok" id="frm" onsubmit="return QandA_write_ok();">
-					
+					<input type="hidden" name="q_id" value="${user_id }" />
 					<table id="QandA_write" >
 						<tr>
 							<td><input name="q_title" id="q_title" size="20" autocomplete="off" placeholder="제목" /> </td>
 						</tr>						
 						<tr>
-							<td><textarea name="q_cont" id="q_cont" cols="170" rows="30"></textarea></td>
+							<td><textarea name="q_cont" id="q_cont" cols="150" rows="30"></textarea></td>
 						</tr>
 						<tr>
 							<td align="left">
@@ -72,8 +70,6 @@
 				</div>
 			</article>
 		</section>
-	</div>
-</section>
 <!-- contents --> 
 </main>
 

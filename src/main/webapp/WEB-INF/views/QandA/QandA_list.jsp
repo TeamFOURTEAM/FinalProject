@@ -9,9 +9,13 @@
 <!-- js -->
 <script src="/js/QandA/QandA.js"></script>
 
+<script>
+	
+</script>
+
 <!-- 본문 내용 -->
 <main>
-<form method="get" action="QandA_list">
+<form method="get" action="QandA_list" >
     <section id="contents">
         <div class="container">
             <section id="cont">
@@ -53,7 +57,7 @@
                                                 </c:if>
                                                 <a class="OneLine" href="QandA_cont?q_no=${q.q_no}&state=cont&page=${page}">${q.q_title}</a>
                                             </td>
-                                            <td align="center">작성자 아이디</td>
+                                            <td align="center">${q.q_id }</td>
                                             <td align="center">${q.q_date}</td>
                                             <td align="center">${q.q_hit}</td>
                                         </tr>

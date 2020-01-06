@@ -121,7 +121,11 @@
                                     </select>
                                     <input name="find_name" id="find_name" size="30" value="${find_name}" />
                                     <input type="submit" value="검색" />
+                                    
+                                    <c:set var="b" value="${user_id}"/>
+                                    <c:if test="${b=='admin'}">                                    
                                     <input type="button" class="cWrite" value="글쓰기" onclick="location='cat_write?class=cat'" />
+                                	</c:if>
                                 </div>
 
                             </div>

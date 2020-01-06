@@ -41,4 +41,18 @@ function QandA_write_ok() {
 		return false;
 	}		
 	alert("저장 되었습니다.");		
-};		
+};	
+
+//로그인 전 제목 클릭시 cont_check
+/*$(document).ready(function cont_check() {
+	$('#login_check').click(function() {
+		var result = alert('로그인을 해주세요');
+		
+		if(result) {
+			alert("삭제 되었습니다");
+		}else {
+			history.back();
+			return false;
+		}
+	});
+});*/

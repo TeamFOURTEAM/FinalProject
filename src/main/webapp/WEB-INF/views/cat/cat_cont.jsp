@@ -20,11 +20,14 @@
 				</div>
 				
 				<div id="cat_menu">
+					<input type="button" value="목록" 
+					onclick="location='/cat/total_cat?page=${page}';" />
+					
+					<c:set var="b" value="${user_id }" />
+					<c:if test="${b=='dlrudgns90' }">
 					<input type="button" value="수정" 
 					onclick="location='cat_cont?cat_no=${c.cat_no}&page=${page }&state=edit';" />
 					
-					<input type="button" value="목록" 
-					onclick="location='/cat/total_cat?page=${page}';" />
 					
 					<form method="get" action="/cat_del_ok" onsubmit="return del_check();">
 						<input type="hidden" name="cat_no" value="${c.cat_no}" />
@@ -33,7 +36,8 @@
    						
 						<input type="submit" value="삭제" id="del"
 						onclick="location='cat_cont?cat_no=${c.cat_no}&page=${page}&cat_img=${c.cat_file };"/> 
-					</form>	
+					</form>
+					</c:if>	
 				</div>
 				
 				

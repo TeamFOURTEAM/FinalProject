@@ -1,18 +1,13 @@
 package com.project.controller;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -120,7 +115,9 @@ public class CatBoardController {
 	@RequestMapping("/cat/total_cat")
 	public String total_cat(
 			Model listM,CatVO c,
-			HttpServletRequest request) {
+			HttpServletRequest request,HttpSession session) {
+		
+		String user_id=(String)session.getAttribute("user_id");
 		
 		int page=1;
 		int limit=12;//한페이지에 보여지는 목록 개수
@@ -163,6 +160,7 @@ public class CatBoardController {
 		listM.addAttribute("totalcount", totalCount);
 		listM.addAttribute("find_field", find_field);
 		listM.addAttribute("find_name", find_name);
+		listM.addAttribute("user_id", user_id);
 		
 
 		return "cat/total_cat";
@@ -172,16 +170,20 @@ public class CatBoardController {
 	@RequestMapping("/cat/cat_cont")
 	public ModelAndView cat_cont(
 			int cat_no, int page,
-			String state, CatVO c) {
+			String state, CatVO c,
+			HttpSession session) {
 		
 		c=this.catService.getCatCont(cat_no);
 		
 		String cat_cont=c.getCat_cont();
 		
+		String user_id=(String)session.getAttribute("user_id");
+		
 		ModelAndView cm=new ModelAndView();
 		cm.addObject("c", c);
 		cm.addObject("cat_cont", cat_cont);
 		cm.addObject("page", page);
+		cm.addObject("user_id", user_id);
 		
 		if(state.equals("cont")) {//내용보기
 			cm.setViewName("cat/cat_cont");
