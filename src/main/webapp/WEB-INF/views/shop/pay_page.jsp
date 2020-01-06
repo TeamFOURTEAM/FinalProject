@@ -86,22 +86,30 @@
     
     <script>
     	//페이지 나가는 이벤트 시에 다이렉트 구매 장바구니 비워주기
-    	//var checkUnload = true;
-    	var validity = ${map.validity};
+    	var checkUnload = false;
+    	
+    	function pageCleanUp() {
+			if(!checkUnload) {
+				$.ajax({//jQuery ajax
+	    			type : 'get',
+	    			url : '/shop/basket_direct_del',//매핑주소
+	    			async : false, //동기화 설정(비동기화 사용안함)
+					success : function(){
+						checkUnload = true;
+					}
+	    		});
+			}
+		}
+    	
     	$(window).on("beforeunload", function(){
-    		//if(checkUnload) 
-    		$.ajax({//jQuery ajax
-    			type : 'post',
-    			url : '/shop/basket_direct_del',//매핑주소
-    			async : false, //동기화 설정(비동기화 사용안함)
-    		});
+    		pageCleanUp();
     	});
     	
     	$('#basketBuy_btn').on('click', function(){
     		var ask = confirm('결제 하시겠습니까?');
     		
     		if(ask) {
-    			checkUnload = false;
+    			checkUnload = true;
     			$('#checkOut').submit();
     		}else {
     			return false;

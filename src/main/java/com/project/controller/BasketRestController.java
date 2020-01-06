@@ -93,7 +93,7 @@ public class BasketRestController {
 	}//editBasket()
 	
 	/** 결제 단계 장바구니 비우기(페이지 나갔을 때) **/
-	@RequestMapping(value="/shop/basket_direct_del",method=RequestMethod.POST)
+	@RequestMapping(value="/shop/basket_direct_del",method=RequestMethod.GET)
 	public ResponseEntity<String> basket_direct_del(
 			BasketVO basket) throws Exception {
 	
