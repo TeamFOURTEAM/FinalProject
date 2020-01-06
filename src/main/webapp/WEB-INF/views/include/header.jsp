@@ -8,7 +8,6 @@
 <!-- style -->
 <link rel="stylesheet" href="/css/reset.css">
 <link rel="stylesheet" href="/css/include/header.css">
-<link rel="stylesheet" href="<c:url value='/resources/css/font-awesome.css'/>">
 
 <!-- jquery -->
 <script src="/resources/js/jquery.js"></script>
