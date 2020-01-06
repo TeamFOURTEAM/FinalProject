@@ -381,7 +381,7 @@ public class PayController {
 		
 		//session 처리!(관리자)
 		String user_id = "admin";//관리자 아이디로 변경
-		
+		System.out.println();
 		if(!(user_id.equals("admin"))) {
 			out.println("<script>");
 			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
