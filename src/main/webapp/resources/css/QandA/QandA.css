@@ -86,7 +86,7 @@ table {
 	padding: 10px;
 }
 
-#qList_t tr:nth-child(2n) {
+#qList_t tr:hover {
 	background-color: #c8e6c9;
 }
 

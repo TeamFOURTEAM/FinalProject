@@ -134,7 +134,7 @@ public class CatBoardController {
 		
 		int totalCount=this.catService.getListCount(c);
 		//검색전후 레코드 개수
-		c.setStartrow((page-1)*12+1);//시작행 번호
+		c.setStartrow((page-1)*8+1);//시작행 번호
 		c.setEndrow(c.getStartrow()+limit-1);//끝행 번호
 		
 		List<CatVO> clist=this.catService.getCatList(c);
@@ -335,7 +335,7 @@ public class CatBoardController {
 			HttpServletRequest request) {
 		
 		int page=1;
-		int limit=12;//한페이지에 보여지는 목록 개수
+		int limit=8;//한페이지에 보여지는 목록 개수
 		
 		if(request.getParameter("page") != null) {
 			page=Integer.parseInt(request.getParameter("page"));
@@ -349,7 +349,7 @@ public class CatBoardController {
 		
 		int totalCount=this.catService.getListCount_mun(c_mun);
 		//검색전후 레코드 개수
-		c_mun.setStartrow((page-1)*12+1);//시작행 번호
+		c_mun.setStartrow((page-1)*8+1);//시작행 번호
 		c_mun.setEndrow(c_mun.getStartrow()+limit-1);//끝행 번호
 		
 		List<CatVO> clist=this.catService.getCatList_mun(c_mun);
@@ -359,13 +359,13 @@ public class CatBoardController {
 		int maxpage=(int)((double)totalCount/limit+0.95);
 		
 		//시작 페이지 수
-		int startpage=(((int)((double)page/10+0.9))-1)*12+1;
+		int startpage=(((int)((double)page/10+0.9))-1)*8+1;
 		
 		//마지막 페이지
 		int endpage=maxpage;
 		
-		if(endpage>startpage+12-1)
-			endpage=startpage+12-1;
+		if(endpage>startpage+8-1)
+			endpage=startpage+8-1;
 		
 		listM.addAttribute("clist", clist);
 		listM.addAttribute("page", page);
@@ -388,7 +388,7 @@ public class CatBoardController {
 			HttpServletRequest request) {
 		
 		int page=1;
-		int limit=12;//한페이지에 보여지는 목록 개수
+		int limit=8;//한페이지에 보여지는 목록 개수
 		
 		if(request.getParameter("page") != null) {
 			page=Integer.parseInt(request.getParameter("page"));
@@ -402,7 +402,7 @@ public class CatBoardController {
 		
 		int totalCount=this.catService.getListCount_shiam(c_shiam);
 		//검색전후 레코드 개수
-		c_shiam.setStartrow((page-1)*12+1);//시작행 번호
+		c_shiam.setStartrow((page-1)*8+1);//시작행 번호
 		c_shiam.setEndrow(c_shiam.getStartrow()+limit-1);//끝행 번호
 		
 		List<CatVO> clist=this.catService.getCatList_shiam(c_shiam);
@@ -412,13 +412,13 @@ public class CatBoardController {
 		int maxpage=(int)((double)totalCount/limit+0.95);
 		
 		//시작 페이지 수
-		int startpage=(((int)((double)page/10+0.9))-1)*12+1;
+		int startpage=(((int)((double)page/10+0.9))-1)*8+1;
 		
 		//마지막 페이지
 		int endpage=maxpage;
 		
-		if(endpage>startpage+12-1)
-			endpage=startpage+12-1;
+		if(endpage>startpage+8-1)
+			endpage=startpage+8-1;
 		
 		listM.addAttribute("clist", clist);
 		listM.addAttribute("page", page);
@@ -441,7 +441,7 @@ public class CatBoardController {
 			HttpServletRequest request) {
 		
 		int page=1;
-		int limit=12;//한페이지에 보여지는 목록 개수
+		int limit=8;//한페이지에 보여지는 목록 개수
 		
 		if(request.getParameter("page") != null) {
 			page=Integer.parseInt(request.getParameter("page"));
@@ -455,7 +455,7 @@ public class CatBoardController {
 		
 		int totalCount=this.catService.getListCount_fold(c_fold);
 		//검색전후 레코드 개수
-		c_fold.setStartrow((page-1)*12+1);//시작행 번호
+		c_fold.setStartrow((page-1)*8+1);//시작행 번호
 		c_fold.setEndrow(c_fold.getStartrow()+limit-1);//끝행 번호
 		
 		List<CatVO> clist=this.catService.getCatList_fold(c_fold);
@@ -465,13 +465,13 @@ public class CatBoardController {
 		int maxpage=(int)((double)totalCount/limit+0.95);
 		
 		//시작 페이지 수
-		int startpage=(((int)((double)page/10+0.9))-1)*12+1;
+		int startpage=(((int)((double)page/10+0.9))-1)*8+1;
 		
 		//마지막 페이지
 		int endpage=maxpage;
 		
-		if(endpage>startpage+12-1)
-			endpage=startpage+12-1;
+		if(endpage>startpage+8-1)
+			endpage=startpage+8-1;
 		
 		listM.addAttribute("clist", clist);
 		listM.addAttribute("page", page);
@@ -494,7 +494,7 @@ public class CatBoardController {
 			HttpServletRequest request) {
 		
 		int page=1;
-		int limit=12;//한페이지에 보여지는 목록 개수
+		int limit=8;//한페이지에 보여지는 목록 개수
 		
 		if(request.getParameter("page") != null) {
 			page=Integer.parseInt(request.getParameter("page"));
@@ -508,7 +508,7 @@ public class CatBoardController {
 		
 		int totalCount=this.catService.getListCount_persian(c_persian);
 		//검색전후 레코드 개수
-		c_persian.setStartrow((page-1)*12+1);//시작행 번호
+		c_persian.setStartrow((page-1)*8+1);//시작행 번호
 		c_persian.setEndrow(c_persian.getStartrow()+limit-1);//끝행 번호
 		
 		List<CatVO> clist=this.catService.getCatList_persian(c_persian);
@@ -518,13 +518,13 @@ public class CatBoardController {
 		int maxpage=(int)((double)totalCount/limit+0.95);
 		
 		//시작 페이지 수
-		int startpage=(((int)((double)page/10+0.9))-1)*12+1;
+		int startpage=(((int)((double)page/10+0.9))-1)*8+1;
 		
 		//마지막 페이지
 		int endpage=maxpage;
 		
-		if(endpage>startpage+12-1)
-			endpage=startpage+12-1;
+		if(endpage>startpage+8-1)
+			endpage=startpage+8-1;
 		
 		listM.addAttribute("clist", clist);
 		listM.addAttribute("page", page);
