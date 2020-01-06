@@ -64,7 +64,7 @@ margin-top: 80px;}
 .title .category>li a:hover{
     color: #2698cb;
     z-index: 1000;
-    transition: all 0.5s ease-in-out;
+    
 }
 /* 플로팅 메뉴를 위한 fixed클래스 */
 .fixed{
