@@ -261,8 +261,22 @@ public class ShopController {
 	@RequestMapping("shop/total_shop")
 	public String shop_list(
 			Model shopList,ShopVO s,
-			HttpServletRequest request) throws Exception {
+			HttpServletRequest request,
+			HttpSession session) throws Exception {
 		
+		session=request.getSession();
+		
+		//session 처리!(관리자)
+		String user_id = (String)session.getAttribute("user_id");//관리자로 변경
+		
+		int checkCount = 0;
+		
+		if(user_id == null) {
+			checkCount = 0;
+		}else if(user_id.equals("admin")) {
+			checkCount = 1;//관리자임을 확인하는 번호
+		}
+				
 		int page=1;
 		int limit=6;//한페이지에 보여지는 상품 개수
 		
@@ -305,6 +319,7 @@ public class ShopController {
 		shopList.addAttribute("totalcount",totalCount);
 		shopList.addAttribute("find_field",find_field);
 		shopList.addAttribute("find_name",find_name);
+		shopList.addAttribute("checkCount",checkCount);
 		
 		return "shop/shop_list";
 	}//shop_list()
@@ -313,13 +328,29 @@ public class ShopController {
 	@RequestMapping("shop/shop_cont")
 	public ModelAndView shop_cont(
 			int item_no,int page,
-			String state,ShopVO s) throws Exception {
+			String state,ShopVO s,
+			HttpServletRequest request,
+			HttpSession session) throws Exception {
+		
+		session=request.getSession();
+		
+		//session 처리!(관리자)
+		String user_id = (String)session.getAttribute("user_id");//관리자로 변경
+		
+		int checkCount = 0;
+		
+		if(user_id == null) {
+			checkCount = 0;
+		}else if(user_id.equals("admin")) {
+			checkCount = 1;//관리자임을 확인하는 번호
+		}
 		
 		s=this.shopService.getShopCont(item_no);
 		
 		ModelAndView model=new ModelAndView();
 		model.addObject("s",s);
 		model.addObject("page",page);
+		model.addObject("checkCount",checkCount);
 		
 		if(state.equals("cont")) {//내용보기
 			model.setViewName("shop/shop_cont");

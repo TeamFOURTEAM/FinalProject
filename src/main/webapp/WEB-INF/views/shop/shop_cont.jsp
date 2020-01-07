@@ -92,9 +92,11 @@
                 
                 <div class="itemBuyAdminBox">
                     <div class="adminEditDel">
-	                    <button type="button" 
-	                    onclick="location='shop_cont?state=edit&item_no=${s.item_no}&page=${page}';">
-	                    	수정하기</button>
+                    	<c:if test="${checkCount == 1}">
+		                    <button type="button" 
+		                    onclick="location='shop_cont?state=edit&item_no=${s.item_no}&page=${page}';">
+		                    	수정하기</button>
+                    	</c:if>
 	                    	
 	                    <form method="get" action="/shop_del"
 	                    	 onsubmit="return shop_del_check();" class="del_form">
@@ -103,11 +105,10 @@
 						<input type="hidden" name="page" value="${page}" />
 						<input type="hidden" name="item_img" value="${s.item_img}" />
 						
-						<button id="del_button">삭제</button>
+						<c:if test="${checkCount == 1}">
+							<button id="del_button">삭제</button>
+						</c:if>
 	                    </form>
-	                    <button type="button" 
-	                    onclick="location='total_shop?page=${page}&find_field=item_name&find_name=';">임시 뒤로 버튼</button>
-	                    <!-- 삭제해줘야함(임시버튼)-->
                     </div>
                 </div>
                 </div>
