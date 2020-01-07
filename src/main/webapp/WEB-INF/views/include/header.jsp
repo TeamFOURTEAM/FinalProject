@@ -68,7 +68,7 @@
 							<li><a href="/dog/dog_poodle_list?page=1">푸들</a></li>
 						</ul></li>
 					<li><div>
-							<a href="/shop/total_shop?class=shop">SHOP</a>
+							<a href="/shop/total_shop?find_field=item_name&find_name=">SHOP</a>
 						</div>
 						<ul class="sub_category">
 						</ul></li>

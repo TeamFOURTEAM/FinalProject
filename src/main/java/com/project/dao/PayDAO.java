@@ -35,5 +35,7 @@ public interface PayDAO {
 
 	List<String> getProductName2(int pay_no);
 
+	PayVO choicePay(int pay_no);
+
 
 }

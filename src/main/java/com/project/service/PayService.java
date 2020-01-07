@@ -29,5 +29,6 @@ public interface PayService {
 
 	List<String> getProductName2(int pay_no);
 
+	PayVO choicePay(int pay_no);
 	
 }

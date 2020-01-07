@@ -1,6 +1,8 @@
 package com.project.controller;
 
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,13 +24,12 @@ public class BasketRestController {
 	/** 장바구니에 추가 **/
 	@RequestMapping(value="/shop/basket_add",method=RequestMethod.POST)
 	public ResponseEntity<String> basket_add(
-			@RequestBody BasketVO basket) throws Exception {
+			@RequestBody BasketVO basket,
+			HttpSession session) throws Exception {
 		
-		/* session id 값이 있을 때 장바구니추가 활성화시켜야 함(session으로 수정할것) */
-//		response.setContentType("text/html;charset=UTF-8");
-//		PrintWriter out=response.getWriter();
+		/* session id 값이 있을 때 장바구니추가 활성화 */
 		
-		String user_id= "pebble";// 세션으로 수정해야함
+		String user_id= (String)session.getAttribute("user_id");
 		
 		ResponseEntity<String> entity=null;
 	
@@ -66,13 +67,12 @@ public class BasketRestController {
 	//PUT은 전체자료 수정, PATCH는 일부 자료 수정, 복수개의 
 	//메서드 방식 지정하는 법
 	public ResponseEntity<String> editBasket(
-				@RequestBody BasketVO basket) throws Exception {
+				@RequestBody BasketVO basket,
+				HttpSession session) throws Exception {
 		
 		/* session id 값이 있을 때 장바구니추가 활성화시켜야 함(session으로 수정할것) */
-//		response.setContentType("text/html;charset=UTF-8");
-//		PrintWriter out=response.getWriter();
 		
-		String user_id= "pebble";// 세션으로 수정해야함
+		String user_id= (String)session.getAttribute("user_id");// 세션으로 수정해야함
 		
 		ResponseEntity<String> entity=null;
 	
@@ -95,9 +95,10 @@ public class BasketRestController {
 	/** 결제 단계 장바구니 비우기(페이지 나갔을 때) **/
 	@RequestMapping(value="/shop/basket_direct_del",method=RequestMethod.GET)
 	public ResponseEntity<String> basket_direct_del(
-			BasketVO basket) throws Exception {
+			BasketVO basket,
+			HttpSession session) throws Exception {
 	
-		String user_id= "pebble";// 세션으로 수정해야함
+		String user_id= (String)session.getAttribute("user_id");
 		
 		ResponseEntity<String> entity=null;	
 			try {

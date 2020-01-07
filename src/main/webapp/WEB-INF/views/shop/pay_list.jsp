@@ -48,11 +48,11 @@
 		                    	</div>
 		                    	<div class="column table_title">
 		                    		<c:if test="${p.validity == 1}">
-		                    			<a href="pay_item_list_go?pay_no=${p.pay_no}&validity=${p.validity}">
+		                    			<a href="pay_item_list_go?pay_no=${p.pay_no}">
 		                   				${payNameList[status.index].product_name}</a>
 		                    		</c:if>
 		                    		<c:if test="${p.validity == 2 || p.validity == 3}">
-			                   			<a href="pay_item_list_go?pay_no=${p.pay_no}&validity=${p.validity}">
+			                   			<a href="pay_item_list_go?pay_no=${p.pay_no}">
 			                   			${payNameList2[status.index].product_name}</a>
 		                    		</c:if>
 		                    	</div>

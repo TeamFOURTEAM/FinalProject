@@ -13,6 +13,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,7 +36,8 @@ public class ShopController {
 	@RequestMapping("shop/shop_write")
 	public String shop_write(
 			HttpServletRequest request,Model m,
-			HttpServletResponse response) throws Exception {
+			HttpServletResponse response,
+			HttpSession session) throws Exception {
 		
 		int page=1;
 		if(request.getParameter("page") != null) {
@@ -44,14 +46,15 @@ public class ShopController {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		
+		session=request.getSession();
 		//session 처리!(관리자)
-		String user_id = "admin";//관리자로 변경
 		
-		if(!(user_id.equals("admin"))) {
+		String user_id = (String)session.getAttribute("user_id");
+		//아이디를 받아옴
+		if((user_id == null) || !(user_id.equals("admin"))) {
 			out.println("<script>");
 			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
-			out.println("location='admin_login';");
+			out.println("location='/login';");
 			out.println("</script>");
 			
 		}else {
@@ -153,15 +156,17 @@ public class ShopController {
 	public ModelAndView shop_write_ok(
 			ShopVO s,
 			HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+			HttpServletResponse response,
+			HttpSession session) throws Exception {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
 		
+		session=request.getSession();
 		//session 처리!(관리자)
-		String user_id = "admin";//관리자로 변경
+		String user_id = (String)session.getAttribute("user_id");//관리자로 변경
 		
-		if(!(user_id.equals("admin"))) {
+		if((user_id == null) || !(user_id.equals("admin"))) {
 			out.println("<script>");
 			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
 			out.println("location='admin_login';");
@@ -332,17 +337,19 @@ public class ShopController {
 	public ModelAndView shop_edit_ok(
 			ShopVO s,
 			HttpServletResponse response,
-			HttpServletRequest request) throws Exception {
+			HttpServletRequest request,
+			HttpSession session) throws Exception {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
 		
+		session=request.getSession();
 		//session 처리!
-		String user_id = "admin";//관리자로 변경
+		String user_id = (String)session.getAttribute("user_id");//관리자로 변경
 		
-		if(!(user_id.equals("admin"))) {
+		if((user_id == null) || !(user_id.equals("admin"))) {
 			out.println("<script>");
-			out.println("alert('로그인 하신 후 이용해주세요.');");
+			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
 			out.println("location='admin_login';");
 			out.println("</script>");
 			
@@ -457,18 +464,20 @@ public class ShopController {
 	public String shop_del_ok(
 			ShopVO s,int page,
 			HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+			HttpServletResponse response,
+			HttpSession session) throws Exception {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
 		
+		session=request.getSession();
 		//session 처리!
-		String user_id = "admin";//관리자로 변경
+		String user_id = (String)session.getAttribute("user_id");//관리자로 변경
 		
-		if(!(user_id.equals("admin"))) {
+		if((user_id == null) || !(user_id.equals("admin"))) {
 			out.println("<script>");
-			out.println("alert('로그인 하신 후 이용해주세요.');");
-			out.println("location='admin_login';");
+			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
+			out.println("location='login';");
 			out.println("</script>");
 			
 		}else {

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -57,7 +58,7 @@ public class BasketController {
 			BasketVO basket,
 			HttpServletRequest request,
 			HttpServletResponse response,
-			Model basketList) throws Exception {
+			Model basketList,HttpSession session) throws Exception {
 		
 		int page=1;
 		if(request.getParameter("page") != null) {
@@ -66,10 +67,11 @@ public class BasketController {
 		
 		response.setContentType("text/html;chrset=UTF-8");
 		PrintWriter out=response.getWriter();
+		session=request.getSession();
 		
-		String user_id= "pebble";//세션값으로 변경
+		String user_id= (String)session.getAttribute("user_id");
 	
-		if(user_id.equals(null)) {//id 값이 없을 때(나중에 세션으로 처리)
+		if(user_id.equals(null)) {//id 값이 없을 때
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
 			out.println("history.back();");
@@ -108,18 +110,20 @@ public class BasketController {
 				BasketVO basket, @RequestParam int basket_no,
 				HttpServletRequest request,
 				HttpServletResponse response,
-				RedirectAttributes redirectAttributes) throws Exception {
+				RedirectAttributes redirectAttributes,
+				HttpSession session) throws Exception {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		
+		session=request.getSession();
 		//session 처리!
-		String user_id = "pebble";
+		
+		String user_id = (String)session.getAttribute("user_id");
 		
 		if(user_id.equals(null)) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
-			out.println("location='admin_login';");
+			out.println("location='login';");
 			out.println("</script>");
 			
 		}else {

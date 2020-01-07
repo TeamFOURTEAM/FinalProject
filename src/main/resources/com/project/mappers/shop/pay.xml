@@ -138,6 +138,11 @@
 			set item_stockCount = item_stockCount-#{item_stockCount}
 		where item_no = #{item_no}
 	</update>
+	
+	<!-- 주문번호에 따른 주문내역 하나 가져오기 -->
+	<select id="payList_one" resultType="pay">
+		select * from pay where pay_no=#{pay_no}
+	</select>
 </mapper>
 
 

@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,7 +52,8 @@ public class PayController {
 			BasketVO basket,
 			HttpServletRequest request,
 			HttpServletResponse response,
-			Model basketList) throws Exception  {
+			Model basketList,
+			HttpSession session) throws Exception  {
 		
 		int page=1;
 		if(request.getParameter("page") != null) {
@@ -61,14 +63,15 @@ public class PayController {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		
+		session=request.getSession();
 		//session 처리!
-		String user_id = "pebble";
+		
+		String user_id = (String)session.getAttribute("user_id");;
 		
 		if(user_id.equals(null)) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
-			out.println("location='admin_login';");
+			out.println("location='login';");
 			out.println("</script>");
 			
 		}else {
@@ -127,29 +130,31 @@ public class PayController {
 	public String pay_page_ok(
 			PayVO pay,BasketVO basket,
 			HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		
-		int page=1;
-		if(request.getParameter("page") != null) {
-			page=Integer.parseInt(request.getParameter("page"));
-		}//page 값 받아옴
-		
-		int validity = Integer.parseInt(request.getParameter("validity"));
+			HttpServletResponse response,
+			HttpSession session) throws Exception {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		
+		session=request.getSession();
 		//session 처리!
-		String user_id = "pebble";
-		String basket_id = "pebble";
+		
+		String user_id = (String)session.getAttribute("user_id");
+		String basket_id = user_id;
 		
 		if(user_id.equals(null)) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
-			out.println("location='admin_login';");
+			out.println("location='login';");
 			out.println("</script>");
 			
 		}else {
+			int page=1;
+			if(request.getParameter("page") != null) {
+				page=Integer.parseInt(request.getParameter("page"));
+			}//page 값 받아옴
+			
+			int validity = Integer.parseInt(request.getParameter("validity"));
+			
 			int pay_price=Integer.parseInt(request.getParameter("pay_price"));
 			//총 결제 금액
 			basket.setBasket_id(basket_id); basket.setValidity(validity);
@@ -170,15 +175,16 @@ public class PayController {
 	public String pay_page_confirm(
 			HttpServletRequest request,
 			HttpServletResponse response,
-			Model m) throws Exception {
+			Model m, HttpSession session) throws Exception {
 		
 		int page = Integer.parseInt(request.getParameter("page"));
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		
+		session=request.getSession();
 		//session 처리!
-		String user_id = "pebble";
+		
+		String user_id = (String)session.getAttribute("user_id");
 		
 		if(user_id.equals(null)) {
 			out.println("<script>");
@@ -215,26 +221,27 @@ public class PayController {
 			PayVO pay,
 			HttpServletRequest request,
 			HttpServletResponse response,
-			Model payList) throws Exception {
-		
-		int page=1;
-		if(request.getParameter("page") != null) {
-			page=Integer.parseInt(request.getParameter("page"));
-		}//page 값 받아옴
+			Model payList, HttpSession session) throws Exception {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		
+		session=request.getSession();
 		//session 처리!
-		String user_id = "pebble";
+		
+		String user_id = (String)session.getAttribute("user_id");
 		
 		if(user_id.equals(null)) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
-			out.println("location='admin_login';");
+			out.println("location='login';");
 			out.println("</script>");
 			
 		}else {
+			int page=1;
+			if(request.getParameter("page") != null) {
+				page=Integer.parseInt(request.getParameter("page"));
+			}//page 값 받아옴
+			
 			List<PayVO> list = this.payService.list_pay(user_id);//주문 내역 목록
 			
 			/** 각 주문 목록에서 상품 하나의 상품명만 가져와서 출력하게끔 한다. **/
@@ -281,34 +288,41 @@ public class PayController {
 			BasketVO basket,PayVO pay,PayokVO payOK,
 			HttpServletRequest request,
 			HttpServletResponse response,
-			Model payItemList) throws Exception {
-		
-		int page=1;
-		if(request.getParameter("page") != null) {
-			page=Integer.parseInt(request.getParameter("page"));
-		}//page 값 받아옴
-		int pay_no = Integer.parseInt(request.getParameter("pay_no"));
-		//선택한 주문 번호
-		int validity = Integer.parseInt(request.getParameter("validity"));
-		//주문 내역의 validity. 1 -> 결제 확인중 // 2 -> 결제 확인 완료, 3 -> 발송완료
+			Model payItemList, HttpSession session) throws Exception {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		
+		session=request.getSession();
 		//session 처리!
-		String user_id = "pebble";
+		
+		String user_id = (String)session.getAttribute("user_id");
 		
 		if(user_id.equals(null)) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
-			out.println("location='admin_login';");
+			out.println("location='login';");
 			out.println("</script>");
 			
 		}else {
+			int page=1;
+			if(request.getParameter("page") != null) {
+				page=Integer.parseInt(request.getParameter("page"));
+			}//page 값 받아옴
+			int pay_no = Integer.parseInt(request.getParameter("pay_no"));
+			//선택한 주문 번호
+			
+			pay = this.payService.choicePay(pay_no);
+			//선택한 주문의 번호에 따른 주문내역 하나만 불러옴
+			
+			int validity = pay.getValidity();
+			//주문 내역의 validity. 1 -> 결제 확인중 // 2 -> 결제 확인 완료, 3 -> 발송완료
+			String pay_id = pay.getUser_id();
+			//해당 주문 내역의 유저 아이디
+			
 			//1 -> 결제 확인 중인 장바구니 상품 리스트. 장바구니의 vali=2인 상품을 불러옴
 			if(validity == 1) {//주문 내역의 validity가 1일 때(결제확인전)
 				Map<String,Object> map=new HashMap<String, Object>();
-				basket.setBasket_id(user_id); basket.setValidity(2);
+				basket.setBasket_id(pay_id); basket.setValidity(2);
 				basket.setPay_no(pay_no);//주문내역 번호. 주문내역을 묶어서 
 				//해당 주문 번호의 상품 목록만 보여주게끔 해주는 변수.
 				List<BasketVO> list=this.basketService.listBasket(basket);//장바구니 정보
@@ -325,7 +339,7 @@ public class PayController {
 				map.put("fee",fee);//배송비
 				map.put("allSum",sumMoney+fee);//주문 총 합계 금액(상품 + 배송비)
 				
-				payItemList.addAttribute("user_id",user_id);//id값 전달
+				payItemList.addAttribute("user_id",pay_id);//id값 전달
 				payItemList.addAttribute("page",page);//page 값 받아서 전달(목록버튼에 전달하기위함)
 				payItemList.addAttribute("map",map);
 				
@@ -351,7 +365,7 @@ public class PayController {
 				map.put("fee",fee);//배송비
 				map.put("allSum",sumMoney+fee);//주문 총 합계 금액(상품 + 배송비)
 				
-				payItemList.addAttribute("user_id",user_id);//id값 전달
+				payItemList.addAttribute("user_id",pay_id);//id값 전달
 				payItemList.addAttribute("map",map);
 				payItemList.addAttribute("page",page);//page 값 받아서 전달(목록버튼에 전달하기위함)
 			
@@ -374,18 +388,20 @@ public class PayController {
 	public String admin_paylist(
 			Model m,PayVO pay,
 			HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+			HttpServletResponse response,
+			HttpSession session) throws Exception {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		
+		session=request.getSession();
 		//session 처리!(관리자)
-		String user_id = "admin";//관리자 아이디로 변경
-		System.out.println();
-		if(!(user_id.equals("admin"))) {
+		
+		String user_id = (String)session.getAttribute("user_id");
+		
+		if((user_id == null) || !(user_id.equals("admin"))) {
 			out.println("<script>");
 			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
-			out.println("location='admin_login';");
+			out.println("location='login';");
 			out.println("</script>");
 			
 		}else {
@@ -456,23 +472,25 @@ public class PayController {
 	public String pay_admin_confirm(
 			PayVO pay,
 			HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+			HttpServletResponse response,
+			HttpSession session) throws Exception {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		
+		session=request.getSession();
 		//session 처리!(관리자)
-		String user_id = "admin";
-		int pay_no = Integer.parseInt(request.getParameter("pay_no"));
-		int validity = 2;//결제확인여부
 		
-		if(!(user_id.equals("admin"))) {
+		String user_id = (String)session.getAttribute("user_id");
+		
+		if((user_id == null) || !(user_id.equals("admin"))) {
 			out.println("<script>");
 			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
-			out.println("location='admin_login';");
+			out.println("location='login';");
 			out.println("</script>");
 			
 		}else {/** 관리자 계정으로 수정해야할것 **/
+			int pay_no = Integer.parseInt(request.getParameter("pay_no"));
+			int validity = 2;//결제확인여부
 			
 			/* 트랜잭션 적용(총 3개)
 			 * 	1. pay_no에 해당하는 Pay 테이블의 주문내역 validity 값 2로 변경(결제 확인됐다는 의미).
@@ -495,23 +513,25 @@ public class PayController {
 	public String pay_admin_sendItem(
 			PayVO pay, PayokVO payOK,
 			HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+			HttpServletResponse response,
+			HttpSession session) throws Exception {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		
+		session=request.getSession();
 		//session 처리!(관리자)
-		String user_id = "admin";
-		int pay_no = Integer.parseInt(request.getParameter("pay_no"));
-		int validity = 3;//주문상태를 3(발송처리)으로 변경
 		
-		if(!(user_id.equals("admin"))) {
+		String user_id = (String)session.getAttribute("user_id");
+		
+		if((user_id == null) || !(user_id.equals("admin"))) {
 			out.println("<script>");
 			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
-			out.println("location='admin_login';");
+			out.println("location='login';");
 			out.println("</script>");
 			
 		}else {/** 관리자 계정으로 수정해야할것 **/
+			int pay_no = Integer.parseInt(request.getParameter("pay_no"));
+			int validity = 3;//주문상태를 3(발송처리)으로 변경
 			
 			/* 트랜잭션 적용 : 1. 주문내역 validity=3 으로 수정  2. 상품 재고 줄이기
 			 * 주문확정 테이블에서  payCom_no에 해당하는 장바구니 정보에서 상품 수량만 불러와 
