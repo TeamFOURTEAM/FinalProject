@@ -40,21 +40,28 @@
         </c:if>
         <c:if test="${!empty blist}">
             <c:forEach var="b" items="${blist}">
-                <div class="reply_list_div" id="reply_list_div">
-                    <div class="rep">
-                        <h4>${b.back_end_list_id}</h4>
-                        <h5>${b.back_end_list_date}</h5>
-                    </div>
-                    <div class="reply_cont">
-                            ${b.back_end_list_cont}
-                    </div>
-                    <c:if test="${member_id==b.back_end_list_id}">
-                        <div class="reply_input">
-                            <a href="#" >수정</a>
-                            <a href="#" >삭제</a>
+                <form action="reply_update_ok" id="frm">
+                    <input type="hidden" name="page" value="${page}">
+                    <input type="hidden" name="no" value="${no}">
+                    <input type="hidden" name="back_end_list_no" value="${b.back_end_list_no}">
+                    <div class="reply_list_div" id="reply_list_div">
+                        <div class="rep">
+                            <h4>${b.back_end_list_id}</h4>
+                            <h5>${b.back_end_list_date}</h5>
                         </div>
-                    </c:if>
-                </div>
+                        <div class="reply_cont">
+                            <textarea name="back_end_list_cont" id="reply_update" class="reply_update" cols="106" rows="7" onclick="border_change();" style="background:#faf8f8 " readonly>${b.back_end_list_cont}</textarea>
+                        </div>
+                        <c:if test="${member_id==b.back_end_list_id}">
+                            <div class="reply_input">
+                                <a href="#" onclick="document.getElementById('frm').submit();" id="check" style="display: none">확인</a>
+                                <a href="#" id="update" onmousedown="reply_up();">수정</a>
+                                <a href="user_reply_del_ok?back_end_list_no=${b.back_end_list_no}&no=${no}&page=${page}" id="delete" onmousedown="href_a();" onclick="return del_ok();">삭제</a>
+                                <a href="#" id="cancel" onclick="cancel();" style="display: none">취소</a>
+                            </div>
+                        </c:if>
+                    </div>
+                </form>
             </c:forEach>
         </c:if>
 

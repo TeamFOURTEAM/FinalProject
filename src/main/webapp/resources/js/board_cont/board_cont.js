@@ -4,6 +4,7 @@ $(function (){
       $('#header').attr('style', 'background: url(/resources/img/QandA/board_wallpaper02.jpg); background-position:bottom; background-size:cover;');
   });
 
+
 function reply_ok() {
     var id=$('#member_id').val();
     var cont=$('#reply').val();
@@ -14,7 +15,7 @@ function reply_ok() {
     console.log(no);
 
 
-     $.ajax({
+    $.ajax({
         type:"POST",
         url:"reply_ok",
         data: {"id":id,"cont":cont,"no":no},
@@ -52,4 +53,38 @@ function del_ok() {
     }else{
         return false;
     }
+}
+
+function reply_up() {
+    href_a();
+    $('#reply_update').attr('readonly',false);
+    $('#reply_update').css('background','white');
+
+    $('#update').css("display",'none');
+    $('#delete').css("display",'none');
+    $('#check').css("display",'inline');
+    $('#cancel').css("display",'inline');
+
+
+
+}
+
+function href_a(){
+    $('a[href="#"]').click(function(e) {
+        e.preventDefault();
+    });
+}
+
+function cancel() {
+    href_a();
+    $('#reply_update').attr('readonly',true);
+    $('#reply_update').css('background','#faf8f8');
+
+    $('#update').css("display",'inline');
+    $('#delete').css("display",'inline');
+    $('#check').css("display",'none');
+    $('#cancel').css("display",'none');
+
+
+
 }

@@ -112,6 +112,11 @@
     overflow: hidden;
 }
 
+.reply_input{
+    margin-left: 5px;
+    margin-top: 4px;
+}
+
 .reply_input a{
     width: 50px;
     margin-left: 5px;

@@ -408,6 +408,7 @@ public class User_Controller {
         return null;
     }
 
+    //게시글 삭제
     @RequestMapping("user_board_list_del")
     public String user_board_list_del(HttpServletResponse response,BoardVO b){
         response.setContentType("text/html;charset=UTF-8");
@@ -417,6 +418,7 @@ public class User_Controller {
         return "redirect:/user_board_list";
     }
 
+    //게시글수정페이지
     @RequestMapping("user_board_update")
     public String user_board_update(Model m,BoardVO b,HttpServletResponse response,HttpSession session){
         response.setContentType("text/html;charset=UTF-8");
@@ -428,6 +430,7 @@ public class User_Controller {
         return "board/board_update";
     }
 
+    //게시글 수정 완료
     @RequestMapping("user_board_update_ok")
     public String user_board_update_ok(BoardVO b, HttpServletResponse response, HttpSession session, HttpServletRequest request) throws IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -509,10 +512,35 @@ public class User_Controller {
 
         this.userService.update_board(b);//글쓰기 수정
 
-//        return "redirect:/cont?no="+b.getBack_end_list_no();
         return "redirect:/user_board_list";
     }
 
+
+    //유저 댓글 수정
+    @RequestMapping("reply_update_ok")
+    public String reply_update_ok(BoardVO b,int no,int page,HttpSession session,HttpServletResponse response){
+        response.setContentType("text/html;charset=UTF-8");
+
+
+
+        System.out.println(no+"해당내용으로 다시갈 번호");
+        System.out.println(b.getBack_end_list_no()+"수정할 댓글 번호");
+        System.out.println(b.getBack_end_list_cont()+"수정할 댓글 내용");
+
+
+        this.userService.user_reply_update(b);
+
+
+        return "redirect:/cont?no="+no+"&page="+page;
+    }
+
+    @RequestMapping("user_reply_del_ok")
+    public String user_reply_del_ok(BoardVO b,int no,int page) {
+        this.userService.user_reply_del(b);
+
+
+        return "redirect:/cont?no="+no+"&page="+page;
+    }
 }
 
 
