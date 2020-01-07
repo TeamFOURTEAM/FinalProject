@@ -96,5 +96,15 @@ public class UserDAOImpl implements UserDAO {
         this.sqlSession.update("user_board_update",b);
     }
 
+    @Override
+    public void user_reply_update(BoardVO b) {
+        this.sqlSession.update("user_reply_board_up",b);
+    }
+
+    @Override
+    public void user_reply_del(BoardVO b) {
+        this.sqlSession.delete("user_reply_del",b);
+    }
+
 
 }

@@ -36,4 +36,8 @@ public interface UserDAO {
     void del_user_board(BoardVO b);
 
     void update_board(BoardVO b);
+
+    void user_reply_update(BoardVO b);
+
+    void user_reply_del(BoardVO b);
 }
