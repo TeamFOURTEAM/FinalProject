@@ -128,6 +128,10 @@
                         </span>
                     </div>
                     <div class="itemRecoRow">
+                        <c:if test="${checkCount == 1}">
+                        	<span class="bestNum">상품 재고 : <fmt:formatNumber pattern="###,###,###" value="${n.item_stockCount}" /> 개</span>
+                        	<br/>
+                        </c:if>
                         <span class="bestNum">이 제품이 좋아요 ! : ${n.item_likeCount}</span>
                     </div>
                 </div>
