@@ -68,7 +68,7 @@ public class PayController {
 		
 		String user_id = (String)session.getAttribute("user_id");;
 		
-		if(user_id.equals(null)) {
+		if(user_id == null) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
 			out.println("location='/login';");
@@ -141,7 +141,7 @@ public class PayController {
 		String user_id = (String)session.getAttribute("user_id");
 		String basket_id = user_id;
 		
-		if(user_id.equals(null)) {
+		if(user_id == null) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
 			out.println("location='/login';");
@@ -186,7 +186,7 @@ public class PayController {
 		
 		String user_id = (String)session.getAttribute("user_id");
 		
-		if(user_id.equals(null)) {
+		if(user_id == null) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
 			out.println("location='/login';");
@@ -230,7 +230,7 @@ public class PayController {
 		
 		String user_id = (String)session.getAttribute("user_id");
 		
-		if(user_id.equals(null)) {
+		if(user_id == null) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
 			out.println("location='/login';");
@@ -297,7 +297,7 @@ public class PayController {
 		
 		String user_id = (String)session.getAttribute("user_id");
 		
-		if(user_id.equals(null)) {
+		if(user_id == null) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
 			out.println("location='/login';");

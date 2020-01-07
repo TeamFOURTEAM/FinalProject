@@ -71,7 +71,7 @@ public class BasketController {
 		
 		String user_id= (String)session.getAttribute("user_id");
 	
-		if(user_id.equals(null)) {//id 값이 없을 때
+		if(user_id == null) {//id 값이 없을 때
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
 			out.println("history.back();");
@@ -98,9 +98,9 @@ public class BasketController {
 			basketList.addAttribute("page",page);//page 값 받아서 전달(목록버튼에 전달하기위함)
 			basketList.addAttribute("map",map);
 			
-			return "shop/basket_list";
+			return "/shop/basket_list";
 		}//if else
-
+		
 		return null;
 	}
 	
@@ -120,7 +120,7 @@ public class BasketController {
 		
 		String user_id = (String)session.getAttribute("user_id");
 		
-		if(user_id.equals(null)) {
+		if(user_id == null) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
 			out.println("location='/login';");

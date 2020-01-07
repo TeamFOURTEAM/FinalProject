@@ -1,16 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport"
-        content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
-    <meta name="author" content="이재형">
-    <meta name="description" content="반려동물용품내용">
-    <title>반려동물상품</title>
+<%@ include file="../include/header.jsp"%>
 
     <!-- Style -->
     <link rel="stylesheet" href="/css/reset.css">
@@ -34,8 +25,8 @@
 		$('.itemPriceSum').html('총 합계금액 : ￦ '+sum);
 	};
 </script>
-</head>
-<body>
+
+
 	<div class="container">
         <!-- 상품 상세 영역 -->
         <div class="item_main">
@@ -196,5 +187,5 @@ $('#basketCancel').on('click',function(){
 });
 
 </script>
-</body>
-</html>
+
+<jsp:include page="../include/footer.jsp" />

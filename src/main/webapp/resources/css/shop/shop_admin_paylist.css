@@ -96,7 +96,7 @@
 /* 페이징 */
 .container .paging_wrapper {
     clear: both;
-    text-align: center; margin: 20px 0;
+    text-align: center; margin: 50px 0 20px 0;
     font-size: 20px;
 }
 .container .paging_wrapper a {
