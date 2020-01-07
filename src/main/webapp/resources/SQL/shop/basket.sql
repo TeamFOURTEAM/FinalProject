@@ -69,7 +69,8 @@ select
 	basket_page
 from shopList l, shopBasket b, MEMBERVO m
 where 
-	l.item_no = b.product_no
+	m.user_id = b.basket_id
+	and l.item_no = b.product_no
 	and b.basket_id='pebble' and validity=1 and pay_no=0
 order by b.basket_no desc
 

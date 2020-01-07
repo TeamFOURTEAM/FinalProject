@@ -41,7 +41,8 @@
 			basket_page
 		from shopList l, shopBasket b, MEMBERVO m
 		where 
-			l.item_no = b.product_no
+			m.user_id = b.basket_id
+			and l.item_no = b.product_no
 			and b.basket_id=#{basket_id} and validity=#{validity} and pay_no=#{pay_no}
 		order by b.basket_no desc
 	</select>
