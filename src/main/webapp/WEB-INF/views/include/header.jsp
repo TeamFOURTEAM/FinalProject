@@ -16,14 +16,13 @@
 </head>
 <body>
 
-	<header id="header">
+	<header id="header" style="background: url(/resources/img/login_wallpaper.jpg);">
 		
-			<div class="header">
+			<div class="header" >
 				<div class="header_menu">
 					<a id="mypage_cont" href="/mypage">MyPage</a>
 						<div id="mypage_hover">
-							<p><a href="">회원정보</a></p>
-							<p><a href="/shop/basket_list?page=${page}">장바구니</a></p>						
+							<p><a href="/shop/basket_list?page=1">장바구니</a></p>						
 						</div>
 					
 					

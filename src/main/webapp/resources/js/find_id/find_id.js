@@ -1,7 +1,7 @@
 //아이디 찾기 헤더 이미지 변경
 $(function (){
     // .attr()은 속성값(property)을 설정할 수 있다.
-      $('#header').attr('style', 'background: url(/resources/img/cat/cat01.jpg);');
+      $('#header').attr('style', 'background: url(/resources/img/login_wallpaper.jpg); background-position:top; background-size:cover;');
 });
 
 function patterkorean() {

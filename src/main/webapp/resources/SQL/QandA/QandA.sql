@@ -1,7 +1,7 @@
 --q_board 게시판 테이블 생성
 create table q_board(
 	q_no int primary key
-	,q_id varchar2(200) not null constraint memver_id_q references MEMBERVO
+	,q_id varchar2(200) not null constraint member_id_q references MemberJoin on delete cascade
 	,q_title varchar2(200) not null --제목
 	,q_cont CLOB not null --내용
 	,q_hit int default 0 --조회수
@@ -15,11 +15,16 @@ alter table q_board drop constraint memver_id_q
 
 select * from q_board order by q_no desc;
 
+drop table q_board
+
 --QandA_no_seq 시퀀스 생성
 create sequence q_no_seq
 start with 1
 increment by 1
 nocache;
+
+--시퀀스 삭제
+drop sequence q_no_seq;
 
 --QandA_no_seq 시퀀스 다음번호값 확인
 select q_no_seq.nextval from dual;
