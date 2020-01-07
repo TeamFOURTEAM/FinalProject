@@ -19,9 +19,9 @@
                             <div class="board_list">
                             <ul class="tabs">
                             	<li><a href="/dog/total_dog?page=1">전체</a></li>
+                            	<li><a href="/dog/dog_poodle_list?page=1">푸들</a></li>
                             	<li><a href="/dog/dog_shih_list?page=1">시츄</a></li>
                             	<li class="current"><a href="/dog/dog_mal_list?page=1">말티즈</a></li>
-                            	<li><a href="/dog/dog_poodle_list?page=1">푸들</a></li>
                             </ul>
                             
                                 <div class="dog_list">
@@ -119,12 +119,10 @@
                                     </select>
                                     <input name="find_name" id="find_name" size="30" value="${find_name}" />
                                     <input type="submit" value="검색" />
-                                    <input type="button" class="cWrite" value="글쓰기" onclick="location='dog_write?'" />
-                                </div>
-
-                                <!-- 글쓰기 버튼 -->
-                                <div id="cWrite">
                                     
+                                    <c:if test="${user_id=='admin'}">
+                                    <input type="button" class="cWrite" value="글쓰기" onclick="location='dog_write?'" />
+                                	</c:if>
                                 </div>
 
                             </div>
