@@ -38,7 +38,6 @@ public class CatBoardController {
 			CatVO c,
 			HttpServletRequest request) throws Exception{
 		
-		System.out.println();
 		//날짜별 폴더 생성
 		String saveFolder=request.getSession().getServletContext().getRealPath("resources/photo_upload");
 		/* 첨부파일 업로드 경로, 실제 톰캣 프로젝트 경로를 반환 =>
