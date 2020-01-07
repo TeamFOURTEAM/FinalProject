@@ -54,7 +54,24 @@ insert into shopBasket (basket_no,basket_id,product_no,basket_count,validity,bas
 		1,3,1)
 
 /*********** test ************/
-
+select 
+	b.basket_no as basket_no,
+	b.basket_id as basket_id,
+	l.item_no as product_no,
+	m.user_name as user_name,
+	l.item_name as product_name,
+	l.item_img as product_img,
+	b.basket_count as basket_count,
+	l.item_stockCount as stockCount,
+	l.item_price as price,
+	(item_price * basket_count) sumPrice,
+	validity,
+	basket_page
+from shopList l, shopBasket b, MEMBERVO m
+where 
+	l.item_no = b.product_no
+	and b.basket_id='pebble' and validity=1 and pay_no=0
+order by b.basket_no desc
 
 /*************************/
 drop table shopBasket;
