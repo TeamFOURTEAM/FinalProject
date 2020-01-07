@@ -131,7 +131,6 @@ public class User_Controller {
     public String login_ok(MemberVO m, HttpSession session, HttpServletResponse response,HttpServletRequest request) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        //System.out.println("아이디값"+m.getUser_id());
         MemberVO mem = this.userService.select_id_pwd(m);
 
         if (mem == null) {
@@ -157,8 +156,6 @@ public class User_Controller {
         String codenum = "";
         if (phonecode != null) {
             codenum = new CodeSend().cd1();
-            System.out.println(codenum);
-            System.out.println(user_phone);
             //CodeMessage.sms_send(phone,codenum);
 
             out.print(codenum);
@@ -183,7 +180,6 @@ public class User_Controller {
 
 
         if (uv != null) {
-            System.out.println("이메일 발송");
             Gmail.gmailSendID(uv.getUser_name(), uv.getUser_email(), uv.getUser_id());
             out.println("<script>");
             out.println("alert('이메일 발송 완료!');");

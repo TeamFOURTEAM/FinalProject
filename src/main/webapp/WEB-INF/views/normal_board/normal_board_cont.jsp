@@ -71,7 +71,7 @@
                             <div class="bbs-link">
                         <span>${nl.normal_date}<br>
                             <c:if test="${nl.normal_id==user_id}">
-                                <a href="reply_del_ok?normal_id=${nl.normal_id}&normal_no=${nl.normal_no}&no=${n.normal_no}" class="delete">삭제</a>
+                                <a href="reply_del_ok?normal_id=${nl.normal_id}&normal_no=${nl.normal_no}&no=${n.normal_no}" onclick="return del_ok();" class="delete">삭제</a>
                             </c:if>
                         </span>
                             </div>

@@ -43,7 +43,7 @@
             <br><input class="hiddencode" type="button" value="인 증" onclick="code_check();" disabled>
         </div>
         <div class="loginbutton_div">
-            <input class="loginbutton" type="submit" value="비밀번호 찾기">
+            <input class="loginbutton" type="submit" onclick="return find_p();" value="비밀번호 찾기">
             <br><span><a href="login">로그인</a></span>&nbsp;
             <span><a href="find_id">아이디 찾기</a></span>&nbsp;
             <span><a>회원가입</a></span>
