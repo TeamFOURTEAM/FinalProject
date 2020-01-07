@@ -23,7 +23,7 @@ RESET
 .con-link{
     width: 150px;
     position: absolute;
-    left: 0;
+    left: -850px;
 }
 
 /*.bbs-link con-link dd{*/
@@ -37,6 +37,8 @@ RESET
 
 .bbs-link dd{
     right: 0;
+    width: 174px;
+
 }
 
 
@@ -51,7 +53,7 @@ li { list-style: none }
 hr, caption, legend { display: none }
 a { color: #292929; text-decoration: none; }
 a:hover { }
-button { overflow: hidden; cursor: pointer; }
+button { overflow: hidden; cursor: pointer; margin-right: 10px; }
 button span { visibility: hidden }
 address, em { font-style: normal }
 table { width: 100%; border-collapse: collapse; border-spacing: 0; table-layout: fixed; word-wrap: break-word; word-break: keep-all; }
@@ -509,5 +511,17 @@ tbody {
 img{
     height: 50px;
     width: 55px;
+}
+
+.com-name{
+    position: relative;
+}
+
+.com-name:after{
+    position: absolute;
+    content: '';
+    border-right: 1px solid #c5c5c5;
+    height: 19px;
+    left: 111px;
 }
 

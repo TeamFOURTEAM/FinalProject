@@ -48,9 +48,10 @@
 
     <!--내용 불러오기-->
     <select id="normal_cont" resultType="normal">
-        select * from NORMALBOARD where NORMAL_NO=#{normal_no} and NORMAL_TITLE=#{normal_title} and NORMAL_ID=#{normal_id} and NORMAL_STEP=0
+        select * from NORMALBOARD where NORMAL_NO=#{normal_no} and NORMAL_STEP=0
     </select>
 
+    <!--댓글 저장-->
     <insert id="reply_in">
         insert into NORMALBOARD (NORMAL_NO, NORMAL_ID, NORMAL_TITLE, NORMAL_CONT, NORMAL_DATE, NORMAL_REF, NORMAL_STEP)
         values (SEQ_NORMAL_NO.nextval,#{normal_id},'댓글',#{normal_cont},sysdate,#{normal_no},1)
@@ -58,7 +59,26 @@
 
     <!--댓글리스트-->
     <select id="reply_list" resultType="normal">
-        select * from NORMALBOARD where NORMAL_ref=#{normal_no} and NORMAL_STEP=1 order by NORMAL_DATE desc
+        select * from NORMALBOARD where NORMAL_ref=#{normal_no} and NORMAL_STEP=1 order by NORMAL_NO desc
     </select>
+
+    <!--댓글 삭제-->
+    <delete id="reply_del" >
+        delete from NORMALBOARD where NORMAL_ID=#{normal_id} and NORMAL_NO=#{normal_no} and NORMAL_STEP=1
+    </delete>
+
+<!--    게시판삭제-->
+    <delete id="del_board">
+        delete from NORMALBOARD where NORMAL_REF=#{normal_ref} and NORMAL_STEP &lt;= 1
+    </delete>
+
+    <!--조회수증가-->
+    <update id="hit_up">
+        update NORMALBOARD set NORMAL_HIT=NORMAL_HIT+1 where NORMAL_NO=#{normal_no}
+    </update>
+
+    <update id="update_board_ok" parameterType="normal">
+        update NORMALBOARD set NORMAL_TITLE=#{normal_title} , NORMAL_CONT=#{normal_cont} where NORMAL_NO=#{normal_no} and NORMAL_STEP=0
+    </update>
 
 </mapper>

@@ -34,3 +34,22 @@ function reply_ok() {
         }
     });//$.ajax
 }
+
+
+function text_area_length() {
+    var length=$('#reply').val();
+
+    console.log(length);
+    if(length.length>312){
+        alert('최대300글자입니다!');
+    }
+}
+
+function del_ok() {
+    var con_F=confirm('정말 삭제하시겠습니까?');
+    if(con_F==true){
+        return true;
+    }else{
+        return false;
+    }
+}

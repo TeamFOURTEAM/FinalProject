@@ -82,6 +82,15 @@ public class UserServiceImpl implements UserService {
         return this.userDao.get_select_reply(b);
     }
 
+    @Override
+    public void del_user_board(BoardVO b) {
+        this.userDao.del_user_board(b);
+    }
+
+    @Override
+    public void update_board(BoardVO b) {
+        this.userDao.update_board(b);
+    }
 
 
 }

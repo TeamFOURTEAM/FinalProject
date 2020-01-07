@@ -74,16 +74,26 @@ public class UserDAOImpl implements UserDAO {
         return this.sqlSession.selectOne("select_my_board",b);
     }
 
-    //답변저장
+    //댓글저장
     @Override
     public int insert_reply(BoardVO b) {
         return this.sqlSession.insert("insert_reply",b);
     }
 
-    //답변 목록 가져오기
+    //댓글 목록 가져오기
     @Override
     public List<BoardVO> get_select_reply(BoardVO b) {
         return this.sqlSession.selectList("get_reply",b);
+    }
+
+    @Override
+    public void del_user_board(BoardVO b) {
+        this.sqlSession.delete("user_board_del",b);
+    }
+
+    @Override
+    public void update_board(BoardVO b) {
+        this.sqlSession.update("user_board_update",b);
     }
 
 

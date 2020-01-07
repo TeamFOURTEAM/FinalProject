@@ -33,4 +33,7 @@ public interface UserDAO {
 
     List<BoardVO> get_select_reply(BoardVO b);
 
+    void del_user_board(BoardVO b);
+
+    void update_board(BoardVO b);
 }

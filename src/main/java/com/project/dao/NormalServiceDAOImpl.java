@@ -54,4 +54,19 @@ public class NormalServiceDAOImpl implements NormalServiceDAO{
     public void update_hit(NormalBoardVO nbv) {
         this.sqlSession.update("hit_up",nbv);
     }
+
+    @Override
+    public int reply_del(NormalBoardVO nbv) {
+        return this.sqlSession.delete("reply_del",nbv);
+    }
+
+    @Override
+    public int del_board(NormalBoardVO nbv) {
+        return this.sqlSession.delete("del_board",nbv);
+    }
+
+    @Override
+    public void update_board(NormalBoardVO nbv) {
+        this.sqlSession.update("update_board_ok",nbv);
+    }
 }
