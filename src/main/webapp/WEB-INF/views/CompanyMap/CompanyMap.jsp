@@ -21,13 +21,13 @@
             
                         </div>
             
-                    </div>
                     <!-- 관리자일 경우 실행 -->
                     <!-- 추가 할 지점 지도 등록 -->
                     <span class="addLocation"><input id="adminAddMap" type="button" onclick="admin_add_CompanyMap();"><i class="fas fa-plus-square fa-2x"></i></span>
+                    </div>
                 </section>
                 <!-- 버튼 눌렀을 경우 보일 display 영역 -->
-                <form id="frm" action="#" method="post" enctype="multipart/form-data">
+                <form id="frm" action="#" enctype="multipart/form-data" method="post">
                     <div id="addCompany" class="addCompany">
                         <input name="company_name" id="company_name" class="textInput" type="text" placeholder="회사명">
                         <input name="company_x" id="company_x" class="textInput" type="text" placeholder="위도">

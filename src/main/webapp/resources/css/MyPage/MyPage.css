@@ -1,14 +1,16 @@
 /* MyPageContainer */
 #MyPageContainer {
 	position: relative;
-	width: 95%;
+	width: 75%;
 	border-left: solid 1px red;
 	border-right: solid 1px red;
 	margin: 0 auto;
+	padding: 7% 0;
 	min-width: 460px;
 }
 
 #ShopLink {
+	display: none;
 	position: absolute;
     right: 36px;
     top: -30px;
