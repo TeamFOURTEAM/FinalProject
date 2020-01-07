@@ -23,7 +23,7 @@ $(document).ready(function del_check() {
 });
 
 //고양이 분양 게시판 수정 관련
-function edit_check() {		
+/*function edit_check() {		
 	
 	if($.trim($("#cat_title").val())==""){
 		alert("고양이 종류를 입력하세요");
@@ -36,7 +36,7 @@ function edit_check() {
 		return false;
 	}		
 	alert("수정 되었습니다.");		
-};
+};*/
 
 //고양이 분양 게시판 글쓰기 관련
 function write_check() {		
