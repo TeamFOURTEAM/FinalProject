@@ -130,8 +130,11 @@
         </div>
 
         <%-- 검색후 페이징 --%>
+       
         <div class="search_div">
+        <c:if test="${user_id!=null }">
             <input type="button" value="글쓰기" onclick="location='board_list_write'">
+            </c:if>
             <select name="back_end_title">
                 <option value="board_title"
                         <c:if test="${back_end_title=='board_title'}">

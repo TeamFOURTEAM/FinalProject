@@ -40,7 +40,9 @@ public class User_Controller {
 
     //로그인
     @RequestMapping("login")
-    public String login() {
+    public String login(HttpServletRequest request) {
+    	String referer = request.getHeader("Referer");
+		request.getSession().setAttribute("redirectURI", referer);
         return "login/login";
     }
 
@@ -137,7 +139,7 @@ public class User_Controller {
 
     //로그인 확인
     @RequestMapping("login_ok")
-    public String login_ok(MemberVO m, HttpSession session, HttpServletResponse response) throws Exception {
+    public String login_ok(MemberVO m, HttpSession session, HttpServletResponse response,HttpServletRequest request) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         //System.out.println("아이디값"+m.getUser_id());
@@ -154,7 +156,8 @@ public class User_Controller {
         } else {
             String user_id = mem.getUser_id();
             session.setAttribute("user_id", user_id);
-            return "redirect:/user_board_list";
+            String referer=(String)session.getAttribute("redirectURI");
+            return "redirect:"+referer;
         }
         return null;
     }
