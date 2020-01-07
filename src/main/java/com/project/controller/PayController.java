@@ -71,7 +71,7 @@ public class PayController {
 		if(user_id.equals(null)) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
-			out.println("location='login';");
+			out.println("location='/login';");
 			out.println("</script>");
 			
 		}else {
@@ -144,7 +144,7 @@ public class PayController {
 		if(user_id.equals(null)) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
-			out.println("location='login';");
+			out.println("location='/login';");
 			out.println("</script>");
 			
 		}else {
@@ -189,7 +189,7 @@ public class PayController {
 		if(user_id.equals(null)) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
-			out.println("location='admin_login';");
+			out.println("location='/login';");
 			out.println("</script>");
 			
 		}else {
@@ -233,7 +233,7 @@ public class PayController {
 		if(user_id.equals(null)) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
-			out.println("location='login';");
+			out.println("location='/login';");
 			out.println("</script>");
 			
 		}else {
@@ -300,7 +300,7 @@ public class PayController {
 		if(user_id.equals(null)) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
-			out.println("location='login';");
+			out.println("location='/login';");
 			out.println("</script>");
 			
 		}else {
@@ -401,7 +401,7 @@ public class PayController {
 		if((user_id == null) || !(user_id.equals("admin"))) {
 			out.println("<script>");
 			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
-			out.println("location='login';");
+			out.println("location='/login';");
 			out.println("</script>");
 			
 		}else {
@@ -485,7 +485,7 @@ public class PayController {
 		if((user_id == null) || !(user_id.equals("admin"))) {
 			out.println("<script>");
 			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
-			out.println("location='login';");
+			out.println("location='/login';");
 			out.println("</script>");
 			
 		}else {/** 관리자 계정으로 수정해야할것 **/
@@ -526,7 +526,7 @@ public class PayController {
 		if((user_id == null) || !(user_id.equals("admin"))) {
 			out.println("<script>");
 			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
-			out.println("location='login';");
+			out.println("location='/login';");
 			out.println("</script>");
 			
 		}else {/** 관리자 계정으로 수정해야할것 **/

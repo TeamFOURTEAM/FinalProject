@@ -169,7 +169,7 @@ public class ShopController {
 		if((user_id == null) || !(user_id.equals("admin"))) {
 			out.println("<script>");
 			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
-			out.println("location='admin_login';");
+			out.println("location='/login';");
 			out.println("</script>");
 			
 		}else {
@@ -350,7 +350,7 @@ public class ShopController {
 		if((user_id == null) || !(user_id.equals("admin"))) {
 			out.println("<script>");
 			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
-			out.println("location='admin_login';");
+			out.println("location='/login';");
 			out.println("</script>");
 			
 		}else {
@@ -477,7 +477,7 @@ public class ShopController {
 		if((user_id == null) || !(user_id.equals("admin"))) {
 			out.println("<script>");
 			out.println("alert('관리자 영역입니다. 관리자 계정으로 로그인해주세요.');");
-			out.println("location='login';");
+			out.println("location='/login';");
 			out.println("</script>");
 			
 		}else {

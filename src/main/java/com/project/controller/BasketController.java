@@ -123,7 +123,7 @@ public class BasketController {
 		if(user_id.equals(null)) {
 			out.println("<script>");
 			out.println("alert('로그인 하신 후 이용해주세요.');");
-			out.println("location='login';");
+			out.println("location='/login';");
 			out.println("</script>");
 			
 		}else {
