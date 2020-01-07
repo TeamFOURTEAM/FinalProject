@@ -23,8 +23,7 @@
 					<a id="mypage_cont" href="/mypage">MyPage</a>
 						<div id="mypage_hover">
 							<p><a href="">회원정보</a></p>
-							<p><a href="">장바구니</a></p>
-							<p align="center"><a href="">구&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매</a></p>							
+							<p><a href="/shop/basket_list?page=${page}">장바구니</a></p>						
 						</div>
 					
 					
@@ -39,7 +38,7 @@
 				</div>
 				<!-- //header_menu -->
 				<div class="header_title">
-					<a href="/">사이트 제목</a>
+					<a href="/"><img class="title_img" src="/img/title.png" /></a>
 				</div>
 				<!-- //header_title -->
 			</div>
@@ -86,6 +85,6 @@
 	</article>
 	
 	
-	<a id="move_top_btn" href="#">TOP</a>
+	<a id="move_top_btn" href="#"><img class="top_btn" src="/img/top_btn01.png" /></a>
 	
-	<a id="store" href="/company"><img src="https://cdn.imweb.me/upload/S201807025b39d1981b0b0/b14a1347eb1ce.png"></a>
+	<a id="store" href="/company"><img class="company_img" src="https://cdn.imweb.me/upload/S201807025b39d1981b0b0/b14a1347eb1ce.png"></a>

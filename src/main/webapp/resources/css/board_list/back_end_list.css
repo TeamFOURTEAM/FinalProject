@@ -5,15 +5,24 @@
     height: 100%;
 }
 
+#container form{
+    height: 1000px;
+}
+
 .board_title{
+    margin: 60px;
     text-align: center;
 
 }
 
-.board_title h2{
-    background-color: crimson;
+.board_title strong{
+    font-size: 20px;
+   line-height: 1.5;
+    font-family: '나눔 고딕','Nanum Gothic','Malgun Gothic','맑은 고딕',dotum,'돋움',sans-serif;
+    color: #1e1e1e;
+    font-weight: bold;
     margin:0 auto;
-    width:100px;
+    width:140px;
     height: 50px;
 }
 

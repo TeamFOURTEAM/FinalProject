@@ -20,7 +20,7 @@
 
 <body>
 <div id="container">
-    <div class="board_title"><h2>분  양</h2></div>
+    <div class="board_title"><strong>[ 분  양 ]</strong></div>
     <form method="get" action="user_board_list">
 
         <%--리스트가 있으면--%>
@@ -28,7 +28,7 @@
             <c:forEach var="b" items="${blist}">
                 <div class="wrap">
                     <div class="back_end_cont">
-                        <a href="cont?id=${b.back_end_list_id}&title=${b.back_end_list_title}&no=${b.back_end_list_no}">
+                        <a href="cont?id=${b.back_end_list_id}&title=${b.back_end_list_title}&no=${b.back_end_list_no}&page=${page}">
                             <h3>
 
                                 <c:if test="${fn:length(b.back_end_list_title)>10}">
@@ -130,8 +130,11 @@
         </div>
 
         <%-- 검색후 페이징 --%>
+       
         <div class="search_div">
+        <c:if test="${user_id!=null }">
             <input type="button" value="글쓰기" onclick="location='board_list_write'">
+            </c:if>
             <select name="back_end_title">
                 <option value="board_title"
                         <c:if test="${back_end_title=='board_title'}">

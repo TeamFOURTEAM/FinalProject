@@ -25,12 +25,10 @@
 							[Q&A]
 						</div>
 
+						<div class="qList_count">
+						총 게시물 수: ${totalcount}
+						</div>
                             <table id="qList_t">
-                            	<tr>
-                            		<td class="qList_count" colspan="5" align="right">
-                            			총 게시물 수: ${totalcount}
-                            		</td>
-                            	</tr>
                                 <tr>
                                     <th width="6%" height="26">No.</th>
                                     <th width="40%">제목</th>
@@ -52,10 +50,12 @@
                                                     <c:forEach begin="1" end="${q.q_step}" step="1">
                                                         &nbsp;<%--답변글 들여쓰기 --%>
                                                     </c:forEach>
+                                                    <div class="OneLine">
                                                     <img class="reply" src="/resources/img/QandA/reply2.png" />
                                                     <%--답변글 이미지 --%>
                                                 </c:if>
-                                                <a class="OneLine" href="QandA_cont?q_no=${q.q_no}&state=cont&page=${page}">${q.q_title}</a>
+                                                <a  href="QandA_cont?q_no=${q.q_no}&state=cont&page=${page}">${q.q_title}</a>
+                                            </div>
                                             </td>
                                             <td align="center">${q.q_id }</td>
                                             <td align="center">${q.q_date}</td>

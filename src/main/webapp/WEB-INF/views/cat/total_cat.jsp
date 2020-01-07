@@ -5,6 +5,7 @@
 <!-- style -->
 <link rel="stylesheet" href="/css/reset.css">
 <link rel="stylesheet" href="/css/cat_board/cat.css">
+<link rel="stylesheet" href="/css/main/font-awesome.css">
 
 <!-- jquery -->
 <script src="/js/cat_board/cat.js"></script>
@@ -37,6 +38,7 @@
                                                 </div>
                                                 <div class="name">
                                                     <a href="cat_cont?cat_no=${c.cat_no}&state=cont&page=${page}">${c.cat_title}</a>
+                                                                                                        
                                                 </div>
                                             </div>
                                         </c:forEach>

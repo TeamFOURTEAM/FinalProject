@@ -20,4 +20,10 @@ public interface NormalServiceDAO {
     List<NormalBoardVO> getreplylist(NormalBoardVO nbv);
 
     void update_hit(NormalBoardVO nbv);
+
+    int reply_del(NormalBoardVO nbv);
+
+    int del_board(NormalBoardVO nbv);
+
+    void update_board(NormalBoardVO nbv);
 }

@@ -84,7 +84,7 @@
                             <div class="tb-left">
 
                                 <!--. 스팸글 처리 -->
-                                <a href="normal_board_list_cont?normal_no=${b.normal_no}&normal_title=${b.normal_title}&normal_date=${b.normal_date}&normal_id=${b.normal_id}&normal_hit=${b.normal_hit}&page=${page}">${b.normal_title}</a>
+                                <a href="normal_board_list_cont?normal_no=${b.normal_no}">${b.normal_title}</a>
                             </div>
                         </td>
                         <td>
