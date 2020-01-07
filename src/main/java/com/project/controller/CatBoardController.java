@@ -539,6 +539,32 @@ public class CatBoardController {
 		return "cat/cat_persian_list";
 	}
 
+	/*//추천수 업데이트
+	@RequestMapping("/RecUpdate.do")
+	public void RecUpdate(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		Action action = null;
+		try {
+		action =new RecUpdate();
+		action.execute(request, response);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//추천수 검색
+	@RequestMapping("/RecCount.do")
+	public void RecCount(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		Action action = null;
+		try {
+		action =new RecCount();
+		action.execute(request, response);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}*/
+
 /*	//다중파일업로드
 	@RequestMapping("/multiplePhotoUpload")
 	public void multiplePhotoUpload(HttpServletRequest request, HttpServletResponse response){

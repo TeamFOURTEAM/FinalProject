@@ -20,7 +20,7 @@ $(function(){
             type: "POST",
             data: {
                 no: ${content.board_no},
-                id: '${id}'
+                id: '${user_id}'
             },
             success: function () {
 		        recCount();
