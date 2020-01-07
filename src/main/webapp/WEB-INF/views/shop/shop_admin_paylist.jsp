@@ -1,12 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>관리자 주문 내역 관리</title>
+<%@ include file="../include/header.jsp"%>
 
 	<!-- Style -->
     <link rel="stylesheet" href="/css/reset.css">
@@ -15,8 +10,7 @@
     
     <!-- JavaScript Libraries -->
     <script src="/js/jquery.js"></script>
-</head>
-<body>
+
 	<div class="container">
 		<div class="basket_title">
 			<span class="admin_title">관리자 주문 내역 관리</span>
@@ -227,5 +221,5 @@
 		}
 	});
 	</script>
-</body>
-</html>
+	
+<jsp:include page="../include/footer.jsp" />

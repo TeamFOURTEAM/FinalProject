@@ -7,7 +7,7 @@
         content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
     <meta name="author" content="이재형">
     <meta name="description" content="Final Project 메인">
-    <title>CATS AND DOGS : 고양이,강아지 분양</title>
+    <title>Cats&Dogs</title>
 
     <!-- Style -->
     <link rel="stylesheet" href="css/reset.css">

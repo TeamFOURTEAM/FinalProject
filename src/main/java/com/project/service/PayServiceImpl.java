@@ -80,6 +80,11 @@ public class PayServiceImpl implements PayService {
 		return this.payDAO.getProductName2(pay_no);
 	}//주문리스트에 해당하는 상품명 가져오기 2
 
+	@Override
+	public PayVO choicePay(int pay_no) {
+		return this.payDAO.choicePay(pay_no);
+	}//주문내역하나만 가져오기
+
 	
 
 

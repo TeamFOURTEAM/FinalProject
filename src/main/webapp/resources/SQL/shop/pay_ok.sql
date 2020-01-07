@@ -5,7 +5,7 @@ create table pay_ok(
 	,payCom_id varchar2(100) not null --유저 아이디(회원테이블 참조)
 	,product_no number(38) not null --상품번호
 	,basket_count number(38) not null --담은 상품 개수
-	,product_page number(38) not null --해당상품의 페이지 값. 장바구니에서 해당상품클릭했을때 이동하기 위함.
+	,basket_page number(38) not null --해당상품의 페이지 값. 장바구니에서 해당상품클릭했을때 이동하기 위함.
 	,pay_no number(38) not null --주문 번호
 );
 
@@ -22,9 +22,6 @@ nocache;
 alter table pay_ok
 add constraint pay_no_confirm_fk
 foreign key (pay_no) references pay(pay_no) on delete cascade;
-
---pay_ok테이블 컬럼 product_page명을 basket_page로 변경
-ALTER TABLE pay_ok RENAME COLUMN product_page TO basket_page;
 
 
 /**********************************/

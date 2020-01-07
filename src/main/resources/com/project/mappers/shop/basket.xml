@@ -30,7 +30,7 @@
 			b.basket_no as basket_no,
 			b.basket_id as basket_id,
 			l.item_no as product_no,
-			'이재형' as user_name,<!-- 임시로 이름 줬음. 멤버 테이블에서 받아와야함. 바로밑에 where 부분도 수정 -->
+			m.user_name as user_name,
 			l.item_name as product_name,
 			l.item_img as product_img,
 			b.basket_count as basket_count,
@@ -39,9 +39,10 @@
 			(item_price * basket_count) sumPrice,
 			validity,
 			basket_page
-		from shopList l, shopBasket b 
+		from shopList l, shopBasket b, MEMBERVO m
 		where 
-			l.item_no = b.product_no
+			m.user_id = b.basket_id
+			and l.item_no = b.product_no
 			and b.basket_id=#{basket_id} and validity=#{validity} and pay_no=#{pay_no}
 		order by b.basket_no desc
 	</select>
