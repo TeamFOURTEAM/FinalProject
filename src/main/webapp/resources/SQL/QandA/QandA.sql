@@ -11,6 +11,8 @@ create table q_board(
 	,q_date date --등록날짜
 );
 
+alter table q_board drop constraint memver_id_q
+
 select * from q_board order by q_no desc;
 
 --QandA_no_seq 시퀀스 생성

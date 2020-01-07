@@ -9,6 +9,8 @@ create table NormalBoard(
    normal_step number(38)
 );
 
+alter table NormalBoard drop constraint B_ID_N
+
 create sequence seq_normal_no
 start with 1
 increment by 1

@@ -34,7 +34,7 @@
 					 <c:if test="${!empty user_id}">
 					 <a href="/logout">LogOut</a>
 					 </c:if>
-					 <a href="#">Register</a>
+					 <a href="/memberjoin">Register</a>
 				</div>
 				<!-- //header_menu -->
 				<div class="header_title">
@@ -87,4 +87,4 @@
 	
 	<a id="move_top_btn" href="#"><img class="top_btn" src="/img/top_btn01.png" /></a>
 	
-	<a id="store" href="/company"><img class="company_img" src="https://cdn.imweb.me/upload/S201807025b39d1981b0b0/b14a1347eb1ce.png"></a>
+	<a id="store" href="/Company"><img class="company_img" src="https://cdn.imweb.me/upload/S201807025b39d1981b0b0/b14a1347eb1ce.png"></a>
