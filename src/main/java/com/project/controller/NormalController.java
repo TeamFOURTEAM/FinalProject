@@ -25,9 +25,13 @@ public class NormalController {
 
 
     @RequestMapping("normal_board_list")
-    public String normal_board_list(Model m, NormalBoardVO nbv, HttpServletResponse response, HttpServletRequest request)throws Exception{
+    public String normal_board_list(HttpSession session,Model m, NormalBoardVO nbv, HttpServletResponse response, HttpServletRequest request)throws Exception{
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+
+        ////////////////// 추가
+        session.setAttribute("c_path",request.getServletPath());
+        //////////////////
 
         int page = 1;
         int limit = 15;//한페이지 보여지는 목록개수
@@ -68,14 +72,6 @@ public class NormalController {
         int endpage = maxpage;
         if (endpage > startpage + 10 - 1)
             endpage = startpage + 10 - 1;
-
-        System.out.println(page+"page");
-        System.out.println(startpage+"startpage");
-        System.out.println(endpage+"endpage");
-        System.out.println(maxpage+"maxpage");
-        System.out.println(listcount+"listcount");
-        System.out.println(field+"field");
-        System.out.println(title+"title");
 
         m.addAttribute("nlist", nlist);//blist키이름에 컬렉션 제네릭 blist저장
         m.addAttribute("page", page);
@@ -133,7 +129,6 @@ public class NormalController {
     //게시글 삭제
     @RequestMapping("normal_list_write_del_ok")
     public String normal_list_write_del_ok(HttpServletResponse response,NormalBoardVO nbv,HttpServletRequest request) throws IOException {
-        System.out.println(request.getParameter("normal_ref"));
 
         PrintWriter out=response.getWriter();
 
@@ -174,7 +169,6 @@ public class NormalController {
         }
 
 
-        System.out.println(request.getParameter("normal_no")+"삭제후 전달될 번호값!");
 
 
         this.normalService.update_hit(nbv);
@@ -219,8 +213,6 @@ public class NormalController {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
 
-        System.out.println(request.getParameter("normal_id"));
-        System.out.println(request.getParameter("normal_no"));
 
         nbv.setNormal_id(request.getParameter("normal_id"));
         nbv.setNormal_no(Integer.parseInt(request.getParameter("normal_no")));
@@ -274,11 +266,7 @@ public class NormalController {
 
         PrintWriter out=response.getWriter();
 
-        System.out.println(nbv.getNormal_no());
-        System.out.println(nbv.getNormal_title());
-        System.out.println(nbv.getNormal_cont());
-
-            this.normalService.update_board(nbv);
+        this.normalService.update_board(nbv);
 
 
         return "redirect:/normal_board_list_cont?normal_no="+nbv.getNormal_no();

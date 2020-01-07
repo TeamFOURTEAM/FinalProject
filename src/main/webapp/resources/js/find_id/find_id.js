@@ -58,6 +58,11 @@ function inputPhoneNumber(obj) {
 function phonecodesend() {
     $user_phone=$('#user_phone').val();
     $('#phone').val($user_phone)
+    if ($user_phone==''){
+        alert('전화번호를 입력해주세요');
+        $('#user_phone').focus();
+        return false;
+    }
     console.log($user_phone);
     $.ajax({
         type:"POST",
@@ -113,4 +118,23 @@ function code_check() {
         $('.codelabel').show();
 
     }
+}
+
+
+function find_i() {
+    if ($('.hiddencode').attr("disabled")=='undefined'){
+        alert('인증부터 해주세요!');
+        return false;
+    }
+
+    if ($('#user_phone_code').val()==''){
+        alert('인증번호를 입력해주세요');
+        return false;
+    }
+
+    if($('#user_phone_code').attr("disabled")!='disabled'){
+        alert('인증 해주세요');
+        return false;
+    }
+
 }
