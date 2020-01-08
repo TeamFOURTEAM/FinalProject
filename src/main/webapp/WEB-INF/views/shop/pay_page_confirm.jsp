@@ -1,16 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>결제 확인</title>
+<%@ include file="../include/header.jsp"%>
 <!-- Style -->
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/shop/pay_page_confirm.css">
-    
-</head>
-<body>
+   
+
 	<div class="container">
 		<div class="pay_ok">
 			<div class="message">
@@ -23,10 +18,8 @@
 			</div>
 		</div>
 	</div>
-</body>
-</html>
-
-
+	
+<jsp:include page="../include/footer.jsp" />
 
 
 

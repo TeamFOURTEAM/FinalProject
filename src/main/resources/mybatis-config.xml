@@ -24,7 +24,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
  	<!-- Pay_okVO 빈클래스의 객체 별칭명 payOK를 관리 -->
  	
  	<!--분양 게시판-->
-    <typeAlias type="com.project.vo.MemberVO" alias="member"/>
+    <typeAlias type="com.project.vo.MemberVO" alias="MemberVO"/>
+ 	<typeAlias type="com.project.vo.CompanyVO" alias="CompanyVO"/>
 
     <typeAlias type="com.project.vo.BoardVO" alias="board"/>
 

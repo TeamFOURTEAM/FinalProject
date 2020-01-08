@@ -5,6 +5,7 @@
 .write_main {
 	width: 1000px; position: relative;
 	margin: 50px auto;
+	height: 750px;
 }
 
 .write_text {

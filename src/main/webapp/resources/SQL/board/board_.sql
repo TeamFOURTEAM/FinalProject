@@ -13,6 +13,10 @@ create table BOARD
     REF                 NUMBER
 );
 
+delete from BOARD where BACK_END_LIST_ID='dlrudgns90'
+
+alter table BOARD drop constraint FOUR.MEMVER_ID_Q
+
 select * from board
 
 create sequence back_end_list_no_seq

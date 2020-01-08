@@ -13,6 +13,15 @@ create table MEMBERVO
 
 insert into membervo values('dlrudgns90','1234','이경훈','5월','남','dlrudgns1004@gmail.com','010-8570-2108')
 insert into membervo values('lkh','1234','이경훈','5월','남','dlrudgns1004@gmail.com','010-8570-2108')
+insert into membervo values('pebble','1234','이경훈','5월','남','dlrudgns1004@gmail.com','010-8570-2108')
+insert into membervo values('admin','1234','이경훈','5월','남','dlrudgns1004@gmail.com','010-8570-2108')
+
 insert into membervo values('admin','1234','관리자','5월','남','dlrudgns1004@gmail.com','010-8570-2108')
+insert into membervo values('lll','1234','정지훈','5월','남','dlrudgns1004@gmail.com','010-3335-0714')
+
+delete from membervo where user_id='dlrudgns90'
+delete from membervo where user_id='lkh'
+delete from membervo where user_id='lll'
+
 
 select * from membervo

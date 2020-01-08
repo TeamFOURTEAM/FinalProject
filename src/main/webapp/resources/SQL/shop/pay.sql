@@ -43,7 +43,7 @@ order by p.pay_no desc
 drop table pay;
 drop sequence pay_no_seq;
 delete from pay;
-delete from pay where pay_no = 2;
+delete from pay where pay_no = 1;
 
 
 

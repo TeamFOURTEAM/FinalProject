@@ -49,8 +49,6 @@ public class User_Controller {
     //아이디찾기
     @RequestMapping("find_id")
     public String find_id() {
-//        int count=this.userService.getListCount(b);
-//        System.out.println(count+"카운트");
         return "find_id/find_id";
     }
 
@@ -72,6 +70,8 @@ public class User_Controller {
     public String back_end_list(Model listM, BoardVO b, HttpServletResponse response, HttpServletRequest request) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+
+
 
         int page = 1;
         int limit = 7;//한페이지 보여지는 목록개수
@@ -115,15 +115,6 @@ public class User_Controller {
             endpage = startpage + 10 - 1;
 
 
-        System.out.println(page+"page");
-        System.out.println(startpage+"startpage");
-        System.out.println(endpage+"endpage");
-        System.out.println(maxpage+"maxpage");
-        System.out.println(listcount+"listcount");
-        System.out.println(back_end_field+"back_end_field");
-        System.out.println(back_end_title+"back_end_title");
-
-
         listM.addAttribute("blist", blist);//blist키이름에 컬렉션 제네릭 blist저장
         listM.addAttribute("page", page);
         listM.addAttribute("startpage", startpage);
@@ -142,11 +133,7 @@ public class User_Controller {
     public String login_ok(MemberVO m, HttpSession session, HttpServletResponse response,HttpServletRequest request) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        //System.out.println("아이디값"+m.getUser_id());
         MemberVO mem = this.userService.select_id_pwd(m);
-
-        System.out.println(m.getUser_id());
-        System.out.println(m.getUser_pwd());
 
         if (mem == null) {
             out.println("<script>");
@@ -172,8 +159,6 @@ public class User_Controller {
         String codenum = "";
         if (phonecode != null) {
             codenum = new CodeSend().cd1();
-            System.out.println(codenum);
-            System.out.println(user_phone);
             //CodeMessage.sms_send(phone,codenum);
 
             out.print(codenum);
@@ -191,15 +176,13 @@ public class User_Controller {
     public String find_id_check(String user_name, String phone, MemberVO m, HttpServletResponse response) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        System.out.println("이름" + user_name);
-        System.out.println("번호" + phone);
+
         m.setUser_name(user_name);
         m.setUser_phone(phone);
         MemberVO uv = this.userService.select_name_phone(m);
 
 
         if (uv != null) {
-            System.out.println("이메일 발송");
             Gmail.gmailSendID(uv.getUser_name(), uv.getUser_email(), uv.getUser_id());
             out.println("<script>");
             out.println("alert('이메일 발송 완료!');");
@@ -220,9 +203,7 @@ public class User_Controller {
     public String find_pwd_check(String user_id, String user_name, String phone, MemberVO m, HttpServletResponse response) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        System.out.println("아이디" + user_id);
-        System.out.println("이름" + user_name);
-        System.out.println("폰" + phone);
+
         m.setUser_id(user_id);
         m.setUser_name(user_name);
         m.setUser_phone(phone);
@@ -230,11 +211,9 @@ public class User_Controller {
         int re = -1;
         if (uv != null) {
             uv.setUser_pwd(new CodeSend().cd1());
-            System.out.println("임시비번" + uv.getUser_pwd());
             re = this.userService.pwdUPdate(uv);
 
             if (re == 1) {
-                System.out.println("이메일 발송");
                 Gmail.gmailSendPWD(uv.getUser_name(), uv.getUser_email(), uv.getUser_pwd());
                 out.println("<script>");
                 out.println("alert('이메일 발송 완료!');");
@@ -325,9 +304,7 @@ public class User_Controller {
 
         //고양이 종류, 내용을 가져옴
 
-        System.out.println("아이디"+user_id);
-        System.out.println("아이디"+back_end_list_title);
-        System.out.println("아이디"+back_end_list_cont);
+
         File UpFile = multi.getFile("back_end_list_img");
         //첨부한 파일을 가져옴
 
@@ -365,12 +342,10 @@ public class User_Controller {
             //바뀌어진 첨부파일명으로 업로드
 
             b.setBack_end_list_img(fileDBName);
-            System.out.println(fileDBName);
 
         } else {
             //mybatis는 컬럼에 null을 저장하지 못함. 그러므로 파일을
             //null저장을 막기 위해서 else 로 처리해야 한다.
-            System.out.println("돌고있음");
             b.setBack_end_list_img("/defalut/defalut.jpg");//빈 공백을 넣어서, null이 들어가
             //에러가 나는 것을 막아준다.
         }//if else
@@ -391,9 +366,7 @@ public class User_Controller {
     public String reply_ok(String id, String cont, int no, BoardVO b, HttpServletResponse response) throws Exception{
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
-        System.out.println("아이디"+id);
-        System.out.println("내용"+cont);
-        System.out.println("번호"+no);
+
 
         b.setBack_end_list_id(id);
         b.setBack_end_list_cont(cont);
@@ -453,9 +426,6 @@ public class User_Controller {
 
         //고양이 종류, 내용을 가져옴
 
-        System.out.println("아이디"+user_id);
-        System.out.println("아이디"+back_end_list_title);
-        System.out.println("아이디"+back_end_list_cont);
         File UpFile = multi.getFile("back_end_list_img");
         //첨부한 파일을 가져옴
 
@@ -493,12 +463,10 @@ public class User_Controller {
             //바뀌어진 첨부파일명으로 업로드
 
             b.setBack_end_list_img(fileDBName);
-            System.out.println("111111프로파일"+fileDBName);
 
         } else {
             //mybatis는 컬럼에 null을 저장하지 못함. 그러므로 파일을
             //null저장을 막기 위해서 else 로 처리해야 한다.
-            System.out.println("돌고있음");
             b.setBack_end_list_img("/defalut/defalut.jpg");//빈 공백을 넣어서, null이 들어가
             //에러가 나는 것을 막아준다.
         }//if else
@@ -508,9 +476,6 @@ public class User_Controller {
         b.setBack_end_list_cont(back_end_list_cont);
         b.setBack_end_list_no(back_end_list_no);
 
-        System.out.println("11111아이디"+user_id);
-        System.out.println("11111제목"+back_end_list_title);
-        System.out.println("11111내용"+back_end_list_cont);
 
 
         this.userService.update_board(b);//글쓰기 수정
@@ -523,13 +488,6 @@ public class User_Controller {
     @RequestMapping("reply_update_ok")
     public String reply_update_ok(BoardVO b,int no,int page,HttpSession session,HttpServletResponse response){
         response.setContentType("text/html;charset=UTF-8");
-
-
-
-        System.out.println(no+"해당내용으로 다시갈 번호");
-        System.out.println(b.getBack_end_list_no()+"수정할 댓글 번호");
-        System.out.println(b.getBack_end_list_cont()+"수정할 댓글 내용");
-
 
         this.userService.user_reply_update(b);
 

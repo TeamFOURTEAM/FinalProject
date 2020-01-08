@@ -16,14 +16,13 @@
 </head>
 <body>
 
-	<header id="header">
+	<header id="header" style="background: url(/resources/img/login_wallpaper.jpg);">
 		
-			<div class="header">
+			<div class="header" >
 				<div class="header_menu">
 					<a id="mypage_cont" href="/mypage">MyPage</a>
 						<div id="mypage_hover">
-							<p><a href="">회원정보</a></p>
-							<p><a href="/shop/basket_list?page=${page}">장바구니</a></p>						
+							<p><a href="/shop/basket_list?page=1">장바구니</a></p>						
 						</div>
 					
 					
@@ -34,7 +33,7 @@
 					 <c:if test="${!empty user_id}">
 					 <a href="/logout">LogOut</a>
 					 </c:if>
-					 <a href="#">Register</a>
+					 <a href="/memberjoin">Register</a>
 				</div>
 				<!-- //header_menu -->
 				<div class="header_title">
@@ -67,7 +66,7 @@
 							<li><a href="/dog/dog_poodle_list?page=1">푸들</a></li>
 						</ul></li>
 					<li><div>
-							<a href="/shop/total_shop?class=shop">SHOP</a>
+							<a href="/shop/total_shop?find_field=item_name&find_name=">SHOP</a>
 						</div>
 						<ul class="sub_category">
 						</ul></li>
@@ -87,4 +86,4 @@
 	
 	<a id="move_top_btn" href="#"><img class="top_btn" src="/img/top_btn01.png" /></a>
 	
-	<a id="store" href="/company"><img class="company_img" src="https://cdn.imweb.me/upload/S201807025b39d1981b0b0/b14a1347eb1ce.png"></a>
+	<a id="store" href="/Company"><img class="company_img" src="https://cdn.imweb.me/upload/S201807025b39d1981b0b0/b14a1347eb1ce.png"></a>

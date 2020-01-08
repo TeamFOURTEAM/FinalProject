@@ -25,7 +25,9 @@ margin-top: 80px;}
 	border: none;
 	position: absolute;
 	left: 0;
-	top: 1%;
+	top: 0;
+	background-color: #fff;
+	opacity: 0.7;
 }
 
 /* title menu */

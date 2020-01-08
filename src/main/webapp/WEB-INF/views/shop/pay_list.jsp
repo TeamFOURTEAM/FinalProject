@@ -1,17 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>상품 주문 내역</title>
+<%@ include file="../include/header.jsp"%>
+
 	<!-- Style -->
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/shop/pay_list.css">
-    
-</head>
-<body>
+
 	<div class="container">
 		<div class="basket_title">
 			<span>${user_id}</span> 님의 주문 내역
@@ -83,5 +78,5 @@
 			</div>
 		</form>
 	</div>
-</body>
-</html>
+	
+<jsp:include page="../include/footer.jsp" />

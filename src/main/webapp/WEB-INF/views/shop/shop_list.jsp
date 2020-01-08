@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/css/shop/shop_list.css">
     <link rel="stylesheet" href="/css/main/font-awesome.css">
     
+    <script src="/js/shop/shop.js"></script>
+    
 	<div class="container">
         <form method="GET" action="total_shop">
         <%-- 검색 결과 수 --%>
@@ -18,12 +20,13 @@
 	            개의 검색 결과가 있습니다.
             </div>
 	        <div class="admin_write">
-	            <button type="button" onclick="location.href='shop_write?page=${page}';">관리자 글쓰기</button>
+	        	<c:if test="${checkCount == 1}">
+	        		<button type="button" onclick="location.href='shop_write?page=${page}';">관리자 글쓰기</button>
 	            <button type="button" onclick="location.href='admin_paylist_go';">관리자 주문내역</button>
-	            <button type="button" id="basketList" onclick="location.href='basket_list_go?page=${page}&basket_id=pebble';">임시 장바구니</button>
-	            <button type="button" id="payList" onclick="location.href='pay_list_go?page=${page}';">임시 주문 내역</button>
-	            <button type="button" onclick="location.href='/';">임시 메인 버튼</button>
-	            <!-- 삭제해줘야함 -->
+	        	</c:if>
+	      
+	            <button type="button" id="basketList" onclick="location.href='basket_list_go?page=${page}';">장바구니</button>
+	            <button type="button" id="payList" onclick="location.href='pay_list_go?page=${page}';">주문 내역</button>
 	        </div>
         </div>
         <%--//검색 결과 수 --%>
@@ -125,6 +128,10 @@
                         </span>
                     </div>
                     <div class="itemRecoRow">
+                        <c:if test="${checkCount == 1}">
+                        	<span class="bestNum">상품 재고 : <fmt:formatNumber pattern="###,###,###" value="${n.item_stockCount}" /> 개</span>
+                        	<br/>
+                        </c:if>
                         <span class="bestNum">이 제품이 좋아요 ! : ${n.item_likeCount}</span>
                     </div>
                 </div>

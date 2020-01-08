@@ -1,16 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport"
-        content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
-    <meta name="author" content="이재형">
-    <meta name="description" content="반려동물용품내용">
-    <title>반려동물상품</title>
+<%@ include file="../include/header.jsp"%>
 
     <!-- Style -->
     <link rel="stylesheet" href="/css/reset.css">
@@ -34,8 +25,8 @@
 		$('.itemPriceSum').html('총 합계금액 : ￦ '+sum);
 	};
 </script>
-</head>
-<body>
+
+
 	<div class="container">
         <!-- 상품 상세 영역 -->
         <div class="item_main">
@@ -60,6 +51,10 @@
                 </div>
                 
                 <div class="itemContReco">
+                	<c:if test="${checkCount == 1}">
+                       	<span class="bestNum">상품 재고 : <fmt:formatNumber pattern="###,###,###" value="${s.item_stockCount}" /> 개</span>
+                       	<br/><br/>
+                    </c:if>
                     <span class="contReco">이 상품이 좋아요! : ${s.item_likeCount}</span>
                 </div>
                 <form method="post" name="itemBuy">
@@ -101,9 +96,11 @@
                 
                 <div class="itemBuyAdminBox">
                     <div class="adminEditDel">
-	                    <button type="button" 
-	                    onclick="location='shop_cont?state=edit&item_no=${s.item_no}&page=${page}';">
-	                    	수정하기</button>
+                    	<c:if test="${checkCount == 1}">
+		                    <button type="button" 
+		                    onclick="location='shop_cont?state=edit&item_no=${s.item_no}&page=${page}';">
+		                    	수정하기</button>
+                    	</c:if>
 	                    	
 	                    <form method="get" action="/shop_del"
 	                    	 onsubmit="return shop_del_check();" class="del_form">
@@ -112,11 +109,10 @@
 						<input type="hidden" name="page" value="${page}" />
 						<input type="hidden" name="item_img" value="${s.item_img}" />
 						
-						<button id="del_button">삭제</button>
+						<c:if test="${checkCount == 1}">
+							<button id="del_button">삭제</button>
+						</c:if>
 	                    </form>
-	                    <button type="button" 
-	                    onclick="location='total_shop?page=${page}&find_field=item_name&find_name=';">임시 뒤로 버튼</button>
-	                    <!-- 삭제해줘야함(임시버튼)-->
                     </div>
                 </div>
                 </div>
@@ -196,5 +192,5 @@ $('#basketCancel').on('click',function(){
 });
 
 </script>
-</body>
-</html>
+
+<jsp:include page="../include/footer.jsp" />

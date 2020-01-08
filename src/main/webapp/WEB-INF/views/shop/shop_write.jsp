@@ -1,10 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Shop 관리자 글쓰기</title>
-
+<%@ include file="../include/header.jsp"%>
 
 <!-- style -->
 <link rel="stylesheet" href="/css/shop/shop_write.css" />
@@ -46,9 +41,6 @@
 		});
 	});
 </script>
-
-</head>
-<body>
 
 <div class="write_main">
 	<div class="write_text">
@@ -105,8 +97,7 @@
 	</div>
 </div>
 
-</body>
-</html>
+<jsp:include page="../include/footer.jsp" />
 
 
 
