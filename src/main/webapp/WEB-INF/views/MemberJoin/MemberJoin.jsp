@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/MemberJoin/MemberJoin.css" />" />
 
     <section>
-        <form action="/memberjoin_ok" id="MemberForm" method="post" autocomplete="off">
+        <form action="#" id="MemberForm" method="post" autocomplete="off">
             <div id="JoinContainer"> <!-- max size -->
                 <div class="content"><!--min size -->
                     <div class="divSize">

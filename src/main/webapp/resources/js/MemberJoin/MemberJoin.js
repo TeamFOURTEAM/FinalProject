@@ -1,4 +1,3 @@
-var SmsEquals;
 $(document).ready(function() {
 	var IDcode = /^[a-zA-Z0-9]{6,12}$/; // 아이디가 적합한지 검사할 정규식
 	var PWcode = /^[a-zA-Z0-9]{8,15}$/; // 패스워드가 적합한지 검사할 정규식
@@ -333,27 +332,27 @@ function validate() {
 	// }
 
 	//인증번호
-	console.log('validate === ' + SmsEquals);
-	if (!check3(SMSCode, label_SMSCode, '인증번호를 입력해주세요')) {
+
+	if (!testEquals(SMSCode, label_SMSCode, '인증번호를 입력해주세요')) {
 		return false;
 	}
-	console.log('SMSCode 값;' + SMSCode.value);
+
 	// if (!smscheck3(SMSCode, SmsEquals, label_SMSCode, '인증번호를 잘못 입력하셨습니다.')) {
 	// 	return false;
 	// }
 
-	if (SMSCode.val() == $('#codeEquals').val()) {
-		alert('회원가입이 완료되었습니다.');
-		return false;
-	} else {
-		console.log($('#codeEquals').val() + '회원가입버튼');
-		SMSCode.style.display = 'block';
-		SMSCode.style.color = 'red';
-		SMSCode.innerHTML = '인증번호를 잘못 입력하셨습니다.';
-		SMSCode.value = '';
-		SMSCode.focus();
-		return false;
-	}
+	//	if (SMSCode.val() == $('#codeEquals').val()) {
+	//		alert('회원가입이 완료되었습니다.');
+	//		return false;
+	//	} else {
+	//		console.log($('#codeEquals').val() + '회원가입버튼');
+	//		SMSCode.style.display = 'block';
+	//		SMSCode.style.color = 'red';
+	//		SMSCode.innerHTML = '인증번호를 잘못 입력하셨습니다.';
+	//		SMSCode.value = '';
+	//		SMSCode.focus();
+	//		return false;
+	//	}
 }
 
 //check 함수 정의 값을 전달 받아서 실행
@@ -402,6 +401,22 @@ function check2(re, what, labelID, message) {
 
 function check3(what, labelID, message) {
 	if (what.value) {
+		labelID.style.display = 'none';
+		if (what == phoneNumber) {
+			SMSCode.disabled = false;
+		}
+		return true;
+	}
+	labelID.style.display = 'block';
+	labelID.style.color = 'red';
+	labelID.innerHTML = message;
+	what.value = '';
+	what.focus();
+}
+
+function testEquals(what, labelID, message) {
+	if (what.value) {
+		MemberForm.action = '/memberjoin_ok';
 		MemberForm.submit();
 		return true;
 	}
@@ -411,6 +426,7 @@ function check3(what, labelID, message) {
 	what.value = '';
 	what.focus();
 }
+
 function smscheck3(SMSid, equalsValue, smslabel, message) {
 	alert(SMSid.value + '///' + equalsValue);
 	if (SMSid == equalsValue) {

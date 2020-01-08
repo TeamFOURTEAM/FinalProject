@@ -10,6 +10,7 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,16 +29,21 @@ public class CompanyController {
 	private CompanyService companyService;
 	
 	@RequestMapping("/Company")
-	public ModelAndView MapTest(ModelAndView mav) {
+	public ModelAndView MapTest(ModelAndView mav ,HttpSession session) {
+		String user_id = (String) session.getAttribute("user_id");
+		
 		List Company_names = companyService.selectCompany_name();
 		mav.setViewName("CompanyMap/CompanyMap");
 		mav.addObject("company_names", Company_names);
+		mav.addObject("user_id", user_id);
 		return mav;		
 	}
 
 	//지점 추가 multipart 라서 multipart request로 응답받아야 값을 가져올 수 있다.
 	@RequestMapping("/newCompany")
 	public String newCompany(CompanyVO companyVO,HttpServletRequest request,HttpServletResponse response) throws IOException {
+		
+		
 		
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html; charset=UTF-8");

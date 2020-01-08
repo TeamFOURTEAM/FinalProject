@@ -15,3 +15,5 @@ create sequence seq_normal_no
 start with 1
 increment by 1
 nocache;
+
+select * from Normalboard

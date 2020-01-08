@@ -1,8 +1,11 @@
 package com.project.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.api.client.http.HttpResponse;
 import com.project.service.MemberJoinService;
 import com.project.vo.MemberVO;
 
@@ -23,19 +27,28 @@ public class MyPageController {
 	
 	//MyPage 정보값 출력
 	@RequestMapping("/mypage")
-	public ModelAndView MyPage(ModelAndView mav, HttpSession session) {
+	public ModelAndView MyPage(ModelAndView mav, HttpSession session,HttpServletResponse response) throws IOException {
 		MemberVO mVo = new MemberVO();
-		mVo.setUser_id("aaaaaa");
+		String user_id = (String) session.getAttribute("user_id");
+		
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html; charset=UTF-8");
+				
 //		mVo.setUser_id((String) session.getAttribute("user_id"));
 		
 //		아이디를 기준으로 회원 정보 출력
-		mVo = memberJoinService.MypageView(mVo);
+		if(user_id != null) {
+			mVo.setUser_id(user_id);
+			mVo = memberJoinService.MypageView(mVo);
+//			회원정보들을 ModelAndView에 담음
+			mav.addObject("MemberInfo",mVo);
+			mav.setViewName("MyPage/MyPage");
+			return mav;	
+		}else {
+			out.println("<script>alert('로그인을 해주세요'); history.go(-1);</script>");
+		}
 		
-		
-//		회원정보들을 ModelAndView에 담음
-		mav.addObject("MemberInfo",mVo);
-		mav.setViewName("MyPage/MyPage");
-		return mav;		
+	return null;
 	}
 	
 	//비동기식 ajax 회원정보 email 수정
