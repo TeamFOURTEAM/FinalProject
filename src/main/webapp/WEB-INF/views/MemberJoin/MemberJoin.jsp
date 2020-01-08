@@ -2,6 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/header.jsp"%>
 
+<!-- 헤더 사진 -->
+<script>
+$(function (){
+    // .attr()은 속성값(property)을 설정할 수 있다.
+      $('#header').attr('style', 'background: url(/resources/img/login_wallpaper.jpg); background-position:top; background-size:cover;');
+});
+</script>
 
 <link rel="stylesheet" href="<c:url value="/resources/css/MemberJoin/MemberJoin.css" />" />
 

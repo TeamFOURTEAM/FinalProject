@@ -8,6 +8,14 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/reset.css" />"></link>
 <script src="<c:url value="/resources/js/MyPage/MyPage.js" />"></script>
 
+<!-- 헤더 사진 -->
+<script>
+$(function (){
+    // .attr()은 속성값(property)을 설정할 수 있다.
+      $('#header').attr('style', 'background: url(/resources/img/login_wallpaper.jpg); background-position:top; background-size:cover;');
+});
+</script>
+
 <section>
 	<!-- MyPageContainer 영역 -->
 	<div id="MyPageContainer">
