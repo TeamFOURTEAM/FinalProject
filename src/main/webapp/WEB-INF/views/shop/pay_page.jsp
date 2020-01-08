@@ -54,8 +54,8 @@
               			<span>주문 정보</span>
               		</div>
               		<div class="info_center">
-              			<div class="CusName">받으시는 분 : </div>
-              			<div class="CusPhone">휴대전화번호 : </div>
+              			<div class="CusName">받으시는 분 : ${map.user_name}</div>
+              			<div class="CusPhone">휴대전화번호 : ${map.user_phone}</div>
               		</div>
               	</div>
               	
