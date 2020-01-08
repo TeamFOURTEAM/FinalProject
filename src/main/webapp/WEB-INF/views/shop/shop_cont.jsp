@@ -52,10 +52,10 @@
                 
                 <div class="itemContReco">
                 	<c:if test="${checkCount == 1}">
-                       	<span class="bestNum">상품 재고 : <fmt:formatNumber pattern="###,###,###" value="${s.item_stockCount}" /> 개</span>
-                       	<br/><br/>
+                       	<span class="contPrice">상품 재고 : <fmt:formatNumber pattern="###,###,###" value="${s.item_stockCount}" /> 개</span>
+                       
                     </c:if>
-                    <span class="contReco">이 상품이 좋아요! : ${s.item_likeCount}</span>
+                    <%-- <span class="contReco">이 상품이 좋아요! : ${s.item_likeCount}</span> --%>
                 </div>
                 <form method="post" name="itemBuy">
                 <input type="hidden" name="product_no" value="${s.item_no}" />

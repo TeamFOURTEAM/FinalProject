@@ -1,5 +1,8 @@
 @charset "UTF-8";
-#contents { width: 1000px; margin: 50px auto;}
+#contents { 
+	width: 1000px; margin: 50px auto;
+	height: 800px;
+}
 
 /* input 관련  */
 input, select {

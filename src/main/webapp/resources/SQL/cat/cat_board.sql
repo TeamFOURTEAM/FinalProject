@@ -33,7 +33,7 @@ select * from cat_board order by cat_no desc
 
 select * from CAT_BOARD where cat_title='먼치킨'
 
-delete from cat_board where cat_no=4
+delete from cat_board where cat_no=1
 
 insert into cat_board (cat_no,cat_title,cat_cont,cat_file) 
 		values(cat_no_seq.nextval,'123','4444','dfsdff');

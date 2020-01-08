@@ -7,6 +7,7 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -115,10 +116,12 @@ public class DogBoardController {
 	@RequestMapping("/dog/total_dog")
 	public String total_dog(
 			Model listM,DogVO d,
-			HttpServletRequest request) {
+			HttpServletRequest request,
+			HttpSession session) {
 		
 		int page=1;
 		int limit=12;//한페이지에 보여지는 목록 개수
+		String user_id=(String)session.getAttribute("user_id");
 		
 		if(request.getParameter("page") != null) {
 			page=Integer.parseInt(request.getParameter("page"));
@@ -158,7 +161,7 @@ public class DogBoardController {
 		listM.addAttribute("totalcount", totalCount);
 		listM.addAttribute("find_field", find_field);
 		listM.addAttribute("find_name", find_name);
-		
+		listM.addAttribute("user_id", user_id);
 
 		return "dog/total_dog";
 	}

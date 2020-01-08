@@ -34,7 +34,7 @@
 		<%-- 검색 결과 목록 --%>
         <div class="searchList">
             <!-- 인기순 상품 목록 -->
-            <div class="bestGoodsList">
+            <!-- <div class="bestGoodsList">
                <div class="shopListTitle">인기 상품 목록</div>
 
                <div class="itemContainer">
@@ -99,13 +99,13 @@
                     <span class="bestNum">이 제품이 좋아요 ! : 1</span>
                 </div>
                 </div>
-            </div>
+            </div> -->
             <!--//인기순 상품 목록 -->
 
 
             <!-- 일반 상품 목록 -->
             <div class="goodsList">
-                <div class="shopListTitle">일반 상품 목록</div>
+                <div class="shopListTitle">상품 리스트</div>
 
 				<%-- db에 상품 정보가 있을 때 --%>
 				<c:if test="${!empty slist}">
@@ -132,7 +132,7 @@
                         	<span class="bestNum">상품 재고 : <fmt:formatNumber pattern="###,###,###" value="${n.item_stockCount}" /> 개</span>
                         	<br/>
                         </c:if>
-                        <span class="bestNum">이 제품이 좋아요 ! : ${n.item_likeCount}</span>
+                        <%-- <span class="bestNum">이 제품이 좋아요 ! : ${n.item_likeCount}</span> --%>
                     </div>
                 </div>
 				

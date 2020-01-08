@@ -25,8 +25,8 @@ public class MyPageController {
 	@RequestMapping("/mypage")
 	public ModelAndView MyPage(ModelAndView mav, HttpSession session) {
 		MemberVO mVo = new MemberVO();
-		mVo.setUser_id("aaaaaa");
-//		mVo.setUser_id((String) session.getAttribute("user_id"));
+//		mVo.setUser_id("aaaaaa");
+		mVo.setUser_id((String) session.getAttribute("user_id"));
 		
 //		아이디를 기준으로 회원 정보 출력
 		mVo = memberJoinService.MypageView(mVo);

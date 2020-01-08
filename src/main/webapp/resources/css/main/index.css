@@ -130,7 +130,10 @@ body {}
     margin-top: 20px;
 }
 .main_slide div {position: relative; width: 100%; margin: 1px;}
-.main_slide img {filter:brightness(25%);}
+.main_slide img {
+	filter:brightness(25%);
+	width: 500px; height: 500px;
+}
 
 
 .main_slide figcaption {

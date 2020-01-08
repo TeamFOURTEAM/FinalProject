@@ -346,7 +346,7 @@ public class User_Controller {
         } else {
             //mybatis는 컬럼에 null을 저장하지 못함. 그러므로 파일을
             //null저장을 막기 위해서 else 로 처리해야 한다.
-            b.setBack_end_list_img("/defalut/defalut.jpg");//빈 공백을 넣어서, null이 들어가
+            b.setBack_end_list_img("/default/default.jpg");//빈 공백을 넣어서, null이 들어가
             //에러가 나는 것을 막아준다.
         }//if else
 
