@@ -65,8 +65,12 @@ public class MemberJoinController {
 			out.println("<script>alert('회원가입 정보를 확인해주세요.'); history.go(-1);</script>");
             out.flush();
 		}else {
-			System.out.println("회원가입 성공");			
-			memberJoinService.insert(mb);
+			System.out.println("회원가입 성공");
+			int result = memberJoinService.insert(mb);
+			
+			if(result != 1) {
+				out.println("<script>alert('회원가입 정보를 확인해주세요.'); history.go(-1);</script>");
+			}
 			
 			out.println("<script>alert('회원가입이 정상적으로 처리되었습니다.'); location='/memberjoin';</script>");
 			out.flush();

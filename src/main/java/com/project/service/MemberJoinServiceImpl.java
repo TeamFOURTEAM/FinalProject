@@ -13,8 +13,8 @@ public class MemberJoinServiceImpl implements MemberJoinService {
 	private MemberJoinDAO mbDAO;
 	
 	@Override
-	public void insert(MemberVO mb) {
-		mbDAO.insert(mb);
+	public int insert(MemberVO mb) {
+		return mbDAO.insert(mb);
 	}
 
 	@Override

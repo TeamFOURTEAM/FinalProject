@@ -9,6 +9,7 @@ create table MemberJoin (
 	,join_date date
 );
 
+drop table memberjoin;
 
 select * from MemberJoin;
 

@@ -134,13 +134,14 @@
                         <span class="PSpanSizeCB">
                             <input name="user_SMSCode" id='SMSCode' type="text" class="input-size" placeholder="인증번호를 입력하세요" disabled>
                         </span>
+                        <input type="hidden" id="codeEquals"/>
                     </div>
                     <div class="divLabel">
                         <label id='label_SMSCode'>인증번호를 입력하세요</label>
                     </div>
 
                     <div class="MemberJoin">
-                        <input class="MemberButton" type="button" value="가입하기" onclick="validate();">
+                        <input class="MemberButton" type="button" value="가입하기" onclick="validate();" onkeydown="return keydown();">
                     </div>
                 </div> <!-- content -->
             </div><!-- container-->
