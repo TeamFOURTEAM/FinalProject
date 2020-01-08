@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -25,8 +26,13 @@
             <div class="row">
                 <div class="header">
                     <div class="header_menu">
-                        <a href="login">Login</a>
-                        <a href="join">Join</a>
+                        <c:if test="${empty user_id}">
+						 <a href="/login">Login</a>
+						 </c:if>
+						 <c:if test="${!empty user_id}">
+						 <a href="/logout">LogOut</a>
+						 </c:if>
+						 <a href="/memberjoin">Join</a>
                     </div>
                     <!--//header_menu -->
 
