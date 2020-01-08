@@ -12,7 +12,7 @@ body { }
     font-size: 18px;
     font-weight: bold;
    }
-.header .header_menu a:hover {color: #000;}
+.header .header_menu a:hover {color: #51b0dc;}
 
 .header .header_title {text-align: center; margin-top: auto; 
 margin-top: 80px;}                         
