@@ -13,8 +13,8 @@ public class MemberJoinDAOImpl implements MemberJoinDAO {
 	private SqlSession sqlSession;
 	
 	@Override
-	public void insert(MemberVO mb) {
-		sqlSession.insert("MemberJoin.MbJoin", mb);
+	public int insert(MemberVO mb) {
+		return sqlSession.insert("MemberJoin.MbJoin", mb);
 	}
 
 	@Override

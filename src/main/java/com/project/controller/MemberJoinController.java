@@ -36,6 +36,8 @@ public class MemberJoinController {
 	//회원가입 DB저장
 	@RequestMapping("/memberjoin_ok")
 	public String MemberJoin_ok(MemberVO mb, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html; charset=UTF-8");
 		
 		String user_birthdayYY = request.getParameter("user_birthdayYY");
 		String user_birthdayMM = request.getParameter("user_birthdayMM");
@@ -52,9 +54,7 @@ public class MemberJoinController {
 		String user_birthday = user_birthdayYY + user_birthdayMM + user_birthdayDD;
 		mb.setUser_birthday(user_birthday);
 		
-		PrintWriter out = response.getWriter();
-		response.setContentType("text/html; charset=UTF-8");
-		
+		System.out.println(mb.getJoin_date());
 		if(mb.getUser_id().equals("") || mb.getUser_pwd().equals("") || mb.getUser_name().equals("") || 
 				mb.getUser_gender().equals("") || mb.getUser_email().equals("") || 
 				mb.getUser_phone().equals("") || user_birthdayYY.equals("") || user_birthdayMM.equals("") ||
@@ -68,7 +68,7 @@ public class MemberJoinController {
 			System.out.println("회원가입 성공");			
 			memberJoinService.insert(mb);
 			
-			out.println("<script>alert('회원가입이 정상적으로 처리되었습니다.'); location='/memberjoin';</script>");
+			out.println("<script>alert('회원가입이 정상적으로 처리되었습니다.'); location='/';</script>");
 			out.flush();
 		}
 		

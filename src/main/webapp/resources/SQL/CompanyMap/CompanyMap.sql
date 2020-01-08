@@ -28,3 +28,4 @@ SELECT COMPANY_NO_SEQ.NEXTVAL FROM DUAL;
 
 select company_name from companylocation;
 
+delete from COMPANYLOCATION;

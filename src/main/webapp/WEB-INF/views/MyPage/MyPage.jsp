@@ -28,7 +28,7 @@ $(function (){
 					<span>회</span> <span>원</span> <span>정</span> <span>보</span>
 				</div>
 				<!-- MemberInfo -->
-
+				
 				<div class="MemberID UpdateMember" name="user_id"><p>ID : </p><span class="MemberValue">${MemberInfo.user_id}</span></div>
 
 				<div class="MemberName UpdateMember"><p>Name : </p> <span>${MemberInfo.user_name}</span></div>

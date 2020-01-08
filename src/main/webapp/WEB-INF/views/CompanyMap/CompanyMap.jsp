@@ -23,21 +23,25 @@
             
                     <!-- 관리자일 경우 실행 -->
                     <!-- 추가 할 지점 지도 등록 -->
-                    <span class="addLocation"><input id="adminAddMap" type="button" onclick="admin_add_CompanyMap();"><i class="fas fa-plus-square fa-2x"></i></span>
+                    <c:if test="${user_id =='admin' }">
+                    	<span class="addLocation"><input id="adminAddMap" type="button" onclick="admin_add_CompanyMap();"><i class="fas fa-plus-square fa-2x"></i></span>
+                    </c:if>
                     </div>
                 </section>
                 <!-- 버튼 눌렀을 경우 보일 display 영역 -->
-                <form id="frm" action="#" enctype="multipart/form-data" method="post">
-                    <div id="addCompany" class="addCompany">
-                        <input name="company_name" id="company_name" class="textInput" type="text" placeholder="회사명">
-                        <input name="company_x" id="company_x" class="textInput" type="text" placeholder="위도">
-                        <input name="company_y" id="company_y" class="textInput" type="text" placeholder="경도">
-                        <input name="company_addr" id="company_addr" class="textInput" type="text" placeholder="주소">
-                        <input name="company_image" id="company_image" class="textInput" type="file" placeholder="image">
-                        <input class="buttonInput" type="button" value="확인" onclick="fn_check();">
-                        <input class="buttonInput" type="button" value="취소" onclick="admin_add_CompanyMap();">
-                    </div>
-                </form>
+                <c:if test="${user_id=='admin'}">
+	                <form id="frm" action="#" enctype="multipart/form-data" method="post">
+	                    <div id="addCompany" class="addCompany">
+	                        <input name="company_name" id="company_name" class="textInput" type="text" placeholder="회사명">
+	                        <input name="company_x" id="company_x" class="textInput" type="text" placeholder="위도">
+	                        <input name="company_y" id="company_y" class="textInput" type="text" placeholder="경도">
+	                        <input name="company_addr" id="company_addr" class="textInput" type="text" placeholder="주소">
+	                        <input name="company_image" id="company_image" class="textInput" type="file" placeholder="image">
+	                        <input class="buttonInput" type="button" value="확인" onclick="fn_check();">
+	                        <input class="buttonInput" type="button" value="취소" onclick="admin_add_CompanyMap();">
+	                    </div>
+	                </form>
+                </c:if>
             </body>
 
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6cf1d02d5be732b93568adf88b1c629f"></script>

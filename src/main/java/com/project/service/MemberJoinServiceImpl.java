@@ -1,5 +1,6 @@
 package com.project.service;
 
+import org.springframework.aop.ThrowsAdvice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +14,8 @@ public class MemberJoinServiceImpl implements MemberJoinService {
 	private MemberJoinDAO mbDAO;
 	
 	@Override
-	public void insert(MemberVO mb) {
-		mbDAO.insert(mb);
+	public int insert(MemberVO mb) {
+		return mbDAO.insert(mb);
 	}
 
 	@Override
