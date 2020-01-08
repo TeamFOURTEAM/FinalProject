@@ -80,7 +80,9 @@
 	                    <div class="itemBuy">
 	                    
 	                    	<%-- 하나의 form에서 action을 2개로 나눔. 장바구니쪽은 ajax 처리  --%>
-		                    <button type="button" id="basket_button">장바구니에 담기</button>
+	                    	<c:if test="${checkCount == 1 || checkCount ==2}">
+			                    <button type="button" id="basket_button">장바구니에 담기</button>
+	                    	</c:if>
 		                    <button id="buy_button" 
 		                    onclick="javascript: form.action='pay_direct_go';">구매</button>
 	                    </div>
