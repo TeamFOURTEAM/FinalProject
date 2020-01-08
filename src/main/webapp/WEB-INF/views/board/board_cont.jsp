@@ -26,7 +26,7 @@
             <div class="title">제목:${title}</div>
             <div class="id"><span class="left">아이디:${id}</span>&nbsp;<span class="right">날짜:${date}</span></div>
             <div class="cont">내용:${cont}</div>
-            <c:if test="${member_id==id}">
+            <c:if test="${member_id==id || member_id=='admin'}">
                 <div class="controller">
                     <a href="user_board_list?page=${page}" >목록</a>
                     <a href="user_board_list_del?back_end_list_no=${no}" onclick="return del_ok();">삭제</a>
@@ -52,7 +52,7 @@
                         <div class="reply_cont">
                             <textarea name="back_end_list_cont" id="reply_update" class="reply_update" cols="106" rows="7" onclick="border_change();" style="background:#faf8f8 " readonly>${b.back_end_list_cont}</textarea>
                         </div>
-                        <c:if test="${member_id==b.back_end_list_id}">
+                        <c:if test="${member_id==b.back_end_list_id || member_id=='admin'}">
                             <div class="reply_input">
                                 <a href="#" onclick="document.getElementById('frm').submit();" id="check" style="display: none">확인</a>
                                 <a href="#" id="update" onmousedown="reply_up();">수정</a>

@@ -132,19 +132,16 @@
             <dl class="bbs-link con-link">
                 <dt></dt>
                 <dd>
-                    <c:if test="${n.normal_id==user_id}">
+                    <c:if test="${n.normal_id==user_id || user_id=='admin'}">
                     <a href="board_cont_update?normal_no=${n.normal_no}" class="none">수정</a>
                     <a class="write" href="normal_list_write_del_ok?normal_ref=${n.normal_no}" onclick="return del_ok();">삭제</a>
                     </c:if>
             </dl>
             <dd>
-                <c:if test="${n.normal_id==user_id}">
+                <c:if test="${n.normal_id==user_id || user_id=='admin'}">
                     <a class="write" href="normal_list_write">글쓰기</a>
-                    <a href="normal_board_list?page=${page}">목록보기</a>
                 </c:if>
-                <c:if test="${n.normal_id!=user_id}">
                     <a href="normal_board_list?page=${page}">목록보기</a>
-                </c:if>
             </dd>
         </dl>
 
