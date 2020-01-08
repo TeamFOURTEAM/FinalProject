@@ -40,7 +40,7 @@
                 </form>
             </body>
 
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey= 6cf1d02d5be732b93568adf88b1c629f"></script>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey= 7152889429cbed9c5679a348746e9d44"></script>
                 <script src="<c:url value="/resources/js/CompanyMap/CompanyMap.js"/>"></script>
 </body>
 <jsp:include page="../include/footer.jsp" />
