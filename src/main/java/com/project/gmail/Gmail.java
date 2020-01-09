@@ -42,7 +42,7 @@ public class Gmail {
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
 
             // Subject
-            message.setSubject("애견샾에서 에서 고객님 정보 발송드립니다"); //메일 제목을 입력
+            message.setSubject("Cat & Dog에서 에서 고객님 정보 발송드립니다"); //메일 제목을 입력
 
             // Text
             message.setText(name+" 님의 아이디는: "+id+" 입니다!");    //메일 내용을 입력
@@ -89,7 +89,7 @@ public class Gmail {
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
 
             // Subject
-            message.setSubject("애견샾에서 에서 고객님 정보 발송드립니다"); //메일 제목을 입력
+            message.setSubject("Cat & Dog에서 에서 고객님 정보 발송드립니다"); //메일 제목을 입력
 
             // Text
             message.setText(name+" 님의 임시비밀번호입니다! : "+pwd+" 전대 타인에게 노출시키지마세요! 로그인후 비밀번호를 변경시켜주세요!");    //메일 내용을 입력

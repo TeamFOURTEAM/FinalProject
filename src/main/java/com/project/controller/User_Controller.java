@@ -3,6 +3,7 @@ package com.project.controller;
 import com.oreilly.servlet.MultipartRequest;
 import com.project.codesend.CodeSend;
 import com.project.gmail.Gmail;
+import com.project.messagesend.CodeMessage;
 import com.project.service.UserService;
 import com.project.vo.BoardVO;
 import com.project.vo.MemberVO;
@@ -159,12 +160,12 @@ public class User_Controller {
         String codenum = "";
         if (phonecode != null) {
             codenum = new CodeSend().cd1();
-            //CodeMessage.sms_send(phone,codenum);
+            CodeMessage.sms_send(user_phone,codenum);
 
             out.print(codenum);
         }else{
             codenum = new CodeSend().cd1();
-            //CodeMessage.sms_send(phone,codenum);
+            CodeMessage.sms_send(user_phone,codenum);
             out.println(codenum);
         }
         return null;
