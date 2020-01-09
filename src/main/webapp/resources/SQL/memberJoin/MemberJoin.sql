@@ -13,8 +13,6 @@ drop table cat_board
 
 select * from all_tables
 
-drop table memberjoin;
-
 select * from MemberJoin;
 
 SELECT USER_ID, USER_PHONE FROM MEMBERJOIN WHERE USER_ID = 'aaaaaa';
@@ -33,3 +31,5 @@ SELECT uc.constraint_name, uc.table_name, ucc.column_name, uc.constraint_type, u
 FROM user_constraints uc, user_cons_columns ucc
 
 WHERE uc.constraint_name = ucc.constraint_name;
+
+delete from MemberJoin where user_id='dlrudgns1004'

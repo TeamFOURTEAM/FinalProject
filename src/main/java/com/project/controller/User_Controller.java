@@ -41,9 +41,7 @@ public class User_Controller {
 
     //로그인
     @RequestMapping("login")
-    public String login(HttpServletRequest request) {
-    	String referer = request.getHeader("Referer");
-		request.getSession().setAttribute("redirectURI", referer);
+    public String login() {
         return "login/login";
     }
 
@@ -142,10 +140,9 @@ public class User_Controller {
             out.println("location='login';");
             out.println("</script>");
         } else {
-            String user_id = mem.getUser_id();
+        	String user_id = mem.getUser_id();
             session.setAttribute("user_id", user_id);
-            String referer=(String)session.getAttribute("redirectURI");
-            return "redirect:"+referer;
+            return "redirect:/cat/total_cat?page=1";
         }
         return null;
     }
