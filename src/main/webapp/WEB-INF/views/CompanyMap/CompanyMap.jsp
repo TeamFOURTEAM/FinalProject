@@ -42,7 +42,7 @@
 	                        <input name="company_addr" id="company_addr" class="textInput" type="text" placeholder="주소">
 	                        <input name="company_image" id="company_image" class="textInput" type="file" placeholder="image">
 	                        <input class="buttonInput" type="button" value="확인" onclick="fn_check();">
-	                        <input class="buttonInput" type="button" value="삭제" onclick="delMap();">
+	                        <!-- <input class="buttonInput" type="button" value="삭제" onclick="delMap();"> -->
 	                        <input class="buttonInput" type="button" value="취소" onclick="admin_add_CompanyMap();">
 	                    </div>
 	                </form>

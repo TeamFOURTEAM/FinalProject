@@ -157,12 +157,12 @@ public class User_Controller {
         String codenum = "";
         if (phonecode != null) {
             codenum = new CodeSend().cd1();
-            //CodeMessage.sms_send(user_phone,codenum);
+            CodeMessage.sms_send(user_phone,codenum);
 
             out.print(codenum);
         }else{
             codenum = new CodeSend().cd1();
-            //CodeMessage.sms_send(user_phone,codenum);
+            CodeMessage.sms_send(user_phone,codenum);
             out.println(codenum);
         }
         return null;
