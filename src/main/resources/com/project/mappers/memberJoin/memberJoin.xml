@@ -24,6 +24,31 @@
 	<update id="updatePN">
 		UPDATE MEMBERJOIN SET USER_PHONE = #{user_phone} WHERE USER_ID = #{user_id}
 	</update>
+	
+	<update id="updatePWD">
+		UPDATE MEMBERJOIN SET USER_PWD = #{user_pwd} WHERE USER_ID = #{user_id}
+	</update>
+	
+	<select id="NBView" parameterType="MemberVO" resultType="normal">
+		 <![CDATA[
+			
+			select * from
+			(select rowNum rNum,normal_no,normal_title from
+				(select * from NormalBoard where normal_id=#{user_id} and normal_step=0 order by normal_no desc)
+				)where rNum >= 1 and rNum <=5
+		
+		]]>
+	</select>
+	<select id="BView" parameterType="MemberVO" resultType="board">
+		 <![CDATA[
+			
+			select * from
+			(select rowNum rNum,BACK_END_LIST_NO,BACK_END_LIST_TITLE,STEP from
+				(select * from BOARD where BACK_END_LIST_ID=#{user_id} and STEP=0 order by BACK_END_LIST_NO desc)
+			 )where rNum >= 1 and rNum <=5
+		
+		]]>
+	</select>
 </mapper>
 
 
