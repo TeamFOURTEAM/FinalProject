@@ -22,6 +22,9 @@
 <body>
 <form action="find_id_check" method="post">
     <div id="container">
+    <div class="titlefindId">
+    	<p>ID 찾기</p>
+    </div>
         <div>
             <input class="user_id" id="user_name" name="user_name" type="text" placeholder="이 름" onkeyup="patterkorean();">
             <br><span class="idlabel" id="idlabel">이름을 입력해주세요!</span>

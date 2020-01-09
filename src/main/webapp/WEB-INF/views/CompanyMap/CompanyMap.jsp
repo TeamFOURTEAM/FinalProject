@@ -7,6 +7,10 @@
                 <script src="<c:url value="resources/js/jquery.js"/>"></script>
                 <section id="opacityBlock">
                     <div id="MapContainer">
+                    <div id="MapImg">
+                    	<div class="logImg"><img src="/img/title.png" alt="로그이미지" /></div>                   	
+                    	<div class="tagArea"><p><span>지</span><span>점</span></p></div>
+                    </div>
                         <div id="CompanyName">
                         	<form action="#">
 		                        <c:if test="${!empty company_names}">

@@ -16,6 +16,9 @@ $(function (){
         <form action="#" id="MemberForm" method="post" autocomplete="off">
             <div id="JoinContainer"> <!-- max size -->
                 <div class="content"><!--min size -->
+                <div class="titlefindPwd">
+			    	<p>회원가입</p>
+			    </div>
                     <div class="divSize">
                         <h2>아이디</h2>
                         <span class="s-span-Size">

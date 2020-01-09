@@ -39,7 +39,7 @@ $(function (){
 							value="비밀번호 변경" onclick="updatePwd();">
 					</div>
 					<div class="Update_Pwd_Area" id="Update_Pwd_Area">
-						<input id="Update_Pwd" name="user_pwd" type="text" placeholder="변경할 비밀번호를 입력하세요">
+						<input id="Update_Pwd" name="user_pwd" type="password" placeholder="변경할 비밀번호를 입력하세요">
 						<input class="updateBtn" id="Update_Pwd_ok" type="button" value="확인" onclick="updatePwd_ok();">
 					</div>
 				</div>
@@ -94,6 +94,9 @@ $(function (){
 								<li class="OneLine"><a href="/cont?no=${Board.back_end_list_no}&page=1">${Board.back_end_list_title}</a></li>
 							</c:forEach>
 						</c:if>
+						<c:if test="${empty Board}">
+						<li class="OneLine">목록이 없습니다.</li>
+						</c:if>
 					</ul>
 				</div>
 			</div>
@@ -111,6 +114,9 @@ $(function (){
 							<c:forEach var="NBoard" items="${NormalBoard}">
 								<li class="OneLine"><a href="/normal_board_list_cont?normal_no=${NBoard.normal_no}">${NBoard.normal_title}</a></li>
 							</c:forEach>
+						</c:if>
+						<c:if test="${empty NormalBoard}">
+						<li class="OneLine">목록이 없습니다.</li>
 						</c:if>
 					</ul>
 				</div>

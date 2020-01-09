@@ -45,7 +45,7 @@ System.out.println("session="+user_id);
 			mVo = memberJoinService.MypageView(mVo);
 			List<NormalBoardVO> normalBoard = memberJoinService.NormalBoardView(mVo);
 			List<BoardVO> board = memberJoinService.BoardView(mVo);
-			System.out.println(board.get(0).getBack_end_list_no());
+			
 //			회원정보들을 ModelAndView에 담음
 			mav.addObject("MemberInfo",mVo);
 			mav.addObject("NormalBoard",normalBoard);

@@ -46,7 +46,7 @@
                         </a>
                     </div>
                     <div class="back_end_cont_image">
-                        <a href="cont?id=${b.back_end_list_id}&title=${b.back_end_list_title}&no=${b.back_end_list_no}">
+                        <a href="cont?id=${b.back_end_list_id}&title=${b.back_end_list_title}&no=${b.back_end_list_no}&page=${page}">
                             <img class="image" src="/resources/photo_upload/${b.back_end_list_img}">
                         </a>
                     </div>

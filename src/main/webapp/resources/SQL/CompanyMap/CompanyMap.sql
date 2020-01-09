@@ -11,7 +11,7 @@ create table CompanyLocation(
 
 SELECT * FROM COMPANYLOCATION;
 
-
+delete from COMPANYLOCATION where company_no=5;
 CREATE SEQUENCE COMPANY_NO_SEQ
   START WITH 1
   INCREMENT BY 1

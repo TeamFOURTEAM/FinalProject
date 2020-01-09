@@ -24,6 +24,9 @@ $(function (){
 <body>
 <form action="login_ok" method="post">
     <div id="container">
+    <div class="titleLogin">
+    	<p>Login</p>
+    </div>
         <div>
             <input type="text" placeholder="아이디" name="user_id">
             <br><span class="idlabel">아이디가 없습니다!</span>
@@ -36,7 +39,7 @@ $(function (){
             <input class="loginbutton" type="submit" value="로그인">
             <br><span><a href="find_id">아이디 찾기</a></span>&nbsp;
             <span><a href="find_pwd">비밀번호 찾기</a></span>&nbsp;
-            <span><a>회원가입</a></span>
+            <span><a href="/memberjoin">회원가입</a></span>
         </div>
     </div>
 </form>
