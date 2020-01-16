@@ -39,7 +39,7 @@
 			(item_price * basket_count) sumPrice,
 			validity,
 			basket_page
-		from shopList l, shopBasket b, MEMBERVO m
+		from shopList l, shopBasket b, MEMBERJOIN m
 		where 
 			m.user_id = b.basket_id
 			and l.item_no = b.product_no

@@ -343,6 +343,8 @@ public class ShopController {
 			checkCount = 0;
 		}else if(user_id.equals("admin")) {
 			checkCount = 1;//관리자임을 확인하는 번호
+		}else {
+			checkCount = 2;//그 외의 아이디 일때
 		}
 		
 		s=this.shopService.getShopCont(item_no);

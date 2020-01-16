@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.service.BasketService;
+import com.project.service.MemberJoinService;
 import com.project.service.PayService;
 import com.project.vo.BasketVO;
+import com.project.vo.MemberVO;
 import com.project.vo.PayVO;
 import com.project.vo.PayokVO;
 import com.project.vo.ShopVO;
@@ -31,6 +33,9 @@ public class PayController {
 	
 	@Autowired
 	private PayService payService;
+	
+	@Autowired
+	private MemberJoinService memberJoinService;
 	
 	/** 결제페이지로 이동 **/
 	@RequestMapping("shop/pay")
@@ -49,7 +54,7 @@ public class PayController {
 	/** 결제 페이지의 상품 목록 **/
 	@RequestMapping("shop/pay_page")
 	public String pay_list(
-			BasketVO basket,
+			BasketVO basket,MemberVO mvo,
 			HttpServletRequest request,
 			HttpServletResponse response,
 			Model basketList,
@@ -100,7 +105,13 @@ public class PayController {
 			
 			List<BasketVO> list=this.basketService.listBasket(basket);//결제 페이지의 상품 정보
 			//만약 유저정보도 뽑아올거면 여기서 메서드 돌리기 -> 회원아이디로 회원정보에서 이름 전번 이메일
+			mvo.setUser_id(user_id);
 			
+			mvo = this.memberJoinService.MypageView(mvo);
+			
+			String user_name = mvo.getUser_name();
+			String user_phone = mvo.getUser_phone();
+					
 			int sumMoney=this.basketService.sumMoney(basket);//결제 페이지의 상품 전체 금액 호출
 			/* 장바구니 전체 금액에 따라 배송비 구분 */
 			//배송료(10만원 이상 -> 무료, 미만 -> 2500원)
@@ -113,6 +124,8 @@ public class PayController {
 			map.put("allSum",sumMoney+fee);//주문 총 합계 금액(상품 + 배송비)
 			map.put("validity",vali);//validity 값 전달
 			map.put("page",page);//페이지값전달
+			map.put("user_name",user_name);
+			map.put("user_phone",user_phone);
 			
 			
 			basketList.addAttribute("map",map);

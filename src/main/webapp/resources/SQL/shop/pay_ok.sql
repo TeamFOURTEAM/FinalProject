@@ -45,3 +45,6 @@ drop table pay_ok;
 drop sequence payCom_no_seq;
 delete from pay_ok;
 
+
+select * from membervo
+drop table membervo

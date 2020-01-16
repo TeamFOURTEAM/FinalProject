@@ -13,9 +13,12 @@ $(function (){
 <link rel="stylesheet" href="<c:url value="/resources/css/MemberJoin/MemberJoin.css" />" />
 
     <section>
-        <form action="/memberjoin_ok" id="MemberForm" method="post" autocomplete="off">
+        <form action="#" id="MemberForm" method="post" autocomplete="off">
             <div id="JoinContainer"> <!-- max size -->
                 <div class="content"><!--min size -->
+                <div class="titlefindPwd">
+			    	<p>회원가입</p>
+			    </div>
                     <div class="divSize">
                         <h2>아이디</h2>
                         <span class="s-span-Size">
@@ -141,13 +144,14 @@ $(function (){
                         <span class="PSpanSizeCB">
                             <input name="user_SMSCode" id='SMSCode' type="text" class="input-size" placeholder="인증번호를 입력하세요" disabled>
                         </span>
+                        <input type="hidden" id="codeEquals"/>
                     </div>
                     <div class="divLabel">
                         <label id='label_SMSCode'>인증번호를 입력하세요</label>
                     </div>
 
                     <div class="MemberJoin">
-                        <input class="MemberButton" type="button" value="가입하기" onclick="validate();">
+                        <input class="MemberButton" type="button" value="가입하기" onclick="validate();" onkeydown="return keydown();">
                     </div>
                 </div> <!-- content -->
             </div><!-- container-->

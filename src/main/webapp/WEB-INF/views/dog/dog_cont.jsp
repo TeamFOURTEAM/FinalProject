@@ -20,24 +20,33 @@
 				</div>
 				
 				<div id="dog_menu">
-					<input type="button" value="목록" 
-					onclick="location='/dog/total_dog?page=${page}';" />
-					
+
+
 					<c:set var="b" value="${user_id }" />
 					<c:if test="${b=='admin' }">
 					<input type="button" value="수정" 
 					onclick="location='dog_cont?dog_no=${d.dog_no}&page=${page }&state=edit';" />
 					
+
+					</c:if>
+					
+					<input type="button" value="목록" 
+					onclick="location='/dog/total_dog?page=${page}';" />
+
 					
 					<form method="post" action="/dog_del_ok" onsubmit="return del_check();">
 						<input type="hidden" name="dog_no" value="${d.dog_no}" />
    						<input type="hidden" name="page" value="${page}" />
    						<input type="hidden" name="dog_img" value="${d.dog_file }" />
    						
+   						<c:set var="b" value="${user_id }" />
+						<c:if test="${b=='admin' }">
 						<input type="submit" value="삭제" id="del"
 						onclick="location='dog_cont?dog_no=${d.dog_no}&page=${page}&state=del';"/>
-					</form>
+
 					</c:if>	
+					</form>
+
 				</div>
 				
 				

@@ -3,6 +3,7 @@ package com.project.controller;
 import com.oreilly.servlet.MultipartRequest;
 import com.project.codesend.CodeSend;
 import com.project.gmail.Gmail;
+import com.project.messagesend.CodeMessage;
 import com.project.service.UserService;
 import com.project.vo.BoardVO;
 import com.project.vo.MemberVO;
@@ -40,9 +41,7 @@ public class User_Controller {
 
     //로그인
     @RequestMapping("login")
-    public String login(HttpServletRequest request) {
-    	String referer = request.getHeader("Referer");
-		request.getSession().setAttribute("redirectURI", referer);
+    public String login() {
         return "login/login";
     }
 
@@ -141,10 +140,9 @@ public class User_Controller {
             out.println("location='login';");
             out.println("</script>");
         } else {
-            String user_id = mem.getUser_id();
+        	String user_id = mem.getUser_id();
             session.setAttribute("user_id", user_id);
-            String referer=(String)session.getAttribute("redirectURI");
-            return "redirect:"+referer;
+            return "redirect:/cat/total_cat?page=1";
         }
         return null;
     }
@@ -159,12 +157,12 @@ public class User_Controller {
         String codenum = "";
         if (phonecode != null) {
             codenum = new CodeSend().cd1();
-            //CodeMessage.sms_send(phone,codenum);
+            CodeMessage.sms_send(user_phone,codenum);
 
             out.print(codenum);
         }else{
             codenum = new CodeSend().cd1();
-            //CodeMessage.sms_send(phone,codenum);
+            CodeMessage.sms_send(user_phone,codenum);
             out.println(codenum);
         }
         return null;
@@ -346,7 +344,7 @@ public class User_Controller {
         } else {
             //mybatis는 컬럼에 null을 저장하지 못함. 그러므로 파일을
             //null저장을 막기 위해서 else 로 처리해야 한다.
-            b.setBack_end_list_img("/defalut/defalut.jpg");//빈 공백을 넣어서, null이 들어가
+            b.setBack_end_list_img("/default/default.png");//빈 공백을 넣어서, null이 들어가
             //에러가 나는 것을 막아준다.
         }//if else
 
@@ -467,7 +465,7 @@ public class User_Controller {
         } else {
             //mybatis는 컬럼에 null을 저장하지 못함. 그러므로 파일을
             //null저장을 막기 위해서 else 로 처리해야 한다.
-            b.setBack_end_list_img("/defalut/defalut.jpg");//빈 공백을 넣어서, null이 들어가
+            b.setBack_end_list_img("/default/default.png");//빈 공백을 넣어서, null이 들어가
             //에러가 나는 것을 막아준다.
         }//if else
 

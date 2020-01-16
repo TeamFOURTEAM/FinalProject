@@ -22,6 +22,9 @@
 <body>
 <form action="find_pwd_check" method="post">
     <div id="container">
+    <div class="titlefindPwd">
+    	<p>비밀번호 찾기</p>
+    </div>
         <div>
             <input class="user_id" id="user_id" name="user_id" type="text" placeholder="아이디" onkeyup="patternid();">
             <br><span class="idlabel" id="idlabel">아이디를 입력해주세요!</span>
@@ -46,7 +49,7 @@
             <input class="loginbutton" type="submit" onclick="return find_p();" value="비밀번호 찾기">
             <br><span><a href="login">로그인</a></span>&nbsp;
             <span><a href="find_id">아이디 찾기</a></span>&nbsp;
-            <span><a>회원가입</a></span>
+            <span><a href="/memberjoin">회원가입</a></span>
         </div>
     </div>
 </form>

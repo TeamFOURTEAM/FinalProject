@@ -2,8 +2,8 @@
 #MyPageContainer {
 	position: relative;
 	width: 75%;
-	border-left: solid 1px red;
-	border-right: solid 1px red;
+	border-left: solid 1px black;
+	border-right: solid 1px black;
 	margin: 0 auto;
 	padding: 7% 0;
 	min-width: 460px;
@@ -12,8 +12,8 @@
 #ShopLink {
 	display: none;
 	position: absolute;
-    right: 36px;
-    top: -30px;
+	right: 36px;
+	top: -30px;
 }
 /* 회원 정보들을 담은 컨테이너 */
 #MemberInfos {
@@ -67,19 +67,22 @@
 
 /* 수정 input display 영역 */
 #Update_Email_Area,
-#Update_PN_Area {
+#Update_PN_Area,
+#Update_Pwd_Area {
 	display: none;
 }
 /* 수정버튼 눌렀을 경우 */
 #Update_Email,
-#Update_PN {
+#Update_PN,
+#Update_Pwd {
 	position: relative;
 	margin: 0 auto;
 	width: 65%;
 	height: 30px;
 }
 #Update_Email_ok,
-#Update_PN_ok {
+#Update_PN_ok,
+#Update_Pwd_ok {
 	position: absolute;
 	width: 50px;
 	right: 20px;
@@ -115,7 +118,7 @@
 	clear: both;
 	box-sizing: border-box;
 	height: 300px;
-	border: solid 1px blue;
+	border: solid 1px black;
 	margin: 20px auto 0 auto;
 	width: 95%;
 }
@@ -128,7 +131,7 @@
 }
 /* 입양게시판 */
 .AdoptBoard {
-	border-right: solid 1px red;
+	border-right: solid 1px black;
 	margin-left: 5px;
 }
 .Adopt,
@@ -136,7 +139,7 @@
 	text-align: center;
 	height: 70px;
 	line-height: 70px;
-	border-bottom: solid 1px red;
+	border-bottom: solid 1px black;
 	font-size: 30px;
 	font-weight: bold;
 }
@@ -162,7 +165,7 @@
 	height: 8px;
 	margin: -5px 10px auto 5px;
 	vertical-align: middle;
-	background: red;
+	background : #2698cb;
 	border-radius: 50%;
 }
 .Normal_Ul li::before {
@@ -172,7 +175,7 @@
 	height: 8px;
 	margin: -5px 10px auto 10px;
 	vertical-align: middle;
-	background: red;
+	background : #2698cb;
 	border-radius: 50%;
 }
 
@@ -226,7 +229,8 @@
 		width: 49.4%;
 	}
 	#Update_Email,
-	#Update_PN {
+	#Update_PN,
+	#Update_Pwd {
 		width: 50%;
 		margin-left: -50px;
 	}
@@ -260,10 +264,11 @@
 	}
 	.AdoptBoard {
 		border-right: none;
-		border-bottom: solid 1px red;
+		border-bottom: solid 1px black;
 	}
 	#Update_Email,
-	#Update_PN {
+	#Update_PN,
+	#Update_Pwd {
 		width: 50%;
 	}
 
@@ -275,7 +280,7 @@
 		margin-left: 5px;
 	}
 	/* Board -end- */
-	
+
 	/* Shop */
 	#ShopLink {
 		right: 15px;

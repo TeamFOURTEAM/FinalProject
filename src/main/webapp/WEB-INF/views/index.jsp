@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -25,8 +26,13 @@
             <div class="row">
                 <div class="header">
                     <div class="header_menu">
-                        <a href="login">Login</a>
-                        <a href="join">Join</a>
+                        <c:if test="${empty user_id}">
+						 <a href="/login">Login</a>
+						 </c:if>
+						 <c:if test="${!empty user_id}">
+						 <a href="/logout">LogOut</a>
+						 </c:if>
+						 <a href="/memberjoin">Join</a>
                     </div>
                     <!--//header_menu -->
 
@@ -73,7 +79,7 @@
                                 <div class="section">
                                     <div class="main_menu_img">
                                         <div class="main_menu_btn">
-                                            <a href="community/total_commu" class="a4">커뮤니티</a>
+                                            <a href="user_board_list?page=1" class="a4">커뮤니티</a>
                                         </div>
                                     </div>
                                 </div>
@@ -88,8 +94,7 @@
                                             <div>
                                                 <a href="#">
                                                     <img src="/img/main/slider001.jpg" alt="이미지1">
-                                                    <figcaption><em>Responsive Site1</em><span>슬라이드
-                                                            플러그인을 이용한 반응형 이미지 슬라이드 입니다.</span>
+                                                    <figcaption><em>강아지 마약방석</em><span>개&고양이를 위한 마약방석입니다</span>
                                                     </figcaption>
                                                 </a>
                                             </div>
@@ -97,8 +102,7 @@
                                             <div>
                                                 <a href="#">
                                                     <img src="/img/main/slider002.jpg" alt="이미지2">
-                                                    <figcaption><em>Responsive Site2</em><span>슬라이드
-                                                            플러그인을 이용한 반응형 이미지 슬라이드 입니다.</span>
+                                                    <figcaption><em>고양이 미니하우스</em><span>고양이를 위한 미니하우스입니다</span>
                                                     </figcaption>
                                                 </a>
                                             </div>
@@ -106,8 +110,7 @@
                                             <div>
                                                 <a href="#">
                                                     <img src="/img/main/slider003.jpg" alt="이미지3">
-                                                    <figcaption><em>Responsive Site3</em><span>슬라이드
-                                                            플러그인을 이용한 반응형 이미지 슬라이드 입니다.</span>
+                                                    <figcaption><em>펫 자동사료</em><span>고양이와 강아지를 위한 자동사료배급기입니다</span>
                                                     </figcaption>
                                                 </a>
                                             </div>
@@ -115,8 +118,7 @@
                                             <div>
                                                 <a href="#">
                                                     <img src="/img/main/slider004.jpg" alt="이미지4">
-                                                    <figcaption><em>Responsive Site4</em><span>슬라이드
-                                                            플러그인을 이용한 반응형 이미지 슬라이드 입니다.</span>
+                                                    <figcaption><em>온열매트</em><span>고양이와 강아지를 위한 온열매트입니다</span>
                                                     </figcaption>
                                                 </a>
                                             </div>
@@ -124,8 +126,7 @@
                                             <div>
                                                 <a href="#">
                                                     <img src="/img/main/slider005.jpg" alt="이미지5">
-                                                    <figcaption><em>Responsive Site5</em><span>슬라이드
-                                                            플러그인을 이용한 반응형 이미지 슬라이드 입니다.</span>
+                                                    <figcaption><em>고양이 미니 해먹</em><span>고양이를 위한 미니 해먹입니다</span>
                                                     </figcaption>
                                                 </a>
                                             </div>
@@ -148,7 +149,7 @@
                                                         </ul>
                                                         <address>
                                                             Copyright ©
-                                                            <a href="https://namu.wiki/w/%EA%B7%80%EB%A9%B8%EC%9D%98%20%EC%B9%BC%EB%82%A0/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98">
+                                                            <a href="#">
                                                             <strong>CATS AND DOGS</strong></a>
                                                             All Rights Reserved.
                                                         </address>
@@ -238,7 +239,7 @@
             centerMode: true,
             centerPadding: '0px',
             slidesToShow: 3,
-            autoplay: false,
+            autoplay: true,
             autoplaySpeed: 2000,
             responsive: [
                 {

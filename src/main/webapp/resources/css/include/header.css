@@ -12,7 +12,7 @@ body { }
     font-size: 18px;
     font-weight: bold;
    }
-.header .header_menu a:hover {color: #000;}
+.header .header_menu a:hover {color: #51b0dc;}
 
 .header .header_title {text-align: center; margin-top: auto; 
 margin-top: 80px;}                         
@@ -132,7 +132,7 @@ a#store {
 	font-size: 30px;
 	position: fixed;
 	left: 0;
-	bottom: 34%;
+	bottom: 15%;
 }
 
 #store .company_img {
@@ -143,7 +143,7 @@ a#store {
 /* mypsge_hover  */
 #mypage_hover{
 	position: absolute;
-	right: 160px;
+	right: 78px;
 	display: none;	
 }
 #mypage_hover:hover {

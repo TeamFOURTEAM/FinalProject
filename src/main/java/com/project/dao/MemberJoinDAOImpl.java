@@ -1,10 +1,14 @@
 package com.project.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.vo.BoardVO;
 import com.project.vo.MemberVO;
+import com.project.vo.NormalBoardVO;
 
 @Repository
 public class MemberJoinDAOImpl implements MemberJoinDAO {
@@ -13,8 +17,8 @@ public class MemberJoinDAOImpl implements MemberJoinDAO {
 	private SqlSession sqlSession;
 	
 	@Override
-	public void insert(MemberVO mb) {
-		sqlSession.insert("MemberJoin.MbJoin", mb);
+	public int insert(MemberVO mb) {
+		return sqlSession.insert("MemberJoin.MbJoin", mb);
 	}
 
 	@Override
@@ -37,6 +41,21 @@ public class MemberJoinDAOImpl implements MemberJoinDAO {
 	@Override
 	public int UserInfoPhone(MemberVO updateMember) {
 		return sqlSession.update("MemberJoin.updatePN",updateMember);
+	}
+
+	@Override
+	public int UserInfoPwd(MemberVO updateMember) {
+		return sqlSession.update("MemberJoin.updatePWD",updateMember);
+	}
+
+	@Override
+	public List<NormalBoardVO> NormalBoardView(MemberVO mVo) {
+		return sqlSession.selectList("MemberJoin.NBView", mVo);
+	}
+
+	@Override
+	public List<BoardVO> BoardView(MemberVO mVo) {
+		return sqlSession.selectList("MemberJoin.BView", mVo);
 	}
 
 }

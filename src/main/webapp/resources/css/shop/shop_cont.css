@@ -63,14 +63,20 @@
     font-size: 20px; padding: 0 20px 20px 0;
 
 }
-.item_main .itemContBox .itemContReco {
+/* .item_main .itemContBox .itemContReco {
     border-bottom: 1px solid #dcdcdc;
     font-size: 20px; padding: 20px 20px 20px 0;
-}
+} */
 
 .item_main .itemContBox .itemContPrice {
     border-bottom: 1px solid #dcdcdc;
     font-size: 20px; padding: 20px 20px 20px 0;
+}
+.item_main .itemContReco {
+    border-bottom: 1px solid #dcdcdc;
+    font-size: 20px; padding: 20px 20px 20px 0;
+}
+.item_main .itemContReco .contPrice {
 }
 
 /** 수량 & 구매 영역 **/

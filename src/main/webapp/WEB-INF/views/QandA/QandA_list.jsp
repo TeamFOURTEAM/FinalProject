@@ -142,7 +142,9 @@
                                 </select>
                                 <input name="find_name" id="find_name" id="find_name" size="30" value="${find_name}" />
                                 <input type="submit" value="검색" />
-                                <input type="button" class="qWrite" value="글쓰기" onclick="location='QandA_write'" />
+                                <c:if test="${user_id != null}">
+	                                <input type="button" class="qWrite" value="글쓰기" onclick="location='QandA_write'" />
+                                </c:if>
                             </div>
 
                         

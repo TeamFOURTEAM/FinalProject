@@ -34,6 +34,6 @@ nocache;
 /***********************/
 drop table shopList;
 drop sequence item_no_seq;
-
+delete from shopList;
 
 

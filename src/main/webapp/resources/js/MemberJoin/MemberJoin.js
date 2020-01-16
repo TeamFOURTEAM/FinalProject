@@ -152,48 +152,54 @@ $(document).ready(function() {
 	});
 
 	//핸드폰 번호
-//	$('#phoneNumber').on('keyup', function() {
-//		if (!check1(phoneNumber, label_Phone_number, '핸드폰 번호를 입력해주세요')) {
-//			return false;
-//		}
-//
-//		if (!check(PhoneNumberCode, phoneNumber, label_Phone_number, '-를 제외한 숫자로만 입력해주세요')) {
-//			return false;
-//		}
-//	});
+	//	$('#phoneNumber').on('keyup', function() {
+	//		if (!check1(phoneNumber, label_Phone_number, '핸드폰 번호를 입력해주세요')) {
+	//			return false;
+	//		}
+	//
+	//		if (!check(PhoneNumberCode, phoneNumber, label_Phone_number, '-를 제외한 숫자로만 입력해주세요')) {
+	//			return false;
+	//		}
+	//	});
+
+	$('#SmsCodeSend').on('click', function() {
+		//문자발송
+		var phoneNumber = $('#phoneNumber').val();
+		console.log(phoneNumber);
+
+		if (phoneNumber != '') {
+			$.ajax({
+				type: 'POST',
+				url: 'codesend',
+				data: { user_phone: phoneNumber },
+				datatype: 'String',
+				success: function(data) {
+					if (data == '') {
+						alert('인증번호 발송이 실패하였습니다');
+						return false;
+					} else {
+						$('#SMSCode').attr('disabled', false);
+
+						alert('인증번호가 발송 되었습니다.');
+						console.log(data);
+
+						$('#codeEquals').val(data);
+						console.log('smsequals: ' + $('#codeEquals').val());
+						return false;
+					}
+				},
+				error: function() {
+					alert('data error');
+					// location='find_id'
+				}
+			}); //$.ajax
+		}
+	});
+
 	$('#SMSCode').on('keyup', function() {
 		if (!check1(SMSCode, label_SMSCode, '인증번호를 입력해주세요')) {
 			return false;
 		}
-	});
-	$('#SmsCodeSend').on('click', function() {
-		//문자발송
-		var phoneNumber = $('#phoneNumber').val();
-		    console.log(phoneNumber);
-		    $.ajax({
-		        type:"POST",
-		        url:"codesend",
-		        data: {"user_phone":phoneNumber},
-		        datatype:"String",
-		        success: function (data) {
-		            if(data==''){
-		              
-		                return false;
-		            }else{
-
-		                $('#SMSCode').attr('disabled',false);
-		                
-		                alert('인증번호가 발송 되었습니다.');
-		                console.log(data);
-		                return false;
-		            }
-		        },
-		        error:function(){
-		            alert("data error");
-		            // location='find_id'
-		        }
-		    });//$.ajax
-		
 	});
 });
 
@@ -253,7 +259,7 @@ function validate() {
 		checkpw.value = '';
 		checkpw.focus();
 		return false;
-	}else {
+	} else {
 		labelCheckPW.style.display = 'none';
 	}
 
@@ -317,21 +323,36 @@ function validate() {
 
 	//핸드폰 번호
 
-	if (!check3(phoneNumber, label_Phone_number, '핸드폰 번호를 입력해주세요')) {
-		return false;
-	}
+	// if (!check3(phoneNumber, label_Phone_number, '핸드폰 번호를 입력해주세요')) {
+	// 	return false;
+	// }
 
-	if (!check2(PhoneNumberCode, phoneNumber, label_Phone_number, '-를 제외한 숫자로만 입력해주세요')) {
-		return false;
-	}
+	// if (!check2(PhoneNumberCode, phoneNumber, label_Phone_number, '-를 제외한 숫자로만 입력해주세요')) {
+	// 	return false;
+	// }
 
 	//인증번호
-	if (!check3(SMSCode, label_SMSCode, '인증번호를 입력해주세요')) {
+
+	if (!testEquals(SMSCode, label_SMSCode, '인증번호를 입력해주세요')) {
 		return false;
 	}
 
-	
-	document.getElementById('MemberForm').submit();
+	// if (!smscheck3(SMSCode, SmsEquals, label_SMSCode, '인증번호를 잘못 입력하셨습니다.')) {
+	// 	return false;
+	// }
+
+	//	if (SMSCode.val() == $('#codeEquals').val()) {
+	//		alert('회원가입이 완료되었습니다.');
+	//		return false;
+	//	} else {
+	//		console.log($('#codeEquals').val() + '회원가입버튼');
+	//		SMSCode.style.display = 'block';
+	//		SMSCode.style.color = 'red';
+	//		SMSCode.innerHTML = '인증번호를 잘못 입력하셨습니다.';
+	//		SMSCode.value = '';
+	//		SMSCode.focus();
+	//		return false;
+	//	}
 }
 
 //check 함수 정의 값을 전달 받아서 실행
@@ -353,7 +374,7 @@ function check(pattern, IdValue, labelValue, message) {
 function check1(IdValue, labelValue, message) {
 	if (IdValue.value) {
 		labelValue.style.display = 'none';
-		
+
 		return true;
 	}
 	labelValue.style.display = 'block';
@@ -393,32 +414,56 @@ function check3(what, labelID, message) {
 	what.focus();
 }
 
-//휴대폰 입력시 - 붙히기
-function inputPhoneNumber(obj) {
-    var number = obj.value.replace(/[^0-9]/g, "");
-    var phone = "";
-
-
-
-    if(number.length < 4) {
-        return number;
-    } else if(number.length < 7) {
-        phone += number.substr(0, 3);
-        phone += "-";
-        phone += number.substr(3);
-    } else if(number.length < 11) {
-        phone += number.substr(0, 3);
-        phone += "-";
-        phone += number.substr(3, 3);
-        phone += "-";
-        phone += number.substr(6);
-    } else {
-        phone += number.substr(0, 3);
-        phone += "-";
-        phone += number.substr(3, 4);
-        phone += "-";
-        phone += number.substr(7);
-    }
-    obj.value = phone;
+function testEquals(what, labelID, message) {
+	if (what.value) {
+		MemberForm.action = '/memberjoin_ok';
+		MemberForm.submit();
+		return true;
+	}
+	labelID.style.display = 'block';
+	labelID.style.color = 'red';
+	labelID.innerHTML = message;
+	what.value = '';
+	what.focus();
 }
 
+function smscheck3(SMSid, equalsValue, smslabel, message) {
+	alert(SMSid.value + '///' + equalsValue);
+	if (SMSid == equalsValue) {
+		alert('회원가입이 완료되었습니다.');
+		return true;
+	}
+	console.log('smscheck3 == ' + SMSid.value + '==' + equalsValue);
+	smslabel.style.display = 'block';
+	smslabel.style.color = 'red';
+	smslabel.innerHTML = message;
+	SMSid.value = '';
+	SMSid.focus();
+}
+
+//휴대폰 입력시 - 붙히기
+function inputPhoneNumber(obj) {
+	var number = obj.value.replace(/[^0-9]/g, '');
+	var phone = '';
+
+	if (number.length < 4) {
+		return number;
+	} else if (number.length < 7) {
+		phone += number.substr(0, 3);
+		phone += '-';
+		phone += number.substr(3);
+	} else if (number.length < 11) {
+		phone += number.substr(0, 3);
+		phone += '-';
+		phone += number.substr(3, 3);
+		phone += '-';
+		phone += number.substr(6);
+	} else {
+		phone += number.substr(0, 3);
+		phone += '-';
+		phone += number.substr(3, 4);
+		phone += '-';
+		phone += number.substr(7);
+	}
+	obj.value = phone;
+}

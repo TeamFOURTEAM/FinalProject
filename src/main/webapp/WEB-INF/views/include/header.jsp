@@ -35,7 +35,9 @@
 					 <c:if test="${!empty user_id}">
 					 <a href="/logout">LogOut</a>
 					 </c:if>
+					 <c:if test="${user_id == null }">
 					 <a href="/memberjoin">Register</a>
+					 </c:if>
 				</div>
 				<!-- //header_menu -->
 				<div class="header_title">

@@ -1,4 +1,16 @@
 /* 전체 요소 영역 */
+/* 로고 이미지 */
+#MapImg {	
+	margin: 0px auto;
+    width: 350px;
+    height: 100px;
+    padding-bottom: 60px;
+}
+.tagArea > p > span {
+	margin : 0 70px;
+	font-weight: bold;
+	font-size : 35px;
+}
 .not_scroll {
 	overflow: hidden;
 }
@@ -14,6 +26,7 @@
 }
 /* 회사 버튼 들어갈 영역 */
 #CompanyName {
+	clear : both;
 	text-align: center;
 	margin-top: 50px;
 }
@@ -133,4 +146,10 @@
 	text-align: center;
 	margin-left: 1px;
 	border: 1px solid pink;
+}
+
+@media (max-width: 1200px) {
+	#store {
+		display : none;
+	}
 }

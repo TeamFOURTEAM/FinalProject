@@ -4,7 +4,7 @@ $(document).ready(function() {
 	var container = document.getElementById('MapArea'); //지도 출력 div
 	var options = {
 		center: new kakao.maps.LatLng(37.538068, 127.123429), //지도의 중심 좌표
-		level: 2 //지도 확대
+		level: 4 //지도 확대
 	};
 
 	var map = new kakao.maps.Map(container, options); //지도 생성
