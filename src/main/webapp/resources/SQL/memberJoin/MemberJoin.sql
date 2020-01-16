@@ -12,9 +12,14 @@ create table MemberJoin (
 
 select * from MemberJoin;
 
+delete from MemberJoin where user_id='dlrudgns90'
+
 SELECT USER_ID, USER_PHONE FROM MEMBERJOIN WHERE USER_ID = 'aaaaaa';
 
 update MemberJoin set USER_EMAIL = '123213@naver.com' WHERE USER_ID = 'aaaaaa';
 
 insert into MEMBERJOIN (user_id, user_pwd, user_name, user_birthday, user_gender, user_email, user_phone, join_date)
 values('aaaaaa','aaaaaa','name1','birthday1','gender1','email1','phone1',sysdate);
+
+insert into MEMBERJOIN (user_id, user_pwd, user_name, user_birthday, user_gender, user_email, user_phone, join_date)
+values('admin','1234','관리자','birthday1','gender1','email1','phone1',sysdate);

@@ -20,10 +20,12 @@
 		
 			<div class="header" >
 				<div class="header_menu">
+				<c:if test="${user_id != null }" >
 					<a id="mypage_cont" href="/mypage">MyPage</a>
 						<div id="mypage_hover">
 							<p><a href="/shop/basket_list?page=1">장바구니</a></p>						
 						</div>
+						</c:if>
 					
 					
 					

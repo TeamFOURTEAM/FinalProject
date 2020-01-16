@@ -7,7 +7,7 @@ create table BOARD
     BACK_END_LIST_CONT  VARCHAR2(4000) not null,
     BACK_END_LIST_ID    VARCHAR2(100)  not null
         constraint MV_ID_B
-            references MEMBERVO,
+            references MemberJoin on delete cascade,
     BACK_END_LIST_DATE  DATE,
     STEP                NUMBER,
     REF                 NUMBER
@@ -19,6 +19,7 @@ alter table BOARD drop constraint FOUR.MEMVER_ID_Q
 
 select * from board
 
+drop table BOARD
 create sequence back_end_list_no_seq
 start with 1
 increment by 1

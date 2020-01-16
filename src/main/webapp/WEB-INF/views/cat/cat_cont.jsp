@@ -24,7 +24,7 @@
 					onclick="location='/cat/total_cat?page=${page}';" />
 					
 					<c:set var="b" value="${user_id }" />
-					<c:if test="${b=='dlrudgns90' }">
+					<c:if test="${b=='admin' }">
 					<input type="button" value="수정" 
 					onclick="location='cat_cont?cat_no=${c.cat_no}&page=${page }&state=edit';" />
 					
