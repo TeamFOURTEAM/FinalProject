@@ -21,7 +21,7 @@ public class ShopDAOImpl implements ShopDAO {
 
 	@Override
 	public int getListCount(ShopVO s) {
-		return this.sqlSession.selectOne("shop_count",s);
+		return this.sqlSession.selectOne("Shop.shop_count",s);
 	}//shop 페이지 검색 전후 레코드 개수
 
 	@Override
